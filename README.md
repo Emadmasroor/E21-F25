@@ -7,6 +7,11 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Pre-requisities**: MATH 25, ENGR 17  
 **Lab**: MR 1:15 to 4:00  
 **Lab Instructor**: Will Johnson `wjohnso3@swarthmore.edu`  
+**URL**: `https://emadmasroor.github.io/E21-F25/`  
+**Midterm**: None; 6 tests  
+**Final Exam**: None; Project  
+**Homework Due Date**: Tue at 11:59 PM  
+**Wizard Session**: Mon 7:00 to 9:00 PM  
 
 [Resources](Resources/) • [Labs](Labs/) • [Syllabus](E91-S25-Syllabus.pdf) • [Complete Lecture Notes](Lecs/E91.S25.Lecs.pdf)
 
