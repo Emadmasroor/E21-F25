@@ -2,10 +2,15 @@
 Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. This page serves as the syllabus for this class.
 
 **Instructor**: Emad Masroor `emasroo1@swarthmore.edu`
+
 **Meeting Times**: MW 8:30 to 9:45
+
 **Office Hours**: T 12:00 to 2:00
+
 **Pre-requisities**: MATH 25, ENGR 17
+
 **Lab**: MR 1:15 to 4:00
+
 **Lab Instructor**: Will Johnson `wjohnso3@swarthmore.edu`
 
 
