@@ -7,6 +7,39 @@ Hello, World! This is the Class website of ENGR 21 @ Swarthmore Engineering, Fal
 
 ## Schedule
 
+Class | Lecture | Topic | HW due | Test (Content) | Lab
+---- |:---- | :---- | :---- | :---- | :--
+1.1 <br> 09/03  |  [Lec 1](Lecs/Lec1.pdf)   | Introduction & Installation; variables & types             | | | 
+1.2 <br> 09/05 |  [Lec 2](Lecs/Lec2.pdf)   | Programming basics: variables, types, conditionals                 | | |
+2.1 <br> 09/10  |  [Lec 3](Lecs/Lec3.pdf)   | Base systems; Analog vs. digital data [[files](Lecs/lec3_files.zip)]                                 | [HW 1](HW/HW1.html) [[solutions](HW/HW1-solutions.html)] | | <a name="lab1"/>[Lab 1: Capacitive touch passcode](Labs/lab1.html)
+2.2 <br> 09/12  |  [Lec 4](Lecs/Lec4.pdf)   | Relative & absolute errors; [[files](Lecs/lec4_files.zip)]        | | | Lab 1
+3.1 <br> 09/17  |  [Lec 5](Lecs/Lec5.pdf)   | For/while loops; 'dot notation' [[files](Lecs/lec5_files.zip)]               | [HW 2](HW/HW2.html) [[solutions](HW/HW2-solutions.html)] | |  Lab 1
+3.2 <br> 09/19  |  [Lec 6](Lecs/Lec6.pdf)   | Functions; Finite State Machines [[files](Lecs/lec6_files.zip)]              | | Test 1 (weeks 1-2) | Lab 1
+4.1 <br> 09/24  |  [Lec 7](Lecs/Lec7.pdf)   | Desktop installation; IDEs              | [HW 3](HW/HW3.html) [[solutions](HW/HW3-solutions.html)] | | <a name="lab2"/>[Lab 2: Joystick, loops, and functions](Labs/lab2.html)
+4.2 <br> 09/26  |  [Lec 8](Lecs/Lec8.pdf)   | Floating point numbers              | | | Lab 2
+5.1 <br> 10/01  |  [Lec 9](Lecs/Lec9.pdf)   | Introduction to `numpy` [[files](Lecs/lec9_files.zip)]             | [HW 4](HW/HW4.html) [[solutions](HW/HW4-solutions.html)] | | Lab 2 | 
+5.2 <br> 10/03  |  [Lec 10](Lecs/Lec10.pdf) | Data Visualization for Engineering in Python | | Test 2 (weeks 3-4) | Lab 2
+6.1 <br> 10/08  |  [Lec 11](Lecs/Lec11.pdf)   | Root-finding [[files](Lecs/bisection_algorithm.py)]             | [HW 5](HW/HW5.html) [[solutions](HW/HW5-solutions.html)] | | <a name="lab3"/>[Lab 3: Pen plotter](Labs/lab3.html)
+6.2 <br> 10/10  |  [Lec 12](Lecs/Lec12.pdf)   | Root-finding             | | | Lab 3 
+6+i  |  -   | **Fall break**             | | | 
+7.1 <br> 10/22 |  [Lec 13](Lecs/Lec13.pdf)   | Linear Systems              | [HW 6](HW/HW6.html) [[solutions](HW/HW6-solutions.html)] | | Lab 3
+7.2 <br> 10/24  | [Lec 14](Lecs/Lec14.pdf)   | Linear Systems             | | Test 3 (weeks 5-6) | Lab 3
+8.1 <br> 10/29  |  [Lec 15](Lecs/Lec15.pdf) [[files](Lecs/interpolate_these.txt)]   | Curve fitting & Interpolation              | [HW 7](HW/HW7.html) [[solutions](HW/HW7-solutions.html)] | | <a name="lab4">[Lab 4: Cubic spline interpolation](Labs/lab4.html) |
+8.2 <br> 10/31  |  [Lec 16](Lecs/Lec16.pdf) [[files](Lecs/datapoints.txt)]   | Curve fitting & Interpolation            | | | Lab 4 | 
+9.1  <br> 11/05 | [Lec 17](Lecs/Lec17.pdf)  | Optimization              | [HW 8](HW/HW8.html) [[solutions](HW/HW8-solutions.html)] | | Lab 4
+9.2  <br> 11/07 | [Lec 18](Lecs/Lec18.pdf)  | Optimization             | | Test 4 (weeks 7-8) | Lab 4
+10.1 <br> 11/12 | [Lec 19](Lecs/Lec19.pdf) [[files](Lecs/lec19.zip)]   | Optimization              | [HW 9](HW/HW9.html) [[solutions](HW/HW9-solutions.html)] | | <a name="lab5"/>[Lab 5: Optimizers for image approximation](Labs/lab5.html)
+10.2 <br> 11/14  | [Lec 20](Lecs/Lec20.pdf) | Numerical Differentiation            | | | Lab 5
+11.1 <br> 11/19  | [Lec 21](Lecs/Lec21.pdf) | Numerical Integration              | HW 10 [canceled] | | Lab 5
+11.2 <br> 11/21  | [Lec 22](Lecs/Lec22.pdf) | Initial Value Problems            | | Test 5 (weeks 9-10) | Lab 5
+12  |  T 11/26   | No class              | | | [Final project](https://docs.google.com/presentation/d/1pfxCyCjkx1bTL_9U3dErih7icFER75kSIthaCGwBUPk/edit?usp=sharing)
+12  |  -   | **Thanksgiving**            | | | |
+13  |  T 12/03   | Final Project         | [HW 11](HW/HW11.html) |  | Final project 
+13  |  R 12/05   | Final Project         | | Test 6 (Lectures 10.2, 11.1, 11.2) | Final project
+14  |  T 12/10   | Final Project              | | | Final project
+
+## Schedule
+
 Hyperlinks to lectures and homework assignments will be posted here. 
 
 | **Class**                                                                                          | **Topic**                                   | **Readings**       | **Due**                                               |
