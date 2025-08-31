@@ -1,6 +1,6 @@
 ---
 layout: default
-title: My Page
+title: E21 Introduction to Computer Engineering Fall 2025
 toc: true
 toc_label: "Contents"
 toc_icon: "list"
