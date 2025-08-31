@@ -13,12 +13,19 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 **NEW:** [Course Evaluation](https://forms.gle/exLrpKuTUs8tvxBP9)
 
-|                |                  |
-|----------------|------------------|
-| Instructor     | Emad Masroor     |
-| Lectures       | TR 8:30 to 9:45  |
-| Office Hours   | T 12:30 to 2:00  |
-| Pre-Requisites | MATH 25, ENGR 17 |
+|                   |                                          |
+|-------------------|------------------------------------------|
+| Instructor        | Emad Masroor                             |
+| Lectures          | TR 8:30 to 9:45                          |
+| Office Hours      | T 12:30 to 2:00                          |
+| Pre-Requisites    | MATH 25, ENGR 17                         |
+| Lab               | MR 1:15 to 4:00                          |
+| Lab Instructor    | Will Johnson                             |
+| URL               | `https://emadmasroor.github.io/E21-F25/` |
+| Midterm           | None; Six tests during semester          |
+| Final Exam        | None; Final project                      |
+| Homework Due Date | Tuesdays at 11:59 PM                     |
+| Wizard Session    | Mondays 7:00 to 9:00 PM                  |
 
 ## Schedule 2
 
