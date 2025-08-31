@@ -1,5 +1,5 @@
 # ENGR 21: Introduction to Computer Engineering
-Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. This page serves as the syllabus for this class.
+Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. This page serves as the syllabus for this course, and will be updated regularly throughout the semester.
 
 **Instructor**: Emad Masroor `emasroo1@swarthmore.edu`  
 **Meeting Times**: MW 8:30 to 9:45  
