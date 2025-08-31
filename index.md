@@ -23,6 +23,8 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 [Current Homework Assignment](HW/HW1.md)
 
+{:toc}
+
 # Lectures, HW and Tests Schedule
 Hello, world 
 
