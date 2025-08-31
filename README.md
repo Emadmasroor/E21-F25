@@ -13,6 +13,13 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 **NEW:** [Course Evaluation](https://forms.gle/exLrpKuTUs8tvxBP9)
 
+|                |                  |
+|----------------|------------------|
+| Instructor     | Emad Masroor     |
+| Lectures       | TR 8:30 to 9:45  |
+| Office Hours   | T 12:30 to 2:00  |
+| Pre-Requisites | MATH 25, ENGR 17 |
+
 ## Schedule 2
 
 | No.   | Date    | Lecture Slides | Topic                                                                | HW due | Test (Content)                     | Lab                                                                                                                   |   |
