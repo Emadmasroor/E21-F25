@@ -1,5 +1,5 @@
 # ENGR 21: Introduction to Computer Engineering
-Class website of ENGR 21 @ Swarthmore Engineering, Fall 2025
+Hello, World! This is the Class website of ENGR 21 @ Swarthmore Engineering, Fall 2025
 
 [Resources](Resources/) • [Labs](Labs/) • [Syllabus](E91-S25-Syllabus.pdf) • [Complete Lecture Notes](Lecs/E91.S25.Lecs.pdf)
 
