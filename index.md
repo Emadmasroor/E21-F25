@@ -1,3 +1,11 @@
+---
+layout: default
+title: My Page
+toc: true
+toc_label: "Contents"
+toc_icon: "list"
+---
+
 # ENGR 21: Introduction to Computer Engineering
 Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. This page serves as the syllabus for this course, and will be updated regularly throughout the semester.
 
@@ -14,8 +22,6 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Wizard Session**: Mon 7:00 to 9:00 PM  
 
 [Current Homework Assignment](HW/HW1.md)
-
-[Resources](Resources/) • [Labs](Labs/) • [Syllabus](E91-S25-Syllabus.pdf) • [Complete Lecture Notes](Lecs/E91.S25.Lecs.pdf)
 
 # Lectures, HW and Tests Schedule
 Hello, world 
