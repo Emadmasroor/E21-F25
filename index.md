@@ -1,12 +1,11 @@
 ---
 layout: default
-title: E21 Introduction to Computer Engineering Fall 2025
+title: Homepage
 toc: true
 toc_label: "Contents"
 toc_icon: "list"
 ---
 
-# ENGR 21: Introduction to Computer Engineering
 Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. This page serves as the syllabus for this course, and will be updated regularly throughout the semester.
 
 **Instructor**: Emad Masroor `emasroo1@swarthmore.edu`  
