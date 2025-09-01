@@ -144,6 +144,8 @@ At the end of this course, you will be able to:
 
 Lectures for this class will be in person. They will not be recorded, and remote participation is not possible. You are expected to attend all lectures unless you have received an exception from the Instructor.
 
+Since this is a computer-based class, you are **required** to bring a laptop computer. If this causes you some material hardship, please contact the Instructor. There are charging stations in Singer 033, but you are encouraged to bring a fully-charged computer to avoid disruptions to the class.
+
 ### Homework
 
 Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW $n$ to cover the material from week $n$, and to be due in week $$n+1$$. Typically, homework will be submitted on Moodle using Gradescope. 
