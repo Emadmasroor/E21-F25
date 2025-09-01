@@ -137,6 +137,9 @@ Labs will be held on Mondays or Thursdays from 1:15 to 4:00. You should be signe
 ### Final Project
 In lieu of a final exam, you will have a final project, aka 'Lab 6'. There will be dedicated class time to work on your final project in the last two weeks of class. 
 
+# Ed Stem
+We will use the [Ed Discussion](https://edstem.org/us/courses/85676/) platform for course communication. While you are still welcome to email the instructor directly with questions you may have, please use Ed Discussion as a first step when you have a question about the course; you are encouraged to answer each other's questions (as long as you are not directly providing solutions to homework problems or lab assignments). The Instructors as well as Wizards will monitor Ed Discussion and answer questions.
+
 # Policies
 
 The college's policies on [Academic Misconduct](https://www.swarthmore.edu/student-handbook/academic-policies#academic_misconduct) apply to this class.
