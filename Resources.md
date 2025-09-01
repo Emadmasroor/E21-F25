@@ -1,3 +1,7 @@
+---
+title: Resources
+---
+
 # Guides and Tutorials
 
   * [Official Python website](https://www.python.org/downloads/)
@@ -9,11 +13,16 @@
   * [Product page for the Circuit Playground Bluefruit](https://www.adafruit.com/product/4333)
   * [Official Guide for the Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/overview)
 
-# Code Snippets
+# Links and Code Snippets
 
 ## Lec 1.1
 
-```python
+1. [Installing Circuit Python on your Circuit Playground Bluefruit](https://learn.adafruit.com/welcome-to-circuitpython/installing-circuitpython). This will install Circuit Python, a compact and pared-down version of Python for embedded systems.
+2. [Installing Mu on your computer](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor). This is the IDE that we will use for Circuit Playground.
+3. [Downloading Libraries and copying them on to Circuit Playground Bluefruit](https://docs.circuitpython.org/projects/circuitplayground/en/latest/). Make sure you use the libraries from Circuit Python 9! Note that you must copy 2 folders and 3 files into the `lib` folder of your Circuit Playground device.
+
+
+`)``python
 from adafruit_circuitplayground import cp
 
 while True:
