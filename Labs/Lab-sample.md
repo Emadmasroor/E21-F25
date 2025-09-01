@@ -1,1 +1,437 @@
-Hello, world
+(#) Objectives
+
+* Learn about voltage dividers and analog-to-digital converters
+
+* Write functions to linearly remap from an input range to an output domain
+
+* Write loops to control your CPX's NeoPixels based on input from a joystick.
+
+(##) Lab progress
+
+I expect most groups will at least have started Exercise 4 by the end
+of lab. You can finish on your own time.
+
+!!! Warning
+    Please do not remove joysticks or clip leads from the lab
+    to work on it after hours, as we have limited quantities!
+
+I strongly encourage you to flag me down during lab to check in about your
+progress as you complete each exercise during lab.
+
+
+# Background
+
+## Potentiometers and voltage dividers
+
+A [potentiometer](https://en.wikipedia.org/wiki/Potentiometer) is a
+type of variable resistor that allows more or less current to pass
+through a set of contacts depending on its position. It consists of a
+set of conductive pins, a wiper connected to a rotating knob or input shaft,
+and a resistive strip, as shown here:
+
+![Figure [pot]: A schematic of a potentiometer. Image courtesy [build-electronic-circuits.com](https://www.build-electronic-circuits.com/potentiometer/)](images/inside-potentiometer.png width=50%)
+
+As the wiper rotates, it changes the relative
+resistance between the outer pins and the inner pin. For example, 
+moving the wiper towards the leftmost pin reduces the resistance
+between the left/middle pair, and increases the resistance
+between the middle/right pair:
+
+![Figure [pot2]: Moving the wiper affects resistance. Image courtesy [build-electronic-circuits.com](https://www.build-electronic-circuits.com/potentiometer/)](images/inside-potentiometer-explanation.png width=60%)
+
+If we label the pins in the above diagrams 1 through 3 starting from the left and moving to the right, we can consider the potentiometer as a pair of resistors with resistances $R_1$ and $R_2$, as shown here:
+
+![Figure [div1]: The potentiometer can be seen as a pair of resistors.](images/divider1.png height=250px)
+
+The total resistance $R_{\text{total}} = R_1 + R_2$ is a property of
+the potentiometer and is fixed by the inherent resistivity and the
+total length of the resistive strip. In effect, turning the wiper
+amounts to choosing how much of $R_{\text{total}}$ ends up in $R_1$
+vs $R_2$.
+
+By connecting pin 1 to the CPX's 3.3V output, connecting pin 2 to an analog input, and connecting pin 3 to GND, we can create a voltage divider.
+
+![Figure [div2]: Connecting pins 1 and 3 to 3.3 V and ground to make a voltage divider.](images/divider2.png height=250px)
+
+When connected in this way, the potentiometer regulates the voltage
+seen by the CPX at pin 2. If we assume the current going out through
+pin 2 is negligible, then according to Ohm's law, the total current
+through both resistors is given by:
+
+$$
+I = \frac{\text{3.3 V}}{R_{\text{total}}} = \frac{\text{3.3 V}}{R_1 + R_2}
+$$
+
+Then the voltage at pin 2 corresponds to the voltage drop across the
+bottom resistor, so we find
+
+$$
+V_{\text{pin2}} = I R_2 = \text{3.3 V} \frac{R_2}{R_{\text{total}}} = \text{3.3 V} \frac{R_2}{R_1 + R_2}
+$$
+
+Or to put it another way, the voltage out at pin 2 is equal to the
+supply voltage times the fraction of the total resistance that is
+currently between pins 2 and 3. When the wiper is all the way right,
+$R_2 = 0$ and we have no voltage out. When the wiper is all the way
+left, $R_2 = R_{\text{total}}$ and the voltage out is equal to the
+supply voltage.
+
+***Bottom line:*** Potentiometers provide a cheap and straightforward
+way to convert the rotation of a shaft to a continously-varying
+voltage.  We can use the CPX's built-in analog inputs to read those
+voltages.
+
+## The **`lerp`** and **`unlerp`** functions
+
+In many programming applications (especially video games and computer
+graphics), it is desirable to linearly interpolate between two values in
+order to obtain a smoothly varying parameters. This linear
+interpolation function is often abbreviated as **`lerp`** and is
+illustrated in the graph below:
+
+![Figure [lerp]: **`lerp`**-ing our way from $a$ to $b$.](images/lerp.png width="250px" class=pixel)
+
+Mathematically the function **`lerp(a, b, x)`** is defined to output $a$
+when $x = 0$, output $b$ when $x = 1$, and to vary linearly for all other values of $x$.
+
+
+The inverse function is also useful. For any given number $c$, it
+outputs the $x$ you would need to supply to **`lerp`** in order to get $c$
+as an output:
+
+![Figure [unlerp]: **`unlerp`** is the inverse of **`lerp`**.](images/unlerp.png height="250px" class=pixel)
+
+Mathematically, the function **`unlerp(a, b, c)`** is defined to output
+$0$ when $c = a$, output $1$ when $c = b$, and to vary linearly for
+all other values of $c$.
+
+We can compose these functions together in order to produce a third function which we will call **`remap`**:
+
+
+![Figure [remap]: **`remap`** linearly maps the input range $[a, b]$ to the output domain $[s, t]$.](images/remap.png height="200px" class=pixel)
+
+The function **`remap(a, b, s, t, c)`** is defined to output $s$ when
+$c = a$, output $t$ when $c = b$ and to vary linearly for all other
+values of $c$. Assuming that $c$ is found some fraction $x$ of the way
+from $a$ to $b$, then the output of **`remap`** should be at that same
+fraction $x$ of the way from $s$ to $t$.
+
+## HSV color space
+
+From your experience so far with the NeoPixels, you are already
+familiar with the RGB colorspace.
+
+![Figure [rgb]: The RGB colorspace. Image courtesy [Wikipedia](https://commons.wikimedia.org/wiki/File:RGB_color_cube.svg)](images/RGB_color_cube.svg width="90%")
+
+In RGB space, black lies at the coordinates (0, 0, 0), white lies at
+the coordinates (255, 255, 255), and pure magenta lives at the
+coordinates (255, 0, 255).
+
+In this lab we will use the [hue, saturation, value (HSV) colorspace](https://en.wikipedia.org/wiki/HSL_and_HSV) to represent colors.
+
+![Figure [hsv]: The HSV colorspace. Image courtesy [Wikipedia](https://commons.wikimedia.org/wiki/File:HSV_color_solid_cylinder.png)](images/HSV_color_solid_cylinder.png width="70%")
+
+The hue or $H$ coordinate ranges from 0 to 360 degrees, and wraps
+around the color spectrum, with $H = 0$ and $H = 360$ both
+corresponding to red. The hues are given in the table below:
+
+| Hue | Color |
+| --: | :--   |
+| 0   | <span style="color: #c00">Red</span>   |
+| 60  | <span style="color: #cc0">Yellow</span> |
+| 120 | <span style="color: #0c0">Green</span> |
+| 180 | <span style="color: #0cc">Cyan</span> |
+| 240 | <span style="color: #00c">Blue</span> |
+| 300 | <span style="color: #c0c">Magenta</span> |
+| 360 | <span style="color: #c00">Red</span> |
+
+The saturation or $S$ coordinate controls how vivid the color is, with
+$S = 0$ corresponding to a grayscale value, and $S = 1$ corresponding
+to vivid color.  The value or $V$ coordinate controls the overall
+brightness with $V = 0$ corresponding to black, and $V = 1$
+corresponding to full brightness.
+
+When $S = 0$ and $V = 1$, the color is white, regardless of hue.  When
+$V = 0$, the color is black regardless of hue.
+
+The function **`rgb_from_hsv(H, S, V)`** in the starter code converts to the
+RGB space from the HSV space.
+
+## Python tips
+
+### Sequence unpacking
+
+In Python, you can unpack a container (e.g. list or tuple) into its
+constituent elements by assigning to a comma-separated list of
+variables that has the same length of the container. Here is an example
+you can try in the REPL:
+
+~~~ Python
+coords = (3.0, 4.0)
+x, y = coords
+x
+y
+~~~
+
+See the [Python docs](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences) for more information.
+
+### Enumerate
+
+When programming, is very common that you will want to iterate over a
+collection and have access to both each index $i$ as well as the
+corresponding $i^{\text{th}}$ item in the collection. You can get both
+of these at the same time with Python's built-in **`enumerate`**
+function.
+
+Consider the following snippet of code:
+
+~~~ Python
+mylist = ['Matt', 'Emad', 'Carr']
+
+for i in range(len(mylist)):
+    print("i is", i, "and the i'th item is", mylist[i])
+~~~
+
+Now compare to the equivalent code using **`enumerate`**:
+
+~~~ Python
+mylist = ['Matt', 'Emad', 'Carr']
+
+for i, item in enumerate(mylist):
+    print("i is", i, "and the i'th item is", item)
+~~~
+
+In my opinion, the second code snippet is better for several reasons:
+
+  * It avoids the awkward **`range(len(foo))`** syntax.
+  * There is no need to write the indexing operation **`[i]`**.
+  * It usually requres less typing overall.
+  * It prevents you from indexing into the wrong container or supplying the wrong index.
+
+  
+See the [Python docs](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques) for more information.
+
+### Combining sequence unpacking with enumerate
+
+You can put these two techniques together to iterate over a list of
+tuples, like this:
+
+~~~ Python
+triangle_coords = [(0, 0), (4, 0), (0, 3)]
+
+for i, (x, y) in enumerate(triangle_coords):
+    print("point", i, "is at", (x, y))
+~~~
+
+In the snippet above, the parentheses around **`(x, y)`** are required
+before the **`enumerate`** because there are two nested levels of
+unpacking -- the first for (index, point) pairs, and the second for
+coordinates within a point.
+
+# Lab Exercises
+
+Before you begin, download this [`code.py`](lab2/code.py) file and
+copy it over to the root directory of your CPX's `CIRCUITPY`
+drive. Then download this [`lab2_util.mpy`](lab2/lab2_util.mpy) file
+and copy it into the `lib` directory of your CPX's `CIRCUITPY` drive.
+
+!!! Warning
+   **If you already have a `code.py` file on your CPX with valuable
+   code in it, beware of overwriting it!** Consider renaming the one
+   on your CPX or backing it up to your computer before copying over
+   the starter code.
+
+When moving from exercise to exercise, you will comment and un-comment
+the function calls at the very bottom of Lab 2's `code.py`. 
+
+## Exercise 1: Hello joystick
+
+Grab a joystick and five alligator-clip-to-pin leads from the
+benchtop. One of the leads should be red, and one should be
+black. The remaining three should be any other colors besides red and
+black.
+
+![Figure [joystick]: Joystick used in this lab, showing the potentiometers (green) for each axis.](images/joystick.jpg width=65%)
+
+With the USB cable unplugged, hook up the joystick to the CPX
+according to the table below:
+
+| Joystick | CPX  |
+|:---------|:-----|
+| VCC      | 3.3V (use the one next to A3) |
+| VERT     | A3   |
+| HORZ     | A2   |
+| SEL      | A1   |
+| GND      | GND  |
+
+!!! Tip
+    Use proper electrical wiring color conventions. VCC should be red,
+    ground should be black, and the other lines should be any colors
+    besides red and black.
+    
+    **The electrons don't care what colors your wires are, but *I* do!**
+    
+Now plug in the USB cable, launch Mu Editor, and run the starter code,
+starting with the **`lab2_ex1()`** function (it runs by default when
+you load up the code).
+
+### Axis potentiometers and ADCs
+
+If you open the *Serial* and *Plotter* windows in Mu Editor, you'll
+see readings and plots for each joystick axis. These readings are proportional
+to the voltages measured from each of the axis potentiometers.
+Wiggle the joystick around and observe the effects in those windows.
+
+ * **Q1)** What are the minimum and maximum readings for each axis?
+ 
+ * **Q2)** An
+   [analog to digital converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter)
+   or ADC converts a voltage to a binary integer. For example, a
+   10-bit ADC has $2^{10} = \text{1,024}$ possible voltage readings
+   ranging from 0 to 1,023. Based on your answer to **Q1**, what is
+   the minimum number of bits required to express the values being 
+   displayed by this program?
+   
+ * **Q3)** What module(s) and class(es) are used to sample, or get
+   readings from, the ADCs in the **`lab2_ex1()`** function? 
+   Include a link to the documentation for these module(s) and class(es)
+   found on <https://docs.circuitpython.org/>. 
+   
+Modify the **`ADC_BITS`** constant at the top of the `code.py` file to
+reflect the answer you got for **Q2**. It should result in the correct
+value being computed for **`ADC_MAX`**, which will be important for
+the following exercises.
+
+
+### Digital input
+
+The starter code also responds to clicking the joystick (i.e. pushing
+down on it along the central axis). This is accomplished by reading
+the SEL output from the joystick. Unlike the HORZ and VERT outputs
+which are analog (i.e. continuously varying voltages), the SEL output
+is digital.
+
+When you activate SEL by clicking the joystick, the third trace on the
+plot takes on the maximum value of either axis (otherwise it is zero).
+
+ * **Q4)** What module(s) and class(es) are used to sample the SEL
+   output in the **`lab2_ex1()`** function? Include a link to the
+   documentation for these module(s) and class(es) found on
+   <https://docs.circuitpython.org/>.
+
+ * **Q5)** Is SEL active high, or active low? That is, does pushing
+   the joystick in cause the SEL pin to have a non-zero voltage
+   (active high), or a voltage close to zero (active low)? How can you
+   tell?
+
+## Exercise 2: Implementing **`lerp`**, **`unlerp`**, and **`remap`**
+
+At the bottom of `code.py`, comment out the call to the
+**`lab2_ex1()`** function and uncomment the call to **`lab2_ex2()`**.
+
+### **`lerp`**
+
+Find the definition of **`lerp(a, b, x)`** and modify it to ensure
+that all of the **`lerp`** test cases pass. You should hear rising
+tones for a passed test case, or a low note for failure. Also look
+closely at the *Serial* window in Mu Editor to see what the program is
+doing.
+
+!!! Tip
+    ***Hint: look at the [graph of the lerp function](#toc1.2).*** 
+    What is the slope of this graph (in terms of rise over run)? 
+    What is the $y$-intercept?
+    
+### **`unlerp`**
+
+Find the definition of **`unlerp(a, b, c)`** and modify it to ensure
+that all of the **`unlerp`** test cases pass.
+
+!!! Tip
+    ***Hint: start with the equation*** **`c = lerp(a, b, x)`**. Then
+    plug in the formula for **`lerp`** that you derived in the 
+    previous step. Finally, you can use basic algebra to solve for **`x`**.
+    
+### **`remap`**
+
+Finally, find the definition of **`remap(a, b, s, t, c)`** and modify
+it to ensure that all of the **`remap`** test cases pass. **Your
+implementation must consist of a single call to `unlerp` followed by a
+single call to `lerp`**.
+
+!!! Tip
+    ***Hint: If you get stuck, reread the end of [section 1.2](#toc1.2) or 
+    ask me for help.***
+
+## Exercise 3: Remapping joystick axes
+
+At the bottom of `code.py`, comment out the call to the
+**`lab2_ex2()`** function and uncomment the call to **`lab2_ex3()`**.
+
+Your task for this exercise is to remap the joystick axes to set the
+hue and value of the NeoPixels, according to the following
+specification:
+
+  * When the joystick is angled down (vertical axis reads 0), we
+    expect $V = 0$.  When the joystick is angled up (vertical
+    axis reads **`ADC_MAX`**), we expect $V = 1$.
+    
+  * When the joystick is angled left (horizontal axis reads
+    **`ADC_MAX`**), we expect $H = 0$. When the joystick is angled
+    right (horizontal axis reads 0), we expect $H = 300$.
+    
+!!! Warning
+    ***Be sure you are considering the orientation of the joystick
+    correctly.*** The text on the acrylic base corresponds to 
+    the top of the joystick vertical axis.
+    
+**Your code must use a single call to `remap` to compute the hue, and
+  another single call to `remap` to compute the value.**
+
+!!! Tip
+    ***Hint: If you get stuck here, please ask me to check the
+    results of your exercise 1 and exercise 2.*** It 
+    will be difficult to complete this task if you
+    haven't completed the prior ones correctly...
+    
+Record a video while driving joystick to control the hue and
+value of the LEDs. Please drive the joystick slowly across the
+horizontal axis, slowly across the vertical axis, and then
+swirl it around in circles similar to this video:
+
+![Figure [ex3]: My solution code for Exercise 3.](https://youtu.be/ZkLSV2OA0G0)
+
+ * **Q6)** What is the URL to the video you recorded for exercise 3?
+   (Make sure it is shared with my Swarthmore email address.)
+
+## Exercise 4: Lighting up a single NeoPixel
+
+At the bottom of `code.py`, comment out the call to the
+**`lab2_ex3()`** function and uncomment the call to **`lab2_ex4()`**.
+
+Your task is to modify this function to light up the single NeoPixel
+that lies closest to the direction the joystick is being pushed.  Here
+is the arrangement of NeoPixels on the CPX:
+
+![Figure [neopixels]: Numbering convention for the neopixels. Image courtesy Adafruit.](images/neopixel_numbering.jpg width="75%")
+
+Hence, angling the joystick right should light up NeoPixel number 7. 
+If the joystick is angled up, I would expect either NeoPixel number 0 or
+NeoPixel number 9 to illuminate.
+
+In the starter code, each NeoPixel is given $(x, y)$ coordinates along
+the unit circle which are provided in a list of tuples. This list is
+defined as **`NEOPIXEL_COORDS`** at the top of the file.
+
+In **`lab2_ex4()`**, the joystick reading is converted to a pair of
+$(u, v)$ coordinates in the $[-1, 1]$ interval. 
+
+Your code should take the
+[2D dot product](https://www.mathsisfun.com/algebra/vectors-dot-product.html)
+between the current joystick position $(u, v)$ and the position $(x_i,
+y_i)$ of each NeoPixel with index $i$ from 0 to 9.
+Define the dot product with NeoPixel $i$ as the number 
+$$
+p_i = u \, x_i  + v \, y_i
+$$
+Whichever NeoPixel $j$ that has the maximum dot product $p_j$ is the one that should light up.
