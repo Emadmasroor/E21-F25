@@ -192,14 +192,29 @@ Violations of this policy will be treated as cases of academic misconduct.
 
 The use of AI tools to produce work that you should know how to do yourself puts you at a serious disadvantage compared to your peers who learned the same material without the help of these tools. If you only know how to solve a problem by `asking an AI to do it', you have not learned what you were supposed to learn.
 
-## Policy on Collaboration and Attribution
+## Collaboration and Attribution
 
 - Feel free to collaborate with your classmates on homework; however, you must submit your own work. Duplicating others’ assignments verbatim (especially code!) is prohibited.
 - If you do discuss homework with your classmates, we expect you to disclose any such collaboration clearly in your submitted work. Err on the side of caution – it’s the best way to avoid awkward conversations about suspicious similarities between assignments.
 - Cite any external sources used, including the textbook, internet, discussions with other professors, etc.
 
+## Late Work
+
+- In general, late assignments will not be graded. However:
+- You may ask for (and automatically receive) a one-week extension on deadlines for homework and lab assignments, no questions asked, once each during the semester. Please indicate in your email that you are using your ‘one free extension’ when you do so. Your ‘free extension’ applies once to homework assignments and once to lab assignments.
+- If you have extenuating circumstances and would like to request an extension on a deadline, please reach out via email to the instructor at least 24 hours before the deadline. Such a request may be granted on a case-by-case basis and will typically incur a severe penalty of 25% per day.
+
+Please note that, because of the fast-paced nature of this course and the interdependence of tests on homework assignments, requesting a deadline extension for homework assignments is discouraged.
+
+## Missed Exams
+
+If you miss a test without prior notice, it will not be rescheduled for you in fairness to other students and you will score a zero for that test. To request an alternate time under extenuating circumstances, you must write to the Instructor at least two days prior to the test, i.e., latest by the end of Tuesday for tests on Thursday. Such a request will be granted at the discretion of the Instructor.
 
 ## Accommodations
-Hello, world
+
+Students with disabilities or chronic medical conditions requesting accommodations, such as additional time on examinations, extensions to course deadlines, or exceptions to classroom policies, should submit an official request through the College's centralized portal for the communication of this information, known as `Accommodate'. In addition, the student should speak with the Instructor to determine the appropriate accommodations.
+
+
+
 
 
