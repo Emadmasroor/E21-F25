@@ -8,3 +8,18 @@
   * [Download CircuitPython for the Circuit Playground Express](https://circuitpython.org/board/circuitplayground_express/) --- this provides the library `adafruit_circuitplayground`, which contains high-level wrappers for most CPX functionality.
   * [Product page for the Circuit Playground Bluefruit](https://www.adafruit.com/product/4333)
   * [Official Guide for the Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/overview)
+
+# Code Snippets
+
+## Lec 1.1
+
+```
+from adafruit_circuitplayground import cp
+
+while True:
+    cp.pixels[4] = (10,0,10)
+    if cp.button_a:
+         cp.play_tone(440,1)
+    if cp.button_b:
+         cp.play_tone(220,1)
+```
