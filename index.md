@@ -17,7 +17,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Homework Due Date**: Tue at 11:59 PM  
 **Wizard Session**: Mon 7:00 to 9:00 PM  
 
-[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Current Homework Assignment](HW/HW1.md)
+[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Grades](#assessment-and-grades) | [Policies](#policies)
 
 # Schedule
 Hello, world 
