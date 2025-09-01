@@ -146,7 +146,7 @@ Lectures for this class will be in person. They will not be recorded, and remote
 
 ### Homework
 
-Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW $n$ to cover the material from week $n$, and to be due in week $n+1$. Typically, homework will be submitted on Moodle using Gradescope. 
+Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW $n$ to cover the material from week $n$, and to be due in week $$n+1$$. Typically, homework will be submitted on Moodle using Gradescope. 
 
 Most homework assignments will have a written component as well as a programming component.
 
