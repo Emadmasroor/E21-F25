@@ -17,7 +17,9 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Homework Due Date**: Tue at 11:59 PM  
 **Wizard Session**: Mon 7:00 to 9:00 PM  
 
-[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies)
+[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives)
+
+[Resources](/Resources.md)
 
 # Schedule
 
@@ -82,35 +84,6 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | 12/01 | Mon |              |
 | 12/04 | Thu |              |
 | 12/08 | Mon |              |
-
-# Learning Objectives
-
-At the end of this course, you will be able to:
-
-- Write programs on the desktop and on microcontrollers :
-	- Control the flow of a program using if statements, for/while loops, functions
-	- Perform computations using variables and lists / `numpy` arrays
-	- Print strings/results and debug code using print statements
-	- Understand how to use external modules/libraries such as `numpy`
-- Explain how information is represented by computers and microcontrollers:
-	- Explain the base system and how it is used to represent decimal, binary and hexadecimal numbers.
-	- Convert numbers between decimal, binary, and hexadecimal representations.
-	- Define the range of variable types such as booleans, bytes, (un)signed integers, and floats, and explain their potential use cases.
-	- Determine the value of a signed variable from its binary or hexadecimal representation.
-- Use and understand fundamental numerical methods topics relevant to engineering 
-	- Understand the concept of convergence, sources of error (e.g. truncation and round-off), relative and absolute error
-	- Use root finding to solve one-dimensional equations numerically
-	- Use Gaussian elimination to solve systems of linear equations
-	- Apply linear systems solving to do linear least-squares curve-fitting
-	- Understand single- and multi-variable unconstrained optimization
-- Program microcontrollers for applications relevant to engineering
-	- Interface with peripheral devices using digital inputs/outputs (e.g. LED, tactile switch)
-	- Interface with peripheral devices using analog-to-digital converters (e.g. temperature sensor)
-	- Interface with peripheral devices using pulse-width modulation (e.g. servo motor)
-	- Interface with peripheral devices using serial communications (e.g. accelerometer or LCD)
-- Place computing and embedded systems in a broader social context
-	- Identify examples of embedded systems in everyday life
-	- Discuss impact of systems on different aspects of society
 
 # Teaching Team
 
@@ -217,6 +190,37 @@ If you miss a test without prior notice, it will not be rescheduled for you in f
 ## Accommodations
 
 Students with disabilities or chronic medical conditions requesting accommodations, such as additional time on examinations, extensions to course deadlines, or exceptions to classroom policies, should submit an official request through the College's centralized portal for the communication of this information, known as `Accommodate'. In addition, the student should speak with the Instructor to determine the appropriate accommodations.
+
+
+# Learning Objectives
+
+At the end of this course, you will be able to:
+
+- Write programs on the desktop and on microcontrollers :
+	- Control the flow of a program using if statements, for/while loops, functions
+	- Perform computations using variables and lists / `numpy` arrays
+	- Print strings/results and debug code using print statements
+	- Understand how to use external modules/libraries such as `numpy`
+- Explain how information is represented by computers and microcontrollers:
+	- Explain the base system and how it is used to represent decimal, binary and hexadecimal numbers.
+	- Convert numbers between decimal, binary, and hexadecimal representations.
+	- Define the range of variable types such as booleans, bytes, (un)signed integers, and floats, and explain their potential use cases.
+	- Determine the value of a signed variable from its binary or hexadecimal representation.
+- Use and understand fundamental numerical methods topics relevant to engineering 
+	- Understand the concept of convergence, sources of error (e.g. truncation and round-off), relative and absolute error
+	- Use root finding to solve one-dimensional equations numerically
+	- Use Gaussian elimination to solve systems of linear equations
+	- Apply linear systems solving to do linear least-squares curve-fitting
+	- Understand single- and multi-variable unconstrained optimization
+- Program microcontrollers for applications relevant to engineering
+	- Interface with peripheral devices using digital inputs/outputs (e.g. LED, tactile switch)
+	- Interface with peripheral devices using analog-to-digital converters (e.g. temperature sensor)
+	- Interface with peripheral devices using pulse-width modulation (e.g. servo motor)
+	- Interface with peripheral devices using serial communications (e.g. accelerometer or LCD)
+- Place computing and embedded systems in a broader social context
+	- Identify examples of embedded systems in everyday life
+	- Discuss impact of systems on different aspects of society
+
 
 
 
