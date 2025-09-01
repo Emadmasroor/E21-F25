@@ -9,7 +9,7 @@ url: "https://emadmasroor.github.io"
 markdown: kramdown
 kramdown:
   auto_ids: true       # Generate IDs for headings automatically
-  toc_levels: 1..3     # Include h1, h2, h3 in TOC
+  toc_levels: 1..3     # Include only h1 Include h1, h2, h3 in TOC
 
 # Optional: site title
 title: ENGR 21 Fall 2025

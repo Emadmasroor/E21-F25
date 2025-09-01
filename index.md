@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Homepage
+toc_levels: 1..1
 ---
 
 * Table of Contents
