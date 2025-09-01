@@ -165,12 +165,12 @@ The class will not be 'curved'. The instructor's interpretation of letter grades
 
 ## Policy on AI Tools
 
-- You are not prohibited from using Large Language Model (LLM) based tools such as ChatGPT, Google NotebookLM, Gemini, etc. to **help you study** for this course.
+- You are not prohibited from using Large Language Model (LLM) based tools such as ChatGPT, Google NotebookLM, Gemini, etc. to help you study for this course.
 - You are prohibited from using Large Language Models to produce anything that you turn in for this class, including code or prose/text.
 
 Violations of this policy will be treated as cases of academic misconduct.
 
-The use of AI tools to produce work that you should know how to do yourself puts you at a serious disadvantage compared to your peers who learned the same material without the help of these tools. If you only know how to solve a problem by `asking an AI to do it', you have not learned what you were supposed to learn.
+The reliance on AI tools to produce work that you should know how to do yourself puts you at a serious disadvantage compared to your peers who learned the same material without the help of these tools. If you only know how to solve a problem by `asking an AI to do it', you have not learned what you were supposed to learn.
 
 ## Collaboration and Attribution
 
