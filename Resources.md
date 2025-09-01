@@ -15,7 +15,7 @@ title: Resources
 
 # Links and Code Snippets
 
-## Lec 1.1
+## Lec 1.1, Tue Sep 2
 
 ### Installation Instructions
 
