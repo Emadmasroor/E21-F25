@@ -114,8 +114,9 @@ At the end of this course, you will be able to:
 
 # Teaching Team
 
-| Instructor     | Emad Masroor         |
+| Name     		 | Role         		|
 |----------------|----------------------|
+| Instructor     | Emad Masroor         |
 | Lab Instructor | Will Johnson         |
 | Wizards        | Ian Forehand         |
 |                | Paolo Bosques-Paulet |
