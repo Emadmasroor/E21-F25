@@ -17,7 +17,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Homework Due Date**: Tue at 11:59 PM  
 **Wizard Session**: Mon 7:00 to 9:00 PM  
 
-[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Grades](#assessment-and-grades) | [Policies](#policies)
+[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies)
 
 # Schedule
 | Week.Lec | Date  | Day | Topic                                              | HW Due / Test |
@@ -126,9 +126,8 @@ At the end of this course, you will be able to:
 |                | Hannah Poon          |
 |                | Liam Worden          |
 
-# Assessment and Grades
+## Course Components
 
-In this class, you will have six regularly-spaced [tests](#tests) instead of one or two midterms. Reflecting the hands-on nature of the content of E21, a large proportion of the grade depends on your performance in labs and the final project (30%). There is no final exam for this course, and your final project plays the role of a 'final'. The full breakdown of how your grade will be calculated is shown in the following table.
 
 | Component     | Grade % |
 |---------------|---------|
@@ -138,9 +137,40 @@ In this class, you will have six regularly-spaced [tests](#tests) instead of one
 | Final Project | 15%     |
 | Participation | 5%      |
 
+
+### Lectures
+
+Lectures for this class will be in person. They will not be recorded, and remote participation is not possible. You are expected to attend all lectures unless you have received an exception from the Instructor.
+
+### Homework
+
+Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW $n$ to cover the material from week $n$, and to be due in week $n+1$. Typically, homework will be submitted on Moodle using Gradescope. 
+
+Most homework assignments will have a written component as well as a programming component.
+
+### Tests
+
+The purpose of holding six tests instead of one or two midterms is so that you have low-stakes opportunities to demonstrate your mastery of the course material at regular intervals. In general, you can expect these tests to be independent of each other, as opposed to being cumulative. 
+
+These tests will be held on Thursdays during the first half of class time (typically for 20 to 25 minutes), and will typically be closed-book, closed-notes and closed-computer. The tests will usually be incremental rather than cumulative, and will only cover the material from approximately two weeks prior to each test. Typically, test $n$ will cover the material from week $2n−1$ and week $2n$, and will be held on week $2n+1$; for example, test 1 will cover weeks 1 and 2 and will be held on the Thursday of week 3; test 2 will cover weeks 3 and 4 and will be held on the Thursday of week 5, etc.
+
+### Labs
+Labs will be held on Mondays or Thursdays from 1:15 to 4:00. You should be signed up for either Monday (CRN 19688) or Thursday (CRN 19689).
+
+### Final Project
+In lieu of a final exam, you will have a final project, aka 'Lab 6'. There will be dedicated class time to work on your final project in the last two weeks of class. 
+
+# Policies
+
+The college's policies on [Academic Misconduct](https://www.swarthmore.edu/student-handbook/academic-policies#academic_misconduct) apply to this class.
+
+## Assessment and Grades
+
+In this class, you will have six regularly-spaced [tests](#tests) instead of one or two midterms. Reflecting the hands-on nature of the content of E21, a large proportion of the grade depends on your performance in labs and the final project (30%). There is no final exam for this course, and your final project plays the role of a 'final'. The full breakdown of how your grade will be calculated is shown in the following table.
+
 The participation grade will primarily be determined based on attendance.
 
-The grade thresholds are shown below. The Instructor, in consultation with the Lab Instructor, reserves the right to revise these numbers upward, but will not revise these numbers downward.
+The grade thresholds are shown below. The Instructor, in consultation with the Lab Instructor, reserves the right to revise these numbers downward, but will not revise these numbers upward.
 
 | To get a grade of | You must score at least |
 |-------------------|-------------------------|
@@ -153,27 +183,21 @@ A score of 60 out of 100 is the minimum passing grade for this course.
 
 The class will not be 'curved'. The instructor's interpretation of letter grades is the following: an A is an excellent grade; a B is a good grade, and a C is an acceptable grade. A D reflects a barely passing grade, and a score less than 60 is a failing grade. 
 
-# Policies
-Hello, world
+## Policy on AI Tools
 
-## Lectures
+- You are not prohibited from using Large Language Model (LLM) based tools such as ChatGPT, Google NotebookLM, Gemini, etc. to **help you study** for this course.
+- You are prohibited from using Large Language Models to produce anything that you turn in for this class, including code or prose/text.
 
-Lectures for this class will be in person. They will not be recorded, and remote participation is not possible. You are expected to attend all lectures unless you have received an exception from the Instructor.
+Violations of this policy will be treated as cases of academic misconduct.
 
-## Homework
+The use of AI tools to produce work that you should know how to do yourself puts you at a serious disadvantage compared to your peers who learned the same material without the help of these tools. If you only know how to solve a problem by `asking an AI to do it', you have not learned what you were supposed to learn.
 
-Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW $n$ to cover the material from week $n$, and to be due in week $n+1$. Typically, homework will be submitted on Moodle using Gradescope. 
+## Policy on Collaboration and Attribution
 
-Most homework assignments will have a written component as well as a programming component.
+- Feel free to collaborate with your classmates on homework; however, you must submit your own work. Duplicating others’ assignments verbatim (especially code!) is prohibited.
+- If you do discuss homework with your classmates, we expect you to disclose any such collaboration clearly in your submitted work. Err on the side of caution – it’s the best way to avoid awkward conversations about suspicious similarities between assignments.
+- Cite any external sources used, including the textbook, internet, discussions with other professors, etc.
 
-## Tests
-
-The purpose of holding six tests instead of one or two midterms is so that you have low-stakes opportunities to demonstrate your mastery of the course material at regular intervals. In general, you can expect these tests to be independent of each other, as opposed to being cumulative. 
-
-These tests will be held on Thursdays during the first half of class time (typically for 20 to 25 minutes), and will typically be closed-book, closed-notes and closed-computer. The tests will usually be incremental rather than cumulative, and will only cover the material from approximately two weeks prior to each test. Typically, test $n$ will cover the material from week $2n−1$ and week $2n$, and will be held on week $2n+1$; for example, test 1 will cover weeks 1 and 2 and will be held on the Thursday of week 3; test 2 will cover weeks 3 and 4 and will be held on the Thursday of week 5, etc.
-
-## AI Tools
-Hello, world
 
 ## Accommodations
 Hello, world
