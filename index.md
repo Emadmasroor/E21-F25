@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Homepage
-toc: true
-toc_label: "Contents"
-toc_icon: "list"
 ---
+
+* Table of Contents
+{:toc}
 
 Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. This page serves as the syllabus for this course, and will be updated regularly throughout the semester.
 
