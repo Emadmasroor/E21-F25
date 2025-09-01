@@ -20,6 +20,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 [Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies)
 
 # Schedule
+
 | Week.Lec | Date  | Day | Topic                                              | HW Due / Test |
 |----------|-------|-----|----------------------------------------------------|---------------|
 | 1.1      | 09/02 | Tue | Introduction & Installation; variables & types     |               |
