@@ -50,6 +50,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | 13.1     | 12/02 | Tue | Final Project                                      | HW 11         |
 | 13.2     | 12/04 | Thu | Final Project                                      | Test 6        |
 | 14.1     | 12/09 | Tue | Final Project                                      |               |
+
 # Labs Schedule
 
 | Date  | Day | Lab          |
