@@ -53,28 +53,125 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | 14.1  | T 12/09 | Tue |                | Final Project                                      |           |
 
 # Labs Schedule
-Hello, world
+
+| Date  | Day | Lab          |
+|-------|-----|--------------|
+| 09/08 | Mon | Lab 1        |
+| 09/11 | Thu | Lab 1        |
+| 09/15 | Mon | Lab 1        |
+| 09/18 | Thu | Lab 1        |
+| 09/22 | Mon | Lab 2        |
+| 09/25 | Thu | Lab 2        |
+| 09/29 | Mon | Lab 2        |
+| 10/02 | Thu | Lab 2        |
+| 10/06 | Mon | Lab 3        |
+| 10/09 | Thu | Lab 3        |
+|       |     | Fall Break   |
+| 10/20 | Mon | Lab 3        |
+| 10/23 | Thu | Lab 3        |
+| 10/27 | Mon | Lab 4        |
+| 10/30 | Thu | Lab 4        |
+| 11/03 | Mon | Lab 4        |
+| 11/06 | Thu | Lab 4        |
+| 11/10 | Mon | Lab 5        |
+| 11/13 | Thu | Lab 5        |
+| 11/17 | Mon | Lab 5        |
+| 11/20 | Thu | Lab 5        |
+| 11/24 | Mon |              |
+| 11/27 | Thu | Thanksgiving |
+| 12/01 | Mon |              |
+| 12/04 | Thu |              |
+| 12/08 | Mon |              |
 
 # Learning Objectives
-Hello, world
+
+At the end of this course, you will be able to:
+
+- Write programs on the desktop and on microcontrollers :
+	- Control the flow of a program using if statements, for/while loops, functions
+	- Perform computations using variables and lists / `numpy` arrays
+	- Print strings/results and debug code using print statements
+	- Understand how to use external modules/libraries such as `numpy`
+- Explain how information is represented by computers and microcontrollers:
+	- Explain the base system and how it is used to represent decimal, binary and hexadecimal numbers.
+	- Convert numbers between decimal, binary, and hexadecimal representations.
+	- Define the range of variable types such as booleans, bytes, (un)signed integers, and floats, and explain their potential use cases.
+	- Determine the value of a signed variable from its binary or hexadecimal representation.
+- Use and understand fundamental numerical methods topics relevant to engineering 
+	- Understand the concept of convergence, sources of error (e.g. truncation and round-off), relative and absolute error
+	- Use root finding to solve one-dimensional equations numerically
+	- Use Gaussian elimination to solve systems of linear equations
+	- Apply linear systems solving to do linear least-squares curve-fitting
+	- Understand single- and multi-variable unconstrained optimization
+- Program microcontrollers for applications relevant to engineering
+	- Interface with peripheral devices using digital inputs/outputs (e.g. LED, tactile switch)
+	- Interface with peripheral devices using analog-to-digital converters (e.g. temperature sensor)
+	- Interface with peripheral devices using pulse-width modulation (e.g. servo motor)
+	- Interface with peripheral devices using serial communications (e.g. accelerometer or LCD)
+- Place computing and embedded systems in a broader social context
+	- Identify examples of embedded systems in everyday life
+	- Discuss impact of systems on different aspects of society
 
 # Teaching Team
-Hello, world
+
+| Instructor     | Emad Masroor         |
+|----------------|----------------------|
+| Lab Instructor | Will Johnson         |
+| Wizards        | Ian Forehand         |
+|                | Paolo Bosques-Paulet |
+|                | Brad Johnston        |
+|                | Emily Chen           |
+|                | Nick Fettig          |
+| Graders        | Owen Hoffman         |
+|                | Howard Wang          |
+|                | Hannah Poon          |
+|                | Liam Worden          |
 
 # Assessment and Grades
-Hello, world
+
+In this class, you will have six regularly-spaced [tests](#tests) instead of one or two midterms. Reflecting the hands-on nature of the content of E21, a large proportion of the grade depends on your performance in labs and the final project (30%). There is no final exam for this course, and your final project plays the role of a 'final'. The full breakdown of how your grade will be calculated is shown in the following table.
+
+| Component     | Grade % |
+|---------------|---------|
+| Homework      | 20%     |
+| Tests         | 45%     |
+| Lab           | 15%     |
+| Final Project | 15%     |
+| Participation | 5%      |
+
+The participation grade will primarily be determined based on attendance.
+
+The grade thresholds are shown below. The Instructor, in consultation with the Lab Instructor, reserves the right to revise these numbers upward, but will not revise these numbers downward.
+
+| To get a grade of | You must score at least |
+|-------------------|-------------------------|
+| A-                | 90                      |
+| B-                | 80                      |
+| C-                | 70                      |
+| D-                | 60                      |
+
+A score of 60 out of 100 is the minimum passing grade for this course. 
+
+The class will not be 'curved'. The instructor's interpretation of letter grades is the following: an A is an excellent grade; a B is a good grade, and a C is an acceptable grade. A D reflects a barely passing grade, and a score less than 60 is a failing grade. 
 
 # Policies
 Hello, world
 
 ## Lectures
-Hello, world
+
+Lectures for this class will be in person. They will not be recorded, and remote participation is not possible. You are expected to attend all lectures unless you have received an exception from the Instructor.
 
 ## Homework
-Hello, world
+
+Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW $n$ to cover the material from week $n$, and to be due in week $n+1$. Typically, homework will be submitted on Moodle using Gradescope. 
+
+Most homework assignments will have a written component as well as a programming component.
 
 ## Tests
-Hello, world
+
+The purpose of holding six tests instead of one or two midterms is so that you have low-stakes opportunities to demonstrate your mastery of the course material at regular intervals. In general, you can expect these tests to be independent of each other, as opposed to being cumulative. 
+
+These tests will be held on Thursdays during the first half of class time (typically for 20 to 25 minutes), and will typically be closed-book, closed-notes and closed-computer. The tests will usually be incremental rather than cumulative, and will only cover the material from approximately two weeks prior to each test. Typically, test $n$ will cover the material from week $2n−1$ and week $2n$, and will be held on week $2n+1$; for example, test 1 will cover weeks 1 and 2 and will be held on the Thursday of week 3; test 2 will cover weeks 3 and 4 and will be held on the Thursday of week 5, etc.
 
 ## AI Tools
 Hello, world
