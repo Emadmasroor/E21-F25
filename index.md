@@ -1,11 +1,7 @@
 ---
 layout: default
 title: Homepage
-toc_levels: 1..1
 ---
-
-* Table of Contents
-{:toc}
 
 Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. This page serves as the syllabus for this course, and will be updated regularly throughout the semester.
 
@@ -21,11 +17,9 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Homework Due Date**: Tue at 11:59 PM  
 **Wizard Session**: Mon 7:00 to 9:00 PM  
 
-[Current Homework Assignment](HW/HW1.md)
+[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Current Homework Assignment](HW/HW1.md)
 
-{:toc}
-
-# Lectures, HW and Tests Schedule
+# Schedule
 Hello, world 
 
 # Labs Schedule
