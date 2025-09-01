@@ -20,38 +20,36 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 [Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Grades](#assessment-and-grades) | [Policies](#policies)
 
 # Schedule
-
-| No.   | Date    | Day | Lecture Slides | Topic                                              | HW / Test |
-|-------|---------|-----|----------------|----------------------------------------------------|-----------|
-| 1.1   | T 09/02 | Tue |                | Introduction & Installation; variables & types     |           |
-| 1.2   | R 09/04 | Thu |                | Programming basics: variables, types, conditionals |           |
-| 2.1   | T 09/09 | Tue |                | Base systems; Analog vs. digital data              | HW 1      |
-| 2.2   | R 09/11 | Thu |                | Relative & absolute errors;                        |           |
-| 3.1   | T 09/16 | Tue |                | For/while loops; 'dot notation'                    | HW 2      |
-| 3.2   | R 09/18 | Thu |                | Functions; Finite State Machines                   | Test 1    |
-| 4.1   | T 09/23 | Tue |                | Desktop installation; IDEs                         | HW 3      |
-| 4.2   | R 09/25 | Thu |                | Floating point numbers                             |           |
-| 5.1   | T 09/30 | Tue |                | Introduction to `numpy`                            | HW 4      |
-| 5.2   | R 10/02 | Thu |                | Data Visualization for Engineering in Python       | Test 2    |
-| 6.1   | T 10/07 | Tue |                | Root-finding                                       | HW 5      |
-| 6.2   | R 10/09 | Thu |                | Root-finding                                       |           |
-|       |         |     |                | **Fall break**                                     |           |
-| 7.1   | T 10/21 | Tue |                | Linear Systems                                     | HW 6      |
-| 7.2   | R 10/23 | Thu |                | Linear Systems                                     | Test 3    |
-| 8.1   | T 10/28 | Tue |                | Curve fitting & Interpolation                      | HW 7      |
-| 8.2   | R 10/30 | Thu |                | Curve fitting & Interpolation                      |           |
-| 9.1   | T 11/04 | Tue |                | Optimization                                       | HW 8      |
-| 9.2   | R 11/06 | Thu |                | Optimization                                       | Test 4    |
-| 10.1  | T 11/11 | Tue |                | Optimization                                       | HW 9      |
-| 10.2  | R 11/13 | Thu |                | Numerical Differentiation                          |           |
-| 11.1  | T 11/18 | Tue |                | Numerical Integration                              | HW 10     |
-| 11.2  | R 11/20 | Thu |                | Initial Value Problems                             | Test 5    |
-| 12.1  | T 11/25 | Tue |                |                                                    |           |
-|       | R 11/28 | Thu |                | **Thanksgiving**                                   |           |
-| 13.1  | T 12/02 | Tue |                | Final Project                                      | HW 11     |
-| 13.2  | R 12/04 | Thu |                | Final Project                                      | Test 6    |
-| 14.1  | T 12/09 | Tue |                | Final Project                                      |           |
-
+| Week.Lec | Date  | Day | Topic                                              | HW Due / Test |
+|----------|-------|-----|----------------------------------------------------|---------------|
+| 1.1      | 09/02 | Tue | Introduction & Installation; variables & types     |               |
+| 1.2      | 09/04 | Thu | Programming basics: variables, types, conditionals |               |
+| 2.1      | 09/09 | Tue | Base systems; Analog vs. digital data              | HW 1          |
+| 2.2      | 09/11 | Thu | Relative & absolute errors;                        |               |
+| 3.1      | 09/16 | Tue | For/while loops; 'dot notation'                    | HW 2          |
+| 3.2      | 09/18 | Thu | Functions; Finite State Machines                   | Test 1        |
+| 4.1      | 09/23 | Tue | Desktop installation; IDEs                         | HW 3          |
+| 4.2      | 09/25 | Thu | Floating point numbers                             |               |
+| 5.1      | 09/30 | Tue | Introduction to `numpy`                            | HW 4          |
+| 5.2      | 10/02 | Thu | Data Visualization for Engineering in Python       | Test 2        |
+| 6.1      | 10/07 | Tue | Root-finding                                       | HW 5          |
+| 6.2      | 10/09 | Thu | Root-finding                                       |               |
+|          |       |     | **Fall break**                                     |               |
+| 7.1      | 10/21 | Tue | Linear Systems                                     | HW 6          |
+| 7.2      | 10/23 | Thu | Linear Systems                                     | Test 3        |
+| 8.1      | 10/28 | Tue | Curve fitting & Interpolation                      | HW 7          |
+| 8.2      | 10/30 | Thu | Curve fitting & Interpolation                      |               |
+| 9.1      | 11/04 | Tue | Optimization                                       | HW 8          |
+| 9.2      | 11/06 | Thu | Optimization                                       | Test 4        |
+| 10.1     | 11/11 | Tue | Optimization                                       | HW 9          |
+| 10.2     | 11/13 | Thu | Numerical Differentiation                          |               |
+| 11.1     | 11/18 | Tue | Numerical Integration                              | HW 10         |
+| 11.2     | 11/20 | Thu | Initial Value Problems                             | Test 5        |
+| 12.1     | 11/25 | Tue |                                                    |               |
+|          | 11/28 | Thu | **Thanksgiving**                                   |               |
+| 13.1     | 12/02 | Tue | Final Project                                      | HW 11         |
+| 13.2     | 12/04 | Thu | Final Project                                      | Test 6        |
+| 14.1     | 12/09 | Tue | Final Project                                      |               |
 # Labs Schedule
 
 | Date  | Day | Lab          |
