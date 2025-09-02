@@ -25,7 +25,6 @@ Students in Section 1 will meet on the following Mondays: **9/8, 9/22, 10/6, 10/
 Students in Section 2 will meet on the following Thursdays: **9/11, 9/25, 10/9, 10/30, and 11/13**.
 
 * Rawasy  Almaksoudi
-* Max Ash
 * Eva August
 * Evan Kim    Conge
 * Kaizhe  Cui
@@ -45,6 +44,7 @@ Students in Section 2 will meet on the following Thursdays: **9/11, 9/25, 10/9, 
 Students in Section 3 will meet on the following Mondays: **9/15, 9/29, 10/20, 11/3, and 11/17**.
 
 * Jayden  Figueroa Adorno
+* Max Ash
 * Emanuel James
 * Zander  Jimenez
 * Steven  Jungers
