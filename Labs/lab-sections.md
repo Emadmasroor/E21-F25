@@ -14,6 +14,7 @@ Students in Section 1 will meet on the following Mondays: **9/8, 9/22, 10/6, 10/
 * Arina   Garifullina
 * Sai Nyi Htut
 * Uneeb   Hyder
+* Zander  Jimenez
 * Magdelana   Jordan
 * Lucas   McGarvey
 * Sean    Ordenana
@@ -46,7 +47,6 @@ Students in Section 3 will meet on the following Mondays: **9/15, 9/29, 10/20, 1
 * Max Ash
 * Quran   Duncanson
 * Emanuel James
-* Zander  Jimenez
 * Steven  Jungers
 * Julian  Krauze
 * Charles Lehr
