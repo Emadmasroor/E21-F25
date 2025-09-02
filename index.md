@@ -7,11 +7,11 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 **Instructor**: Emad Masroor `emasroo1@swarthmore.edu`  
 **Meeting Times**: MW 8:30 to 9:45  
-**Office Hours**: T 12:30 to 2:00  
+**Emad's Office Hours**: T 1:00 to 2:00  
 **Pre-requisities**: MATH 25, ENGR 17  
-**Lab**: MR 1:15 to 4:00 PM  
+**Lab**: MR 1:15 to 4:00 PM in Singer 222  
 **Lab Instructor**: Will Johnson `wjohnso3@swarthmore.edu`  
-**Will's Office Hours**: W 9:20 to 10:20 AM in Singer 105	
+**Will's Office Hours**: W 9:20 to 10:20 AM in Singer 105  
 **URL**: `https://emadmasroor.github.io/E21-F25/`  
 **Midterm**: None; 6 tests  
 **Final Exam**: None; Project  
