@@ -9,15 +9,16 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Meeting Times**: MW 8:30 to 9:45  
 **Office Hours**: T 12:30 to 2:00  
 **Pre-requisities**: MATH 25, ENGR 17  
-**Lab**: MR 1:15 to 4:00  
+**Lab**: MR 1:15 to 4:00 PM
 **Lab Instructor**: Will Johnson `wjohnso3@swarthmore.edu`  
+**Will's Office Hours**: W 9:20 to 10:20 AM (Singer 105)
 **URL**: `https://emadmasroor.github.io/E21-F25/`  
 **Midterm**: None; 6 tests  
 **Final Exam**: None; Project  
 **Homework Due Date**: Tue at 11:59 PM  
 **Wizard Session**: Mon 7:00 to 9:00 PM  
 
-[Schedule](#schedule) | [Lab Schedule](#labs-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives)
+[Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives)
 
 [Resources](Resources.md)
 
@@ -54,7 +55,9 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | 13.2     | 12/04 | Thu | Final Project                                      | Test 6        |
 | 14.1     | 12/09 | Tue | Final Project                                      |               |
 
-# Labs Schedule
+# Lab Schedule
+
+Labs will meet in Singer 222.  Find out which [lab section](Labs/lab-sections.md) is yours.
 
 | Date  | Day | Lab          |
 |-------|-----|--------------|
