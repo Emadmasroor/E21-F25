@@ -11,7 +11,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Pre-requisities**: MATH 25, ENGR 17  
 **Lab**: MR 1:15 to 4:00 PM
 **Lab Instructor**: Will Johnson `wjohnso3@swarthmore.edu`  
-**Will's Office Hours**: W 9:20 to 10:20 AM (Singer 105)
+**Will's Office Hours**: W 9:20 to 10:20 AM in Singer 105
 **URL**: `https://emadmasroor.github.io/E21-F25/`  
 **Midterm**: None; 6 tests  
 **Final Exam**: None; Project  
