@@ -124,7 +124,7 @@ Since this is a computer-based class, you are **required** to bring a laptop com
 
 ### Homework
 
-Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW $n$ to cover the material from week $n$, and to be due in week $$n+1$$. Typically, homework will be submitted on Moodle using Gradescope. 
+Homework will be assigned approximately every week, and will typically be due by midnight on the Tuesday following the week in which it was assigned. You can generally expect HW n to cover the material from week $n$, and to be due in week n+1. Typically, homework will be submitted on Moodle using Gradescope. 
 
 Most homework assignments will have a written component as well as a programming component.
 
@@ -132,7 +132,7 @@ Most homework assignments will have a written component as well as a programming
 
 The purpose of holding six tests instead of one or two midterms is so that you have low-stakes opportunities to demonstrate your mastery of the course material at regular intervals. In general, you can expect these tests to be independent of each other, as opposed to being cumulative. 
 
-These tests will be held on Thursdays during the first half of class time (typically for 20 to 25 minutes), and will typically be closed-book, closed-notes and closed-computer. The tests will usually be incremental rather than cumulative, and will only cover the material from approximately two weeks prior to each test. Typically, test $n$ will cover the material from week $2n−1$ and week $2n$, and will be held on week $2n+1$; for example, test 1 will cover weeks 1 and 2 and will be held on the Thursday of week 3; test 2 will cover weeks 3 and 4 and will be held on the Thursday of week 5, etc.
+These tests will be held on Thursdays during the first half of class time (typically for 20 to 25 minutes), and will typically be closed-book, closed-notes and closed-computer. The tests will usually be incremental rather than cumulative, and will only cover the material from approximately two weeks prior to each test. Typically, Test n will cover the material from week 2n and week 2n, and will be held on week 2n+1; for example, test 1 will cover weeks 1 and 2 and will be held on the Thursday of week 3; test 2 will cover weeks 3 and 4 and will be held on the Thursday of week 5, etc.
 
 ### Labs
 Labs will be held on Mondays or Thursdays from 1:15 to 4:00. You should be signed up for either Monday (CRN 19688) or Thursday (CRN 19689).
