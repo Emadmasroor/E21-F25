@@ -14,18 +14,6 @@ title: HW 1
 **What to submit**: a PDF file for (1), `conway_v1.py` for (2), and `slideswitch.py` and `lightsensor.py` for (3).
 
 
-
-Due date: Tuesday September 10 at midnight
-		Submit via Gradescope/Moodle [here](https://moodle.swarthmore.edu/mod/lti/view.php?id=694525).                             
-Turn in the following files for this assignment.
-
-* A file titled `methods_str.py` for problem 1.1
-* A file titled `methods_list.py` for problem 1.2
-* A file titled `logic_gates.py` for problem 2.2
-* A file titled `conway_v1.py` for problem 2.3
-* A file titled `slide_switch.py` for problem 3.1
-* A file titled `light_sensor.py` for problem 3.2
-
 ## (1) Variables and Types
 
 For this problem, please use the Circuit Python REPL inside the Mu Editor. For this, you need to:
