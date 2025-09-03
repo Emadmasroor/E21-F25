@@ -33,6 +33,7 @@ Students in Section 2 will meet on the following Thursdays: **9/11, 9/25, 10/9, 
 * Aubree  Daugherty
 * Juan    Estrada
 * Shiran  Huang
+* Samchan Lee
 * Emiliano    Morales-Lopez
 * Emmanuel    Olusheki
 * Muhammad Javed  Paktinyar
