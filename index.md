@@ -13,6 +13,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Lab Instructor**: Will Johnson `wjohnso3@swarthmore.edu`  
 **Will's Office Hours**: W 9:20 to 10:20 AM in Singer 105  
 **URL**: `https://emadmasroor.github.io/E21-F25/`  
+**Moodle**: [Link](https://moodle.swarthmore.edu/course/view.php?id=28308)
 **Midterm**: None; 6 tests  
 **Final Exam**: None; Project  
 **Homework Due Date**: Tue at 11:59 PM  

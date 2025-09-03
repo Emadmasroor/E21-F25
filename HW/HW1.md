@@ -7,8 +7,8 @@
 ## Summary
 
 **Due Date**: Tue, Sep 9 at midnight  
-**Submit at**: Gradescope/Moodle [here](link)  
 **What to submit**: a PDF file for (1), `conway_v1.py` for (2), and `slideswitch.py` and `lightsensor.py` for (3).
+**Submit at**: [This link](https://www.gradescope.com/courses/1116058/assignments/6664715/) for the PDF and [this link](https://www.gradescope.com/courses/1116058/assignments/6664401/) for the code. You can see the submission pages on the course Moodle page as well.
 
 
 ## (1) Variables and Types
