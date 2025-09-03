@@ -12,6 +12,104 @@ title: Resources
   * [Product page for the Circuit Playground Bluefruit](https://www.adafruit.com/product/4333)
   * [Official Guide for the Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/overview)
 
+# Circuit Playground Guide for E21
+
+To use any of these features, make sure your Python code includes the following line at the top:
+
+- `from adafruit_circuitplayground import cp`
+
+
+# Taps and shakes
+``````````````````````````````````````````````````````````````````````````````````````````````
+cp.shake()  # Returns True if it's currently being shaken
+cp.shake(shake_threshold=20)  # optional parameter to change sensitivity
+
+cp.tapped # Returns True if it's currently being tapped
+cp.detect_taps  # A variable that can be set to either 1 or 2; 2 looks for double taps.
+``````````````````````````````````````````````````````````````````````````````````````````````
+
+# Switching on the Red LED
+```
+cp.red_led = True  # switches on the red LED
+```
+
+# Detecting state of Slide switch
+```
+cp.switch  # returns True or False
+```
+
+# Using the Neopixels
+There are 10 neopixels. The state of each is determined by a 3-tuple of RGB values, i.e. `(p,q,r)` where each element of the tuple is an integer between 0 and 255 and represents the red, green and blue channels respectively.
+
+The full state of the neopixels is determined by a 10-element list of 3-tuples, i.e., 30 numbers in total, arranged in the form
+```
+[(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0)]
+```
+the variable `cp.pixels` contains the above list.
+
+You can set individual elements of the neopixels, e.g., turn the 4th pixel to a mild green like so:
+```
+cp.pixels[4] = (0,10,0)  # for pixel number 4, set red to 0, green to 10, and blue to 0
+```
+
+
+There is also a convenient method, `cp.pixels.fill()`, which you can use to control all the pixels at the same time. You must pass a 3-tuple to this method.
+```
+cp.pixels.fill((10,0,0))  # set red channel to a strength of 10 for all the neopixels.
+```
+
+# Reading the light sensor
+The light sensor on the CPX detects ambient light and returns an integer between 0 and ?. Access the curent reading of the light sensor using
+```
+cp.light
+```
+
+# Reading raw data from the accelerometer
+Access the raw data from the accelerometer in meters per seconds squared using
+
+```
+cp.acceleration
+```
+This yields an object of class `acceleration` with three attributes: `x`, `y`, and `z`. Thus,
+```
+cp.acceleration.z
+```
+returns the acceleration in the z direction.
+
+# Physical buttons A and B
+There are two buttons on the CPX, labeled A and B. The boolean variables
+```
+cp.button_a
+cp.button_b
+```
+are `True` **while** the corresponding buttons are pressed.
+
+# Temperature sensor
+The temperature sensor on the CPX detects ambient temperature and returns a real number equal to the temperature in Celsius. Access the current temperature in Celsius using
+```
+cp.temperature
+```
+
+# Capacitive Touch
+
+Seven of the pins on the CPX can take capacitive touch input.
+[image](https://cdn-learn.adafruit.com/assets/assets/000/054/810/large1024/circuitpython_cp_capacitive_touch_pads.jpg?1527982763)
+
+These are A1, A2, A3, A4, A5, A6, and TX. You can see these names on the capacative input regions on the edges of the board, i.e. the mounting holes. The variable `cp.touch_A1` will be `True` when pin `A1` is being touched, and will be `False` otherwise. Thus, there are seven such variables:
+- `cp.touch_A1`
+- `cp.touch_A2`
+- `cp.touch_A3`
+- `cp.touch_A4`
+- `cp.touch_A5`
+- `cp.touch_A6`
+- `cp.touch_TX`
+
+# Speaker
+- Play a tone at a frequency of x Hz for a duration of y seconds using `cp.play_tone(x,y)`.
+- Start playing a tone at a frequency of x Hz using `cp.start_tone(x)`
+- Stop playing the currently-playing tone using `cp.stop_tone()`
+- Play a `*.wav` file using `cp.play_file("filename.wav"). The file should be stored on the `CIRCUITPY` drive.
+
 # Links and Code Snippets
 
 ## Lec 1.1, Tue Sep 2
