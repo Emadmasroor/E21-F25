@@ -2,7 +2,7 @@
 
 {:toc}
 
-# Guides and Tutorials
+## Guides and Tutorials
 
   * [Official Python website](https://www.python.org/downloads/)
   * [Virtual Environments in Python](https://docs.python.org/3/tutorial/venv.html)
@@ -12,14 +12,14 @@
   * [Product page for the Circuit Playground Bluefruit](https://www.adafruit.com/product/4333)
   * [Official Guide for the Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/overview)
 
-# Circuit Playground Guide for E21
+## Circuit Playground Guide for E21
 
 To use any of these features, make sure your Python code includes the following line at the top:
 
 - `from adafruit_circuitplayground import cp`
 
 
-# Taps and shakes
+#### Taps and shakes
 ``````````````````````````````````````````````````````````````````````````````````````````````
 cp.shake()  # Returns True if it's currently being shaken
 cp.shake(shake_threshold=20)  # optional parameter to change sensitivity
@@ -28,17 +28,17 @@ cp.tapped # Returns True if it's currently being tapped
 cp.detect_taps  # A variable that can be set to either 1 or 2; 2 looks for double taps.
 ``````````````````````````````````````````````````````````````````````````````````````````````
 
-# Switching on the Red LED
+### Switching on the Red LED
 ```
 cp.red_led = True  # switches on the red LED
 ```
 
-# Detecting state of Slide switch
+### Detecting state of Slide switch
 ```
 cp.switch  # returns True or False
 ```
 
-# Using the Neopixels
+### Using the Neopixels
 There are 10 neopixels. The state of each is determined by a 3-tuple of RGB values, i.e. `(p,q,r)` where each element of the tuple is an integer between 0 and 255 and represents the red, green and blue channels respectively.
 
 The full state of the neopixels is determined by a 10-element list of 3-tuples, i.e., 30 numbers in total, arranged in the form
@@ -58,13 +58,13 @@ There is also a convenient method, `cp.pixels.fill()`, which you can use to cont
 cp.pixels.fill((10,0,0))  # set red channel to a strength of 10 for all the neopixels.
 ```
 
-# Reading the light sensor
+### Reading the light sensor
 The light sensor on the CPX detects ambient light and returns an integer between 0 and ?. Access the curent reading of the light sensor using
 ```
 cp.light
 ```
 
-# Reading raw data from the accelerometer
+### Reading raw data from the accelerometer
 Access the raw data from the accelerometer in meters per seconds squared using
 
 ```
@@ -76,7 +76,7 @@ cp.acceleration.z
 ```
 returns the acceleration in the z direction.
 
-# Physical buttons A and B
+### Physical buttons A and B
 There are two buttons on the CPX, labeled A and B. The boolean variables
 ```
 cp.button_a
@@ -84,13 +84,13 @@ cp.button_b
 ```
 are `True` **while** the corresponding buttons are pressed.
 
-# Temperature sensor
+### Temperature sensor
 The temperature sensor on the CPX detects ambient temperature and returns a real number equal to the temperature in Celsius. Access the current temperature in Celsius using
 ```
 cp.temperature
 ```
 
-# Capacitive Touch
+### Capacitive Touch
 
 Seven of the pins on the CPX can take capacitive touch input.
 [image](https://cdn-learn.adafruit.com/assets/assets/000/054/810/large1024/circuitpython_cp_capacitive_touch_pads.jpg?1527982763)
@@ -104,7 +104,7 @@ These are A1, A2, A3, A4, A5, A6, and TX. You can see these names on the capacat
 - `cp.touch_A6`
 - `cp.touch_TX`
 
-# Speaker
+### Speaker
 - Play a tone at a frequency of x Hz for a duration of y seconds using `cp.play_tone(x,y)`.
 - Start playing a tone at a frequency of x Hz using `cp.start_tone(x)`
 - Stop playing the currently-playing tone using `cp.stop_tone()`
