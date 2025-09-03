@@ -60,7 +60,7 @@ cp.pixels.fill((10,0,0))  # set red channel to a strength of 10 for all the neop
 ```
 
 ### Reading the light sensor
-The light sensor on the CPX detects ambient light and returns an integer between 0 and ?. Access the curent reading of the light sensor using
+The light sensor on the Circuit Playground Bluefruit detects ambient light and returns an integer between 0 and ?. Access the curent reading of the light sensor using
 ```
 cp.light
 ```
@@ -78,7 +78,7 @@ cp.acceleration.z
 returns the acceleration in the z direction.
 
 ### Physical buttons A and B
-There are two buttons on the CPX, labeled A and B. The boolean variables
+There are two buttons on the Circuit Playground Bluefruit, labeled A and B. The boolean variables
 ```
 cp.button_a
 cp.button_b
@@ -86,14 +86,14 @@ cp.button_b
 are `True` **while** the corresponding buttons are pressed.
 
 ### Temperature sensor
-The temperature sensor on the CPX detects ambient temperature and returns a real number equal to the temperature in Celsius. Access the current temperature in Celsius using
+The temperature sensor on the Circuit Playground Bluefruit detects ambient temperature and returns a real number equal to the temperature in Celsius. Access the current temperature in Celsius using
 ```
 cp.temperature
 ```
 
 ### Capacitive Touch
 
-Seven of the pins on the CPX can take capacitive touch input.
+Seven of the pins on the Circuit Playground Bluefruit can take capacitive touch input.
 [image](https://cdn-learn.adafruit.com/assets/assets/000/054/810/large1024/circuitpython_cp_capacitive_touch_pads.jpg?1527982763)
 
 These are A1, A2, A3, A4, A5, A6, and TX. You can see these names on the capacative input regions on the edges of the board, i.e. the mounting holes. The variable `cp.touch_A1` will be `True` when pin `A1` is being touched, and will be `False` otherwise. Thus, there are seven such variables:
