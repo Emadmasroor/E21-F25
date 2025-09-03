@@ -21,6 +21,7 @@ Students in Section 1 will meet on the following Mondays: **9/8, 9/22, 10/6, 10/
 * Sean    Ordenana
 * Lucia Sanchez
 * Charles Schuetz
+* Dylan   Stringer
 
 ## Section 2
 
@@ -80,5 +81,4 @@ Students in Section 4 will meet on the following Thursdays: **9/18, 10/2, 10/23,
 * Ethan   Pang
 * Izzy    Reel
 * Hannah  Rowland-Seymour
-* Dylan   Stringer
 * Yuhao   Zhao
