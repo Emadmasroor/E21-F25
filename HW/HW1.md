@@ -76,8 +76,6 @@ The code given below is a 'skeleton code' for you to begin developing your own i
 # 'True' = 'Alive'
 # 'False' = 'Dead'
 
-
-
 # Current state of the system. You should modify this to see
 # how your code behaves if the state of the system is changed.
 # Right now, all the surrounding cells are 'dead' and the
@@ -121,19 +119,20 @@ You will probably have to create another variable, or variables, in the process 
 
 The part of the code where the cell and its neighbors are set to `True` or `False` is meant for you to try out different configurations of the nine cells (one central cell called `this` and its eight neighbors. For example, the values currently given in the code correspond to the following state of Conway's game in a 9-cell grid. The east neighbor and southwest neighbor is alive, the central cell (the one you have to change) is currently alive, and the other cells are dead.
 
-![Conway's game](HW/grid1.png){ width=300px }
+![Conway's game](/HW/grid1.png){ width=300px }
 
 Note that this script implements a *single* step in the game, and does so for a single cell. The neighbors' states are not changed by the program, only the central cell's states are changed.
 
 You should test out your code by modifying the current state to a different state (i.e., changing which cells are alive and dead currently) and making sure that your script updates the central cell correctly according to the rules of Conway's game of life. 
 
+Turn in the code that you've written inside a file named `conway_v1.py`.
 
-## Programming the Circuit Playground Express using `if` statements
+## Programming the Circuit Playground Bluefruit using `if` statements
 
-The Circuit Playground Express has a built-in light sensor and a slide switch. It also has multiple LEDs, called 'neopixels', that can be set to any color and brightness. You can read about how to use these functionalities of your board on [this page](../CPX_guide.html). In this problem, you are asked to use `if` statements to program the CPX. Note that all code run by the CPX should be enclosed in a `while` loop and should be preceded by the line of code shown in the example below.
+The Circuit Playground Bluefruit has a built-in light sensor and a slide switch. It also has multiple LEDs, called 'neopixels', that can be set to any color and brightness. You can read about how to use these functionalities of your board on [this page](../CPX_guide.html). In this problem, you are asked to use `if` statements to program the CPX. Note that all code run by the CPX should be enclosed in a `while` loop and should be preceded by the line of code shown in the example below.
 
 ~~~ python
-from adafruit_circuitplayground.express import cpx
+from adafruit_circuitplayground import cp
 
 while True:
    # implement your code here.
@@ -141,7 +140,7 @@ while True:
 
 ## Slide switch
 
-Write a program that, when loaded on to `code.py` on your Circuit Playground Express, sets one of the neopixels to red if the slide switch is set to 'off' (all other LEDs should be switched off), and sets a different pixel to green if the slide switch is set to 'on' (all other LEDs should be switched off). You can pick any of the pixels, but two different pixels should be used.
+Write a program that, when loaded on to `code.py` on your Circuit Playground Bluefruit, sets one of the neopixels to red if the slide switch is set to 'off' (all other LEDs should be switched off), and sets a different pixel to green if the slide switch is set to 'on' (all other LEDs should be switched off). You can pick any of the pixels, but two different pixels should be used.
 
 ## Light sensor
 
