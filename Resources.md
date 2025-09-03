@@ -2,6 +2,8 @@
 title: Resources
 ---
 
+{:toc}
+
 # Guides and Tutorials
 
   * [Official Python website](https://www.python.org/downloads/)

@@ -1,3 +1,18 @@
+---
+title: HW 1
+---
+
+{:toc}
+
+
+# Summary
+
+**Due Date**: Tue, Sep 9 at midnight  
+**Submit at**: Gradescope/Moodle [here](link)  
+**What to submit**: a PDF file for (1), `conway_v1.py` for (2), and `slideswitch.py` and `lightsensor.py` for (3).
+
+
+
 Due date: Tuesday September 10 at midnight
 		Submit via Gradescope/Moodle [here](https://moodle.swarthmore.edu/mod/lti/view.php?id=694525).                             
 Turn in the following files for this assignment.
@@ -9,7 +24,7 @@ Turn in the following files for this assignment.
 * A file titled `slide_switch.py` for problem 3.1
 * A file titled `light_sensor.py` for problem 3.2
 
-# Variables and Types
+# (1) Variables and Types
 
 For this problem, please use the Circuit Python REPL inside the Mu Editor. For this, you need to:
 
@@ -60,9 +75,7 @@ By using the `dir()` function on an object of type `list`, obtain a list of poss
 
 1. In CircuitPython's REPL, use `dir(a)` where `a` is a list that you created. (It is recommended that you make a diverse list with several elements using the syntax shown in class.) This will give you all the methods that are associated with objects of type 'list' in CircuitPython. For **all** of these functions, look them up in the [official Python documentation](https://docs.python.org/3/l    ibrary/stdtypes.html#sequence-types-list-tuple-range). Write a short, one-to-two sentence explanation of what each function/method does. Also, write out a line of valid CircuitPython syntax for using the functions you have chosen.
 
-# Conditionals
-
-## Conway's Game of Life
+# (2) Conway's Game of Life
 
 [Conway's game of life](https://playgameoflife.com/) works on the principle that every 'cell' in a 2-dimensional grid is either 'alive' or 'dead' at any given time. Time moves forward in discrete increments, and the state of the system at time step $n$ is determined completely by the state of the system at time step $n-1$, according to the following rules.
 
@@ -119,7 +132,7 @@ You will probably have to create another variable, or variables, in the process 
 
 The part of the code where the cell and its neighbors are set to `True` or `False` is meant for you to try out different configurations of the nine cells (one central cell called `this` and its eight neighbors. For example, the values currently given in the code correspond to the following state of Conway's game in a 9-cell grid. The east neighbor and southwest neighbor is alive, the central cell (the one you have to change) is currently alive, and the other cells are dead.
 
-![Conway's game](grid1.png){ width=300px }
+![Conway's game](grid1.png){ width=50px }
 
 Note that this script implements a *single* step in the game, and does so for a single cell. The neighbors' states are not changed by the program, only the central cell's states are changed.
 
@@ -127,7 +140,7 @@ You should test out your code by modifying the current state to a different stat
 
 Turn in the code that you've written inside a file named `conway_v1.py`.
 
-## Programming the Circuit Playground Bluefruit using `if` statements
+# (3) Programming the Circuit Playground Bluefruit using `if` statements
 
 The Circuit Playground Bluefruit has a built-in light sensor and a slide switch. It also has multiple LEDs, called 'neopixels', that can be set to any color and brightness. You can read about how to use these functionalities of your board on [this page](../CPX_guide.html). In this problem, you are asked to use `if` statements to program the CPX. Note that all code run by the CPX should be enclosed in a `while` loop and should be preceded by the line of code shown in the example below.
 
@@ -142,9 +155,12 @@ while True:
 
 Write a program that, when loaded on to `code.py` on your Circuit Playground Bluefruit, sets one of the neopixels to red if the slide switch is set to 'off' (all other LEDs should be switched off), and sets a different pixel to green if the slide switch is set to 'on' (all other LEDs should be switched off). You can pick any of the pixels, but two different pixels should be used.
 
+Turn in your code as `slideswitch.py`. When we copy its contents on to our own board's `code.py`, it should work as expected.
+
 ## Light sensor
 
 Program the CPX to play a tone of 440 Hz if the light sensor is covered by one's hand, or if it placed in a very dark room. It should stop playing the tone once exposd to the usual light of a Singer Hall classroom.
 
-!!! Tip
-    There may be more than one way to solve this problem!
+Turn in your code as `lightsensor.py`. When we copy its contents on to our own board's `code.py`, it should work as expected.
+
+
