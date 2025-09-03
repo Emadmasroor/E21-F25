@@ -1,7 +1,4 @@
----
-layout: default
-title: HW 1
----
+# HW 1
 
 * Table of Contents
 {:toc}
