@@ -1,5 +1,6 @@
 # Resources
 
+* Table of Contents
 {:toc}
 
 ## Guides and Tutorials
