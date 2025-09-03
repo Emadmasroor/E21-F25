@@ -111,17 +111,17 @@ These are A1, A2, A3, A4, A5, A6, and TX. You can see these names on the capacat
 - Stop playing the currently-playing tone using `cp.stop_tone()`
 - Play a `*.wav` file using `cp.play_file("filename.wav"). The file should be stored on the `CIRCUITPY` drive.
 
-# Links and Code Snippets
+## Links and Code Snippets
 
-## Lec 1.1, Tue Sep 2
+### Lec 1.1, Tue Sep 2
 
-### Installation Instructions
+#### Installation Instructions
 
 1. [Installing Circuit Python on your Circuit Playground Bluefruit](https://learn.adafruit.com/welcome-to-circuitpython/installing-circuitpython). This will install Circuit Python, a compact and pared-down version of Python for embedded systems.
 2. [Installing Mu on your computer](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor). This is the IDE that we will use for Circuit Playground.
 3. [Downloading Libraries and copying them on to Circuit Playground Bluefruit](https://docs.circuitpython.org/projects/circuitplayground/en/latest/). Make sure you use the libraries from Circuit Python 9! Note that you must copy 2 folders and 3 files into the `lib` folder of your Circuit Playground device.
 
-### Sample First Code to run on your board
+#### Sample First Code to run on your board
 
 ```python
 from adafruit_circuitplayground import cp
