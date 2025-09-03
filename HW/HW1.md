@@ -129,7 +129,7 @@ Turn in the code that you've written inside a file named `conway_v1.py`.
 
 ## (3) Programming the Circuit Playground Bluefruit using `if` statements
 
-The Circuit Playground Bluefruit has a built-in light sensor and a slide switch. It also has multiple LEDs, called 'neopixels', that can be set to any color and brightness. You can read about how to use these functionalities of your board on [this page](../Resources#circuit-playground-guide-for-e21). In this problem, you are asked to use `if` statements to program the CPX. Note that all code run by the CPX should be enclosed in a `while` loop and should be preceded by the line of code shown in the example below.
+The Circuit Playground Bluefruit has a built-in light sensor and a slide switch. It also has multiple LEDs, called 'neopixels', that can be set to any color and brightness. You can read about how to use these functionalities of your board on [this page](../Resources#circuit-playground-guide-for-e21). In this problem, you are asked to use `if` statements to program the Circuit Playground Bluefruit. Note that all code run by the Circuit Playground Bluefruit should be enclosed in a `while` loop and should be preceded by the line of code shown in the example below.
 
 ~~~ python
 from adafruit_circuitplayground import cp
@@ -146,7 +146,7 @@ Turn in your code as `slideswitch.py`. When we copy its contents on to our own b
 
 ### Light sensor
 
-Program the CPX to play a tone of 440 Hz if the light sensor is covered by one's hand, or if it placed in a very dark room. It should stop playing the tone once exposd to the usual light of a Singer Hall classroom.
+Program the Circuit Playground Bluefruit to play a tone of 440 Hz if the light sensor is covered by one's hand, or if it placed in a very dark room. It should stop playing the tone once exposd to the usual light of a Singer Hall classroom.
 
 Turn in your code as `lightsensor.py`. When we copy its contents on to our own board's `code.py`, it should work as expected.
 
