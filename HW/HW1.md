@@ -11,8 +11,38 @@ Turn in the following files for this assignment.
 
 # Variables and Types
 
+For this problem, please use the Circuit Python REPL inside the Mu Editor. For this, you need to:
+
+1. Open the Mu Editor while your Circuit Playground Bluefruit is connected via USB-C.
+2. You should see the text "Circuit Python" at the bottom right together with a micro-chip symbol **without** a red X. If so, you have successfully completed the installation instructions from lecture 1. If not, please follow those instructions.
+3. Click the 'Serial' button on the toolbar. This should open a new area of the Mu Editor screen.
+4. The REPL should say "Press any key to enter the REPL. Use CTRL-D to reload." Follow this instruction and press any key. The lights on the circuit board will turn white and you are now in the "REPL" mode. 
+5. This is the interactive version of Circuit Python.
+
 ## Methods associated with built-in class `str`
-By using the `dir()` function on an object of type `str`, obtain a list of possible methods associated with class `str`. For **five** of these methods, write one line of code that uses the method, followed by a line or two of comments explaining what the method does to a string of text. Make sure that the `str`s you use are complicated enough for the method to make sense.
+
+In class, you were shown how to create string objects.
+
+Objects of type `str` are "strings" such as `hello` or `hello2` or `hello2!` and so on. To make a string and **assign it to a variable**, say, `a1`, execute the following line on the REPL. The `>>>` is only shown to indicate that you are doing this in REPL mode.
+
+
+```python
+>>> a = "hello!"
+```
+
+
+By using the `dir()` function on an object of type `str`, obtain a list of possible methods associated with class `str` in CircuitPython. Look up these methods in the official [Python documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) to find out what they do.
+
+**Tasks**
+
+Complete the following tasks. You will turn in text (hand-written or typed), not code.
+
+1. What does the method `find` give you if you use it to find a character that doesn't exist in the searched string?
+2. How does `find` deal with repeated characters in a string? 
+3. Look up the documentation for the method `count` associated with the class `str`, i.e., the function `str.count`. Use this to write out the syntax for one line of code that counts the number of times the letter 'l' appears in the word 'hallelujah'.
+4. In CircuitPython's REPL, use `dir(a)` where `a` is a string that you created. (It can be any string). This will give you all the methods that are associated with objects of type 'string' in CircuitPython. Choose 5 of these functions and look them up in the [official Python documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str). Write a short, one-to-two sentence explanation of what each function/method does.
+5. Browse the list of methods associated with Python's `str` class, also at the [official documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) website. These methods are named `str.<methodname>(...)`. Find 2 methods that you see in this list that are **not** available in CircuitPython, i.e., methods that you do not see when you run `dir()` on a string that you created on your Circuit Playground. Write a short, one-to-two sentence explanation of what these methods/functions do.
+
 
 ## Methods associated with built-in class `list`.
 By using the `dir()` function on an object of type `list`, obtain a list of possible methods associated with class `list`. For **five** of these methods, write one line of code that uses the method, followed by a line or two of comments explaining what the method does to a list. Make sure that the `list`s you use to demonstrate the methods are varied enough for the methods to make sense.
