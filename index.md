@@ -20,15 +20,15 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 [Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives)
 
-[Resources](Resources.md)
+[Resources](Resources.md) | [Current HW](HW/HW1)
 
 # Schedule
 
 | Week.Lec | Date  | Day | Topic                                              | HW Due / Test |
 |----------|-------|-----|----------------------------------------------------|---------------|
-| 1.1      | 09/02 | Tue | Introduction & Installation; variables & types     |               |
+| [1.1](Lec/Lec1.pdf)      | 09/02 | Tue | Introduction & Installation; variables & types     |               |
 | 1.2      | 09/04 | Thu | Programming basics: variables, types, conditionals |               |
-| 2.1      | 09/09 | Tue | Base systems; Analog vs. digital data              | HW 1          |
+| 2.1      | 09/09 | Tue | Base systems; Analog vs. digital data              | [HW 1](HW/HW1)          |
 | 2.2      | 09/11 | Thu | Relative & absolute errors;                        |               |
 | 3.1      | 09/16 | Tue | For/while loops; 'dot notation'                    | HW 2          |
 | 3.2      | 09/18 | Thu | Functions; Finite State Machines                   | Test 1        |

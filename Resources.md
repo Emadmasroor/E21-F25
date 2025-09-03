@@ -3,7 +3,7 @@
 * Table of Contents
 {:toc}
 
-## Guides and Tutorials
+## External Guides and Tutorials
 
   * [Official Python website](https://www.python.org/downloads/)
   * [Virtual Environments in Python](https://docs.python.org/3/tutorial/venv.html)
@@ -13,7 +13,7 @@
   * [Product page for the Circuit Playground Bluefruit](https://www.adafruit.com/product/4333)
   * [Official Guide for the Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/overview)
 
-## Circuit Playground Guide for E21
+## Instructor's Circuit Playground Guide for E21
 
 To use any of these features, make sure your Python code includes the following line at the top:
 
