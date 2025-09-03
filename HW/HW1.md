@@ -119,7 +119,7 @@ You will probably have to create another variable, or variables, in the process 
 
 The part of the code where the cell and its neighbors are set to `True` or `False` is meant for you to try out different configurations of the nine cells (one central cell called `this` and its eight neighbors. For example, the values currently given in the code correspond to the following state of Conway's game in a 9-cell grid. The east neighbor and southwest neighbor is alive, the central cell (the one you have to change) is currently alive, and the other cells are dead.
 
-![Conway's game](grid1.png | width=100)
+![Conway's game](grid1.png)
 
 Note that this script implements a *single* step in the game, and does so for a single cell. The neighbors' states are not changed by the program, only the central cell's states are changed.
 
