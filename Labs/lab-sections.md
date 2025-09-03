@@ -38,7 +38,6 @@ Students in Section 2 will meet on the following Thursdays: **9/11, 9/25, 10/9, 
 * Emmanuel    Olusheki
 * Muhammad Javed  Paktinyar
 * Nyvisalsnuk Rith
-* Hannah  Rowland-Seymour
 * Alexis  Sarmiento
 * Kevin   Sisk
 
@@ -80,5 +79,6 @@ Students in Section 4 will meet on the following Thursdays: **9/18, 10/2, 10/23,
 * Huyen Nguyen
 * Ethan   Pang
 * Izzy    Reel
+* Hannah  Rowland-Seymour
 * Dylan   Stringer
 * Yuhao   Zhao
