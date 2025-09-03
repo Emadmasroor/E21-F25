@@ -16,7 +16,7 @@
 For this problem, please use the Circuit Python REPL inside the Mu Editor. For this, you need to:
 
 1. Open the Mu Editor while your Circuit Playground Bluefruit is connected via USB-C.
-2. You should see the text "Circuit Python" at the bottom right together with a micro-chip symbol **without** a red X. If so, you have successfully completed the installation instructions from lecture 1. If not, please follow those instructions.
+2. You should see the text "Circuit Python" at the bottom right together with a micro-chip symbol **without** a red X. If so, you have successfully completed the installation instructions from lecture 1. If not, please follow [those instructions](../Resources#lec-11-tue-sep-2).
 3. Click the 'Serial' button on the toolbar. This should open a new area of the Mu Editor screen.
 4. The REPL should say "Press any key to enter the REPL. Use CTRL-D to reload." Follow this instruction and press any key. The lights on the circuit board will turn white and you are now in the "REPL" mode. 
 5. This is the interactive version of Circuit Python.
