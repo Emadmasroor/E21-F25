@@ -1,11 +1,13 @@
 ---
+layout: default
 title: HW 1
 ---
 
+* Table of Contents
 {:toc}
 
 
-# Summary
+## Summary
 
 **Due Date**: Tue, Sep 9 at midnight  
 **Submit at**: Gradescope/Moodle [here](link)  
@@ -24,7 +26,7 @@ Turn in the following files for this assignment.
 * A file titled `slide_switch.py` for problem 3.1
 * A file titled `light_sensor.py` for problem 3.2
 
-# (1) Variables and Types
+## (1) Variables and Types
 
 For this problem, please use the Circuit Python REPL inside the Mu Editor. For this, you need to:
 
@@ -34,7 +36,7 @@ For this problem, please use the Circuit Python REPL inside the Mu Editor. For t
 4. The REPL should say "Press any key to enter the REPL. Use CTRL-D to reload." Follow this instruction and press any key. The lights on the circuit board will turn white and you are now in the "REPL" mode. 
 5. This is the interactive version of Circuit Python.
 
-## Methods associated with built-in class `str`
+### Methods associated with built-in class `str`
 
 In class, you were shown how to create string objects.
 
@@ -59,7 +61,7 @@ Complete the following tasks. You will turn in text (hand-written or typed), not
 5. Browse the list of methods associated with Python's `str` class, also at the [official documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) website. These methods are named `str.<methodname>(...)`. Find 2 methods that you see in this list that are **not** available in CircuitPython, i.e., methods that you do not see when you run `dir()` on a string that you created on your Circuit Playground. Write a short, one-to-two sentence explanation of what these methods/functions do.
 
 
-## Methods associated with built-in class `list`.
+### Methods associated with built-in class `list`.
 
 In clas, you were shown how to create list objects.
 
@@ -75,7 +77,7 @@ By using the `dir()` function on an object of type `list`, obtain a list of poss
 
 1. In CircuitPython's REPL, use `dir(a)` where `a` is a list that you created. (It is recommended that you make a diverse list with several elements using the syntax shown in class.) This will give you all the methods that are associated with objects of type 'list' in CircuitPython. For **all** of these functions, look them up in the [official Python documentation](https://docs.python.org/3/l    ibrary/stdtypes.html#sequence-types-list-tuple-range). Write a short, one-to-two sentence explanation of what each function/method does. Also, write out a line of valid CircuitPython syntax for using the functions you have chosen.
 
-# (2) Conway's Game of Life
+## (2) Conway's Game of Life
 
 [Conway's game of life](https://playgameoflife.com/) works on the principle that every 'cell' in a 2-dimensional grid is either 'alive' or 'dead' at any given time. Time moves forward in discrete increments, and the state of the system at time step $n$ is determined completely by the state of the system at time step $n-1$, according to the following rules.
 
@@ -140,7 +142,7 @@ You should test out your code by modifying the current state to a different stat
 
 Turn in the code that you've written inside a file named `conway_v1.py`.
 
-# (3) Programming the Circuit Playground Bluefruit using `if` statements
+## (3) Programming the Circuit Playground Bluefruit using `if` statements
 
 The Circuit Playground Bluefruit has a built-in light sensor and a slide switch. It also has multiple LEDs, called 'neopixels', that can be set to any color and brightness. You can read about how to use these functionalities of your board on [this page](../CPX_guide.html). In this problem, you are asked to use `if` statements to program the CPX. Note that all code run by the CPX should be enclosed in a `while` loop and should be preceded by the line of code shown in the example below.
 
@@ -151,13 +153,13 @@ while True:
    # implement your code here.
 ~~~
 
-## Slide switch
+### Slide switch
 
 Write a program that, when loaded on to `code.py` on your Circuit Playground Bluefruit, sets one of the neopixels to red if the slide switch is set to 'off' (all other LEDs should be switched off), and sets a different pixel to green if the slide switch is set to 'on' (all other LEDs should be switched off). You can pick any of the pixels, but two different pixels should be used.
 
 Turn in your code as `slideswitch.py`. When we copy its contents on to our own board's `code.py`, it should work as expected.
 
-## Light sensor
+### Light sensor
 
 Program the CPX to play a tone of 440 Hz if the light sensor is covered by one's hand, or if it placed in a very dark room. It should stop playing the tone once exposd to the usual light of a Singer Hall classroom.
 
