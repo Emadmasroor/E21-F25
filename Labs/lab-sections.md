@@ -17,7 +17,8 @@ Students in Section 1 will meet on the following Mondays: **9/8, 9/22, 10/6, 10/
 * Zander  Jimenez
 * Magdelana   Jordan
 * Henry Osorio
-* Lucas   McGarvey
+* Kiran   Mahurkar (9/22, 10/6, and 11/10)
+* Lucas   McGarvey (9/22, 10/6, and 11/10)
 * Huyen Nguyen
 * Sean    Ordenana
 * Lucia Sanchez
@@ -54,13 +55,15 @@ Students in Section 3 will meet on the following Mondays: **9/15, 9/29, 10/20, 1
 * Steven  Jungers
 * Julian  Krauze
 * Charles Lehr
-* Kiran   Mahurkar
+* Kiran   Mahurkar (9/15 and 11/3)
+* Lucas   McGarvey (9/15 and 11/3)
 * Huy Nguyen
 * Jaiden  Shuchman
 * Sara    Suarez
 * Isabella    Thoen
 * Katherine   Wang
 * Xavier  Warren
+* Yuhao   Zhao
 
 ## Section 4
 
@@ -81,4 +84,3 @@ Students in Section 4 will meet on the following Thursdays: **9/18, 10/2, 10/23,
 * Ethan   Pang
 * Izzy    Reel
 * Hannah  Rowland-Seymour
-* Yuhao   Zhao
