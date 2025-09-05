@@ -49,7 +49,7 @@ def wait_for_touch(delay_ms):
 
 ######################################################################
 # Helper function to wait for a press of button A or button B
-# on the Circuit Playground Express. Don't press the reset button
+# on the Circuit Playground Bluefruit. Don't press the reset button
 # by mistake!
 def wait_for_button():
     # NOTE: students should not edit this function!
@@ -69,7 +69,7 @@ def initialize_touch():
     cp.touch_A4
     cp.touch_A5
     cp.touch_A6
-    cp.touch_A7
+    cp.touch_TX
 
 ######################################################################
 # Run this function to complete exercise 1.

@@ -7,10 +7,10 @@
 
 (#) Objectives
 
-* Learn about capacitive touch sensing.
+* Investigate capacitive touch sensing.
 
 * Use conditionals (**`if`** statements) to respond to pin inputs on the
-  Circuit Playground Express (CPX).
+  Circuit Playground Bluefruit (CPB).
   
 !!! Warning
     You may be familiar with more advanced Python language
@@ -25,10 +25,17 @@
 # Lab Overview
 
 This week in lab, you will apply what you have learned in class about
-programming in CircuitPython on the Circuit Playground Express to
+programming in CircuitPython on the Circuit Playground Bluefruit to
 several tasks of increasing complexity, building up a system that
 lights up when the correct sequence of capacitive touch inputs is
 entered.
+
+## Lab report
+
+Use the provided [lab report template](.\lab1\E21_Lab1_Report_Template.docx) to answer the questions for this lab. For all E21 labs, please make sure to write up
+    your answers to the questions in each exercise before you move on
+    to the next task. The questions are designed to help you complete the
+    labs efficiently.
 
 ## A note on collaboration
 
@@ -39,8 +46,8 @@ a chance to code on *each* exercise.** When I'm walking around the room,
 I want to see you taking turns at the keyboard, with one person coding
 in conversation with others. 
 
-Even if you have more than one computer and CPX available for use in this
-lab, everyone on your group should work with a single computer/CPX.
+Even if you have more than one computer and CPB available for use in this
+lab, everyone on your group should work with a single computer and CPB.
 
 ## Lab progress
 
@@ -55,11 +62,11 @@ progress as you complete each exercise during lab.
 
 ## Capacitive touch
 
-![Figure [cpins]: Capacative touch pins on CPX. Image courtesy of Adafruit.](images/circuitpython_cpx_capacitive_touch_pads.jpg width="75%" alt="A close-up image of an Adafruit Circuit Playground Express.  Pins A1 to A7 are circled in red.")
+![Figure [cpins]: Capacative touch pins on CPB. Image courtesy of Adafruit.](images/circuitpython_cpb_capacitive_touch_pads.jpg width="75%" alt="A close-up image of an Adafruit Circuit Playground Bluefruit.  Pins A1 to A6 and TX are circled in red.")
 
-The CPX has seven pins capable of serving as capacitive touch inputs,
+The CPB has seven pins capable of serving as capacitive touch inputs,
 as described on [this Adafruit
-article](https://learn.adafruit.com/circuitpython-made-easy-on-circuit-playground-express/capacitive-touch),
+article](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuitpython-cap-touch),
 which also gives an overview of how access them in CircuitPython.
 
 The basic idea of capacitive touch is that when you connect a
@@ -206,12 +213,12 @@ that you will call, and in some cases modify.
 # Lab Exercises
 
 Before you begin, download this [`code.py`](lab1/code.py) file and
-copy it over to the root directory of your CPX.
+copy it over to the root directory of your CPB.
 
 !!! Warning
-   **If you already have a `code.py` file on your CPX with valuable
+   **If you already have a `code.py` file on your CPB with valuable
    code in it, beware of overwriting it!** Consider renaming the one
-   on your CPX or backing it up to your computer before copying over
+   on your CPB or backing it up to your computer before copying over
    the starter code.
 
 When moving from exercise to exercise, you will comment and un-comment
@@ -224,10 +231,13 @@ the function calls at the very bottom of Lab 1's `code.py`.
     line (after indentation). To uncomment, 
     simply delete the **`#`**.
 
+    In the Mu editor, the keyboard shortcut for commenting an entire line
+    is ctrl + K (Windows) or Command + K (Mac).
+
 ## Exercise 1: Raw touch input 
 
 When you run the code, open the Serial and Plotter windows, and
-observe the effects of touching the **`A1`** pad on the CPX.  (There
+observe the effects of touching the **`A1`** pad on the CPB.  (There
 should be nothing electrically connected to the pad.) You should see
 the graph change significantly depending whether you are touching the
 pad or not.
@@ -247,8 +257,8 @@ tinsel balls provided in lab. You should now have twelve readings per group memb
 !!! Warning
     **For this and all future E21 labs, please make sure to write up
     your answers to the questions in each exercise before you move on
-    to the next task.** They are designed to help you complete the
-    labs effectively!
+    to the next task.** The questions are designed to help you complete the
+    labs efficiently!
 
   * **Q1)** Compile a table of all of the readings you collected. The
     columns should include *object*, *person*, *before*, *during*, and *after*.
@@ -275,7 +285,7 @@ Edit the lines at the bottom of `code.py` to comment out
 Run the program with no objects clipped to any capacitive touch input pads, 
 and look at the results in the Serial window as you touch the pads.
 
-(###) How capacitive touch works on the CPX
+(###) How capacitive touch works on the CPB
 
 As you saw in Exercise 1, a capacative touch input produces a
 continously varying value, but in order to be used as a button, that
@@ -349,18 +359,7 @@ objects without any false detections.
   * **Q5)** What argument passed to **`cp.adjust_touch_threshold()`**
     gave you the best result? How did your work in Exercise 1 inform
     the process of adjusting the threshold?
-    
-  * **Q6)** The **`wait_for_touch()`** function is passed a single
-    argument, which is the number of milliseconds to wait before
-    switching between the *not touched* and *touched* states. The
-    initial setting is 50 ms. Try changing this to 0 ms. Does the
-    program still work well for all of the objects you connect,
-    *including the tinsel ball*? (See what happens if you slide your
-    finger along the ball without breaking contact.)  If you see
-    issues when going to 0 ms, why do you think they might arise?
-    
-Make sure you restore the argument to its original value of 50 ms
-before you move to Exercise 3.
+
 
 ## Exercise 3: Reacting to a capacitive touch event with lights
 
@@ -482,13 +481,10 @@ address. Your video must be clearly shot and begin with one correct
 combination entry, then have at least two incorrect entries, and end
 with another correct entry.
 
-  * **Q7)** Describe your approach to solving this exercise. Was
+  * **Q6)** Describe your approach to solving this exercise. Was
     there a "eureka" moment? Did completing this task in lab lead
     you to think about **`if`** statements in a different way
     than you thought about them in class?
-
-  * **Q8)** What is the URL for your exercise 4 video? (Make sure it
-    is shared with my Swarthmore email address.)
 
 !!! Tip
     If your lights aren't showing up well on camera, you can adjust
@@ -506,7 +502,7 @@ the implementation of your **`lab1_ex4()`** function into
 Choose one of these activities to further develop and exhibit your coding skills:
 
   * **Make a cooler "ending" to the program.** Instead of just filling
-    the NeoPixels with white, make them animate, have the CPX play a
+    the NeoPixels with white, make them animate, have the CPB play a
     sound, or do some other behavior that is more dramatic or
     entertaining than the original specification. You can always refer
     to the
@@ -521,44 +517,36 @@ Choose one of these activities to further develop and exhibit your coding skills
     worry, just choose a different activity.)
 
   * **Propose your own enhancement.** If neither of the above options suits, 
-    consult with me in person or over the [Ed discussion forum](https://edstem.org/us/courses/61903/discussion/) about another
+    consult with me in person or over the [Ed discussion forum](https://edstem.org/) about another
     enhancement of your group's choosing.
     
 In your writeup, please answer the following:
 
-    * **Q9)** What "Going further" activity did you choose? Briefly
-      describe how you went about completing this exercise. Include a
-      URL to a demonstration video shared with my Swarthmore email
-      address if you added additional lights or sounds since Exercise 4.
+    * **Q7)** What "Going further" activity did you choose? Briefly
+      describe how you went about completing this exercise. You may include a video in your submission.
     
 
 # Lab Report
 
-Before your next scheduled lab meeting, submit a `.zip` file to [moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=695663) (one submission per group) containing:
+Before your next scheduled lab meeting, submit the following files to the lab assignment on Moodle:
 
   * Your completed `code.py` file.
 
   * A PDF writeup with your names, the assignment name, answers to 
-    all questions **Q1**-**Q9** above as well as **Q10** below:
+    all questions **Q1**-**Q8** above as well as **Q8** below:
     
-    * **Q10)** Did all group members contribute equally to all tasks?
+    * **Q8)** Did all group members contribute equally to all tasks?
       If not, who did what for each exercise?
       
-In your PDF, please include the questions verbatim, preserving the
-numbering I have used. Also make sure to format my questions
-differently than your answers (e.g. using boldface, italics, or
-a predefined Heading style).
-      
 !!! Warning
-    **Don't forget to make sure your videos are linked in the PDF writeup
-    and shared with my Swarthmore email address!**
+    Please use the provided lab report template for your PDF writeup.
       
 ## Grading
 
 Points will be assigned approximately according to the following breakdown:
 
 <table class="table">
-  <caption>Grading breakdown</caption>
+  <!-- <caption>Grading breakdown</caption> -->
   <thead>
     <tr>
       <th scope="col">Item</th>
@@ -567,7 +555,7 @@ Points will be assigned approximately according to the following breakdown:
   </thead>
   <tbody>
     <tr>
-      <td>Answers to **Q1**-**Q10** and general writeup quality</td>
+      <td>Answers to **Q1**-**Q8** and general writeup quality</td>
       <td>40%</td>
     </tr>
     <tr>
@@ -592,5 +580,3 @@ Points will be assigned approximately according to the following breakdown:
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
 <script>markdeepOptions = { tocStyle: 'short' };</script>
 <script src="../markdeep/markdeep.1.16.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
-
-
