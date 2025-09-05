@@ -51,6 +51,7 @@ Students in Section 3 will meet on the following Mondays: **9/15, 9/29, 10/20, 1
 * Jayden  Figueroa Adorno
 * Max Ash
 * Quran   Duncanson
+* Owen George
 * Emanuel James
 * Steven  Jungers
 * Junghyun    Koh
