@@ -7,16 +7,23 @@
 
 ### Methods associated with built-in class `str`
 
+1. What does the method `find` give you if you use it to find a character that doesn't exist in the searched string?  
+This returns `-1`
+2. How does `find` deal with repeated characters in a string?  
+The location of the first instance of that character is reported.
+3. Look up the documentation for the method `count` associated with the class `str`, i.e., the function `str.count`. Use this to write out the syntax for one line of code that counts the number of times the letter 'l' appears in the word 'hallelujah'.  
+The code for this is `str.count("hallelujah","l")`, which gives the answer `3`.
+4. In CircuitPython's REPL, use `dir(a)` where `a` is a string that you created. (It can be any string). This will give you all the methods that are associated with objects of type 'string' in CircuitPython. Choose 5 of these functions and look them up in the [official Python documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str). Write a short, one-to-two sentence explanation of what each function/method does. Also, write out a line of valid CircuitPython syntax for using the functions you have chosen.  
+Answer:
+
+
+
+
+
 
 ## (1) Variables and Types
 
-For this problem, please use the Circuit Python REPL inside the Mu Editor. For this, you need to:
 
-1. Open the Mu Editor while your Circuit Playground Bluefruit is connected via USB-C.
-2. You should see the text "Circuit Python" at the bottom right together with a micro-chip symbol **without** a red X. If so, you have successfully completed the installation instructions from lecture 1. If not, please follow [those instructions](../Resources#lec-11-tue-sep-2).
-3. Click the 'Serial' button on the toolbar. This should open a new area of the Mu Editor screen.
-4. The REPL should say "Press any key to enter the REPL. Use CTRL-D to reload." Follow this instruction and press any key. The lights on the circuit board will turn white and you are now in the "REPL" mode. 
-5. This is the interactive version of Circuit Python.
 
 ### Methods associated with built-in class `str`
 
