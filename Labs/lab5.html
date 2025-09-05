@@ -1,0 +1,422 @@
+      <meta charset="utf-8" emacsmode="-*- markdown -*-">
+         **E21 Lab 5: Benchmarking optimizers for image approximation**
+               **[ENGR 21 - Fall 2025](../index.html#lab5)**
+             **November 10-20, 2025**
+             **Due on Moodle (one submission per group) prior to your next lab**
+
+In this lab, you will investigate the effectiveness of several optimization techniques in the application of lossy image compression.
+
+
+(#) Objectives
+
+  * Understand the differences between general function minimization and
+    nonlinear least squares.
+    
+  * Distinguish between gradient-free and gradient-based optimizers.
+  
+  * Learn how continous signals may be approximated by sums of
+    nonlinear basis functions.
+
+  * Gain experience with more advanced Python features including format
+    strings and inner functions.
+  
+# Background
+
+Starter code for this lab is available [here](lab5.zip).
+
+For this project, we will approximate a grayscale image using a sum of
+$k$ 2D
+[Gaussian functions](https://en.wikipedia.org/wiki/Gaussian_function#Two-dimensional_Gaussian_function).
+Each Gaussian function has six parameters influencing its shape/size
+(2 parameters), location (2 parameters), rotation (1 parameter), and
+amplitude (1 parameter). Therefore, the overall image may be
+approximated by $6k$ numbers.
+
+  ![Figure [gfunc]: Illustration showing Gaussian function parameters](images/lab5_gauss_func.png style="width: 75%" alt="A 2d Gaussian function is plotted on the XY plane.  Parameters SU, SV, XC, YC, and theta are labeled.")
+
+!!! Tip
+    ***Note:*** We are using Gaussian functions as
+    [*basis functions*](https://en.wikipedia.org/wiki/Basis_function). The
+    term gets thrown around a bunch in mathematics and Engineering,
+    but it really boils down to a set of functions that can
+    be linearly combined (i.e. added together in a weighted sum) to
+    create a new function with a different shape.
+    
+    In many applications, the shapes of the functions are fixed and
+    pre-determined ahead of time; in our application here, we are
+    refining the shapes of the functions and the weights in parallel.
+
+Contrast this to the "traditional" method of representing a $w$-by-$h$
+image as a list of pixel intensities of length $wh$ – if our Gaussian
+functions approximate the image well, and if $6k \ll wh$, we have
+effectively compressed the image by representing it with a much
+smaller list of numbers.
+
+  ![Figure [starter]: detail of Mona Lisa being approximated by a sum of Gaussian functions](images/lab5_monalisa_approx.png style="width: 75%" alt="Four images are shown in a two by two grid.  Clockwise from top left: (1) the original image of Mona Lisa's eye, (2) a blurry approximation of Mona Lisa's eye as the sum of 10 Gaussians, (3) 10 red and blue ellipses representing the Gaussians superimposed on the approximation image, (4) a plot of the pixel-by-pixel error between the approximation and the original.  The sum of squared error is 4.89.")
+
+Since the reconstructed image is not perfectly equivalent to the
+target (input) image, this compression scheme is said to be *lossy*.
+
+!!! Warning
+    ***Disclaimer:*** The
+    [PNG image format](https://en.wikipedia.org/wiki/Portable_Network_Graphics)
+    allows for both lossless and lossy compression, and
+    [JPEG compression](https://en.wikipedia.org/wiki/JPEG) is designed
+    exclusively for lossy compression; however, neither one uses an
+    approach quite like the one we are taking in this lab. Gaussian functions
+    are fun to play with but are *wildly* impractical compared with more sophisticated
+    compression schemes.
+
+## Problem setup and notation
+
+We have already defined $k$ to be the number of 2D Gaussian functions
+used to approximate an image, and defined the image dimensions as $h$
+rows by $w$ columns.
+
+Let $n = wh$ be the total number of pixels in the image. Then we can enumerate
+the $i^\text{th}$ pixel location as $(x_i, y_i)$ where $i \in \{ 1, \ldots, n \}$.
+
+Now define the vector $\mathbf{q}$ to be the concatenation of $k$ individual Gaussian function parameter vectors:
+
+$$\mathbf{q} = \left[ \begin{array}{c} \mathbf{q}_1 \\ \mathbf{q}_2 \\ \vdots \\ \mathbf{q}_k \end{array} \right].$$
+
+Each individual parameter vector $\mathbf{q}_j$ has length 6, hence, $\mathbf{q}$ has total length $6k$.
+
+Then to evaluate the *reconstructed image*, which we denote as $I$, at pixel $(x_i, y_i)$, we
+can define it as the sum of $k$ Gaussian functions evaluated at that
+pixel location:
+
+$$I(\mathbf{q}, x_i, y_i) = \sum_{j=1}^k g(\mathbf{q}_j, x_i, y_i),$$
+
+where $g(\mathbf{q}_j, x_i, y_i)$ evaluates the $j^\text{th}$ Gaussian function at the $i^\text{th}$ pixel location.
+
+The *residual image* $R$ is the image determined by the difference of the target image $T$ with the reconstructed image *I*:
+
+$$R(\mathbf{q}, x_i, y_i) = T(x_i, y_i) - I(\mathbf{q}, x_i, y_i).$$
+
+We can also consider the residual as a vector-valued function $\mathbf{r}(\mathbf{q})$ whose elements are pixels in the residual image:
+
+$$\mathbf{r}(\mathbf{q}) = \left[ \begin{array}{c} R(\mathbf{q}, x_1, y_1) \\ R(\mathbf{q}, x_2, y_2) \\ \vdots \\ R(\mathbf{q}, x_n, y_n) \end{array}\right].$$
+
+We would like to minimize the *objective function* which we will denote as $f(\mathbf{q})$:
+
+$$f(\mathbf{q}) = \| \mathbf{r}(\mathbf{q}) \|^2 = \sum_{i=1}^n R(\mathbf{q}, x_i, y_i)^2 $$
+
+Note we can refer to the objective function value as the sum of squared errors, or SSE for short.
+
+## Formalizations and Python implementations
+
+[General multivariate optimization](https://en.wikipedia.org/wiki/Optimization_problem) minimizes a function $f:
+\mathbb{R}^m \mapsto \mathbb{R}$. You can accomplish this in `scipy`
+using the function
+[`scipy.optimize.minimize`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html). This
+particular function implements both gradient-free methods such as [Powell's method](https://en.wikipedia.org/wiki/Powell%27s_method) and the [Nelder-Mead method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method), but also gradient-based methods such as the [Broyden-Fletcher-Goldfarb-Shanno aka BFGS algorithm](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm).
+
+A special case of general optimization is
+[non-linear least squares](https://en.wikipedia.org/wiki/Non-linear_least_squares),
+where we can specify that $f(\mathbf{q}) = \| \mathbf{r} ( \mathbf{q}
+) \|^2$ for some non-linear function $\mathbf{r}: \mathbb{R}^m \mapsto
+\mathbb{R}^n$.  This is frequently the case in approximation problems
+where we want to minimize the sum of squared errors between a target
+signal and a reconstructed signal, as in our image optimization problem.
+In Python we can use 
+[`scipy.optimize.least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html), which
+implements multiple methods including [Levenberg-Marquardt](https://en.wikipedia.org/wiki/Levenberg%E2%80%93Marquardt_algorithm) and other
+[trust region methods](https://en.wikipedia.org/wiki/Trust_region).
+
+Note that every non-linear least squares problem can be solved as a
+general optimization problem, but not every optimization problem is a
+non-linear least squares problem.
+
+## Example: reconstructing an RLC circuit impulse response
+
+The `fit_voltage.py` example in the starter code shows how to use both 
+[`scipy.optimize.minimize`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html) 
+and
+[`scipy.optimize.least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html) 
+to reconstruct a signal from a sum of nonlinear basis functions, as shown in the figure below:
+
+   ![Figure [example1d]: Plot from `fit_voltage.py` example](images/lab5_rlc_approx.png style="width: 75%" alt="Measurements of voltage versus time are shown as black dots on a scatter plot.  Three curves are shown as function approximations: (1) an initial guess as a dotted green line that is far off from the target data, a function using minimize (err=1.83, nfev=321) as a solid teal line that approximates the data well, and a function using least squares (err=1.83, nfev=13) as a dashed blue line that approximates the data well.")
+
+The plot shows some noisy sampled data (black dots) that could come from an oscilloscope measuring the impulse response of
+an overdamped [RLC circuit](https://en.wikipedia.org/wiki/RLC_circuit). Theory tells us that the voltage measured by the scope
+can be modeled as
+
+   $$V(t) = A_1 \exp( s_1 \, t ) + A_2 \exp( s_2 \, t), $$
+   
+where $s_1$ and $s_2$ are time constant that depend on the resistance, capacitance, and inductance of the circuit, and
+where $A_1$ and $A_2$ are scale factors that depend on the initial voltage and current at $t = 0$.
+
+Starting from a poor initial guess of the four parameters $\mathbf{q}
+= (A_1, A_2, s_1, s_2)$, we can use the optimization functions to find
+the best-fit estimates that minimize the sum of squared differences
+between the black points and the reconstructed curve.
+
+Note that both functions find solutions of equal quality, but the
+non-linear least squares formulation of the problem appears to be more
+efficient than the general minimization in terms of number of
+objective function evaluations.
+
+# Lab Exercises
+
+## Exercise 1: discussion questions
+
+Before you begin coding, look over and run the `fit_voltage.py` and
+`starter.py` scripts, then answer these questions. Cite any sources
+you consult to find the answers.
+
+   * **Q1)** In `fit_voltage.py`, what is the purpose of the strings that
+     start with `f` and which contain curly braces? For example, one
+     is on the following line taken from that program:
+   
+     ~~~ Python
+     ax.plot(t, v_min, 'c-', label=f'minimize (err={f_min:.3g}, nfev={n_min})')
+     ~~~
+
+   * **Q2)** What are *inner functions* in Python? What functions in
+     `fit_voltage.py` are inner functions, and what benefit do they
+     provide in this program?
+
+!!! Tip
+    ***Hint:*** Consider what happens if you try to move the definition
+    of the `recons` function above the `main` function.
+    
+  * **Q3)** What is the purpose of `numpy.meshgrid` and why is it being used
+    in `starter.py`? How might it be better than writing a `for` loop
+    over each $(x_i, y_i)$ pixel location?
+  
+## Exercise 2: Image approximation
+
+Before you begin, open up the `starter.py` file and save it as a new
+file `ex2.py`.
+
+Start by commenting out the line that loads parameters from
+`example_params.txt` and uncommenting the line below it to generate
+randomized parameters. Next, use an optimizer to improve the objective
+function value for the randomized parameters. I suggest using
+`scipy.optimize.minimize`.  using the additional arguments
+`method='Powell'` and `options=dict(maxfev=10000)`.
+
+Once you have Powell's method working, modify your program to compare
+that approach with the `'L-BFGS-B'` method of
+`scipy.optimize.minimize` and also with the `'trf'` method of
+`scipy.optimize.least_squares`. For each method, use the 
+additional arguments specified in this table:
+
+  Function         | Parameters 
+  -----------------|------------------------------------------------------------------
+   `minimize`      | `method='Powell', options=dict(maxfev=10000)`
+   `minimize`      | `method='L-BFGS-B', jac='2-point', options=dict(maxfun=10000)`
+   `least_squares` | `method='trf', max_nfev=10000`
+
+!!! Warning
+    Don't forget to pass the appropriate function (`objective` or `err_vec`) to 
+    each optimizer depending whether you are doing general minimization or non-linear least squares.
+
+Have your program do 10 trials total for each of the three optimizers
+using $k=8, 16,$ and $32$ basis functions. This will require solving a
+total of $10 \times 3 \times 3 = 90$ optimization problems.  You
+should set this up in a triply nested `for` loop similar to the
+program structure outlined below:
+
+~~~ Python
+for k in [8, 16, 32]:
+
+  for method in ['Powell', 'L-BFGS-B', 'trf']:
+  
+    for trial in range(10):
+    
+       # generate a randomized initial parameter vector of length 6k
+       
+       # optimize it using the current method
+       
+       # store the objective function value to compute mean and variance later
+       
+       # if this is the best trial for the current (k, method) pair,
+       # then save the parameter vector and the image 
+       
+    # compute the mean and standard deviation of the
+    # objective function values for this (k, method)
+    # pair and save it for plotting
+    
+# plot all of the results on a bar chart
+~~~
+
+!!! Warning
+    **I strongly suggest that you not aim to run all 90 trials
+    until you are 100% certain your code works for all three
+    kinds of optimizers!** Since this code takes a decent amount
+    of time to run, it would be a shame to have to restart it 
+    too many times. One way to develop more quickly would
+    be to temporarily use 2, rather than 10 trials per `(k, method)` pair.
+    Once you are able to run through 2 trials per pair, you can
+    crank the number of trials up to 10 and restart your code
+    with confidence.
+    
+    By the same token, feel free to temporarily change the `[8, 16, 32]`
+    to just `[8]` while you're getting started.
+    
+!!! Tip
+    Don't forget that [**`enumerate`**](lab2.html#toc1.4.2) exists. You can update the
+    the outermost two **`for`** loops to use it if you need to 
+    know e.g. both which **`k`** value you are using as well
+    as the index of the current **`k`** value.
+    
+Generate a grouped bar chart (example code
+[here](https://matplotlib.org/stable/gallery/lines_bars_and_markers/barchart.html))
+of the average objective function value for each ($k$, method)
+combination. Use different colors for each different optimization
+method, and group the methods by $k$ value. Also add error bars
+(example code
+[here](https://pythonforundergradengineers.com/python-matplotlib-error-bars.html))
+based on the standard deviations you compute.
+
+(###) Questions
+
+ * **Q4)** Save your bar chart using code similar to 
+
+   ~~~ Python
+   plt.savefig('barchart.png', dpi=300)
+   ~~~
+   
+   and include it in your PDF writeup.
+   
+ * **Q5)** Also include a 3x3 table in your writeup displaying the
+   best optimized image for each ($k$, method) combination.
+   
+(###) Other deliverables
+
+When you submit your zip file, include the nine best parameters
+vectors for each ($k$, method) combination saved as text files whose
+filenames are determined by this code:
+~~~ Python
+param_filename = f'params_{k}_{method.lower()}.txt'
+~~~
+for example `params_8_powell.txt` or `params_32_trf.txt`.
+
+Also be sure to include your final `ex2.py` with your names at the top 
+in your submitted zip file.
+
+## Exercise 3: Going further
+
+Go further by choosing ***just one of*** the following activities:
+
+  * Create a new file `sinusoid.py` to replace the six-parameter
+    Gaussian basis function with a four-parameter sinusoid.
+
+    The four parameters of a single sinusoid function are denoted $w, u, v,$ and $c$, and
+    the basis function can be evaluated at a single pixel location by using the formula
+
+    $$ s(w, u, v, c, x_i, y_i) = w \sin( u \, x_i + v \, y_i + c).$$
+
+    Reasonable bounds for each parameter are as follows:
+
+    $$\begin{align*}
+      w, u, v & \in [ -0.1, 0.1 ] \\
+      c & \in [ -32, 32 ]
+    \end{align*}$$
+
+    Use only the method you identified as the best-performing in Task
+    1, and increase the number of basis functions to keep the total
+    number of parameters the same (e.g. loop over `k in [12, 24, 48]`).
+    
+    In your PDF writeup, compare and contrast your best result from
+    the sinusoidal basis function with that of the Gaussian
+    function. Make sure to include output images. Based
+    on your comparison, is it easier or harder to for the optimizer to
+    approximate with sinusoids rather than Gaussian functions?
+    
+  * Create a new file `color.py` that uses Gaussian functions to
+    approximate a $32 \times 32$ RGB color image of your choosing.
+    One good way to do this would be to replace the single Gaussian
+    amplitude parameter with a vector of 3 parameters, for a total of
+    8 parameters per basis function. Good images to fit are ones that
+    don't have too many shapes/details, e.g. an eye is better than an
+    entire face.
+    
+    In your PDF writeup, detail the steps you and your partner took to
+    modify the starter code to deal with color images, and comment on
+    your results. Make sure to include representative image inputs and
+    outputs.
+    
+!!! Warning
+    You will need to adjust the way that images are loaded, 
+    displayed, and saved if you choose this task. See me if
+    you need help.
+    
+    
+  * In your PDF writeup, document one of the methods available when
+    calling `scipy.optimize.minimize` or
+    `scipy.optimize.least_squares`. Who invented it? What was their
+    academic and/or professional background? What are its advantages
+    and trade-offs when comparing with other optimization methods?
+    Cite any sources you refer to.
+    
+  * Find another way to explore the topic of signal reconstruction
+    with non-linear basis functions (but consult me before you choose
+    a task).
+
+If you write any code for this task, make sure it is included in your
+PDF writeup. Similarly, if you generate any images or graphs, include
+them in your writeup.
+
+# Deliverables
+
+By two weeks from today's lab, submit a `.zip` file to [Moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=704533)
+(one submission per group containing):
+
+  * Your completed `ex2.py` file.
+  
+  * Parameters of best-fitting images from exercise 2 that were
+    generated by your `ex2.py` file.
+  
+  * Any Python file you wrote for exercise 3.
+
+  * A PDF writeup with your names, the assignment name, answers to 
+    all questions **Q1**-**Q5** above as well as **Q6**-**Q11** below:
+
+   * **Q6)** What problems did you run into when completing the tasks,
+     and how did you work together to overcome them?
+
+   * **Q7)** In `fit_voltage.py`, imagine transforming a set of parameters by
+     swapping the values of $A_1$ and $A_2$, and also swapping the
+     values of $s_1$ and $s_2$. That is, the new parameters have the
+     same values, just in a different order. Would this affect the
+     objective function value? What does your answer imply about the
+     existence of
+     [global minima](https://en.wikipedia.org/wiki/Maxima_and_minima) in
+     the objective function landscape?
+      
+   * **Q8)** In Exercise 2, how did the three methods compare in their
+     effectiveness at solving the problem? Why do you think you saw
+     the performance differences you did? Did the results agree or
+     disagree with the pattern established in `fit_voltage.py`?
+      
+   * **Q9)** Also in Exercise 2, can you see any possible advantages
+     of using the method or methods that were not the most effective at 
+     reducing error?
+     
+   * **Q10)** Comment on your efforts for exercise 3 (see
+     [section 2.3](#toc2.3) for detailed prompts). Include
+     representative optimization input and output images if applicable.
+     
+   * **Q11)** Did all group members contribute equally to all tasks?
+      If not, who did what for each exercise?
+
+## Grading
+
+Points will be assigned approximately according to the following breakdown:
+
+ | Item | Grade value |
+ | :---  | --: |
+ | Answers to **Q1**-**Q11** and general writeup quality | 60% |
+ | Code and output for exercise 2 | 20% |
+ | Exercise 3 | 20% |
+
+      
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script>markdeepOptions = { tocStyle: 'short' };</script>
+<script src="../markdeep/markdeep.1.16.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
+

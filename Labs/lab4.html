@@ -1,0 +1,350 @@
+      <meta charset="utf-8" emacsmode="-*- markdown -*-">
+         **E21 Lab 4: Cubic spline interpolation**
+               **[ENGR 21 - Fall 2025](../index.html#lab4)**
+             **October 27-November 6, 2025**
+             **Due on Moodle (one submission per group) prior to your next lab**
+
+Your tasks for this lab will be to apply numpy's built in linear
+system solver and one other technique to solve a problem that involves
+interpolating a set of regularly-spaced data points with smooth
+curves.
+
+  ![Figure [fig]: an example cubic spline](images/lab4_fig1.png width="75%" alt="Red points on a scatter plot are connected with a blue spline.")
+
+(#) Objectives
+
+Here are key skills you will develop in this lab:
+
+  * understand numpy arrays, along with common operations on them
+  * understand how to solve linear systems with numpy
+  * learn how to apply a special banded matrix solver to a tridiagonal matrix
+  * understand interpolation of sampled data
+  
+(##) Lab progress
+
+I expect most groups will at least have started Exercise 5 by the end
+of lab. You can finish on your own time.
+
+I strongly encourage you to flag me down during lab to check in about your
+progress as you complete each exercise during lab.
+
+# Background
+
+## Cubic splines
+
+Splines are smooth curves that pass through or near a set of data
+values or "control points". They are frequently used in Computer Aided
+Design (CAD) as well as computer graphics and animation to define
+shapes of objects, or paths for cameras or animated characters to
+travel along.
+
+Here are just two examples of spline applications:
+
+  - [Control point splines in Fusion 360](https://www.autodesk.com/products/fusion-360/blog/sketch-control-point-splines-faq/)
+  
+  - [Animating a camera along a spline in Cinema 4D](https://vanda3d.org/how-to-animate-a-camera-along-a-spline-in-cinema-4d-and-export-to-collada-dae-format/)
+
+The remainder of this assignment will refer to to the [starter code](lab4/cubic_splines.py) as well as this 
+[Mathworld article on cubic splines](https://mathworld.wolfram.com/CubicSpline.html).
+
+Note the $A$ matrix described by the Mathworld article is an example
+of a
+*[tridiagonal matrix](https://en.wikipedia.org/wiki/Tridiagonal_matrix)*
+which has nonzero elements only on its main diagonal and the elements
+immediately adjacent to it.
+
+Also, here are some [whiteboard notes](cubic-splines-2022-09-21.pdf) from a previous year with 
+some derivations.
+
+## Indexing in numpy
+
+Arrays in numpy can be indexed by integers but also by lists or arrays. 
+Here is an example:
+
+~~~ Python
+A = numpy.array([0, 10, 20, 30, 40, 50])
+print(A[0]) # prints 0
+print(A[1]) # prints 10
+
+mylist = [0, 2, 4]
+print(A[mylist]) # prints [0, 20, 40]
+~~~
+
+When using arrays to index other arrays in python, the result produced
+has the same data type as the original array being indexed, but the
+same shape as the index array. For example:
+
+~~~ Python
+A = numpy.array([0.0, 0.1, 0.2, 0.3, 0.4, 0.5])
+idx = numpy.array([
+    [0, 1],
+    [2, 3],
+    [4, 5]
+])
+print(A.shape, A.dtype) # prints (6,) float64
+print(idx.shape, idx.dtype) # prints (3, 2) int64
+~~~
+
+Now let's see what happens when we index **`A`** using **`idx`**:
+
+~~~ Python
+B = A[idx]
+print(B)
+print(B.shape, B.dtype) # prints(3, 2) float64
+~~~
+
+When arrays are 2D, either index in a pair (or both)
+can be a numpy array. For example:
+
+~~~ Python
+A = numpy.arange(100).reshape(10, 10) / 10
+print(A)
+print(A.shape, A.dtype) # prints (10, 10) float64
+
+idx = numpy.array([0, 1, 2, 0, 1, 2])
+print(idx.shape, idx.dtype) # prints (6,) int64
+
+B = A[idx, 7]
+print(B) # prints [0.7, 1.7, 2.7, 0.7, 1.7, 2.7]
+print(B.shape, B.dtype) # prints (6,) float64
+~~~
+
+For more information about indexing in numpy, see [the online documentation](https://numpy.org/doc/stable/user/basics.indexing.html).
+
+## Broadcasting in numpy
+
+By default, operations on arrays in numpy operate
+element-wise, as shown below:
+
+~~~ Python
+u = numpy.array([1, 2])
+v = numpy.array([3, 4])
+print(u + v) # prints [4, 6]
+~~~
+
+*Broadcasting* refers to numpy's ability to expand scalars and arrays
+of different sizes to combine element-wise even when shapes differ.
+The simplest broadcasting operations involve combining arrays with
+scalars:
+
+~~~ Python
+print(2 * u) # prints [2, 4]
+print(v - 3) # prints [0, 1]
+~~~
+
+Broadcasting can also take any dimension where an array has length 1
+and repeat that across all rows or columns of another array. For
+example:
+
+~~~ Python
+A = numpy.array([
+    [1, 2, 3], 
+    [4, 5, 6]])
+B = numpy.array([[-1, 0, 1]])
+C = numpy.array([
+  [10],
+  [100]])
+print(A * B) # prints [[-1, 0, 3], [-4, 0, 6]]
+print(A + C) # prints [[11, 12, 13], [104, 105, 106]]
+~~~
+
+The result of a broadcast operation is a new array whose shape
+has a length that is equal to the maximum of the shape lengths
+of the operands, and where each dimension has the maximum size
+of any operand's corresponding dimension.
+
+For more information about broadcasting, see [the online documentation](https://numpy.org/doc/stable/user/basics.broadcasting.html).
+
+# Lab Exercises
+
+Your team's job is to implement a cubic spline solver to smoothly
+interpolate, or connect between, a regularly spaced set of input data
+points. To do so, you and your partner will have to modify the
+`cubic_splines.py` file provided with the [starter code](lab4/cubic_splines.py)
+
+(##) Before you begin
+
+Install scipy using the same method you used to install numpy. E.g. if
+you installed numpy using 
+
+~~~none
+pip install numpy
+~~~
+
+then install scipy using
+
+~~~none
+pip install scipy
+~~~
+
+Now look over the starter code, run it, then answer the following questions:
+
+  * **Q1)** Why do we need to use the `.astype(int)` method on line
+    152? What goes wrong if we just write `i = numpy.floor(u)`, and
+    why?
+  
+  * **Q2)** Line 154 reads `i[-1] = n - 1`. What goes wrong if we
+    comment it out, and why?
+
+  * **Q3)** What is the shape of the **`coeffs`** array created on
+    line 133? What are the shapes of the **`t`** and **`i`** arrays?
+    Note that the **`ai`**, **`bi`**, **`ci`**, and **`di`** arrays
+    all contain data from **`coeffs`**, but have the same shape as
+    both **`t`** and **`i`**. Why is that useful here?
+  
+  * **Q4)** Line 167 evaluates the spline segments using Horner's
+    method. What are the advantages of this method vs. the rewriting
+    below?
+    
+        ~~~ Python
+        y = ai + bi*t + ci*t**2 + di*t**3
+        ~~~
+        
+    Cite any sources you consult to answer this question. 
+
+## Exercise 1: Set up the linear system
+
+Modify the **`get_spline_matvec`** function to implement the
+general solution to obtaining the $A$ matrix
+and $b$ vector that correspond to the left-hand matrix and right-hand
+vector in equation (18) of the [Mathworld article](https://mathworld.wolfram.com/CubicSpline.html). 
+
+Note that the $A$ matrix elements are zero unless otherwise specified.
+
+When you are finished, your $A$ matrix and $b$ vector should match the
+ones that were originally hard-coded into the starter code, and the plot
+should remain unchanged.
+
+## Exercise 2: Get coefficients from $y$'s and $D$'s
+
+Modify the **`get_coeffs`** function to implement the general solution
+to obtaining the coefficients $a_i$, $b_i$, $c_i$, and $d_i$ for each spline segment according to equations (6) through (9) of the [Mathworld article](https://mathworld.wolfram.com/CubicSpline.html). 
+
+Each coefficient should be defined in terms of the $y$ values and $D$
+values passed into the function, and they should be stored
+in the correct order in the **`coeffs`** array. 
+
+When you are finished, your **`coeffs`** array should match the
+one that was originally hard-coded into the starter code and 
+the plot should remain unchanged.
+
+## Exercise 3: Test your solution code
+
+Ensure that your general solutions are correct by commenting out the
+definition of the $y$ values in the **`lab4_fit_1d`** function, and replacing
+them with various alternative sets of values. 
+
+!!! Warning
+    I suggest you keep a commented-out copy of the original
+    array around so you can revert it after modifying
+    if you want.
+
+You should try:
+
+  - modifying one or more values in the array
+  - adding one or more values to the array
+  - shrinking the size of the array from the original
+  
+Each modification should result in an output plot where the blue
+line smoothly passes through the red dots. If this does not happen,
+return to tasks 1 and 2 until you have found the error, and the plot
+should remain unchanged.
+
+!!! Tip
+    If you are unsure whether your code is working, please call
+    me over to check it out!
+    
+## Exercise 4: Use a banded matrix solver
+
+Now replace the call to **`numpy.linalg.solve`** on line 130 with a call to the
+[**`scipy.linalg.solve_banded`**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve_banded.html)
+function. *Note: you will need to re-formulate the $A$ matrix in the
+matrix diagonal ordered form described in the linked documentation.*
+    
+As with Task 3, successful completion in this task should result 
+in plots of the same quality as the original starter code.
+You are not changing the *result* of the spline solver, just the
+*method* used to find the solution.
+
+(###) Questions
+
+Replacing a generic matrix solver with a banded matrix solver has
+advantages in both storage space as well as in runtime. (See
+Kiusalaas section 2.4 for more information.)
+
+     
+  * **Q5)** When considering a spline curve with $n + 1$ points in it,
+    how much space does the full $A$ matrix take (e.g. how many
+    floating-point values do we need to store)? How much space does
+    the matrix diagonal ordered form take?
+
+  * **Q6)** Gaussian Elimination on a full $A$ matrix is particularly
+    wasteful when $A$ is tridiagonal. Why? Describe how you could
+    speed up the Gaussian Elimination algorithm (e.g. that you are
+    implementing in HW7) if we know $A$ is tridiagonal.
+
+## Exercise 5: Fit a 2D spline
+
+Comment out the call to **`lab4_fit_1d()`** at the bottom of `cubic_splines.py` 
+and uncomment the call to **`lab4_fit_2d()`**. Your task is to modify 
+this function to fit cubic splines that pass through a set of points $(x_i, y_i)$
+for $i \in \{ 0, \ldots, n \}$. A successful implementation will look like the
+image below.
+
+  ![Figure [fig2]: a cubic spline in 2D](images/lab4_ex5.png width="75%" alt="Red points on a scatter plot are connected by a blue spline in the shape of a loop.")
+
+When completing this task, you will need two arrays of **`D_values`**,
+one for the $x$ axis and one for the $y$ axis. You will also need to
+arrays of **`coeffs`**, one for $x$ and one for $y$. You should feel
+free to call any of the functions defined at the top of the file, and
+copy any additional code you need from **`lab4_fit1d()`**. 
+
+For this exercise I don't care whether you solve the underlying linear
+systems using **`numpy.linalg.solve`** or
+**`scipy.linalg.solve_banded`**.
+
+(###) Question
+
+  * **Q7)** Explain why the code in **`lab4_fit_1d()`** could not
+    produce the graph in figure [fig2] above. What must be true
+    of any 1D spline that is not true for the 2D spline above?
+
+# Lab report
+
+Before your next scheduled lab meeting, submit a `.zip` file to [Moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=702039) (one submission per group) containing:
+
+  * Your completed `cubic_splines.py` file.
+  
+  * A PDF writeup with your names, the assignment name, answers to 
+    all questions **Q1**-**Q7** above as well as the ones below:
+
+    * **Q8)** What problems did you run into when completing the tasks,
+      and how did you work together to overcome them?
+
+    * **Q9)** Choose three **`numpy`** functions that are called in the
+      starter code. For each one, provide a succinct description of
+      what the function does, and explain why it is being called by the
+      starter code. (One short paragraph per function, please.)
+      
+    * **Q10)** Did all group members contribute equally to all tasks?
+      If not, who did what for each exercise?
+
+## Grading
+
+Points will be assigned approximately according to the following breakdown:
+
+ | Item | Grade value |
+ | :---  | --: |
+ | Answers to **Q1**-**Q10** and general writeup quality| 50% |
+ | Code for exercise 1 | 10% |
+ | Code for exercise 2 | 10% |
+ | Code for exercise 4 | 15% |
+ | Code for exercise 5 | 15% |
+
+
+ 
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script>markdeepOptions = { tocStyle: 'short' };</script>
+<script src="../markdeep/markdeep.1.16.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
+

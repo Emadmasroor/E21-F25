@@ -1,0 +1,669 @@
+      <meta charset="utf-8" emacsmode="-*- markdown -*-">
+         **E21 Lab 3: Pen plotter, IK, and linear motion**
+               **[ENGR 21 - Fall 2025](../index.html#lab3)**
+             **October 6-23, 2025**
+             **Due on Moodle (one submission per group) prior to your next lab**
+
+For this lab, you'll be working with our Swarthmore-made pen plotter robots, shown below.
+
+![Figure [plotter]: our pen plotter robot for this lab.](images/lab3_plotter.jpg width="75%" alt="A 2D robot arm holds a pen above a blank sheet of paper.")
+
+The plotter is based on [this 2017 post at buildlog.net/blog](https://www.buildlog.net/blog/2017/02/a-line-us-clone/), 
+which is in turn based on the commercial [Line-Us robot](https://www.line-us.com/).
+
+(#) Objectives
+
+* Learn some important fundamental skills for computational geometry and robotic control.
+
+* Compute the intersection point of two circles of equal radius.
+
+* Implement inverse kinematics for a parallel four-bar linkage.
+
+* Draw straight line segments with a pen plotter robot with constant velocity.
+
+* Make a state machine to convert a sequence of line segments to a completed drawing.
+
+(##) Lab progress
+
+I expect most groups will at least have started Exercise 4 by the end
+of lab. You can finish on your own time.
+
+!!! Warning
+    Please do not remove plotters, clip leads, or other components
+    from the lab to work on it after hours, as we have limited
+    quantities!
+
+I strongly encourage you to flag me down during lab to check in about your
+progress as you complete each exercise during lab.
+
+# Background
+
+## 2D vectors and basic operations
+
+Vectors in 2D are quantities with direction and magnitude. You can
+think of them as "arrows" that point from the origin to a particular
+location on the $(x, y)$ plane. For this lab, I'll use capital letters
+to denote vectors, and use ordered pairs to denote their individual
+coordinates. For example, here is an illustration of the vector $P =
+(30, 20)$.
+
+![Figure [p]: The vector $P = (40, 30)$.](images/lab3-p.png width="288 px" class=pixel alt="A red arrow defines the vector P.")
+
+In the context of vectors, plain old real numbers are often also referred to as "scalars".
+
+(###) Direction and magnitude
+
+The direction of a 2D vector $(x, y)$ can be considered as the
+angle $\theta$ between the $x$-axis and the vector. Trigonometry
+tells us that $\tan(\theta) = y / x$, so therefore
+
+$$
+\theta = \tan^{-1} \left( \frac{y}{x} \right)
+$$
+
+The length or magnitude of a 2D vector $P = (x, y)$ can be computed by the
+Pythagorean theorem:
+
+$$
+\| P \| = \sqrt{x^2 + y^2}
+$$
+
+
+(###) Multiplication by scalar
+
+You can scale a vector by multiplying both of its components by the
+same factor. For a vector $P = (x, y)$ the result of multiplying by 
+the scalar $a$ is 
+
+$$
+a P = (a x, a y)
+$$
+
+Multiplication by scalar affects the magnitude of a vector without
+affecting its direction. Multiplying the vector $P = (40, 30)$ by
+$\frac{1}{2}$ results in a new vector $\tfrac{1}{2} P = (20, 15)$.
+
+![Figure [halfp]: The vector $\frac{1}{2} P = (20, 15)$.](images/lab3-half-p.png width="190 px" class=pixel alt="A blue arrow reaches half the distance between the origin and point P.")
+
+For any vector $P$ and any scalar $a >= 0$, $\| aP \| = a \| P \|$.
+
+(###) Unit vectors
+    
+For any vector $P$ with $\| P \| > 0$, there exists a vector $U$ with
+the same direction as $P$ and with a magnitude of one. Converting $P$
+to a unit vector $U$ is accomplished by multiplying it by the
+reciprocal of its length:
+
+$$
+U = \frac{1}{\|P\|} P.
+$$
+
+!!! Tip
+    **Vectors from polar coordinates:**
+    For any angle $\theta$, the vector $( \cos \theta, \sin \theta )$ is
+    always a unit vector. 
+    Furthermore, the vector with length $r > 0$ and direction $\theta$ can
+    be constructed as $( r \cos \theta , r \sin \theta )$.
+
+(###) Vector addition and subtraction
+
+Vectors can also be added and subtracted by adding or subtracting
+their individual elements. If $P = (p_x, p_y)$ and $Q = (q_x, q_y)$,
+then
+
+$$
+\begin{align*}
+P + Q & = (p_x + q_x, p_y + q_y) \quad \text{and} \\
+P - Q & = (p_x - q_x, p_y - q_y).
+\end{align*}
+$$
+
+Graphically, adding two vectors is equivalent to lining them up
+head-to-tail and drawing the arrow to the resulting location.
+
+![Figure [vecadd]: The vector sum $P + Q$.](images/lab3_p_plus_q.png width="254 px" class=pixel alt="Two red arrows show the vectors P and Q.  A blue arrow shows the sum P + Q.")
+
+Notice you can arrive at $P+Q$ by starting at $P$ and moving up by
+$Q$, or by starting at $Q$ and moving over by $P$. That is, vector addition commutes, so $P + Q = Q + P$.
+
+Graphically, subtracting two vectors means lining up the second vector
+head-to-head with the first and drawing the arrow from the origin to
+the tail of the relocated second vector.
+
+![Figure [vecsub]: The vector difference $U - V$.](images/lab3_u_minus_v.png width="220 px" class=pixel alt="Two red arrows show the vectors U and V.  A blue arrow shows the difference U minus V.")
+
+## Coding with 2D vectors in **`numpy`**
+
+You can represent vectors as arrays of length two in **`numpy`**.
+
+~~~ Python
+import numpy
+P = numpy.array([40, 30])
+print(P)
+~~~
+
+To get the length of a vector, use the [**`numpy.linalg.norm()`**](https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html)
+function.
+
+~~~ Python
+print(numpy.linalg.norm(P)) # prints 50
+~~~
+
+To get the angle or direction of a vector, use the [**`numpy.arctan2()`**](https://numpy.org/doc/stable/reference/generated/numpy.arctan2) function.
+
+~~~ Python
+angle = numpy.arctan2(P[1], P[0])
+print('P direction is', angle, 'radians') # approx 0.64 rad
+print('P direction is', angle*180/numpy.pi, 'degrees') # approx 37 deg
+~~~
+
+!!! Tip
+    The advantage of **`arctan2(y, x)`** over plain old
+    **`arctan(y/x)`** is that the former will return angles in the
+    interval $[-\pi, \pi]$ and the latter can only return angles in the
+    interval $[-\frac{\pi}{2}, \frac{\pi}{2}]$. If you use the latter
+    function, there's no way to tell the difference between the scenarios
+    when $x$ and $y$ are both positive vs. both negative.
+
+!!! Warning
+    Make sure you get the order of arguments to **`numpy.arctan2`**
+    correct! You need the second or $y$ coordinate to come first, then
+    the first or $x$ coordinate.
+
+    
+Adding, subtracting, and multiplying by scalars is straightforward
+with **`numpy`**.
+
+~~~ Python
+P = numpy.array([1, 2])
+Q = numpy.array([3, 4])
+print(P + Q)   # prints [4, 6]
+print(4*P - Q) # prints [1, 4]
+~~~
+    
+## Forward and inverse kinematics for our pen plotter robot
+
+Our pen-plotter robot uses a mechanism called a
+[parallel planar four-bar linkage](https://en.wikipedia.org/wiki/Four-bar_linkage)
+to position its pen in $x$ and $y$, shown below.
+
+![Figure [fk]: Four-bar linkage used to position the pen (red lines).](images/lab3_fourbar.png class=pixel width="434 px" alt="A schematic of a four-bar linkage.  Links OQ and RP have length L1 while links QR, OP, and PS have length L2.")
+
+
+The origin $O$ of its coordinate system is the point on the paper that
+the axes of the arm motors project through. 
+
+!!! Tip
+    **Vectors as points.**
+    We are omitting the arrows in the diagram above and just drawing
+    vectors as points.  But since $O$ is the origin, you can imagine
+    an arrow reaching from there to any other labeled point on the
+    diagram (e.g. consider $S$ as the arrow from point $O$ on the
+    diagram to point $S$ on the diagram).
+    
+!!! Tip
+    **Vector from pair of points.**
+    If you have two points $A$ and $B$ and you want the vector $V$
+    that starts at point $A$ and ends at point $B$, it can be computed
+    as $V = B - A$. 
+
+There are two drive arms:
+
+  * The first arm has length $\ell_2$ and is driven to an angle
+    $\alpha$ with respect to the $x$-axis. Call its far endpoint
+    $P$. 
+    
+  * The second arm has length $\ell_1$ and is driven to an angle
+    $\beta$ with respect to the $x$-axis. Call its far endpoint
+    $Q$.
+
+    
+(###) Joint limits
+
+The servo motors used by our robot are limited to up to 180&deg; travel. To achieve a good range of motion for the end effector,
+the joint limits for $\alpha$ and $\beta$ are defined to take on the values
+in the table below.
+
+| Angle | Lower | Upper
+|:------|------------:|------------:
+| $\alpha$ | $-\dfrac{\pi}{4}$ | $\dfrac{3 \pi}{4}$
+| $\beta$ | $\dfrac{\pi}{4}$ | $\dfrac{5 \pi}{4}$
+
+(###) Forward kinematics
+
+Given $\alpha$ and $\beta$, we can compute $S$, the position of the
+*end effector* (i.e. the pen). Computing $S$ from the arm angles is
+referred to as *forward kinematics* (FK).
+
+We know that 
+
+$$
+\begin{align*}
+P & = \ell_2 ( \cos \alpha, \sin \alpha ), \quad \text{and} \\
+Q & = \ell_1 ( \cos \beta, \sin \beta ).
+\end{align*}
+$$
+
+From the diagram we see that the vector $P - S$ is parallel to the
+vector $Q$ but with a length $\ell_2$ instead of $\ell_1$. Therefore
+$$
+P - S = \frac{\ell_2}{\ell_1} Q, \quad \text{and hence} \quad
+S = P - \frac{\ell_2}{\ell_1} Q.
+$$
+
+(###) Inverse kinematics
+
+What if we want to go the other way -- that is, given the end effector
+position $S$, solve for the joint angles $\alpha$ and $\beta$? This is
+the *inverse kinematics* (IK) problem. In general, IK is more
+difficult to solve than FK for a given robotic system.
+
+We start by observing that point $P$ lies at the intersection of
+two circles with radius $\ell_2$ -- one centered at the origin,
+and one centered at point $S$:
+
+![Figure [circles]: point $P$ lies at the intersection of two circles centered at $O$ and $S$.](images/lab3_circles.png class="pixel" width="602 px" alt="The links OP and PS of length L2 are shown as red lines.  Blue circles centered aorund O and S intersect at point P.")
+
+We can use some algebra and vector operations to solve for $P$ from
+$S$, as illustrated below.
+
+![Figure [triangles]: decomposing the circle intersection problem using triangles.](images/lab3_triangles.png class="pixel" width="320 px alt="The links OP and PS of length L2 are shown as red lines that make up two sides of an isoceles triangle.  The base and height are shown as blue lines, with their intersection labeled as point M, the midpoint of the base.")
+
+Let $d = \|S\|$. Also let point
+$M = \frac{1}{2} S$ be the midpoint between the origin and point
+$S$. Line segments $\overline{OM}$ and $\overline{MS}$ both have
+length $\frac{d}{2}$.
+
+By construction, triangles $\triangle OMP$ and $\triangle SMP$ are
+both right triangles with base $d/2$, height $h$, and hypotenuse
+$\ell_2$. Since base and hypotenuse are known, we can solve for $h$
+using the Pythagorean theorem.
+
+If the coordinates of $M$ are given by $M = (m_x, m_y)$,
+vector $P$ can be computed as
+
+$$
+P = M + \frac{2 h}{d} (-m_y, m_x).
+$$
+
+!!! Tip
+    From figure [circles] we know that there are actually *two*
+    possible locations of $P$; however, only the top intersection
+    point is reachable due to the way the four-bar linkage is
+    constructed. The lower intersection would require the arms of the
+    plotter robot to pass through each other, and possibly also the
+    block the arms are mounted on.
+    
+Then according to the earlier equation in the FK section above,
+$$
+Q = \frac{\ell_1}{\ell_2} ( P -  S ).
+$$
+Finally, we can get the angles $\alpha$ and $\beta$ by computing
+the angles of vectors $P$ and $Q$, respectively, using the
+inverse tangent function.
+
+## PWM and RC servos
+
+[RC servo motors](https://en.wikipedia.org/wiki/Servo_%28radio_control%29)
+of the type used in this pen plotter robot are controlled by sending a
+[Pulse-Width Modulation (PWM) signal](https://en.wikipedia.org/wiki/Pulse-width_modulation).
+
+In PWM, a device outputs a time-varying signal that alternates between
+zero and a constant non-zero voltage (e.g. 3.3V) during a fixed period
+(e.g. 20 ms).
+
+Unlike many PWM applications where the duty cycle (e.g. the percentage
+of time spent at the non-zero voltage) determines the output, for RC
+servos, [the critical factor that controls position is the pulse width](https://en.wikipedia.org/wiki/Servo_control)
+(duration of time on, independent of the control period), as shown in
+the figure below.
+
+![Figure [servo]: PWM control of a typical RC servo. Image courtesy [Wikipedia](https://commons.wikimedia.org/wiki/File:Servomotor_Timing_Diagram.svg)](images/Servomotor_Timing_Diagram.svg.png alt="Three graphs show the electrical signal sent to a servo and the corresponding angular position of the servo.  The first graph shows a square wave with a 20 millisecond period and a 1500 microsecond pulse width that corresponds to the servo's center position.  The second graph shows a square wave with a 20 millisecond period and a 2000 microsecond pulse width that corresponds to the servo's position of positive 90 degrees.  The third graph shows a square wave with a 20 millisecond period and a 1000 microsecond pulse width that corresponds to the servo's position of negative 90 degrees.")
+
+For the
+[cheap Amazon-sourced servos we are using](https://www.amazon.com/Miuzei-MG90S-Servo-Helicopter-Arduino/dp/B0BWJ26PX2),
+a pulse width of 500 μs corresponds to an angle of 0&deg; and 2,500 μs
+corresponds to an angle of 180&deg;.
+
+The module I wrote to control the pen plotter uses the [**`adafruit_motor.servo.Servo`** class](https://docs.circuitpython.org/projects/motor/en/latest/api.html#adafruit_motor.servo.Servo) which in turn wraps
+a [**`pwmio.PWMOut`** object](https://docs.circuitpython.org/en/latest/shared-bindings/pwmio/index.html#pwmio.PWMOut).
+
+For further reading, check out this [basic tutorial on using servos with the CPX](https://learn.adafruit.com/adafruit-circuit-playground-express/circuitpython-servo).
+
+# Lab Exercises
+
+## Exercise 1 (desktop Python): Circle intersection
+
+Download the [`lab3_desktop.py`](lab3/lab3_desktop.py) file and implement
+the **`intersect_circles(S)`** function so that all of the
+tests in **`lab3_ex1()`** pass. 
+
+Your code should use the **`l2`** constant defined at the top of the
+file as the circle radius.
+
+If there is no valid intersection point (either because $S$ is the
+zero vector, or because $\| S \| > 2 \ell_2$), the
+**`intersect_circles`** function should return **`None`**.
+Otherwise, it should return the vector $P$ that is a distance
+$\ell_2$ from both the origin and the input point $S$.
+
+(###) Questions
+
+  * **Q1)** Did your code pass all of the tests on the first try? If not, How
+    did you have to modify your **`intersect_circles`** function?
+
+## Exercise 2 (desktop Python): Inverse kinematics
+
+Once you have finished exercise 1, comment out **`lab3_ex1()`** at the
+bottom of the `lab3_desktop.py` file, and uncomment **`lab3_ex2()`**.
+Then implement the **`ik(S)`** function so that all of the tests in
+**`lab3_ex2()`** pass.
+
+Your code should call the **`intersect_circles`** function that you
+wrote in Exercise 1. If there is no valid intersection point, then your
+**`ik`** function should return **`None`**; otherwise it should return
+a pair of angles **`(alpha, beta)`** to drive the arms to to put the
+pen at point **`S`**.
+
+The joint limits for the robot and other useful constants like
+**`l1`** and **`l2`** are defined at the top of the `lab3_desktop.py`
+file. Please look over them before you complete this exercise.
+
+!!! Tip
+    If your graphs look right but your tests aren't passing, make sure
+    you are considering the joint limits of the pen plotter
+    robot. Remember that the range of the **`numpy.arctan2`** function
+    is $[-\pi, \pi]$, which does not perfectly contain the joint
+    limits of both joints.
+    
+
+(###) Questions
+
+  * **Q2)** Did your code pass all of the tests on the first try? If
+    not, how did you have to modify your **`ik`** function? Did you
+    need to revisit your **`intersect_circles`** function to make
+    further corrections to it?
+
+## Exercise 3 (CircuitPython): Motion along a line segment
+
+(###) Setting up the pen plotter
+
+To hook up your breadboard to your CPX and servos, follow these steps:
+
+  * Plug the upper arm servo which sets the $\alpha$ angle into the
+    breadboard at the topmost pair of red/black wires, closest
+    the black barrel jack. Make sure the brown wire from the servo
+    lands in the same row as the black wire on the breadboard, and
+    make sure the red wire from the servo matches up with the red wire
+    on the breadboard.
+    
+  * Plug the lower arm servo which sets the $\beta$ angle into the
+    breadboard at the middle pair of red/black wires. Again, match
+    brown to black and red to red.
+    
+  * Plug the the cam servo for lifting the pen into the breadboard at
+    the bottom-most pair of red/black wires, furthest from the barrel
+    jack. Match colors.
+    
+  * **With both the CPX and the barrel jack unplugged**, make the
+    connections listed in the table below using clip-to-pin leads.
+    
+Use a black lead to connect to `GND`, a red lead to connect to
+`VOUT`, and any other colors to connect to `A1` through `A3`.
+
+| CPX pin | Breadboard location |
+|:--------|:--------------------|
+| `A1` | $\alpha$ (top arm) motor gold wire |
+| `A2` | $\beta$ (bottom arm) motor gold wire |
+| `A3` | cam motor gold wire |
+| `GND` | ground (blue) rail on breadboard |
+| `VOUT` | power (red) rail on breadboard |
+
+See the photo below for an illustration:
+
+![Figure [connection]: Connecting the CPX to the pen plotter. Remember not to plug in the USB cable till you have verified all of the other connections.](images/lab3_connecting.jpg alt="The pen plotter and the CPX are both plugged into a solderless breadboard.")
+    
+!!! Warning
+    It is very important to avoid connecting `GND` directly to
+    `VOUT`. If you are unsure whether you have wired your plotter up
+    correctly, ask me to check your setup before plugging anything in.
+    
+Once everything is hooked up, you are ready to plug in USB!
+
+!!! Tip
+    This setup powers the servos from your computer's USB port. If the
+    motors do not move smoothly or at all when completing the exercise,
+    try disconnecting the `VOUT` lead and plug a 5V power supply into the barrel
+    connector instead.
+    ***IMPORTANT: If you don't disconnect the `VOUT` pin prior to plugging in the
+    barrel connector, you risk damaging your CPX or your laptop!***
+
+(###) Running your pen plotter
+
+Your pen plotter has magnets on its base that can clamp a 6"x4" blank
+index card to a steel plate (both available in lab), as shown in
+Figure [plotter]. With the body of the plotter in its elevated
+position, you can insert a felt-tip pen (also available in lab) into
+the arm and secure it with the provided screw. The correct height of
+the pen should be about 2-3 mm above the paper.
+
+  * If the pen is too high, it might not contact the paper, or
+    might lift off when the pen is close to the base.
+    
+  * If the pen is too low, you will see the robot and/or pen leaning
+    and tilting as the plotter draws.
+
+   
+(###) Coding
+
+Download this [zip file](lab3/lab3_cpx.zip) and extract the contents
+to the root directory of your CIRCUITPY drive. When you are done, the
+new `code.py` should land in the root directory, and your `lib`
+directory should contain the new file `jankyplotter.mpy` as well as
+the subdirectory `adafruit_motor`.
+
+!!! Warning
+   **If you already have a `code.py` file on your CPX with valuable
+   code in it, beware of overwriting it!** Consider renaming the one
+   on your CPX or backing it up to your computer before copying over
+   the starter code.
+
+Your job is to implement the **`move_linear(plotter, new_pos)`** function to smoothly
+(well, as smoothly as possible, at least) move the end effector along
+a line segment from its starting position to the desired end effector
+position at the robot's **`MOVE_SPEED`** constant specified at the top
+of `code.py`.
+
+The **`move_linear`** code provided in the starter code is neither
+linear nor smooth. It just commands the servos to the destination
+position as quickly as possible, then sleeps for a second.  Note that
+the paths that it produces are not straight at all!
+
+Pseudocode for the correct **`move_linear`** implementation is
+provided below. **Please note there is deliberately no `sleep` call in the loop here!**
+
+
+~~~ None
+record the current position of the end effector (the starter code does this for you)
+find the distance d in mm between the current end effector position and the new position
+  
+let t_total be the time in seconds to traverse that distance at MOVE_SPEED
+
+let start = monotonic_ns()
+let u = 0
+
+while u < 1:
+
+    let now = monotonic_ns()
+    let elapsed_ns = now - start
+    compute elapsed_s by applying the appropriate prefix conversion
+    
+    let u = min(elapsed_s/t_total, 1)
+    
+    linearly interpolate from the start point to the end point by the fraction u
+    
+    compute the ik for the linearly interpolated position
+    
+    command the robot to go to the resulting joint angles
+~~~
+
+
+!!! Warning
+    **Numpy is not available for CircuitPython.** You will need to
+    represent points using pairs of floats, and compute any relevant
+    vector operations (e.g. magnitude computation, addition,
+    subtraction, multiplication by scalars) element-wise.
+
+!!! Tip
+    You may find the [documentation for the **`monotonic_ns()`** function helpful](https://docs.circuitpython.org/en/latest/shared-bindings/time/#time.monotonic_ns).
+    
+    Also, there's no need to copy or port your implementation of the
+    **`ik`** function over to CircuitPython -- you can just call the
+    function with the same name that is imported from the **`jankyplotter`** 
+    module.
+    
+When you have successfully implemented this, the robot should move at
+a steady pace along a square in a loop forever (or at least a shape
+more square than the starter code achieves).
+
+(###) Questions
+
+  * **Q3)** Record a video of your robot drawing a square and include
+    the URL in your writeup. Make sure the video is shared with my
+    Swarthmore email address.
+
+## Exercise 4 (CircuitPython): State machine for drawing
+
+Comment out the **`lab3_ex3()`** call at the bottom of `code.py` and
+uncomment **`lab3_ex4()`**. Your task for this exercise is to edit the
+**`lab3_ex4()`** function to implement a state machine according to
+the following specifications:
+
+  * The function reads a text file where every line is either an `X Y`
+    pair of numbers, or a blank line.
+  
+  * The plotter starts out in its home position with the pen up.
+  
+  * When the pen is up and the robot reads an `X Y` line, 
+    the robot should use the **`move_linear`** function to move
+    to that point, and then drop the pen.
+    
+  * When the pen is down and the robot reads an `X Y` line,
+    the robot should use the **`move_linear`** function to
+    move to that point without modifying the pen height.
+    
+  * When the robot reads a blank line, it should lift its pen.
+  
+  * After the file has been read entirety, the robot should lift
+    its pen. 
+    
+!!!Tip
+   You may find the following methods of the **`JankyPlotter`** class
+   helpful:
+
+     * **`plotter.pen_up()`** lifts the pen.
+  
+     * **`plotter.pen_down()`** drops the pen.
+  
+     * **`plotter.is_pen_down()`** returns a Boolean.
+  
+
+(###) Questions
+
+  * **Q4)** How does the code for this exercise read through and parse
+    a file? Paste the relevant lines from the starter code into your
+    writeup and explain them to the best of your ability. Skip over
+    any lines that are not related to file input or text parsing.
+  
+  * **Q5)** Record a video of your robot successfully drawing the
+    picture contained in `hello.txt`, and provide a URL in your
+    write-up. Make sure it is shared with my Swarthmore email address.
+    
+## Exercise 5 (Desktop): Compare drawings to ground truth
+
+In `lab3_desktop.py`, comment out the call to **`lab3_ex2()`** function
+at the bottom of the file, and uncomment **`lab3_ex5()`**.
+
+Implement the **`lab3_ex5()`** function to use matplotlib to produce a
+plot of the contours in a text file formatted as described in
+Exercise 4. **You should base your file reading code on the starter
+code and your answer to Q4 above.**
+
+For example, this [`debug.txt`](lab3/debug.txt) file should produce
+the plot below.
+
+![Figure [good_debug]: Plot of `debug.txt` file linked above.](images/lab3_debug.png alt="Four shapes are plotted on a coordinate plane (clockwise from top left): a blue square, a green circle, an orange triangle, and a purple and red X.")
+
+!!! Tip
+    You can use [**`plt.savefig('foo.png')`**](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html) to save the current
+    plot to a PNG output image.
+
+!!! Warning
+    Make sure to call
+    [**`plt.axis('equal')`**](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html)
+    to ensure that there is a 1:1 correspondence between units along
+    the $x$ and $y$ axes of your graph. 
+    
+If you don't set the correct aspect ratio, you'll see something like the image below.
+
+![Figure [bad_debug]: Plot with incorrect aspect ratio -- the shapes all look squashed.](images/lab3_bad_debug.png alt="Four shapes are plotted on a coordinate plane (clockwise from top left): a blue rectangle, a green ellipse, an orange triangle, and a purple and red X.  All four shapes are wider than they are tall.)
+
+(###) Questions
+
+  * **Q6)** Photograph or scan your pen plotter's renderings of
+    `hello.txt`, `spooky1.txt`, and `spooky2.txt`. Include all three
+    images in your lab writeup.
+    
+  * **Q7)** Have your **`lab3_ex5()`** function produce graphs
+    of each of these three files. Include all three images in your lab writeup.
+  
+  * **Q8)** Comment on the mismatches you see between the plotter
+    output and the ground truth input. What are all of the sources of
+    error you can think of?  ***Hint: some may be due to software
+    issues, but many are mechanical in nature...***
+    
+  * **Q9)** What improvements to the software or hardware do you think
+    might help address these errors?
+
+# Lab Report
+
+Before your next scheduled lab meeting, submit a `.zip` file to [Moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=700193) (one submission per group) containing:
+
+  * Your completed `code.py` file.
+  
+  * Your completed `lab3_desktop.py` file.
+
+  * A PDF writeup with your names, the assignment name, answers to 
+    all questions **Q1**-**Q9** above as well as **Q10** below:
+    
+    * **Q10)** Did all group members contribute equally to all tasks?
+      If not, who did what for each exercise?
+      
+In your PDF, please include the questions verbatim, preserving the
+numbering I have used. Also make sure to format my questions
+differently than your answers (e.g. using boldface, italics, or
+a predefined Heading style).
+      
+!!! Warning
+    **Don't forget to make sure your videos are linked in the PDF writeup
+    and shared with my Swarthmore email address!**
+      
+## Grading
+
+Points will be assigned approximately according to the following breakdown:
+
+ | Item | Grade value |
+ | :---  | --: |
+ | Answers to **Q1**-**Q10** and general writeup quality| 40% |
+ | Code for **`intersect_circles()`** | 10% |
+ | Code for **`ik()`** | 10% |
+ | Code for **`move_linear()`** | 10% |
+ | Code for **`lab3_ex4()`** | 10% |
+ | Code for **`lab3_ex5()`** | 10% |
+ | Video demos | 10% |
+ 
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script>markdeepOptions = { tocStyle: 'short' };</script>
+<script src="../markdeep/markdeep.1.16.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
+
