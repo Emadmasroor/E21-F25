@@ -336,7 +336,7 @@ var STYLESHEET = entag('style',
 
     '.md table.table th{' +
     'color:#FFF;' +
-    'background-color:#AAA;' +
+    'background-color:#666666;' +
     'border:1px solid #888;' +
      // top right bottom left
     'padding:8px 15px 8px 15px' +
@@ -362,7 +362,7 @@ var STYLESHEET = entag('style',
     '}' +
 
     '.md a.target{width:0px;height:0px;visibility:hidden;font-size:0px;display:inline-block}' +
-    '.md a:link, .md a:visited{color:#005999;text-decoration:none}' +
+    '.md a:link, .md a:visited{color:#2a7fa1;text-decoration:none}' +
     '.md a:link:hover{text-decoration:underline}' +
 
     '.md dt{' +
@@ -394,7 +394,9 @@ var STYLESHEET = entag('style',
     'text-align:left' +
     '}' +
 
-    '.markdeepFooter{font-size:9px;text-align:right;padding-top:80px;color:#999}' +
+    '.markdeepFooter{font-size:9px;text-align:right;padding-top:80px;color:#333}' +
+
+    '.markdeepFooter a:link,.markdeepFooter a:visited{color:#333}' +
 
     '.md .mediumTOC{float:right;font-size:12px;line-height:15px;border-left:1px solid #CCC;padding-left:15px;margin:15px 0px 15px 25px}' +
 
