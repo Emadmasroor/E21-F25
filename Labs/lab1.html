@@ -1,0 +1,572 @@
+      <meta charset="utf-8" emacsmode="-*- markdown -*-">
+         **E21 Lab 1: Capacitive touch passcode**
+               **[ENGR 21 - Fall 2025](../index.html#lab1)**
+             **September 8-18, 2025**
+             **Due on Moodle (one submission per group) prior to your next lab**
+
+
+(#) Objectives
+
+* Learn about capacitive touch sensing.
+
+* Use conditionals (**`if`** statements) to respond to pin inputs on the
+  Circuit Playground Express (CPX).
+  
+!!! Warning
+    You may be familiar with more advanced Python language
+    features such as **`for`** and **`while`** loops,
+    list indexing operations, and functions defined using 
+    using the **`def`** keyword. 
+    
+    **You should not use any of those language features while
+    completing this lab.** The only core programming skill you will
+    need today is (potentially nested) **`if`** statements.
+
+# Lab Overview
+
+This week in lab, you will apply what you have learned in class about
+programming in CircuitPython on the Circuit Playground Express to
+several tasks of increasing complexity, building up a system that
+lights up when the correct sequence of capacitive touch inputs is
+entered.
+
+## A note on collaboration
+
+There are several exercises in this lab. Exercise 1 does not require
+any coding but the others all do. This class is about gaining coding
+experience, so **please make sure that everyone in your lab group has
+a chance to code on *each* exercise.** When I'm walking around the room,
+I want to see you taking turns at the keyboard, with one person coding
+in conversation with others. 
+
+Even if you have more than one computer and CPX available for use in this
+lab, everyone on your group should work with a single computer/CPX.
+
+## Lab progress
+
+I expect most groups will complete or at least make substantial
+progress on Exercise 4 by the end of lab. You can finish outside of
+lab on your own time.
+
+I strongly encourage you to flag me down during lab to check in about your
+progress as you complete each exercise during lab.
+
+# Background
+
+## Capacitive touch
+
+![Figure [cpins]: Capacative touch pins on CPX. Image courtesy of Adafruit.](images/circuitpython_cpx_capacitive_touch_pads.jpg width="75%" alt="A close-up image of an Adafruit Circuit Playground Express.  Pins A1 to A7 are circled in red.")
+
+The CPX has seven pins capable of serving as capacitive touch inputs,
+as described on [this Adafruit
+article](https://learn.adafruit.com/circuitpython-made-easy-on-circuit-playground-express/capacitive-touch),
+which also gives an overview of how access them in CircuitPython.
+
+The basic idea of capacitive touch is that when you connect a
+conductive object to the input pin, that object and your own body
+create a [capacitor](https://en.wikipedia.org/wiki/Capacitor) that can
+store a small amount of charge. The resulting change in charge can be
+sensed by a microcontroller and used as an input.
+
+This same principle also governs how phone touch screens work.
+
+For more details about capacitive touch, I recommend reading this
+[more in-depth article at All About
+Circuits](https://www.allaboutcircuits.com/technical-articles/introduction-to-capacitive-touch-sensing/).
+
+![Figure [vground]: Electrical schematic of a capacative touch system. Image courtesy of All About Circuits.](images/ICTS_diagram4_2.jpg width="75%" alt="The index finger of a hand is nearly toughing an electrical ground.  A circuit schematic is superimposed, showing the capacitance between the finger and the ground.")
+
+## **`while True`**
+
+In Python, a **`while True`** loop repeats all of the statements
+inside of the loop over and over, forever.
+
+To illustrate this, enter REPL mode (you may need to open the Serial
+window in Mu Editor and press `Ctrl + C` if a program is running) and
+paste in the following commands:
+
+~~~ Python
+import time
+
+while True:
+    print('yooooooooo')
+    time.sleep(0.1)
+~~~
+
+You will need to press `Ctrl + C` in the Serial window to terminate
+this loop.
+
+All statements in a **`while True`** loop execute in
+sequence, no matter how many there are. For example, this loop alternates
+between printing two different messages.
+
+~~~ Python
+while True:
+    print('hello')
+    time.sleep(0.1)
+    print('goodbye')
+    time.sleep(0.1)
+~~~
+
+Again, you'll need to press `Ctrl + C` in the Serial window to
+terminate this loop.
+
+## Nested **`if`**
+
+In Python, **`if`** statements can contain any other statements inside
+of them, including other **`if`** statements. For example, the code
+snippet
+
+~~~ Python
+x = 3
+y = 4
+if x == 3 and y == 4:
+    print('x is 3 and y is 4')
+~~~
+
+is equivalent to
+
+~~~ Python
+if x == 3:
+    if y == 4:
+        print('x is 3 and y is 4')
+~~~
+
+Nested **`if`** statements are particularly useful when you have a chain of
+comparisons you want to make and you want to take some actions
+along the way, but only under some circumstances.
+
+For example, the following code snippet could be the control flow of a
+program that plays a (very boring) game that asks the user to
+name two even numbers. Doing so results in victory, but providing 
+any odd numbers results in immediate defeat:
+
+~~~ Python
+print('Give me two even numbers, please')
+num = int(input('First number? '))
+if num % 2:
+    print('First number odd, you lose!')
+else:
+    num = int(input('Second number? '))
+    if num % 2:
+        print('Second number odd, you lose!')
+    else:
+        print('Both even, you win!')
+~~~
+
+In the above code, the user is only asked for the second number if the
+first number is even. Hopefully you can see the utility of nested
+**`if`** statements!
+
+## Functions
+
+!!! Tip
+    **You'll learn more about functions in class later this month.**
+    This basic intro is just enough to get you going in the lab.
+
+Functions in Python are bits of code that you can execute at a later
+time. They are defined using the **`def`** keyword.
+
+For example, we could make a function **`hello()`** that prints
+the string `"Hello, world!"`, like this:
+
+~~~ Python
+def hello():
+    print("Hello, world!")
+~~~
+
+The code inside of a function does not run until you *call* the
+function using parentheses containing zero or more comma-separated
+arguments, for example:
+
+~~~ Python
+hello()
+~~~
+
+...should result in `Hello, world` being printed to the console.
+Without the parentheses, you'll just see some information about
+the **`hello`** function itself, rather than executing
+the code inside of it. Try it:
+
+~~~ Python
+hello
+~~~
+
+You've already used one very common Python function quite a bit -- the
+built-in **`print()`** function. 
+
+There are many reasons people use functions including being able to
+re-reun the same code over and over without copy-pasting it all;
+however, in Lab 1, we are mostly using functions in order for you to
+focus on each exercise below, one at a time. Hence, the starter code
+comes with functions named **`lab1_ex1()`** through **`lab1_ex5()`**
+that you will call, and in some cases modify.
+
+
+# Lab Exercises
+
+Before you begin, download this [`code.py`](lab1/code.py) file and
+copy it over to the root directory of your CPX.
+
+!!! Warning
+   **If you already have a `code.py` file on your CPX with valuable
+   code in it, beware of overwriting it!** Consider renaming the one
+   on your CPX or backing it up to your computer before copying over
+   the starter code.
+
+When moving from exercise to exercise, you will comment and un-comment
+the function calls at the very bottom of Lab 1's `code.py`. 
+
+!!! Tip
+    Everything in a line of Python code including and after a hash
+    mark **`#`** character is a *comment* and will not be executed. To
+    comment a line of code, add a single **`#`** to the start of the
+    line (after indentation). To uncomment, 
+    simply delete the **`#`**.
+
+## Exercise 1: Raw touch input 
+
+When you run the code, open the Serial and Plotter windows, and
+observe the effects of touching the **`A1`** pad on the CPX.  (There
+should be nothing electrically connected to the pad.) You should see
+the graph change significantly depending whether you are touching the
+pad or not.
+
+Write down the reading from the Serial window *before*, *during*, and
+*after* touching the pad for each group member. If the readings wander
+a lot during a condition (e.g. *during* touch), try to pick the
+average value. You should now have three readings per group member.
+
+Now use the provided alligator clips to attach a variety of objects to
+the **`A1`** pad and repeat the process of recording readings
+*before*, *during*, and after *touching*, this time when touching the
+object clipped to the pad instead of the pad itself. Do this for at least three
+objects total, including some of those you brought, as well as one of the
+tinsel balls provided in lab. You should now have twelve readings per group member (three for the pad with nothing clipped to it, plus three each for three different objects).
+
+!!! Warning
+    **For this and all future E21 labs, please make sure to write up
+    your answers to the questions in each exercise before you move on
+    to the next task.** They are designed to help you complete the
+    labs effectively!
+
+  * **Q1)** Compile a table of all of the readings you collected. The
+    columns should include *object*, *person*, *before*, *during*, and *after*.
+
+  
+  * **Q2)** Which object has the smallest differences between *before* and
+    *during* readings? (E.g. the quantity *during* minus *before*) Which 
+    object has the largest differences?
+    
+  * **Q3)** Do you see any significant difference between *before* and
+    *after* readings for any object? How large are they compared to the
+    *before*-vs-*during* differences?
+    
+  * **Q4)** Does the object being touched significantly affect the
+    readings in any other ways (e.g. do their graphs look visually
+    different)? Does one group member tend to have larger or smaller
+    readings than another?
+
+## Exercise 2: Calibration and debouncing
+
+Edit the lines at the bottom of `code.py` to comment out
+**`lab1_ex1()`** and uncomment **`lab1_ex2()`**. 
+
+Run the program with no objects clipped to any capacitive touch input pads, 
+and look at the results in the Serial window as you touch the pads.
+
+(###) How capacitive touch works on the CPX
+
+As you saw in Exercise 1, a capacative touch input produces a
+continously varying value, but in order to be used as a button, that
+continous range needs to be reduced to *touched* or *not touched*.
+
+According to the
+[Adafruit CircuitPython documentation](https://docs.circuitpython.org/en/latest/shared-bindings/touchio/index.html#touchio.TouchIn.threshold),
+when a **`TouchIn`** object is initialized, the initial reading $r_0$
+of the touch sensor is recorded. Then, later at time $t$ if the 
+touch sensor reports a reading $r_t$ more than a threshold value
+$\tau$ away from $r_0$, the state of the input becomes *touched*,
+otherwise it is *not touched*.
+
+Or to put it mathematically, the binary or *Boolean* variable $v_t$
+can be described as a function of $r_t$ as follows:
+
+$$
+v_t = \left\{ \begin{array}{ll}
+1 & \text{if}\ r_t > r_0 + \tau \\
+0 & \text{otherwise} \\ 
+\end{array} \right.
+$$
+
+The default threshold value is $\tau = 100$.
+
+
+The
+[**`cp.adjust_touch_threshold()`**](https://docs.circuitpython.org/projects/circuitplayground/en/latest/api.html#adafruit_circuitplayground.circuit_playground_base.CircuitPlaygroundBase.adjust_touch_threshold)
+function allows you to adjust the threshold used to detect touches. An
+adjustment of zero corresponds to setting the default value of $\tau =
+100$, whereas an adjustment of 900 corresponds to setting $\tau =
+1000$. **Higher adjustments make the touch sensor less sensitive.**
+
+(###) Calibrating the touch sensor to your objects
+
+With no object clipped, the default adjustment of zero should work
+just fine. However, you may find that with some objects, a larger
+adjustment is required to prevent spurious touch detections. On the
+other hand, if the threshold is too large, it becomes more likely for
+the program to fail to recognize valid touches.
+
+Use alligator clip leads to once again connect the three objects you
+used in Exercise 1 to the touch inputs. Then restart your code.
+
+!!! Warning
+    **Always restart your code when connecting or disconnecting
+    objects to touch inputs!** The program only records the initial
+    sensor reading $r_0$ when it begins, and different objects may
+    want different $r_0$ readings.
+    
+    You can restart the program by clicking the ***Save*** button in
+    Mu Editor, or by using the Serial window and pressing `Ctrl + C`
+    then `Ctrl + D` on your keyboard to exit the program and then 
+    reload it.
+
+Use trial and error to change the argument passed into
+**`cp.adjust_touch_threshold()`** inside of **`lab1_ex2()`** in order
+to to ensure that the program successfully detects touches on all
+objects without any false detections.
+
+!!! Tip
+    Some objects result in false touch detections when your hand is
+    near, but not touching them. If that happens you'll want to
+    increase your threshold.
+    
+    Remember, if your adjustment is too high, you will end up missing
+    valid touches.
+
+
+
+  * **Q5)** What argument passed to **`cp.adjust_touch_threshold()`**
+    gave you the best result? How did your work in Exercise 1 inform
+    the process of adjusting the threshold?
+    
+  * **Q6)** The **`wait_for_touch()`** function is passed a single
+    argument, which is the number of milliseconds to wait before
+    switching between the *not touched* and *touched* states. The
+    initial setting is 50 ms. Try changing this to 0 ms. Does the
+    program still work well for all of the objects you connect,
+    *including the tinsel ball*? (See what happens if you slide your
+    finger along the ball without breaking contact.)  If you see
+    issues when going to 0 ms, why do you think they might arise?
+    
+Make sure you restore the argument to its original value of 50 ms
+before you move to Exercise 3.
+
+## Exercise 3: Reacting to a capacitive touch event with lights
+
+Edit the lines at the bottom of `code.py` to comment out
+**`lab1_ex2()`** and uncomment **`lab1_ex3()`**. Then run the code.
+
+!!! Tip
+    Before you continue, modify the argument to
+    **`cp.adjust_touch_threshold()`** inside of **`lab1_ex3()`** to
+    the value you successfully identified in Exercise 2.
+
+!!! Warning
+    When running the code for this and the remaining exercises, 
+    you will be prompted to press button *A* or button *B* on
+    the microcontroller. **Make sure not to press the small *Reset*
+    button by mistake, or you will temporarily eject the CIRCUITPY drive
+    and restart the microcontroller.**
+
+This program waits for a touch input, then fills the CPX board's
+NeoPixel lights with white color until a button is pressed. 
+
+Modify this program by adding an **`if`** statement to check whether
+input **`A1`** (and only **`A1`**) was touched, and only filling the
+NeoPixels with white if it was. If any other input is touched the
+NeoPixels should stay dim.
+
+!!! Tip
+    If you are stuck figuring this out, try dropping into REPL mode
+    (press `Ctrl + C` in the Serial window if a program is running)
+    and pasting in the following lines of code. Pay close attention to
+    the results printed after each comparison operation using the
+    **`==`** operator: 
+    
+    ~~~ Python 
+    import board
+
+    pin = board.A1 # assignment, not comparison
+    
+    pin == board.A1 # first comparison, should print True or False
+    pin == board.A2 # second comparison
+    
+    pins = [board.A1, board.A2] # assignment, not comparison
+    
+    pins == [board.A1, board.A2] # third comparison
+    pins == [] # fourth comparison
+    ~~~
+    
+Finally, modify your program to fill the NeoPixels with white if
+**`A1`** is touched, and red if any other input is touched.
+The program should still wait for a button press after each touch,
+and reset the NeoPixels to black after each button press.
+
+!!! Tip
+    **Hint:** you don't need a whole new **`if`** statement to accomplish
+    this second task. Instead, try adding an **`else`** to the **`if`** 
+    statement.
+    
+## Exercise 4: Capacitive touch passcode
+
+Edit the lines at the bottom of `code.py` to comment out
+**`lab1_ex3()`** and uncomment **`lab1_ex4()`**. Then run the code.
+
+!!! Tip
+    Before you continue, modify the argument to
+    **`cp.adjust_touch_threshold()`** inside of **`lab1_ex4()`** to
+    the value you successfully identified in Exercise 2.
+
+This code starts out with the NeoPixels all black, then lights up
+one, then two, then three NeoPixels to be green before ending with
+the NeoPixels being all white. After that, the sequence repeats.
+
+In case you want to refer to them later, the relevant lines for
+controlling the NeoPixels are:
+
+~~~ Python
+cp.pixels.fill(BLACK)
+cp.pixels[0] = GREEN
+cp.pixels[1] = GREEN
+cp.pixels[2] = GREEN
+cp.pixels.fill(WHITE)
+~~~
+
+Comment out or delete the lines inside the loop, then paste in the
+interior of the loop from **`lab1_ex3()`** as a starting point for the
+remainder of this exercise.
+    
+Now choose a combination of four touch inputs (e.g. **`A1`**,
+**`A2`**, **`A3`**, **`A4`**) and modify your loop to satisfy the
+following specification:
+
+  * Initially the NeoPixels are all black.
+  
+  * When each of the first three inputs in the combination are touched
+    in the correct order, the next NeoPixel is turned to
+    green. E.g. first **`cp.pixels[0]`** then **`cp.pixels[1]`** then
+    **`cp.pixels[2]`**.
+    
+  * When the fourth and final input is touched correctly,
+    the NeoPixels should be filled with white, and stay that way
+    until a button is pressed.
+  
+  * If any input is touched in the wrong order, or any input not in
+    the combination is touched, the NeoPixels should be filled with
+    red, and stay that way until a button is pressed.
+    
+  * When a button is pressed, the NeoPixels should return to 
+    black and the combination can be attempted again.
+    
+Here is a video of a successful solution to this exercise:
+
+  ![](https://youtu.be/19N9Wqp-3G4)
+
+The video shows one successful combination entry, multiple incorrect
+entries, and finishes with one more successful entry.
+
+When you are finished with this task, shoot a similar video, upload it
+to your Google drive, and make sure it is shared with my email
+address. Your video must be clearly shot and begin with one correct
+combination entry, then have at least two incorrect entries, and end
+with another correct entry.
+
+  * **Q7)** Describe your approach to solving this exercise. Was
+    there a "eureka" moment? Did completing this task in lab lead
+    you to think about **`if`** statements in a different way
+    than you thought about them in class?
+
+  * **Q8)** What is the URL for your exercise 4 video? (Make sure it
+    is shared with my Swarthmore email address.)
+
+!!! Tip
+    If your lights aren't showing up well on camera, you can adjust
+    the NeoPixel brightness that is set towards top of the
+    `lab1_ex4.py` program (or shoot in a darker room).
+
+
+## Exercise 5: Going further
+
+Edit the lines at the bottom of `code.py` to comment out
+**`lab1_ex4()`** and uncomment **`lab1_ex5()`**. Then, copy and paste
+the implementation of your **`lab1_ex4()`** function into
+**`lab1_ex5()`** to make a starting point for this exercise.
+
+Choose one of these activities to further develop and exhibit your coding skills:
+
+  * **Make a cooler "ending" to the program.** Instead of just filling
+    the NeoPixels with white, make them animate, have the CPX play a
+    sound, or do some other behavior that is more dramatic or
+    entertaining than the original specification. You can always refer
+    to the
+    [AdaFruit CircuitPython Made Easy articles](https://learn.adafruit.com/circuitpython-made-easy-on-circuit-playground-express)
+    for inspiration and tutorials.
+
+  * **Improve the program.** If you know how to make the program
+    shorter and easier to maintain by using functions, list indexing
+    operations, and/or loops, do so. The improved version should be
+    substantially shorter and more readable than the result after
+    Exercise 4. (If you don't know how to accomplish this, don't
+    worry, just choose a different activity.)
+
+  * **Propose your own enhancement.** If neither of the above options suits, 
+    consult with me in person or over the [Ed discussion forum](https://edstem.org/us/courses/61903/discussion/) about another
+    enhancement of your group's choosing.
+    
+In your writeup, please answer the following:
+
+    * **Q9)** What "Going further" activity did you choose? Briefly
+      describe how you went about completing this exercise. Include a
+      URL to a demonstration video shared with my Swarthmore email
+      address if you added additional lights or sounds since Exercise 4.
+    
+
+# Lab Report
+
+Before your next scheduled lab meeting, submit a `.zip` file to [moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=695663) (one submission per group) containing:
+
+  * Your completed `code.py` file.
+
+  * A PDF writeup with your names, the assignment name, answers to 
+    all questions **Q1**-**Q9** above as well as **Q10** below:
+    
+    * **Q10)** Did all group members contribute equally to all tasks?
+      If not, who did what for each exercise?
+      
+In your PDF, please include the questions verbatim, preserving the
+numbering I have used. Also make sure to format my questions
+differently than your answers (e.g. using boldface, italics, or
+a predefined Heading style).
+      
+!!! Warning
+    **Don't forget to make sure your videos are linked in the PDF writeup
+    and shared with my Swarthmore email address!**
+      
+## Grading
+
+Points will be assigned approximately according to the following breakdown:
+
+ | Item | Grade value |
+ | :---  | --: |
+ | Answers to **Q1**-**Q10** and general writeup quality| 40% |
+ | Code for `lab1_ex3()` | 10% |
+ | Code for `lab1_ex4()` | 30% |
+ | Code for `lab1_ex5()` | 10% |
+ | Video demo(s) | 10% |
+ 
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script>markdeepOptions = { tocStyle: 'short' };</script>
+<script src="../markdeep/markdeep.1.16.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
+
