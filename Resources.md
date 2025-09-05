@@ -13,6 +13,8 @@
   * [Product page for the Circuit Playground Bluefruit](https://www.adafruit.com/product/4333)
   * [Official Guide for the Circuit Playground Bluefruit](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/overview)
 
+If Mu does not work for you on Windows, you can follow [these instructions](https://learn.adafruit.com/welcome-to-circuitpython/advanced-serial-console-on-windows) to use PuTTY as your console as an alernative.
+
 ## Instructor's Circuit Playground Guide for E21
 
 To use any of these features, make sure your Python code includes the following line at the top:
