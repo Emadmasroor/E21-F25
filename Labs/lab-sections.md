@@ -12,15 +12,17 @@ Students in Section 1 will meet on the following Mondays: **9/8, 9/22, 10/6, 10/
 * Abdoul  Diallo
 * Michelangelo    Duva
 * Arina   Garifullina
+* Owen George
 * Sai Nyi Htut
 * Uneeb   Hyder
 * Zander  Jimenez
 * Magdelana   Jordan
-* Henry Osorio
 * Kiran   Mahurkar (9/22, 10/6, and 11/10)
 * Lucas   McGarvey (9/22, 10/6, and 11/10)
+* Liam Muro
 * Huyen Nguyen
 * Sean    Ordenana
+* Henry Osorio
 * Lucia Sanchez
 * Charles Schuetz
 * Dylan   Stringer
@@ -51,7 +53,6 @@ Students in Section 3 will meet on the following Mondays: **9/15, 9/29, 10/20, 1
 * Jayden  Figueroa Adorno
 * Max Ash
 * Quran   Duncanson
-* Owen George
 * Emanuel James
 * Steven  Jungers
 * Junghyun    Koh
@@ -60,6 +61,7 @@ Students in Section 3 will meet on the following Mondays: **9/15, 9/29, 10/20, 1
 * Kiran   Mahurkar (9/15 and 11/3)
 * Lucas   McGarvey (9/15 and 11/3)
 * Huy Nguyen
+* Matthew Rosenbaum
 * Jaiden  Shuchman
 * Sara    Suarez
 * Isabella    Thoen
