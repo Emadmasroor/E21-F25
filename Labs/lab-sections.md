@@ -1,6 +1,6 @@
 # Lab Sections
 
-E21 has four lab sections: Section 1 (Mondays), Section 2 (Thursdays), Section 3 (Mondays), and Section 4 (Thursdays). If you are not listed in one of the lab sections below, it is because you are not registered for a lab section.  Please add the E21 lab to your schedule, and then you will be placed in a section corresponding to the day your lab meets. If you have conflicts and need to change your lab section, please communicate with Will.
+E21 has four lab sections: Section 1 (Mondays), Section 2 (Thursdays), Section 3 (Mondays), and Section 4 (Thursdays).
 
 ## Section 1
 
