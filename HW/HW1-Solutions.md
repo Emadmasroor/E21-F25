@@ -19,27 +19,27 @@
 ['__class__', 'count', 'endswith', 'find', 'format', 'index', 'isalpha', 'isdigit', 'islower', 'isspace', 'isupper', 'join', 'lower', 'lstrip', 'replace', 'rfind', 'rindex', 'rsplit', 'rstrip', 'split', 'startswith', 'strip', 'upper', 'center', 'encode', 'partition', 'rpartition', 'splitlines']
 ```  
 We will now choose five of these to look up and explain. For example,  
-1. `count` is used to count the number of times a certain character appears in a string. 
-2. `endswith` checks whether a given string ends with a given character or not. So, for example:  
+a. `count` is used to count the number of times a certain character appears in a string. 
+b. `endswith` checks whether a given string ends with a given character or not. So, for example:  
 ```python
 >>> a = "hello"
 >>> a.endswith("e")
 False
 ```  
 since `hello` does not end with the letter `e`.  
-3. `isalpha` checks if a given string consists of alphabetical characters only, or not. So, for example:  
+c. `isalpha` checks if a given string consists of alphabetical characters only, or not. So, for example:  
 ```python
 >>> a = "hello"
 >>> str.isalpha(a)
 True
 ```  
 since `hello` consists of only letters.  
-4. `upper` converts a string to uppercase letters. So, for example,  
+d. `upper` converts a string to uppercase letters. So, for example,  
 ```python
 >>> str.upper("hello")
 "HELLO"
 ```  
-5. The function `rstrip` 'strips' given characters from the right side of a string. So, for example,  
+e. The function `rstrip` 'strips' given characters from the right side of a string. So, for example,  
 ```python
 >>> str.rstrip("A quick brown fox","fox")
 "A quick brown "
