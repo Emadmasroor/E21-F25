@@ -34,7 +34,16 @@ since `hello` does not end with the letter `e`.
 True
 ```  
 since `hello` consists of only letters.  
-
+4. `upper` converts a string to uppercase letters. So, for example,  
+```python
+>>> str.upper("hello")
+"HELLO"
+```  
+5. The function `rstrip` 'strips' given characters from the right side of a string. So, for example,  
+```python
+>>> str.rstrip("A quick brown fox","fox")
+"A quick brown "
+```  
 
 
 
