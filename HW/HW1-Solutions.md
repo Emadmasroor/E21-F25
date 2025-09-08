@@ -8,13 +8,32 @@
 ### Methods associated with built-in class `str`
 
 1. What does the method `find` give you if you use it to find a character that doesn't exist in the searched string?  
-This returns `-1`
+**Ans:** This returns `-1`
 2. How does `find` deal with repeated characters in a string?  
-The location of the first instance of that character is reported.
+**Ans:** The location of the first instance of that character is reported.
 3. Look up the documentation for the method `count` associated with the class `str`, i.e., the function `str.count`. Use this to write out the syntax for one line of code that counts the number of times the letter 'l' appears in the word 'hallelujah'.  
-The code for this is `str.count("hallelujah","l")`, which gives the answer `3`.
+**Ans:** The code for this is `str.count("hallelujah","l")`, which gives the answer `3`.
 4. In CircuitPython's REPL, use `dir(a)` where `a` is a string that you created. (It can be any string). This will give you all the methods that are associated with objects of type 'string' in CircuitPython. Choose 5 of these functions and look them up in the [official Python documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str). Write a short, one-to-two sentence explanation of what each function/method does. Also, write out a line of valid CircuitPython syntax for using the functions you have chosen.  
-Answer:
+**Ans:** Using `dir` on a string gives the following result.  
+```python
+['__class__', 'count', 'endswith', 'find', 'format', 'index', 'isalpha', 'isdigit', 'islower', 'isspace', 'isupper', 'join', 'lower', 'lstrip', 'replace', 'rfind', 'rindex', 'rsplit', 'rstrip', 'split', 'startswith', 'strip', 'upper', 'center', 'encode', 'partition', 'rpartition', 'splitlines']
+```  
+We will now choose five of these to look up and explain. For example,  
+1. `count` is used to count the number of times a certain character appears in a string. 
+2. `endswith` checks whether a given string ends with a given character or not. So, for example:  
+```python
+>>> a = "hello"
+>>> a.endswith("e")
+False
+```  
+since `hello` does not end with the letter `e`.  
+3. `isalpha` checks if a given string consists of alphabetical characters only, or not. So, for example:  
+```python
+>>> a = "hello"
+>>> str.isalpha(a)
+True
+```  
+since `hello` consists of only letters.  
 
 
 
