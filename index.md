@@ -17,7 +17,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Midterm**: None; 6 tests  
 **Final Exam**: None; Project  
 **Homework Due Date**: Tue at 11:59 PM  
-**Wizard Session**: Mon 7:00 to 9:00 PM  
+**Wizard Session**: Mon 7:00 to 9:00 PM in Singer 346   
 
 [Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives)
 
