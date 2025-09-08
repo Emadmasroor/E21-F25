@@ -19,7 +19,11 @@
 ['__class__', 'count', 'endswith', 'find', 'format', 'index', 'isalpha', 'isdigit', 'islower', 'isspace', 'isupper', 'join', 'lower', 'lstrip', 'replace', 'rfind', 'rindex', 'rsplit', 'rstrip', 'split', 'startswith', 'strip', 'upper', 'center', 'encode', 'partition', 'rpartition', 'splitlines']
 ```  
 We will now choose five of these to look up and explain. For example,  
-a. `count` is used to count the number of times a certain character appears in a string. 
+a. `count` is used to count the number of times a certain character appears in a string.  
+```python
+>>> str.count("hello","l")
+2
+```  
 b. `endswith` checks whether a given string ends with a given character or not. So, for example:  
 ```python
 >>> a = "hello"
@@ -44,6 +48,49 @@ e. The function `rstrip` 'strips' given characters from the right side of a stri
 >>> str.rstrip("A quick brown fox","fox")
 "A quick brown "
 ```  
+
+### Methods associated with built-in class `list`
+
+Using `dir` on a list returns:  
+```python
+['__class__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+```  
+We will now choose five of these to look up and explain.
+
+- `append` adds something to the end of a list. Thus,  
+```python
+>>> a = [1,2,3]
+>>> list.append(a,100)
+>>> a
+[1,2,3,100]
+```  
+- `clear` empties a list of all its contents. Thus,
+```python
+>>> a = [1,2,3]
+>>> list.clear(a)
+>>> a
+[]
+```  
+- `count` counts the number of times an object appears in a list. Thus,
+```python
+>>> list.count([1,2,3,100,3],3)
+2
+```
+- `reverse` reverses the order of a list. Thus,
+```python
+>>> a = [1,2,3,100,6]
+>>> list.reverse(a)
+>>> a
+[6,100,3,2,1]
+```
+- `sort` uses alphanumeric sort on the elements of a list. So, for a list of numbers, we get
+```python
+>>> a = [1,2,5,2,9,0,-1]
+>>> list.sort(a)
+>>> a
+[-1, 0, 1, 2, 2, 5, 9]
+```
+
 
 
 
