@@ -135,3 +135,63 @@ while True:
     if cp.button_b:
          cp.play_tone(220,1)
 ```
+
+### Lec 2.1, Tue Sep 9
+
+### Code snippets
+
+You can either download these files [here](lec3_files.zip) or copy the code from below.
+
+- `read_pinA1_as_digital_input.py`
+
+```python
+from adafruit_circuitplayground import cp
+import time
+
+for j in range(200):
+    print("Pin A1 digital read:",cp.touch_A1)
+    print((int(cp.touch_A1),))
+    if cp.touch_A1:
+        cp.pixels[3] = (0,25,0)
+    else:
+        cp.pixels[3] = (25,0,0)
+    time.sleep(0.1)
+```
+
+
+- `read_pinA1_as_analog_input.py`
+
+```python
+import board
+import analogio
+import time
+
+pin_a1 = analogio.AnalogIn(board.A1)
+
+for j in range(200):
+    print("Pin A1 analog read:",pin_a1.value)
+    print((pin_a1.value,))
+    time.sleep(0.1)
+
+```
+
+
+- `read_pinA1_as_analog_input_v2.py`
+
+```python
+import board
+import analogio
+import time
+import neopixel
+
+pin_a1 = analogio.AnalogIn(board.A1)
+pixels = neopixel.NeoPixel(board.NEOPIXEL, 10, auto_write=False)
+
+for j in range(200):
+    print("Pin A1 analog read:",pin_a1.value)
+    print((pin_a1.value,))
+    mapped_brightness = 150 # change this!
+    pixels[3] = (0,mapped_brightness,0)
+    pixels.show()
+    time.sleep(0.1)
+```
