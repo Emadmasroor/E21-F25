@@ -39,6 +39,7 @@ Students in Section 2 will meet on the following Thursdays: **9/11, 9/25, 10/9, 
 * Steven  Jungers
 * Noah    Lee
 * Samchan Lee
+* Yi-Mei  Liu
 * Emiliano    Morales-Lopez
 * Emmanuel    Olusheki
 * Muhammad Javed  Paktinyar
@@ -52,6 +53,7 @@ Students in Section 3 will meet on the following Mondays: **9/15, 9/29, 10/20, 1
 
 * Jayden  Figueroa Adorno
 * Max Ash
+* Alejandro Barragan
 * Quran   Duncanson
 * Emanuel James
 * Junghyun    Koh
@@ -75,11 +77,11 @@ Students in Section 4 will meet on the following Thursdays: **9/18, 10/2, 10/23,
 
 * John    Carty
 * JohnPaul    D'Andrea
+* Tyler Fink
 * Iver    Jiang
 * Fola    Kehinde
 * Dan Le
 * Andrea  Lie
-* Yi-Mei  Liu
 * Juan    Lopez
 * Devin   Malhotra
 * Melissa McKenzie
