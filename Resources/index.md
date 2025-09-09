@@ -142,7 +142,8 @@ while True:
 
 You can either download these files [here](lec3_files.zip) or copy the code from below.
 
-- `read_pinA1_as_digital_input.py`  
+- `read_pinA1_as_digital_input.py`
+
 ```python
 from adafruit_circuitplayground import cp
 import time
@@ -158,7 +159,8 @@ for j in range(200):
 ```
 
 
-- `read_pinA1_as_analog_input.py`  
+- `read_pinA1_as_analog_input.py`
+
 ```python
 import board
 import analogio
@@ -174,7 +176,8 @@ for j in range(200):
 ```
 
 
-- `read_pinA1_as_analog_input_v2.py`  
+- `read_pinA1_as_analog_input_v2.py`
+
 ```python
 import board
 import analogio
