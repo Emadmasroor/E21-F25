@@ -194,7 +194,7 @@ for j in range(200):
 
 ### Lec 2.2, Thu Sep 11
 
-#### Code for `time` package
+#### (1) Code for `time` package
 
 ```python
 from adafruit_circuitplayground import cp
@@ -219,7 +219,7 @@ print(f"Waiting for {delay} seconds")
 time.sleep(delay)
 ```
 
-#### Code for print statements
+#### (2) Code for print statements
 
 ```python
 print(“The number is 24”)
@@ -239,3 +239,50 @@ c = "The numbers are {} and {}".format(p,n)
 print(c)
 
 ```
+
+#### (3) Code for `for` loops
+
+```python
+# Iterable (1): Range
+print("Printing fron a range:")
+for j in range(5):
+    print(j)
+
+# Iterable (2): list
+print("Printing fron a list:")
+a = [1,"a",6,"hello",5,True]
+for j in a:
+    print(j)
+
+# Iterable (3): tuple
+print("Printing fron a tuple:")
+b = (1,2,"x",3,1)
+for k in b:
+    print(k)
+
+# Iterable (4): string
+print("Printing characters from a string:")
+c = "hello"
+for x in c:
+    print(x)
+
+```
+
+#### (4) The `break` keyword
+
+```python
+# break inside for loop
+for j in range(10):
+    print(j)
+    if j == 3:
+        print("exiting loop")
+        break
+
+# break inside while loop
+counter_variable = 0
+while 3 > 2:
+    counter_variable += 1
+    if counter_variable > 3:
+        break
+```
+
