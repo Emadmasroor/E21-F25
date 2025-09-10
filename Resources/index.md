@@ -138,10 +138,6 @@ while True:
 
 ### Lec 2.1, Tue Sep 9
 
-### Code snippets
-
-You can either download these files [here](lec3_files.zip) or copy the code from below.
-
 - `read_pinA1_as_digital_input.py`
 
 ```python
