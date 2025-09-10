@@ -245,7 +245,7 @@ print(c)
 ```python
 # Iterable (1): Range
 print("Printing fron a range:")
-for j in range(5):
+for j in range(2,10,2):
     print(j)
 
 # Iterable (2): list
