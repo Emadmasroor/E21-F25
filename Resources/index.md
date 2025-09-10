@@ -219,4 +219,23 @@ print(f"Waiting for {delay} seconds")
 time.sleep(delay)
 ```
 
+#### Code for print statements
 
+```python
+print(“The number is 24”)
+
+p = 24.1
+n = 24
+
+print(“The numbers are n and p”)
+
+print(“The numbers are {n} and {p}”)
+
+print(f“The numbers are {n} and {p}”)
+
+print(f"The numbers are {n:} {p:.3f}")
+
+c = "The numbers are {} and {}".format(p,n)
+print(c)
+
+```
