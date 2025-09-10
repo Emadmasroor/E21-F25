@@ -286,3 +286,24 @@ while 3 > 2:
         break
 ```
 
+#### (5) The `continue` keyword
+
+```python
+
+# break inside for loop
+for j in range(10):
+    print(j)
+    if j == 3:
+        print("exiting loop")
+        break
+
+# break inside while loop
+counter_variable = 0
+while 3 > 2:
+    counter_variable += 1
+    if counter_variable > 3:
+        break
+
+```
+
+
