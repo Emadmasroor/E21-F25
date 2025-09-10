@@ -195,3 +195,32 @@ for j in range(200):
     pixels.show()
     time.sleep(0.1)
 ```
+
+### Lec 2.2, Thu Sep 11
+
+#### Code for `time` package
+
+```python
+from adafruit_circuitplayground import cp
+
+import time
+
+delay = 3.0
+
+print("Switching on pixel 0")
+cp.pixels[0] = (0,10,0)
+print(f"Waiting for {delay} seconds")
+time.sleep(delay)
+
+print("Switching on pixel 1")
+cp.pixels[1] = (10,0,0)
+print(f"Waiting for {delay} seconds")
+time.sleep(delay)
+
+print("Switching on pixel 2")
+cp.pixels[2] = (0,0,10)
+print(f"Waiting for {delay} seconds")
+time.sleep(delay)
+```
+
+
