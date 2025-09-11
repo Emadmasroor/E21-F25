@@ -197,7 +197,6 @@ for j in range(200):
 #### (0) Code for Truth Table
 
 ```python
-
 # Set the values of A and B
 A = True
 B = False
