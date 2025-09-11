@@ -125,21 +125,16 @@ generates a graph of the temperature sensor's reading every `0.2` seconds. It's 
 
 ![plotter example](plotter_example.png)
 
-In this problem, you will write a CircuitPython script that will use the Circuit Python Bluefruit' light sensor (an _analog_ signal) to create a digital signal if the on-board slide switch is moved to one side and an analog signal if the on-board slide switch is moved to the other side. Your program will be placed inside the `while True:` block that we have been using in this class, and should accomplish the following objectives:
+### Requirements
 
-1. If the slide switch is in the 'off' position, it should continuously plot the light intensity in lux in intervals of `0.2` seconds. Meanwhile, pixel 4 should be dimly lit to a purple hue, and all other pixels should be off. This is the 'analog mode'.
-2. If the slide switch is in the 'on' position, it should treat the light sensor as a digital signal, and continuously plot `1` (every `0.2` seconds) if the light sensor is exposed to the light inside a Singer Hall classroom, and plot `0` if the CPX is covered with your hand. In this mode, the board should play a tone of `440` Hz whenever it is covered by your hand, and should stop playing this tone when uncovered. Meanwhile, during this mode, pixel 5 should be dimly lit continuously to a yellow hue, and all other pixels should be off. This is the 'digital mode'.
+1. If the slide switch is set to one side, your code should generate a plot of the temperature in Celsius. 
+2. If the slide switch is set to the other side, your code should generate a plot of 0's and 1's, with 1 if the temperature is above 30 degrees Celsius and 0 if the temperature is below 30 degree Celsius. The program should also beep at 440 Hz if the temperature is above 30 degrees, and should remain silent otherwise.
 
-Some further requirements:
-* It is up to you to choose a 'threshold value'; however, the value you choose should work such that, when the CPX is placed in a well-lit room in Singer Hall, your program should plot `1`, and when you cover it with your hand about 2-3 inches above the board, your program should plot zero.
-* It should be possible to move the slide switch back and forth repeatedly and switch the 'mode' from digital to analog.
-* You should use the [calibration curve](../Lecs/calibration1.png) from the in-class activity on September 12.
+You should be able to test mode 2 by blowing hot air on the board. If you are unable to reach a temperature of 30 Celsius, you may modify the threshold value slightly.
 
-!!! Tip
-   If you're not sure where to start, you might want to start by modifying the files used in class.
+Also, note that it should be possible to repeatedly switch between modes without your program crashing.
 
-!!! Tip
-   The graders will copy your code into their board's `code.py` and will run it. There may be small differences from board to board, but your code _should work_ when saved on a CPX. We will grade by checking if our board works with your code, so test it out thoroughly on your own board!
+The graders will copy your code into their board's `code.py` and will run it. There may be small differences from board to board, but your code _should work_ when saved on a grader's board, so please test it out thoroughly on your own board!
  
 ## Measuring your reaction time
 In this problem, you will measure your own reaction time using the Circuit Playground Bluefruit. The code provided to you lights up an LED at an unpredictable time, and you are supposed to press button A on the board when you see the LED light up. The program then reports your reaction time, i.e., the time between when the LED was lit and the button was pressed.
@@ -222,5 +217,5 @@ The word 'chart' can be interpreted broadly: you can take a piece of graph paper
 
 An example of the kind of chart that would be acceptable is shown below.
 
-![reaction times chart](reaction_time.png)
+![reaction times chart](reaction_times.png)
 
