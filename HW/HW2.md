@@ -1,12 +1,20 @@
-Note: Gradescope only allows a single PDF file in one submission. Therefore, you will combine your non-code files into a single PDF. Turn in the following files for this assignment on Moodle / Gradescope.
+# HW 2
 
-* A file titled `HW2.pdf` for problem 1 and problem 3.2
-* A Python file titled `analog_digital.py` for problem 2
-* A file titled `reaction_time.py` for problem 3.1
+* Table of Contents
+{:toc}
 
-There is a separate submission page for the PDF and for Python files.
 
-## Base Systems
+## Summary
+
+**Due Date**: Tue, Sep 16 at midnight  
+**What to submit**:  
+- Problem (1): a PDF file only
+- Problem (2): a file named `music.py`
+- Problem (3): a file named `analog_digital_temperature.py`
+- Problem (4): a PDF file _and_ a file named `reaction_times.py`
+**Submit at**: [This link](https://www.gradescope.com/courses/1116058/assignments/6664715/) for the PDF and [this link](https://www.gradescope.com/courses/1116058/assignments/6664401/) for the code. You can see the submission pages on the course Moodle page as well.
+
+## (1) Base Systems
 
 For the problems in this section, you must turn in a PDF. It can be either handwritten or typed. 
 
@@ -40,7 +48,7 @@ For full credit, **show how you arrived at your answers**, don't just write the 
 * `0x1010`
 
 ### Addition and multiplication of numbers
-In grade school, you learned how to add two multi-digit numbers by hand. In case, you've forgotten, [here's](https://www.youtube.com/watch?v=5Vj50p4k6i8) a video explaining this to elementary school students.
+In grade school, you learned how to add two multi-digit numbers by hand. In case, you've forgotten, [here's](https://www.youtube.com/watch?v=mAvuom42NyY) a video explaining this to elementary school students.
 
 Your task in this problem is to explain how the same concept of 'carrying over' a digit (perhaps you learned the term 'regrouping') applies to binary and hexadecimal numbers. Write out, by hand,
 
@@ -66,7 +74,7 @@ In addition, you would write --- without explanation since this is not elementar
 
 You will not get credit for this problem if you simply write down correct answers. e.g., if you write down `10010 x 10111 = 101001`. You have to _show your work_!
 
-## Using `for` loops to play music
+## (2) Using `for` loops to play music
 
 The class `music` is defined below. An object of type (or class) `music` has two attributes, or properties: 
 
@@ -103,7 +111,7 @@ sample_music.durations = [1,1,1,1,1,1,1,1,1,1,1,1,1.5,0.5,2]
 
 
 
-## Analog vs Digital on Circuit Python Bluefruit
+## (3) Analog vs Digital on Circuit Python Bluefruit
 
 In this problem, you will write a CircuitPython script that will use the Circuit Python Bluefruit's temperature sensor (an _analog_ signal) to create a digitial signal if the on-board slide switch is moved to one side and an analog signal if the slide switch is moved to the other side.
 
@@ -136,7 +144,7 @@ Also, note that it should be possible to repeatedly switch between modes without
 
 The graders will copy your code into their board's `code.py` and will run it. There may be small differences from board to board, but your code _should work_ when saved on a grader's board, so please test it out thoroughly on your own board!
  
-## Measuring your reaction time
+## (4) Measuring your reaction time
 In this problem, you will measure your own reaction time using the Circuit Playground Bluefruit. The code provided to you lights up an LED at an unpredictable time, and you are supposed to press button A on the board when you see the LED light up. The program then reports your reaction time, i.e., the time between when the LED was lit and the button was pressed.
 
 Currently, it collects data through 5 button presses only.
