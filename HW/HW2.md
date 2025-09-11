@@ -13,7 +13,7 @@
 - Problem (3): a file named `analog_digital_temperature.py`
 - Problem (4): a PDF file _and_ a file named `reaction_times.py`
 
-**Submit at**: [This link](https://www.gradescope.com/courses/1116058/assignments/6664715/) for the PDF and [this link](https://www.gradescope.com/courses/1116058/assignments/6664401/) for the code. You can see the submission pages on the course Moodle page as well.
+**Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=763898) for the PDF and [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=763897) for the code. You can see the submission pages on the course Moodle page as well.
 
 ## (1) Base Systems
 
