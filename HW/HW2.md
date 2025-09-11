@@ -110,6 +110,7 @@ class music:
 
 # Define the attributes of sample_music. 
 # [E E F G G F E D C C D D E D D]
+sample_music = music()
 sample_music.pattern = [330,330,349,392,392,349,330,294,262,262,294,294,330,294,294]
 sample_music.durations = [1,1,1,1,1,1,1,1,1,1,1,1,1.5,0.5,2]
 
