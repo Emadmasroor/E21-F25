@@ -12,6 +12,7 @@
 - Problem (2): a file named `music.py`
 - Problem (3): a file named `analog_digital_temperature.py`
 - Problem (4): a PDF file _and_ a file named `reaction_times.py`
+
 **Submit at**: [This link](https://www.gradescope.com/courses/1116058/assignments/6664715/) for the PDF and [this link](https://www.gradescope.com/courses/1116058/assignments/6664401/) for the code. You can see the submission pages on the course Moodle page as well.
 
 ## (1) Base Systems
@@ -59,7 +60,7 @@ Your task in this problem is to explain how the same concept of 'carrying over' 
 5. The product `0x353` times `0x3`
 
 
-For each arithmetic problem you write (5 total), write down the same calculation in decimal form as well (no need to do these `by hand`). For example, if you were showing that 
+For each arithmetic problem you write (5 total), write down the same calculation in decimal form as well (no need to do these 'by hand'). For example, if you were showing that 
 
 ```
 0b101 + 0b100 = 1001
@@ -72,7 +73,7 @@ In addition, you would write --- without explanation since this is not elementar
 5 + 4 = 9
 ```
 
-You will not get credit for this problem if you simply write down correct answers. e.g., if you write down `10010 x 10111 = 101001`. You have to _show your work_!
+You will not get credit for this problem if you simply write down correct answers. e.g., if you write down `10010 + 10111 = 101001`. You have to _show your work_!
 
 ## (2) Using `for` loops to play music
 
@@ -85,6 +86,19 @@ Note that both `pattern` and `durations` are lists, and they should have the sam
 
 Write a program that plays the note pattern `[E E F G G F E D C C D D E D D]` for the durations `[1,1,1,1,1,1,1,1,1,1,1,1,1.5,0.5,2]` using a `for` loop. Use the following 'starter code', and test your code by copying it to your board's `code.py` file and running it.
 
+Note that the code below makes use of the following mapping table; you do not need to modify the frequency values, since they have correctly been 'hard-coded' below.
+
+| Note | Frequency |
+|---|-----|
+| C | 261 |
+| D | 293 |
+| E | 329 |
+| F | 349 |
+| G | 392 |
+| A | 440 |
+| B | 493 |
+
+
 ```python
 from adafruit_circuitplayground import cp
 
@@ -93,9 +107,6 @@ class music:
     # The class has two attributes: 'pattern' and 'duration'
     pattern = []    # contains frequency values (in Hz)
     durations = []  # contains note durations (in seconds)
-
-# Write down frequency of each note: [C, D, E, F, G, A, B]
-middle_octave_notes = [261,293,329,349,392,440,493]
 
 # Define the attributes of sample_music. 
 # [E E F G G F E D C C D D E D D]
