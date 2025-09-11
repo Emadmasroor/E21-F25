@@ -306,7 +306,29 @@ while 3 > 2:
 
 ```
 
-#### (6) 
+#### (6) Light up neopixels
+
+```python
+from adafruit_circuitplayground import cp
+import time
+
+cpx.pixels[0] = (10,10,10)
+time.sleep(1)
+cpx.pixels.fill((0,0,0))
+
+cpx.pixels[1] = (30,30,30)
+time.sleep(1)
+cpx.pixels.fill((0,0,0))
+
+cpx.pixels[2] = (50,50,50)
+time.sleep(1)
+cpx.pixels.fill((0,0,0))
+
+cpx.pixels[3] = (70,70,70)
+time.sleep(1)
+cpx.pixels.fill((0,0,0))
+
+```
 
 #### (7) Accelerometer Code
 
