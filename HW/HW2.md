@@ -150,7 +150,13 @@ Turn in your modified program. To do this, name the file `reaction_time.py` inst
 
 ## Use the program
 
-Copy the code from here into your board's `code.py`, and run it in both modes. Collect a table of values in each of the two modes (random LED & fixed LED), and determine the mean and standard deviation of your collected data in both modes.
+Run the code that you developed to collect some real-world data on reaction times. Collect a table of values in each of the two modes (random LED & fixed LED), and determine the mean and standard deviation of your collected data in both modes.
 
-Turn in one paragraph of text and a chart summarizing your results, and comment on whether your reaction time was different in the two modes. The word 'chart' can be interpreted broadly: you can take a piece of graph paper and plot some data on an appropriate set of axes, or you can use Excel, or you can use some other program that you are familiar with. The goal is to convey what you've learned about your own reaction time using this experiment, and to tell a reader what you can say about the accuracy and precision. Include supporting data for your chart in a separate file, stored in a format of your choice: `csv`, `xlsx`, or just a text file.
+Turn in one paragraph of text, your data table, and a chart summarizing your results, and comment on whether your reaction time was different in the two modes. Also explain how precise and how accurate you think these measurements are. 
+
+The word 'chart' can be interpreted broadly: you can take a piece of graph paper and plot some data on an appropriate set of axes, or you can use Excel, or you can use some other program that you are familiar with. The goal is to convey what you've learned about your own reaction time using this experiment, and to tell a reader what you can say about the accuracy and precision. There is no need to include your data as a separate file; everything should just be embedded into your PDF.
+
+An example of the kind of chart that would be acceptable is shown below.
+
+![reaction times chart](reaction_time.png)
 
