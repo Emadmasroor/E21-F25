@@ -8,7 +8,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 **Instructor**: Emad Masroor `emasroo1@swarthmore.edu`  
 **Meeting Times**: MW 8:30 to 9:45  
 **Lecture Location**: SCI 199  
-**Emad's Office Hours**: T 1:00 to 2:00  
+**Emad's Office Hours**: Tue 1:00 to 2:00 & by appointment  
 **Pre-requisities**: MATH 25, ENGR 17  
 **Lab**: Mon/Thu 1:15 to 4:00 PM in Singer 222  
 **Lab Instructor**: Will Johnson `wjohnso3@swarthmore.edu`  
@@ -31,7 +31,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [1.1](Lecs/Lec1.pdf)      | 09/02 | Tue | Introduction & Installation; variables & types     |               |
 | [1.2](Lecs/Lec2.pdf)      | 09/04 | Thu | Programming basics: variables, types, conditionals |               |
 | [2.1](Lecs/Lec3.pdf)      | 09/09 | Tue | Base systems; Analog vs. digital data              | [HW 1](HW/HW1) [[solutions](HW/HW1-Solutions)]          |
-| 2.2      | 09/11 | Thu | Relative & absolute errors;                        |               |
+| [2.2](Lecs/Lec4.pdf)      | 09/11 | Thu | Relative & absolute errors;                        |               |
 | 3.1      | 09/16 | Tue | For/while loops; 'dot notation'                    | [HW 2](HW/HW2)          |
 | 3.2      | 09/18 | Thu | Functions; Finite State Machines                   | Test 1        |
 | 4.1      | 09/23 | Tue | Desktop installation; IDEs                         | HW 3          |
