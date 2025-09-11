@@ -8,48 +8,63 @@ There is a separate submission page for the PDF and for Python files.
 
 # Base Systems
 
-For the problems in this section, you must turn in a PDF. It can be either handwritten or typed. Show how you arrived at your answers, don't just write the correct answers!
+For the problems in this section, you must turn in a PDF. It can be either handwritten or typed. 
+
+For full credit, **show how you arrived at your answers**, don't just write the correct answers!
 
 ## Decimal / Binary
 
 ### Convert the following integers from decimal to binary:
-* 100
-* 59
-* 250
-* 476
+* `100`
+* `59`
+* `250`
+* `476`
 
 ### Conver the following integers from binary to decimal:
-* 110001
-* 1000001
-* 1010101011
+* `0b110001`
+* `0b1000001`
+* `0b1010101011`
 
 ## Decimal / Hexadecimal
 
 ### Convert the following integers from decimal to hexadecimal:
-* 1000
-* 597
-* 42678
-* 250
+* `1000`
+* `597`
+* `42678`
+* `250`
 
 ### Convert the following integers from hexadecimal to decimal:
-* 14E3
-* A10B
-* 1000
-* 1010
+* `0x14E3`
+* `0xA10B`
+* `0x1000`
+* `0x1010`
 
 ## Addition and multiplication of numbers
 In grade school, you learned how to add two multi-digit numbers by hand. In case, you've forgotten, [here's](https://www.youtube.com/watch?v=5Vj50p4k6i8) a video explaining this to elementary school students.
 
-Your task in this problem is to explain how the same concept of 'carrying over' applies to binary and hexadecimal numbers. Write out, by hand,
+Your task in this problem is to explain how the same concept of 'carrying over' a digit (perhaps you learned the term 'regrouping') applies to binary and hexadecimal numbers. Write out, by hand,
 
- * Two addition problems using binary numbers. Each number should be at least 5 digits long. Choose any two pairs of sufficiently large binary numbers for this part. 
- * The following addition problems using hexadecimal numbers: `AFC + 115` and `1F64 + E6`
- * Show how to multiply `3F3` by `3` using a similar procedure.
+1. The sum `0b110001` + `0b11011`
+2. The sum `0b1001110` + `0b1101`
+3. The sum `0xAFC` + `0x115`
+4. The sum `0xE5A` + `0x85A`
+5. The product `0x353` times `0x3`
 
-For each arithmetic problem you write (5 total), write down the same calculation in decimal form as well (no need to do these `by hand`).
 
-!!! Warning
-   You will not get credit for this problem if you simply write down correct answers. e.g., if you write down `10010 x 10111 = 101001`. You have to _show your work_!
+For each arithmetic problem you write (5 total), write down the same calculation in decimal form as well (no need to do these `by hand`). For example, if you were showing that 
+
+```
+0b101 + 0b100 = 1001
+```
+
+then you would show the process 'by hand' as in the YouTube video above.  
+In addition, you would write --- without explanation since this is not elementary school --- the line
+
+```
+5 + 4 = 9
+```
+
+You will not get credit for this problem if you simply write down correct answers. e.g., if you write down `10010 x 10111 = 101001`. You have to _show your work_!
 
 # Analog vs Digital on Circuit Python Express
 In this problem, you will write a CircuitPython script that will use the Circuit Python Express' light sensor (an _analog_ signal) to create a digital signal if the on-board slide switch is moved to one side and an analog signal if the on-board slide switch is moved to the other side. Your program will be placed inside the `while True:` block that we have been using in this class, and should accomplish the following objectives:
