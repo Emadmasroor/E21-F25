@@ -217,7 +217,7 @@ for j in range(N):
 
 ### Modify the program
 
-Paste the code above into `code.py` on your device. Then, download the file `[statistical_functions.py](statistical_functions.py)` and place it inside your `CIRCUITPY` drive. Then, add the line `from statistical_functions import std` at the top of your `code.py` file. This imports a function `std` that calculates the standard deviation of a list of numbers.
+Paste the code above into `code.py` on your device. Then, download the file [statistical_functions.py](statistical_functions.py) and place it inside your `CIRCUITPY` drive. Then, add the line `from statistical_functions import std` at the top of your `code.py` file. This imports a function `std` that calculates the standard deviation of a list of numbers.
 
 #### Tasks
 

@@ -306,4 +306,48 @@ while 3 > 2:
 
 ```
 
+#### (6) 
 
+#### (7) Accelerometer Code
+
+```python
+ from adafruit_circuitplayground import cp
+import time
+
+def std(data):
+    mean = sum(data) / len(data)
+    squared_diffs = [(x - mean) ** 2 for x in data]
+    variance = sum(squared_diffs) / len(data)
+    std_dev = variance ** 0.5
+    return std_dev
+
+def magnitude(a,b,c):
+    return (a**2 + b**2 + c**2)**(1/2)
+
+# Number of readings
+N = 10
+
+# Create a list that will store the readings
+readings_z = [0] * N
+readings = [0] * N
+
+# Time delay between measurements
+delay = 2
+
+for j in range(N): # Number of seconds to run
+    accel_z = cp.acceleration.z
+    accel   = magnitude(cp.acceleration.x, cp.acceleration.y,cp.acceleration.z)
+    print((accel_z,accel))
+    readings[j] = accel
+    readings_z[j] = accel_z
+    time.sleep(delay) # delay of 1 second
+
+avg_reading = sum(readings)/len(readings)
+avg_reading_z = sum(readings_z)/len(readings_z)
+print("After ",N," readings, the acceleration is ",avg_reading," m/s^2")
+print("With standard deviation ",std(readings))
+print("After ",N," readings, the z-acceleration is ",avg_reading_z," m/s^2")
+print("With standard deviation ",std(readings_z))
+
+
+```
