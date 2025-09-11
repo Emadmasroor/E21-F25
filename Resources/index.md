@@ -337,28 +337,28 @@ while 3 > 2:
 from adafruit_circuitplayground import cp
 import time
 
-cpx.pixels[0] = (10,10,10)
+cp.pixels[0] = (10,10,10)
 time.sleep(1)
-cpx.pixels.fill((0,0,0))
+cp.pixels.fill((0,0,0))
 
-cpx.pixels[1] = (30,30,30)
+cp.pixels[1] = (30,30,30)
 time.sleep(1)
-cpx.pixels.fill((0,0,0))
+cp.pixels.fill((0,0,0))
 
-cpx.pixels[2] = (50,50,50)
+cp.pixels[2] = (50,50,50)
 time.sleep(1)
-cpx.pixels.fill((0,0,0))
+cp.pixels.fill((0,0,0))
 
-cpx.pixels[3] = (70,70,70)
+cp.pixels[3] = (70,70,70)
 time.sleep(1)
-cpx.pixels.fill((0,0,0))
+cp.pixels.fill((0,0,0))
 
 ```
 
 #### (7) Accelerometer Code
 
 ```python
- from adafruit_circuitplayground import cp
+from adafruit_circuitplayground import cp
 import time
 
 def std(data):
