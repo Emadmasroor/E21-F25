@@ -194,6 +194,32 @@ for j in range(200):
 
 ### Lec 2.2, Thu Sep 11
 
+#### (0) Code for Truth Table
+
+```python
+
+# Set the values of A and B
+A = True
+B = False
+
+# Implement “Logic gate OR” by covering all four possibilities.
+
+if A == True:
+    if B == True:
+        C = True # line 1 of table
+    else:
+        C = True # line 2 of table
+else:
+    if B == True:
+        C = True # line 3 of table
+    else:
+        C = False # line 4 of table
+
+print("--After applying logic, C is",C)
+
+
+```
+
 #### (1) Code for `time` package
 
 ```python
