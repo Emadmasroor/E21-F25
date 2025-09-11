@@ -6,40 +6,40 @@ Note: Gradescope only allows a single PDF file in one submission. Therefore, you
 
 There is a separate submission page for the PDF and for Python files.
 
-# Base Systems
+## Base Systems
 
 For the problems in this section, you must turn in a PDF. It can be either handwritten or typed. 
 
 For full credit, **show how you arrived at your answers**, don't just write the correct answers!
 
-## Decimal / Binary
+### Decimal / Binary
 
-### Convert the following integers from decimal to binary:
+#### Convert the following integers from decimal to binary:
 * `100`
 * `59`
 * `250`
 * `476`
 
-### Conver the following integers from binary to decimal:
+#### Conver the following integers from binary to decimal:
 * `0b110001`
 * `0b1000001`
 * `0b1010101011`
 
-## Decimal / Hexadecimal
+### Decimal / Hexadecimal
 
-### Convert the following integers from decimal to hexadecimal:
+#### Convert the following integers from decimal to hexadecimal:
 * `1000`
 * `597`
 * `42678`
 * `250`
 
-### Convert the following integers from hexadecimal to decimal:
+#### Convert the following integers from hexadecimal to decimal:
 * `0x14E3`
 * `0xA10B`
 * `0x1000`
 * `0x1010`
 
-## Addition and multiplication of numbers
+### Addition and multiplication of numbers
 In grade school, you learned how to add two multi-digit numbers by hand. In case, you've forgotten, [here's](https://www.youtube.com/watch?v=5Vj50p4k6i8) a video explaining this to elementary school students.
 
 Your task in this problem is to explain how the same concept of 'carrying over' a digit (perhaps you learned the term 'regrouping') applies to binary and hexadecimal numbers. Write out, by hand,
@@ -66,7 +66,65 @@ In addition, you would write --- without explanation since this is not elementar
 
 You will not get credit for this problem if you simply write down correct answers. e.g., if you write down `10010 x 10111 = 101001`. You have to _show your work_!
 
-# Analog vs Digital on Circuit Python Bluefruit
+## Using `for` loops to play music
+
+The class `music` is defined below. An object of type (or class) `music` has two attributes, or properties: 
+
+1. pattern, which contains a pattern of notes.
+2. durations, which contains the lengths of time each note is supposed to be played.
+
+Note that both `pattern` and `durations` are lists, and they should have the same length.
+
+Write a program that plays the note pattern `[E E F G G F E D C C D D E D D]` for the durations `[1,1,1,1,1,1,1,1,1,1,1,1,1.5,0.5,2]` using a `for` loop. Use the following 'starter code', and test your code by copying it to your board's `code.py` file and running it.
+
+```python
+from adafruit_circuitplayground import cp
+
+# Define a new class called 'music'
+class music:
+    # The class has two attributes: 'pattern' and 'duration'
+    pattern = []    # contains frequency values (in Hz)
+    durations = []  # contains note durations (in seconds)
+
+# Write down frequency of each note: [C, D, E, F, G, A, B]
+middle_octave_notes = [261,293,329,349,392,440,493]
+
+# Define the attributes of sample_music. 
+# [E E F G G F E D C C D D E D D]
+sample_music.pattern = [330,330,349,392,392,349,330,294,262,262,294,294,330,294,294]
+sample_music.durations = [1,1,1,1,1,1,1,1,1,1,1,1,1.5,0.5,2]
+
+# Your code starts here
+
+
+```
+
+
+
+
+
+## Analog vs Digital on Circuit Python Bluefruit
+
+In this problem, you will write a CircuitPython script that will use the Circuit Python Bluefruit's temperature sensor (an _analog_ signal) to create a digitial signal if the on-board slide switch is moved to one side and an analog signal if the slide switch is moved to the other side.
+
+To visualize this, you will use a very simple plotting program that is built into the Mu Editor. The 'Plotter' inside Mu works as follows:
+
+If a series of numbers is printed to the console inside parantheses, that number is also simultaneously plotted on the Plotter. For example, running the following code:
+
+```python
+
+from adafruit_circuitplayground import cp
+import time
+
+while True:
+    time.sleep(0.2)
+    print(f"({cp.temperature})")
+
+```
+generates a graph of the temperature sensor's reading every `0.2` seconds. It's important to build in a delay here, or else it's hard to get out of the loop!
+
+![plotter example](plotter_example.png)
+
 In this problem, you will write a CircuitPython script that will use the Circuit Python Bluefruit' light sensor (an _analog_ signal) to create a digital signal if the on-board slide switch is moved to one side and an analog signal if the on-board slide switch is moved to the other side. Your program will be placed inside the `while True:` block that we have been using in this class, and should accomplish the following objectives:
 
 1. If the slide switch is in the 'off' position, it should continuously plot the light intensity in lux in intervals of `0.2` seconds. Meanwhile, pixel 4 should be dimly lit to a purple hue, and all other pixels should be off. This is the 'analog mode'.
@@ -83,7 +141,7 @@ Some further requirements:
 !!! Tip
    The graders will copy your code into their board's `code.py` and will run it. There may be small differences from board to board, but your code _should work_ when saved on a CPX. We will grade by checking if our board works with your code, so test it out thoroughly on your own board!
  
-# Measuring your reaction time
+## Measuring your reaction time
 In this problem, you will measure your own reaction time using the Circuit Playground Bluefruit. The code provided to you lights up an LED at an unpredictable time, and you are supposed to press button A on the board when you see the LED light up. The program then reports your reaction time, i.e., the time between when the LED was lit and the button was pressed.
 
 Currently, it collects data through 5 button presses only.
@@ -99,6 +157,11 @@ N = 5
 
 # Create a list to collect data points
 data = [0] * N
+
+# Print some information
+print("Welcome to the reaction time game.")
+print(f"We will collect {N} samples.")
+print("Press button A when an LED lights up.")
 
 for j in range(N):
     # Turn off all LEDs
@@ -136,11 +199,12 @@ for j in range(N):
 
 ~~~
 
-## Modify the program
+
+### Modify the program
 
 Paste the code above into `code.py` on your device. Then, download the file `[statistical_functions.py](statistical_functions.py)` and place it inside your `CIRCUITPY` drive. Then, add the line `from statistical_functions import std` at the top of your `code.py` file. This imports a function `std` that calculates the standard deviation of a list of numbers.
 
-### Tasks
+#### Tasks
 
 1. Modify the code so that, in addition to printing the reaction time for each press, the mean and standard deviation are also printed at the end of the data-collection process.
 2. Modify the code so that, if the slide switch is set to one side, a random LED (out of the ten LEDs in a circular arrangement) lights up. If the slide switch is set to the other side, the _same_ LED lights up. Thus, there should be two _modes_ of operation: in one mode, a random LED lights up; in the other mode, the same LED lights up.
@@ -148,7 +212,7 @@ Paste the code above into `code.py` on your device. Then, download the file `[st
 
 Turn in your modified program. To do this, name the file `reaction_time.py` instead of `code.py`.
 
-## Use the program
+### Use the program
 
 Run the code that you developed to collect some real-world data on reaction times. Collect a table of values in each of the two modes (random LED & fixed LED), and determine the mean and standard deviation of your collected data in both modes.
 
