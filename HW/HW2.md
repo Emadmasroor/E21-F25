@@ -66,8 +66,8 @@ In addition, you would write --- without explanation since this is not elementar
 
 You will not get credit for this problem if you simply write down correct answers. e.g., if you write down `10010 x 10111 = 101001`. You have to _show your work_!
 
-# Analog vs Digital on Circuit Python Express
-In this problem, you will write a CircuitPython script that will use the Circuit Python Express' light sensor (an _analog_ signal) to create a digital signal if the on-board slide switch is moved to one side and an analog signal if the on-board slide switch is moved to the other side. Your program will be placed inside the `while True:` block that we have been using in this class, and should accomplish the following objectives:
+# Analog vs Digital on Circuit Python Bluefruit
+In this problem, you will write a CircuitPython script that will use the Circuit Python Bluefruit' light sensor (an _analog_ signal) to create a digital signal if the on-board slide switch is moved to one side and an analog signal if the on-board slide switch is moved to the other side. Your program will be placed inside the `while True:` block that we have been using in this class, and should accomplish the following objectives:
 
 1. If the slide switch is in the 'off' position, it should continuously plot the light intensity in lux in intervals of `0.2` seconds. Meanwhile, pixel 4 should be dimly lit to a purple hue, and all other pixels should be off. This is the 'analog mode'.
 2. If the slide switch is in the 'on' position, it should treat the light sensor as a digital signal, and continuously plot `1` (every `0.2` seconds) if the light sensor is exposed to the light inside a Singer Hall classroom, and plot `0` if the CPX is covered with your hand. In this mode, the board should play a tone of `440` Hz whenever it is covered by your hand, and should stop playing this tone when uncovered. Meanwhile, during this mode, pixel 5 should be dimly lit continuously to a yellow hue, and all other pixels should be off. This is the 'digital mode'.
@@ -84,11 +84,13 @@ Some further requirements:
    The graders will copy your code into their board's `code.py` and will run it. There may be small differences from board to board, but your code _should work_ when saved on a CPX. We will grade by checking if our board works with your code, so test it out thoroughly on your own board!
  
 # Measuring your reaction time
-In this problem, you will measure your own reaction time using the Circuit Playground Express. The code provided to you lights up an LED at an unpredictable time, and you are supposed to press button A on the board when you see the LED light up. The program then reports your reaction time, i.e., the time between when the LED was lit and the button was pressed.
+In this problem, you will measure your own reaction time using the Circuit Playground Bluefruit. The code provided to you lights up an LED at an unpredictable time, and you are supposed to press button A on the board when you see the LED light up. The program then reports your reaction time, i.e., the time between when the LED was lit and the button was pressed.
+
+Currently, it collects data through 5 button presses only.
 
 ~~~python
 
-from adafruit_circuitplayground.express import cp
+from adafruit_circuitplayground import cp
 import time
 import random
 
@@ -133,13 +135,18 @@ for j in range(N):
     time.sleep(2)
 
 ~~~
+
 ## Modify the program
 
-* Currently, the code prints out the reaction time to the serial console each time you hit the button. Once the specified number of tries has run out, the code quits. Modify this behavior so that it prints out the (1) mean and (2) standard deviation of the data that was collected. To calculate the standard deviation, you are encouraged to make use of the package `e21functions` that was provided in class.
-* Modify the code so that, if the slide switch is set to one side, a random LED (out of the ten LEDs in a circular arrangement) lights up. If the slide switch is set to the other side, the _same_ LED lights up. Thus, there should be two _modes_ of operation: in one mode, a random LED lights up; in the other mode, the same LED lights up.
-* We would like to get an _accurate_ and _precise_ measurement of your reaction time using this program. Modify the code so that it collects more data points -- as many as you think are necessary to collect a good measurement.
+Paste the code above into `code.py` on your device. Then, download the file `[statistical_functions.py](statistical_functions.py)` and place it inside your `CIRCUITPY` drive. Then, add the line `from statistical_functions import std` at the top of your `code.py` file. This imports a function `std` that calculates the standard deviation of a list of numbers.
 
-Turn in your modified program.
+### Tasks
+
+1. Modify the code so that, in addition to printing the reaction time for each press, the mean and standard deviation are also printed at the end of the data-collection process.
+2. Modify the code so that, if the slide switch is set to one side, a random LED (out of the ten LEDs in a circular arrangement) lights up. If the slide switch is set to the other side, the _same_ LED lights up. Thus, there should be two _modes_ of operation: in one mode, a random LED lights up; in the other mode, the same LED lights up.
+3. Modify the code so that it collects more data points --- as many as you think are appropriate to get an _accurate_ and _precise_ measurement of your reaction time.
+
+Turn in your modified program. To do this, name the file `reaction_time.py` instead of `code.py`.
 
 ## Use the program
 
