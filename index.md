@@ -7,6 +7,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 **Instructor**: Emad Masroor `emasroo1@swarthmore.edu`  
 **Meeting Times**: MW 8:30 to 9:45  
+**Lecture Location**: SCI 199  
 **Emad's Office Hours**: T 1:00 to 2:00  
 **Pre-requisities**: MATH 25, ENGR 17  
 **Lab**: Mon/Thu 1:15 to 4:00 PM in Singer 222  
