@@ -398,3 +398,27 @@ print("With standard deviation ",std(readings_z))
 
 
 ```
+
+### Lec 3.1, Tue Sep 16
+
+#### Writing data to Circuit Playground Bluefruit
+
+Copy the file [boot.py](boot.py) into your `CIRCUITPY` drive. The contents of this file are shown below for reference.
+
+```python
+"""CircuitPython Essentials Storage logging boot.py file adapted from Adafruit"""
+import board
+import digitalio
+import storage
+
+# For Circuit Playground Express, Circuit Playground Bluefruit
+switch = digitalio.DigitalInOut(board.D7)
+
+switch.direction = digitalio.Direction.INPUT
+switch.pull = digitalio.Pull.UP
+
+# If the switch pin is connected to ground CircuitPython can write to the drive
+storage.remount("/", readonly=switch.value)
+```
+
+
