@@ -491,4 +491,27 @@ for j in range(N):
 f.close()
 
 ```
+#### Writing your own function
+
+The following is some "starter code" for you to write your own function
+
+```python
+import adafruit_circuitplayground as cp
+import time
+def lightUp(color,n,p):
+    # Lights up pixel number n using color "color"
+    # 'Color' should be a string, either 'red', 'blue', or 'green'
+    # n should be an int between 0 and 9
+    # p should be any number between 1 and 255
+    return 42
+
+# Now call it inside a while loop
+while True:
+    lightUp(‘red’,8,45)
+    time.sleep(3)
+    lightUp('green',5,200)
+    time.sleep(3)
+    cp.play_tone(440,3)
+
+```
 
