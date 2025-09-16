@@ -355,7 +355,10 @@ cp.pixels.fill((0,0,0))
 
 ```
 
-#### (7) Accelerometer Code
+
+### Lec 3.1, Tue Sep 16
+
+#### Accelerometer Code
 
 ```python
 from adafruit_circuitplayground import cp
@@ -397,9 +400,9 @@ print("After ",N," readings, the z-acceleration is ",avg_reading_z," m/s^2")
 print("With standard deviation ",std(readings_z))
 
 
+
 ```
 
-### Lec 3.1, Tue Sep 16
 
 #### Writing data to Circuit Playground Bluefruit
 
