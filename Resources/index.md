@@ -427,3 +427,65 @@ After you have saved this file to your `CIRCUITPY` drive, _eject_ `CIRCUITPY` fr
 - If your slide switch is set toward the left (near button A) then your baord cannot write files and your computer can write files to `CIRCUITPY`.
 
 You can find an 'official' tutorial for how to use this file [here](https://learn.adafruit.com/circuitpython-essentials/circuitpython-storage).
+
+#### Reaction times game
+
+```python
+from adafruit_circuitplayground import cp
+import time
+import random
+
+# Choose the number of data points to collect
+N = 5
+
+# Create a list to collect data points
+data = [0] * N
+
+# Print some information
+print("Welcome to the reaction time game.")
+print(f"We will collect {N} samples.")
+print("Press button A when an LED lights up.")
+
+# Open file for writing
+f = open("/reaction_times.txt","a")
+for j in range(N):
+    # Turn off all LEDs
+    cp.pixels.fill((0, 0, 0))
+
+    # Wait for a random time between 1 and 5 seconds
+    random_delay = random.uniform(1, 5)
+    time.sleep(random_delay)
+    
+    # Turn on a random LED (pick an index from 0 to 9)
+    led_index = random.randint(0, 9)
+    cp.pixels[led_index] = (0, 10, 0)  # Green LED lights up
+
+    # Record the time the LED lights up
+    start_time = time.monotonic()
+
+    # Wait for button A press
+    while not cp.button_a:
+        # do nothing; keep waiting in this while loop
+        pass
+
+    # Button pressed! First, calculate the reaction time.
+    reaction_time = time.monotonic() - start_time
+
+    # Switch off the LED
+    cp.pixels[led_index] = (0, 0, 0)
+
+    # Print the reaction time to the serial console
+    print(f"Reaction time: {reaction_time:.3f} seconds")
+    
+    # Write to file
+    f.write(f"{reaction_time:.4f}\n")
+    f.flush()
+    
+    # Pause before restarting the game
+    time.sleep(2)
+
+# Close the file for writing.
+f.close()
+
+```
+
