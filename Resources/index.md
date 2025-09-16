@@ -421,4 +421,9 @@ switch.pull = digitalio.Pull.UP
 storage.remount("/", readonly=switch.value)
 ```
 
+After you have saved this file to your `CIRCUITPY` drive, _eject_ `CIRCUITPY` from your operating system, then press the rest button.
+
+- If your slide switch is set toward the right (near button B) then your board can write files and your computer cannot write files to `CIRCUITPY`.
+- If your slide switch is set toward the left (near button A) then your baord cannot write files and your computer can write files to `CIRCUITPY`.
+
 You can find an 'official' tutorial for how to use this file [here](https://learn.adafruit.com/circuitpython-essentials/circuitpython-storage).
