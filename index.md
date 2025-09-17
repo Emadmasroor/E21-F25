@@ -32,7 +32,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [1.2](Lecs/Lec2.pdf)      | 09/04 | Thu | Programming basics: variables, types, conditionals |               |
 | [2.1](Lecs/Lec3.pdf)      | 09/09 | Tue | Base systems; Analog vs. digital data              | [HW 1](HW/HW1) [[solutions](HW/HW1-Solutions)]          |
 | [2.2](Lecs/Lec4.pdf)      | 09/11 | Thu | For/while loops; Relative & absolute errors;                        |               |
-| [3.1](Lecs/Lec5.pdf)      | 09/16 | Tue | Accuracy and precision; Saving data;      | [HW 2](HW/HW2)          |
+| [3.1](Lecs/Lec5.pdf)      | 09/16 | Tue | Accuracy and precision; Saving data;      | [HW 2](HW/HW2) [[solutions](HW/HW2-Solutions)]          |
 | 3.2      | 09/18 | Thu | Functions; Finite State Machines                   | Test 1        |
 | 4.1      | 09/23 | Tue | Desktop installation; IDEs                         | HW 3          |
 | 4.2      | 09/25 | Thu | Floating point numbers                             |               |

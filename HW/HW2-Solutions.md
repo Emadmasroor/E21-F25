@@ -5,7 +5,7 @@
 
 ## (1) Base Systems
 
-All of the answers are included in this [PDF](binary_hex.pdf)
+All of the answers are included in this PDF.
 
 <embed src="binary_hex.pdf" width="500" height="375" 
  type="application/pdf">
