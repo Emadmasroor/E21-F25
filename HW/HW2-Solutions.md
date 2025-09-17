@@ -5,9 +5,9 @@
 
 ## (1) Base Systems
 
-All of the answers are included in the following PDF
+All of the answers are included in this [PDF](binary_hex.pdf)
 
-<embed src="binary_hex" width="500" height="375" 
+<embed src="binary_hex.pdf" width="500" height="375" 
  type="application/pdf">
 
 ## (2) Using `for` loops to play music
