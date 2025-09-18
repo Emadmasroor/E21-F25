@@ -491,6 +491,9 @@ for j in range(N):
 f.close()
 
 ```
+
+### Lec 3.2, Thu Sep 18
+
 #### Writing your own function
 
 The following is some "starter code" for you to write your own function
