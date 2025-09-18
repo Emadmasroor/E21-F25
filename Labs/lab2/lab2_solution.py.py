@@ -22,11 +22,11 @@ NEOPIXEL_COORDS = [
     (0.500, 0.866)
 ]
 
-# Number of bits of the ADCs on the CPB.
+# Number of bits of the ADCs on the CPX.
 # TODO: set this to the correct value!
-ADC_BITS = 0
+ADC_BITS = 16
 
-# Maximum ADC reading on the CPB.
+# Maximum ADC reading on the CPX.
 # Do not edit this directly, instead modify
 # ADC_BITS above.
 ADC_MAX = 2**ADC_BITS - 1
@@ -40,7 +40,7 @@ ADC_MAX = 2**ADC_BITS - 1
 
 def lerp(a, b, x):
     # TODO: implement this function correctly!
-    return 0
+    return x*(b-a) + a
 
 ######################################################################
 # Computes the inverse linear interpolation between a and b.
@@ -51,7 +51,7 @@ def lerp(a, b, x):
 
 def unlerp(a, b, c):
     # TODO: implement this function correctly!
-    return 0
+    return (c-a)/(b-a)
 
 ######################################################################
 # Linearly remaps the input interval [a, b]
@@ -59,7 +59,7 @@ def unlerp(a, b, c):
 
 def remap(a, b, s, t, c):
     # TODO: implement this function correctly!
-    return 0
+    return lerp(s,t,unlerp(a,b,c))
 
 ######################################################################
 # Demonstrates how to read joystick values for plotting.
@@ -148,8 +148,10 @@ def lab2_ex3():
     while True:
 
         # TODO: replace these lines with two calls to remap
-        H = 180.0
-        V = 0.5
+#         H = 180.0
+#         V = 0.5
+        H = remap(0,ADC_MAX,300,0,horiz.value)
+        V = remap(0,ADC_MAX,0,1,vert.value)
 
         cp.pixels.fill(rgb_from_hsv(H, 1.0, V))
 
@@ -171,7 +173,20 @@ def lab2_ex4():
         v = vert.value / k - 1
 
         # TODO: use the joystick u & v values here
+        cp.pixels.fill((0, 0, 0))
 
+        if max(abs(u), abs(v)) > 0.9:
+
+            max_pi = None
+            max_i = None
+
+            for i, (xi, yi) in enumerate(NEOPIXEL_COORDS):
+                pi = xi * u + yi * v
+                if max_pi is None or pi > max_pi:
+                    max_pi = pi
+                    max_i = i
+
+            cp.pixels[max_i] = (255, 255, 255)
 ######################################################################
 # Individually controls NeoPixels based on joystick inputs.
 
@@ -184,7 +199,7 @@ def lab2_ex5():
     sel.direction = Direction.INPUT
     sel.pull = Pull.UP
 
-    cp.pixels.brightness = 0.25
+    cpx.pixels.brightness = 0.25
 
     while True:
 
@@ -193,8 +208,8 @@ def lab2_ex5():
 
 ######################################################################
 
-lab2_ex1()
+# lab2_ex1()
 # lab2_ex2()
 # lab2_ex3()
-# lab2_ex4()
-# lab2_ex5()
+lab2_ex4()
+#lab2_ex5()
