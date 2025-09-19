@@ -6,12 +6,13 @@
 
 ## Summary
 
-**Due Date**: Tue, Sep 16 at midnight  
+**Due Date**: Wed, Sep 24 at midnight  
 **What to submit**:  
-- Problem (1): a PDF file only
-- Problem (2): a file named `music.py`
-- Problem (3): a file named `analog_digital_temperature.py`
-- Problem (4): a PDF file _and_ a file named `reaction_times.py`
+- Problem (1): A file named `accelerometer.py`
+- Problem (2): A file named `neopixelfunctions.py`
+- Problem (3): A file named `numbersystemconversion.py`
+- Problem (4): A file for each of parts (a) through (e), named `nbrs.py`, `checkBounds.py`, `all_nbrs.py`, `new_value_n.py` and `new_state.py` respectively. 
+
 
 **Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=763898) for the PDF and [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=763897) for the code. You can see the submission pages on the course Moodle page as well.
 
@@ -118,7 +119,7 @@ The state of the system can be fully determined by a 36-element list of Boolean 
 
 ### (a) Write a function to determine the neighbors of interior cells.
 
-Write a function called `nbrs_v1` that generates a list corresponding to the (up to 8) neighbors that each interior cell has. (By _interior cell_, we mean any cell that's not on the edge of the grid). The function should take in a single argument of type `int`, and should return a list of the neighbors of the cell whose address was passed to the function. For example, you can see by inspection that the cell with address 22 has the following eight neighbors:
+Write a function called `nbrs` that generates a list corresponding to the (up to 8) neighbors that each interior cell has. (By _interior cell_, we mean any cell that's not on the edge of the grid). The function should take in a single argument of type `int`, and should return a list of the neighbors of the cell whose address was passed to the function. For example, you can see by inspection that the cell with address 22 has the following eight neighbors:
 - 16 ("North")
 - 28 ("South")
 - 23 ("East")
@@ -142,7 +143,7 @@ You must use an appropriate conditional (or conditionals) inside this function. 
 
 In this part, you will put together the code from the last two parts and use it to assemble a list of lists that denotes the neighbors of each cell in the `6x6` grid shown above. Remember that once this list is determined, it doesn't change as the game progresses.
 
-Write a function called `determine_nbrs()` with no input arguments that returns a 36-element list. Each element of this list should itself be a list that contains the addresses of the neighbors of the cell at that location. If a cell is on one of the edges, there should be an empty list for its 'list of neighbors'. We will pretend that cells on the edge have no neighbors (since we will never update them). 
+Write a function called `all_nbrs()` with no input arguments that returns a 36-element list. Each element of this list should itself be a list that contains the addresses of the neighbors of the cell at that location. If a cell is on one of the edges, there should be an empty list for its 'list of neighbors'. We will pretend that cells on the edge have no neighbors (since we will never update them). 
 
 Thus, the structure of your returned list will be:
 
@@ -151,14 +152,14 @@ Thus, the structure of your returned list will be:
 **Note:** Theoretically, you could solve this problem by 'hardcoding' it, i.e., you could write a function that returns the correct list because you've written out every element of every list inside the 36-element list. But this won't give you full (or, really, any) credit.
 
 ~~~python
-def determine_nbrs():
+def all_nbrs():
  # Start out by creating a list of 36 zeros.
  nbrs = [0] * 36
  # Then modify this list so that each element is a list.
  return nbrs
 ~~~
 
-The graders will check this function by calling `determine_nbrs()` and making sure that the resulting list matches the correct one. For example, `your_returned_list[22]` should be equal to `[16,28,23,21,27,29,15,17]` or some permutation thereof because this is the correct list of neighbors for cell number `22`. You can place the neighbors in any order you like. Similarly, `your_returned_list[31]` should be equal to `[]` since `31` is the address for one of the cells on the edge, which we are pretending have no neighbors at all.
+The graders will check this function by calling `all_nbrs()` and making sure that the resulting list matches the correct one. For example, `your_returned_list[22]` should be equal to `[16,28,23,21,27,29,15,17]` or some permutation thereof because this is the correct list of neighbors for cell number `22`. You can place the neighbors in any order you like. Similarly, `your_returned_list[31]` should be equal to `[]` since `31` is the address for one of the cells on the edge, which we are pretending have no neighbors at all.
 
 ### (d) A function that updates a single cell
 
