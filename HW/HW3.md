@@ -9,7 +9,7 @@
 **Due Date**: Wed, Sep 24 at midnight  
 **What to submit**:  
 - Problem (1): A file named `accelerometer.py`
-- Problem (2): A file named `neopixelfunctions.py`
+- Problem (2): A file named `neopixelfunction.py`
 - Problem (3): A file named `numbersystemconversion.py`
 - Problem (4): A file for each of parts (a) through (e), named `nbrs.py`, `checkBounds.py`, `all_nbrs.py`, `new_value_n.py` and `new_state.py` respectively. 
 
@@ -47,7 +47,7 @@ file.write(f"{a:.3f},{b:.3f},{c:.3f},{d:.3f}\n")
 
 ## (2) Completing the function activity from class
 
-Write the function `lightUp` as defined in the comments below. Turn in code including the function definition as well as the `while` loop you can see beneath the function definition. 
+Write the function `lightUp` as defined in the comments below. Turn in code including the function definition as well as the `while` loop you can see beneath the function definition, inside a single file.
 
 You will probably want to use `if` statements so that the strings `red`, `green` and `blue` can be interpreted correctly.
 
