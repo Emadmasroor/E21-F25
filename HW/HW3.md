@@ -13,8 +13,7 @@
 - Problem (3): A file named `numbersystemconversion.py`
 - Problem (4): A file for each of parts (a) through (e), named `nbrs.py`, `checkBounds.py`, `all_nbrs.py`, `new_value_n.py` and `new_state.py` respectively. 
 
-
-**Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=763898) for the PDF and [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=763897) for the code. You can see the submission pages on the course Moodle page as well.
+**Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=765384) for the code. There is no PDF submission for this HW.
 
 ## (1) Completing Accelerometer Activity from class
 
