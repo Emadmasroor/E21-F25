@@ -1,4 +1,4 @@
-# HW 3 (Under Construction)
+# HW 3 
 
 * Table of Contents
 {:toc}
