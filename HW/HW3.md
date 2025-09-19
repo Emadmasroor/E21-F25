@@ -135,7 +135,7 @@ Notice that edge cells, such as cell number 18 or 31, do not have eight neighbor
 
 For this part, you will write a function `checkBounds(n)` that returns `True` if `n` is one of the interior cells and `False` if `n` is on the boundary of the grid, or if it is outside the grid altogether.
 
-You must use an appropriate conditional (or conditionals) inside this function. You won't get full credit for 'hard-coding' all the addresses that should return True, for example.
+You should use an appropriate conditional (or conditionals) inside this function. 'Hard-coding' is a bad idea because, later, you will do this for an NxN grid!
 
 ### (c) Determine a list of neighbors for every cell in 6x6 grid
 
@@ -147,7 +147,7 @@ Thus, the structure of your returned list will be:
 
 `[[],[],[],...( total of 36 lists here)...,[],[],[]]` 
 
-**Note:** Theoretically, you could solve this problem by 'hardcoding' it, i.e., you could write a function that returns the correct list because you've written out every element of every list inside the 36-element list. But this won't give you full (or, really, any) credit.
+**Note:** Theoretically, you could solve this problem by 'hardcoding' it, i.e., you could write a function that returns the correct list because you've written out every element of every list inside the 36-element list. This is okay, but stronly discouraged since you will be working on an NxN grid in the next HW.
 
 ~~~python
 def all_nbrs():
