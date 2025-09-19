@@ -105,7 +105,7 @@ Consider [Conway's Game of Life](https://playgameoflife.com/) played over a 6x6 
 
 The state of the system can be fully determined by a 36-element list of Boolean values, where `True` indicates an 'alive' cell and `False` indicates a 'dead' cell.
 
-(##) Recall the Rules for Conway's Game of Life
+**Recall the Rules for Conway's Game of Life**
 
 - At any time, each cell is either alive or dead.
 - The game moves forward in steps.
@@ -130,7 +130,74 @@ Write a function called `nbrs_v1` that generates a list corresponding to the (up
 
 Thus, when you call this function with argument 22, it should return a list containing the above numbers.
 
+Notice that edge cells, such as cell number 18 or 31, do not have eight neighbors. For now, don't pay much attention to how your function treats edge cells! Your function will probably return an incorrect answer for cells on one of the four edges, and that's okay. Later, you will write code that ensures that this function is never used on non-interior cells.
 
+### Write a function that checks whether an address is in the interior part of the grid
 
+For this part, you will write a function `checkBounds(n)` that returns `True` if `n` is one of the interior cells and `False` if `n` is on the boundary of the grid, or if it is outside the grid altogether.
 
+You must use an appropriate conditional (or conditionals) inside this function. You won't get full credit for 'hard-coding' all the addresses that should return True, for example.
+
+### Determine a list of neighbors for every cell in 6x6 grid
+
+In this part, you will put together the code from the last two parts and use it to assemble a list of lists that denotes the neighbors of each cell in the `6x6` grid shown above. Remember that once this list is determined, it doesn't change as the game progresses.
+
+Write a function with no input arguments that returns a 36-element list. Each element of this list should itself be a list that contains the addresses of the neighbors of the cell at that location. If a cell is on one of the edges, there should be an empty list for its 'list of neighbors'. We will pretend that cells on the edge have no neighbors (since we will never update them). 
+
+Thus, the structure of your returned list will be:
+
+`[[],[],[],...( total of 36 lists here)...,[],[],[]]` 
+
+**Note:** Theoretically, you could solve this problem by 'hardcoding' it, i.e., you could write a function that returns the correct list because you've written out every element of every list inside the 36-element list. But this won't give you full (or, really, any) credit.
+
+~~~python
+def determine_nbrs():
+ # Start out by creating a list of 36 zeros.
+ nbrs = [0] * 36
+ # Then modify this list so that each element is a list.
+ return nbrs
+~~~
+
+The graders will check this function by calling `determine_nbrs()` and making sure that the resulting list matches the correct one. For example, `your_returned_list[22]` should be equal to `[16,28,23,21,27,29,15,17]` or some permutation thereof because this is the correct list of neighbors for cell number `22`. You can place the neighbors in any order you like. Similarly, `your_returned_list[31]` should be equal to `[]` since `31` is the address for one of the cells on the edge, which we are pretending have no neighbors at all.
+
+### A function that updates a single cell
+
+Write a function that tells you what the new value of a particular cell in the grid should be, based on the current state. This function executes *one step* of the game for *one cell*.
+
+~~~python
+def new_value_n(n,current_state):
+ # Based on the current state of the system, determine the new state of cell n.
+ # DO NOT CHANGE current_state.
+ # Return True if, according to Conway's Game of Life's rules, this cell should
+ # be alive in the next step, and False if, according to the same rules, this 
+ # cell should be dead in the next step.
+ 
+ # Placeholder code:
+ return False
+~~~
+
+(##) An Example
+
+If the current state of the system looks like this:
+
+|   |   |   |   |   |   |
+|---|---|---|---|---|---|
+| ■ | □ | □ | ■ | □ | □ |
+| □ | ■ | □ | □ | ■ | ■ |
+| ■ | ■ | □ | ■ | □ | □ |
+| □ | □ | ■ | □ | ■ | ■ |
+| ■ | □ | ■ | □ | □ | ■ |
+| □ | ■ | □ | ■ | ■ | □ |
+
+represented as a list of Booleans as follows:
+~~~python
+a=[True, False, False, True, False, False,
+ False, True, False, False, True, True,
+ True, True, False, True, False, False,
+ False, False, True, False, True, True,
+ True, False, True, False, False, True,
+ False, True, False, True, True, False]
+~~~
+
+Then calling your function `new_value_n(9,a)` should return `True`, since cell 9 is currently dead but it has exactly three live neighbors. If your function is called on a cell that is at the edge of the grid, it should return `True` if that cell is currently alive and `False` if that cell is currently dead, i.e., it should not change the state of any cell on the boundary.
 
