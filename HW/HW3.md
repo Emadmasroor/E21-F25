@@ -116,7 +116,7 @@ The state of the system can be fully determined by a 36-element list of Boolean 
  - Any dead cell with exactly 3 live neighbors becomes alive in the next step.
  - All other dead cells remain dead, and stay dead in the next step.
 
-### Write a function to determine the neighbors of interior cells.
+### (a) Write a function to determine the neighbors of interior cells.
 
 Write a function called `nbrs_v1` that generates a list corresponding to the (up to 8) neighbors that each interior cell has. (By _interior cell_, we mean any cell that's not on the edge of the grid). The function should take in a single argument of type `int`, and should return a list of the neighbors of the cell whose address was passed to the function. For example, you can see by inspection that the cell with address 22 has the following eight neighbors:
 - 16 ("North")
@@ -132,17 +132,17 @@ Thus, when you call this function with argument 22, it should return a list cont
 
 Notice that edge cells, such as cell number 18 or 31, do not have eight neighbors. For now, don't pay much attention to how your function treats edge cells! Your function will probably return an incorrect answer for cells on one of the four edges, and that's okay. Later, you will write code that ensures that this function is never used on non-interior cells.
 
-### Write a function that checks whether an address is in the interior part of the grid
+### (b) Write a function that checks whether an address is in the interior part of the grid
 
 For this part, you will write a function `checkBounds(n)` that returns `True` if `n` is one of the interior cells and `False` if `n` is on the boundary of the grid, or if it is outside the grid altogether.
 
 You must use an appropriate conditional (or conditionals) inside this function. You won't get full credit for 'hard-coding' all the addresses that should return True, for example.
 
-### Determine a list of neighbors for every cell in 6x6 grid
+### (c) Determine a list of neighbors for every cell in 6x6 grid
 
 In this part, you will put together the code from the last two parts and use it to assemble a list of lists that denotes the neighbors of each cell in the `6x6` grid shown above. Remember that once this list is determined, it doesn't change as the game progresses.
 
-Write a function with no input arguments that returns a 36-element list. Each element of this list should itself be a list that contains the addresses of the neighbors of the cell at that location. If a cell is on one of the edges, there should be an empty list for its 'list of neighbors'. We will pretend that cells on the edge have no neighbors (since we will never update them). 
+Write a function called `determine_nbrs()` with no input arguments that returns a 36-element list. Each element of this list should itself be a list that contains the addresses of the neighbors of the cell at that location. If a cell is on one of the edges, there should be an empty list for its 'list of neighbors'. We will pretend that cells on the edge have no neighbors (since we will never update them). 
 
 Thus, the structure of your returned list will be:
 
@@ -160,15 +160,17 @@ def determine_nbrs():
 
 The graders will check this function by calling `determine_nbrs()` and making sure that the resulting list matches the correct one. For example, `your_returned_list[22]` should be equal to `[16,28,23,21,27,29,15,17]` or some permutation thereof because this is the correct list of neighbors for cell number `22`. You can place the neighbors in any order you like. Similarly, `your_returned_list[31]` should be equal to `[]` since `31` is the address for one of the cells on the edge, which we are pretending have no neighbors at all.
 
-### A function that updates a single cell
+### (d) A function that updates a single cell
 
-Write a function that tells you what the new value of a particular cell in the grid should be, based on the current state. This function executes *one step* of the game for *one cell*.
+Write a function named `new_value_n(n,current_state)` that tells you what the new value of cell `n` should be, based on the current state of the whole system. This function executes *one step* of the game for *one cell*, but it takes as input the entire current state.
+
+Your function should assume that `current_state` is a 36-element list of booleans.
 
 ~~~python
 def new_value_n(n,current_state):
  # Based on the current state of the system, determine the new state of cell n.
  # DO NOT CHANGE current_state.
- # Return True if, according to Conway's Game of Life's rules, this cell should
+ # Return True if, according to Conway's Game of Life's rules, cell number n should
  # be alive in the next step, and False if, according to the same rules, this 
  # cell should be dead in the next step.
  
@@ -176,11 +178,10 @@ def new_value_n(n,current_state):
  return False
 ~~~
 
-(##) An Example
+**An Example**
 
-If the current state of the system looks like this:
+If the current state of the system looks like this, where filled squares represent true/alive and empty squares represent false/dead:
 
-|   |   |   |   |   |   |
 |---|---|---|---|---|---|
 | ■ | □ | □ | ■ | □ | □ |
 | □ | ■ | □ | □ | ■ | ■ |
@@ -189,7 +190,7 @@ If the current state of the system looks like this:
 | ■ | □ | ■ | □ | □ | ■ |
 | □ | ■ | □ | ■ | ■ | □ |
 
-represented as a list of Booleans as follows:
+This can be represented as a list of Booleans as follows:
 ~~~python
 a=[True, False, False, True, False, False,
  False, True, False, False, True, True,
@@ -199,5 +200,19 @@ a=[True, False, False, True, False, False,
  False, True, False, True, True, False]
 ~~~
 
-Then calling your function `new_value_n(9,a)` should return `True`, since cell 9 is currently dead but it has exactly three live neighbors. If your function is called on a cell that is at the edge of the grid, it should return `True` if that cell is currently alive and `False` if that cell is currently dead, i.e., it should not change the state of any cell on the boundary.
+If the current state of the system is as above, then calling `new_value_n(9,a)` should return `True`, since cell 9 is currently dead but it has exactly three live neighbors. If your function is called on a cell that is at the edge of the grid, it should return `True` if that cell is currently alive and `False` if that cell is currently dead, i.e., it should not change the state of any cell on the boundary.
+
+### (e) Update all the (interior) cells
+
+Write a function that returns a new 'state variable' for the system based on the current state variable for the system. You will likely make use of a `for` loop  here, and you must use your `new_value_n` function.
+
+~~~python
+def new_state(old_state)
+ # Returns the new state of the system, given the old state of the system.
+ # new_state should be a list of Booleans of the same size as old_state.
+ # Assume both lists are 36 elements long.
+ newlist = [0] * 36
+ # Write your code here
+ return newlist
+~~~
 
