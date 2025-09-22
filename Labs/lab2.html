@@ -56,12 +56,12 @@ total length of the resistive strip. In effect, turning the wiper
 amounts to choosing how much of $R_{\text{total}}$ ends up in $R_1$
 vs $R_2$.
 
-By connecting pin 1 to the CPX's 3.3V output, connecting pin 2 to an analog input, and connecting pin 3 to GND, we can create a voltage divider.
+By connecting pin 1 to the CPB's 3.3V output, connecting pin 2 to an analog input, and connecting pin 3 to GND, we can create a voltage divider.
 
 ![Figure [div2]: Connecting pins 1 and 3 to 3.3 V and ground to make a voltage divider.](images/divider2.png height=250px alt="A schematic shows the potentiometer as a voltage divider with Pin 1 at 3.3 Volts, Pin 3 at 0 Volts, and Pin 2 as the output.")
 
 When connected in this way, the potentiometer regulates the voltage
-seen by the CPX at pin 2. If we assume the current going out through
+seen by the CPB at pin 2. If we assume the current going out through
 pin 2 is negligible, then according to Ohm's law, the total current
 through both resistors is given by:
 
@@ -85,7 +85,7 @@ supply voltage.
 
 ***Bottom line:*** Potentiometers provide a cheap and straightforward
 way to convert the rotation of a shaft to a continously-varying
-voltage.  We can use the CPX's built-in analog inputs to read those
+voltage.  We can use the CPB's built-in analog inputs to read those
 voltages.
 
 ## The **`lerp`** and **`unlerp`** functions
@@ -238,14 +238,14 @@ coordinates within a point.
 # Lab Exercises
 
 Before you begin, download this [`code.py`](lab2/code.py) file and
-copy it over to the root directory of your CPX's `CIRCUITPY`
+copy it over to the root directory of your CPB's `CIRCUITPY`
 drive. Then download this [`lab2_util.mpy`](lab2/lab2_util.mpy) file
-and copy it into the `lib` directory of your CPX's `CIRCUITPY` drive.
+and copy it into the `lib` directory of your CPB's `CIRCUITPY` drive.
 
 !!! Warning
-   **If you already have a `code.py` file on your CPX with valuable
+   **If you already have a `code.py` file on your CPB with valuable
    code in it, beware of overwriting it!** Consider renaming the one
-   on your CPX or backing it up to your computer before copying over
+   on your CPB or backing it up to your computer before copying over
    the starter code.
 
 When moving from exercise to exercise, you will comment and un-comment
@@ -260,10 +260,10 @@ black.
 
 ![Figure [joystick]: Joystick used in this lab, showing the potentiometers (green) for each axis.](images/joystick.jpg width=65% alt="A joystick on a circuit board.")
 
-With the USB cable unplugged, hook up the joystick to the CPX
+With the USB cable unplugged, hook up the joystick to the CPB
 according to the table below:
 
-| Joystick | CPX  |
+| Joystick | CPB  |
 |:---------|:-----|
 | VCC      | 3.3V (use the one next to A3) |
 | VERT     | A3   |
@@ -418,7 +418,7 @@ At the bottom of `code.py`, comment out the call to the
 
 Your task is to modify this function to light up the single NeoPixel
 that lies closest to the direction the joystick is being pushed.  Here
-is the arrangement of NeoPixels on the CPX:
+is the arrangement of NeoPixels on the CPB:
 
 ![Figure [neopixels]: Numbering convention for the neopixels. Image courtesy Adafruit.](images/neopixel_numbering.jpg width="75%" alt="An image of the Circuit Playground Express with the NeoPixel labels superimposed.  The ten NeoPixels are labeled 0 through 9 counterclockwise starting from the microUSB port.")
 
@@ -453,7 +453,7 @@ Whichever NeoPixel $j$ that has the maximum dot product $p_j$ is the one that sh
 
 I suggest you organize your code as follows:
 
-  * Call **`cpx.pixels.fill`** with the correct argument to fill all
+  * Call **`cp.pixels.fill`** with the correct argument to fill all
     of the NeoPixels with black.
   
   * If the joystick is not neutral:
