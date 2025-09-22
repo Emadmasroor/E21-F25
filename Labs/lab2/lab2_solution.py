@@ -1,5 +1,5 @@
 from board import A1, A2, A3
-from adafruit_circuitplayground.express import cpx
+from adafruit_circuitplayground.express import cp
 from analogio import AnalogIn
 from digitalio import DigitalInOut, Direction, Pull
 from time import sleep
@@ -22,11 +22,11 @@ NEOPIXEL_COORDS = [
     (0.500, 0.866)
 ]
 
-# Number of bits of the ADCs on the CPX.
+# Number of bits of the ADCs on the CPB.
 # TODO: set this to the correct value!
 ADC_BITS = 16
 
-# Maximum ADC reading on the CPX.
+# Maximum ADC reading on the CPB.
 # Do not edit this directly, instead modify
 # ADC_BITS above.
 ADC_MAX = 2**ADC_BITS - 1
@@ -91,12 +91,12 @@ def lab2_ex1():
 def lab2_ex2():
 
     def on_pass():
-        cpx.play_tone(1046, 0.01)
-        cpx.play_tone(1319, 0.01)
-        cpx.play_tone(1568, 0.01)
+        cp.play_tone(1046, 0.01)
+        cp.play_tone(1319, 0.01)
+        cp.play_tone(1568, 0.01)
 
     def on_fail():
-        cpx.play_tone(220, 1.0)
+        cp.play_tone(220, 1.0)
 
     tests = [
 
@@ -136,14 +136,14 @@ def lab2_ex3():
     vert = AnalogIn(A3)
     horiz = AnalogIn(A2)
 
-    cpx.pixels.brightness = 0.05
+    cp.pixels.brightness = 0.05
 
     while True:
 
         V = remap(0, ADC_MAX, 0, 1, vert.value)
         H = remap(ADC_MAX, 0, 0, 300, horiz.value)
 
-        cpx.pixels.fill(rgb_from_hsv(H, 1.0, V))
+        cp.pixels.fill(rgb_from_hsv(H, 1.0, V))
 
 
 ######################################################################
@@ -153,7 +153,7 @@ def lab2_ex4():
     vert = AnalogIn(A3)
     horiz = AnalogIn(A2)
 
-    cpx.pixels.brightness = 0.05
+    cp.pixels.brightness = 0.05
 
     while True:
 
@@ -162,7 +162,7 @@ def lab2_ex4():
         u = 1 - horiz.value / k
         v = vert.value / k - 1
 
-        cpx.pixels.fill((0, 0, 0))
+        cp.pixels.fill((0, 0, 0))
 
         if max(abs(u), abs(v)) > 0.9:
 
@@ -175,7 +175,7 @@ def lab2_ex4():
                     max_pi = pi
                     max_i = i
 
-            cpx.pixels[max_i] = (255, 255, 255)
+            cp.pixels[max_i] = (255, 255, 255)
 
 ######################################################################
 
@@ -190,7 +190,7 @@ def lab2_ex5():
     sel.direction = Direction.INPUT
     sel.pull = Pull.UP
 
-    cpx.pixels.brightness = 0.05
+    cp.pixels.brightness = 0.05
 
     t = 0.0
     cur_uv = (0.0, 1.0)
@@ -220,7 +220,7 @@ def lab2_ex5():
                 S = 0.0
                 yy = 0.5 + 0.5*cos(0.95 * dp)
                 V = yy * yy
-            cpx.pixels[i] = rgb_from_hsv(H, S, V)
+            cp.pixels[i] = rgb_from_hsv(H, S, V)
 
         t += delta_t
 

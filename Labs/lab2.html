@@ -13,6 +13,13 @@
 
 * Use loops to control your CPB's NeoPixels based on input from a joystick.
 
+(##) Report template
+
+Use the provided [lab report template](.\lab2\E21_Lab2_Report_Template.docx) to answer the questions for this lab. For all E21 labs, please make sure to write up
+    your answers to the questions in each exercise before you move on
+    to the next task. The questions are designed to help you complete the
+    labs efficiently.
+
 (##) Lab progress
 
 I expect most groups will at least have started Exercise 4 by the end
@@ -96,7 +103,7 @@ order to obtain a smoothly varying parameters. This linear
 interpolation function is often abbreviated as **`lerp`** and is
 illustrated in the graph below:
 
-![Figure [lerp]: **`lerp`**-ing our way from $a$ to $b$.](images/lerp.png width="250px" class=pixel alt="A red line connects the two points (0,a) and (1,b).")
+![Figure [lerp]: **`lerp`**-ing our way from $a$ to $b$.](images/lerp.png width="250px" class=pixel alt="A red line connects the two points \(0,a\) and \(1,b\).")
 
 Mathematically the function **`lerp(a, b, x)`** is defined to output $a$
 when $x = 0$, output $b$ when $x = 1$, and to vary linearly for all other values of $x$.
@@ -106,7 +113,7 @@ The inverse function is also useful. For any given number $c$, it
 outputs the $x$ you would need to supply to **`lerp`** in order to get $c$
 as an output:
 
-![Figure [unlerp]: **`unlerp`** is the inverse of **`lerp`**.](images/unlerp.png height="250px" class=pixel alt="A red line connects the two points (a,0) and (b,1).")
+![Figure [unlerp]: **`unlerp`** is the inverse of **`lerp`**.](images/unlerp.png height="250px" class=pixel alt="A red line connects the two points \(a,0\) and \(b,1\).")
 
 Mathematically, the function **`unlerp(a, b, c)`** is defined to output
 $0$ when $c = a$, output $1$ when $c = b$, and to vary linearly for
@@ -115,7 +122,7 @@ all other values of $c$.
 We can compose these functions together in order to produce a third function which we will call **`remap`**:
 
 
-![Figure [remap]: **`remap`** linearly maps the input range $[a, b]$ to the output domain $[s, t]$.](images/remap.png height="200px" class=pixel alt="A purple line connects the two points (a,s) and (b,t).")
+![Figure [remap]: **`remap`** linearly maps the input range $[a, b]$ to the output domain $[s, t]$.](images/remap.png height="200px" class=pixel alt="A purple line connects the two points \(a,s\) and \(b,t\).")
 
 The function **`remap(a, b, s, t, c)`** is defined to output $s$ when
 $c = a$, output $t$ when $c = b$ and to vary linearly for all other
@@ -193,7 +200,7 @@ function.
 Consider the following snippet of code:
 
 ~~~ Python
-mylist = ['Matt', 'Emad', 'Carr']
+mylist = ['Will', 'Emad', 'Matt']
 
 for i in range(len(mylist)):
     print("i is", i, "and the i'th item is", mylist[i])
@@ -202,18 +209,18 @@ for i in range(len(mylist)):
 Now compare to the equivalent code using **`enumerate`**:
 
 ~~~ Python
-mylist = ['Matt', 'Emad', 'Carr']
+mylist = ['Will', 'Emad', 'Matt']
 
 for i, item in enumerate(mylist):
     print("i is", i, "and the i'th item is", item)
 ~~~
 
-In my opinion, the second code snippet is better for several reasons:
+The second code snippet is better for several reasons:
 
   * It avoids the awkward **`range(len(foo))`** syntax.
   * There is no need to write the indexing operation **`[i]`**.
-  * It usually requres less typing overall.
   * It prevents you from indexing into the wrong container or supplying the wrong index.
+  * It is more efficient: it yields the index and list element simultaneously instead of performing a list lookup each time.  For very long lists, this efficiency gain can be noticeable.
 
   
 See the [Python docs](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques) for more information.
@@ -302,7 +309,7 @@ Wiggle the joystick around and observe the effects in those windows.
  * **Q3)** What module(s) and class(es) are used to sample, or get
    readings from, the ADCs in the **`lab2_ex1()`** function? 
    Include a link to the documentation for these module(s) and class(es)
-   found on <https://docs.circuitpython.org/>. 
+   found on <https://docs.circuitpython.org/>. Click on "Core Modules" in the upper left.
    
 Modify the **`ADC_BITS`** constant at the top of the `code.py` file to
 reflect the answer you got for **Q2**. It should result in the correct
@@ -408,8 +415,7 @@ swirl it around in circles similar to this video:
 
 ![Figure [ex3]: My solution code for Exercise 3.](https://youtu.be/ZkLSV2OA0G0)
 
- * **Q6)** What is the URL to the video you recorded for exercise 3?
-   (Make sure it is shared with my Swarthmore email address.)
+ * **Q6)** What is the URL to the video you recorded for exercise 3? Make sure it is shared with my Swarthmore email address ([wjohnso3@swarthmore.edu](mailto:wjohnso3@swarthmore.edu)). Please be nice to my inbox and **uncheck** "Notify people" when you share it.
 
 ## Exercise 4: Lighting up a single NeoPixel
 
@@ -475,8 +481,7 @@ position, similar to mine below:
 ![Figure [ex4]: My solution code for exercise 4.](https://youtu.be/YjilkJfGrKI)
 
 
- * **Q7)** What is the URL to the video you recorded for exercise 4?
-   (Make sure it is shared with my Swarthmore email address.)
+ * **Q7)** What is the URL to the video you recorded for exercise 4? Make sure it is shared with my Swarthmore email address ([wjohnso3@swarthmore.edu](mailto:wjohnso3@swarthmore.edu)). Please be nice to my inbox and **uncheck** "Notify people" when you share it.
 
 ## Exercise 5: Going further
 
@@ -496,44 +501,39 @@ the following specifications:
    behavior, and the NeoPixels should still be responsive to joystick
    motion while SEL is active.
    
-Here is a video demonstration of my own solution to this prompt.
+Here is a video demonstration of Prof. Zucker's solution to this prompt.
 The NeoPixels scroll rainbow colors in the direction the joystick is
 pressed. When SEL is active, instead of rainbow colors, the NeoPixels
 scroll in shades of gray.
 
-![Figure [ex5]: My own demo code for exercise 5 -- yours can definitely be simpler.](https://youtu.be/vRRTYwrMFOQ)
+![Figure [ex5]: Demo code for exercise 5--yours can definitely be simpler.](https://youtu.be/vRRTYwrMFOQ)
 
 Record your own video for this exercise. Make sure it clearly
 demonstrates behavior both with and without SEL active.
 
 !!! Tip
     ***This program is much more complicated than needed to complete exercise 5!***
-    Please don't feel obligated to duplicate it exactly, it's merely
+    Please don't feel obligated to duplicate it exactly--it's merely
     intended as inspiration.
     
  * **Q8)** Please describe the intended behavior of your program.
    How do the joystick axes affect the color of each NeoPixel?
    How about when SEL is active?
    
- * **Q9)** What is the URL to the video you recorded for exercise 5?
-   (Make sure it is shared with my Swarthmore email address.)
+ * **Q9)** What is the URL to the video you recorded for exercise 4? Make sure it is shared with my Swarthmore email address ([wjohnso3@swarthmore.edu](mailto:wjohnso3@swarthmore.edu)). Please be nice to my inbox and **uncheck** "Notify people" when you share it.
 
 # Lab Report
 
-Before your next scheduled lab meeting, submit a `.zip` file to [Moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=697753) (one submission per group) containing:
+Within one week of your lab meeting, submit the following files to the lab assignment on Moodle:
 
   * Your completed `code.py` file.
 
-  * A PDF writeup with your names, the assignment name, answers to 
+  * A PDF writeup using the provided template complete with your names and answers to 
     all questions **Q1**-**Q9** above as well as **Q10** below:
     
     * **Q10)** Did all group members contribute equally to all tasks?
       If not, who did what for each exercise?
       
-In your PDF, please include the questions verbatim, preserving the
-numbering I have used. Also make sure to format my questions
-differently than your answers (e.g. using boldface, italics, or
-a predefined Heading style).
       
 !!! Warning
     **Don't forget to make sure your videos are linked in the PDF writeup
@@ -541,7 +541,7 @@ a predefined Heading style).
       
 ## Grading
 
-Points will be assigned approximately according to the following breakdown:
+Points will be assigned according to the following breakdown:
 
  | Item | Grade value |
  | :---  | --: |
@@ -555,5 +555,3 @@ Points will be assigned approximately according to the following breakdown:
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
 <script>markdeepOptions = { tocStyle: 'short' };</script>
 <script src="../markdeep/markdeep.1.16.min.js?"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
-
-
