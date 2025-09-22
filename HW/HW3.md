@@ -52,7 +52,7 @@ Write the function `lightUp` as defined in the comments below. Turn in code incl
 You will probably want to use `if` statements so that the strings `red`, `green` and `blue` can be interpreted correctly.
 
 ```python
-import adafruit_circuitplayground as cp
+from adafruit_circuitplayground import cp
 import time
 def lightUp(color,n,p):
     # Lights up pixel number n using color "color"
