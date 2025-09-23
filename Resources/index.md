@@ -518,3 +518,18 @@ while True:
 
 ```
 
+## Lec 4.1, Tue Sep 23
+
+### Command Line Programs
+
+```
+import sys
+
+name    = sys.argv[1]
+num     = int(sys.argv[2])
+
+print(f"This program prints {name} {num} times.")
+for j in range(num):
+    print(name)
+```
+
