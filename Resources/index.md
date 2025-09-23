@@ -518,9 +518,9 @@ while True:
 
 ```
 
-## Lec 4.1, Tue Sep 23
+### Lec 4.1, Tue Sep 23
 
-### Command Line Programs
+#### Command Line Programs
 
 ```python
 import sys
