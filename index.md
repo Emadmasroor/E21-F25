@@ -34,7 +34,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [2.2](Lecs/Lec4.pdf)      | 09/11 | Thu | For/while loops; Relative & absolute errors;                        |               |
 | [3.1](Lecs/Lec5.pdf)      | 09/16 | Tue | Accuracy and precision; Saving data;      | [HW 2](HW/HW2) [[solutions](HW/HW2-Solutions)]          |
 | [3.2](Lecs/Lec6.pdf)      | 09/18 | Thu | Writing data to the board; Functions; Python installation slides | Test 1        |
-| 4.1      | 09/23 | Tue | Command line; floating point                         | [HW 3](HW/HW3)          |
+| [4.1](Lecs/Lec7.pdf)      | 09/23 | Tue | Command line; floating point                         | [HW 3](HW/HW3)          |
 | 4.2      | 09/25 | Thu | Floating point numbers                             |               |
 | 5.1      | 09/30 | Tue | Introduction to `numpy`                            | HW 4          |
 | 5.2      | 10/02 | Thu | Data Visualization for Engineering in Python       | Test 2        |
