@@ -522,7 +522,7 @@ while True:
 
 ### Command Line Programs
 
-```
+```python
 import sys
 
 name    = sys.argv[1]
@@ -531,5 +531,10 @@ num     = int(sys.argv[2])
 print(f"This program prints {name} {num} times.")
 for j in range(num):
     print(name)
+```
+
+Save the above code as `script1.py`. Then, run your code on the command line / terminal by entering:
+```python
+python3 script1.py testname 5
 ```
 
