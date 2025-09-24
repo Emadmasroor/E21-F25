@@ -499,7 +499,7 @@ f.close()
 The following is some "starter code" for you to write your own function
 
 ```python
-import adafruit_circuitplayground as cp
+from adafruit_circuitplayground import cp
 import time
 def lightUp(color,n,p):
     # Lights up pixel number n using color "color"
