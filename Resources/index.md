@@ -538,3 +538,8 @@ Save the above code as `script1.py`. Then, run your code on the command line / t
 python3 script1.py testname 5
 ```
 
+### Lec 4.2, Thu Sep 25
+
+#### Floating-point IEEE Standard
+
+- [https://evanw.github.io/float-toy/](https://evanw.github.io/float-toy/)
