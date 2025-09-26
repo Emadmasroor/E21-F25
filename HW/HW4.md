@@ -113,6 +113,9 @@ Try these as follows.
 
 a = random_boolean_list(49)
 visualizeConway(a)
+
+~~~
+
 |---|---|---|---|---|---|---|
 | □ | □ | ■ | □ | □ | □ | □ |
 | □ | □ | □ | ■ | ■ | ■ | ■ |
@@ -121,7 +124,7 @@ visualizeConway(a)
 | ■ | □ | ■ | ■ | ■ | ■ | ■ |
 | ■ | □ | ■ | ■ | □ | □ | □ |
 | □ | ■ | ■ | ■ | ■ | □ | □ |
-~~~
+
 
 **Recall the Rules for Conway's Game of Life**
 
