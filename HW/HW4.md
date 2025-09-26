@@ -12,7 +12,8 @@
 - Problem (2): A file named `floating_point.py`
 - Problem (3): A file named `Conway_v2.py`. Make sure functions have the expected names.
 
-**Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=765384) for the code. There is no PDF submission for this HW.
+**Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766335) for the code  
+And [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766339) for the PDF.
 
 
 ## (1) A closer look at the IEEE standard for floating point numbers
@@ -21,9 +22,7 @@
 
 2. Write down the next-biggest 16-bit number, (a) in IEEE binary format, (b) as a decimal number in base 10, and (c) as a fraction in base 10.
 
-3. Complete the following table by filling in the missing fields. You are encouraged to use the [Float Toy](https://evanw.github.io/float-toy/) widget for the "Largest number" and "Smallest number" answers.
-
-
+3. Complete the following table by filling in the missing fields. You are encouraged to use the [Float Toy](https://evanw.github.io/float-toy/) widget for the "Largest number" and "Smallest number" answers.  
 | Size   | Sign | Significand | Exponent | Bias | Colloquial Name  | Machine Epsilon | Largest number | Smallest number | Number of numbers |
 | ------ | ---- | ----------- | -------- | ---- | ---------------- | --------------- | -------------- | --------------- | ----------------- |
 | 16-bit | 1    | 10          | 5        | 15   | Half precision   |                 |                |                 |                   |
