@@ -18,16 +18,17 @@ And [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766339) for th
 
 ## (1) A closer look at the IEEE standard for floating point numbers
 
-1. Explain how to interpret the following 16-bit number: `0100110000001010`. Showing all of your calculations, write down its representation as (a) a decimal number, and (b) a fraction, both in base 10. 
-
-2. Write down the next-biggest 16-bit number, (a) in IEEE binary format, (b) as a decimal number in base 10, and (c) as a fraction in base 10.
-
-3. Complete the following table by filling in the missing fields. You are encouraged to use the [Float Toy](https://evanw.github.io/float-toy/) widget for the "Largest number" and "Smallest number" answers.  
 | Size   | Sign | Significand | Exponent | Bias | Colloquial Name  | Machine Epsilon | Largest number | Smallest number | Number of numbers |
 | ------ | ---- | ----------- | -------- | ---- | ---------------- | --------------- | -------------- | --------------- | ----------------- |
 | 16-bit | 1    | 10          | 5        | 15   | Half precision   |                 |                |                 |                   |
 | 32-bit | 1    | 23          | 8        | 127  | Single precision |                 |                |                 |                   |
 | 64-bit | 1    | 52          | 11       | 1023 | Double precision |                 |                |                 |                   |
+
+1. Explain how to interpret the following 16-bit number: `0100110000001010`. Showing all of your calculations, write down its representation as (a) a decimal number, and (b) a fraction, both in base 10. 
+
+2. Write down the next-biggest 16-bit number, (a) in IEEE binary format, (b) as a decimal number in base 10, and (c) as a fraction in base 10.
+
+3. Complete the table above by filling in the missing fields. You are encouraged to use the [Float Toy](https://evanw.github.io/float-toy/) widget for the "Largest number" and "Smallest number" answers.  
 
 4. It would seem that floating-point binary numbers can have $2^p$ possible  numbers in the exponent, where $p$ is the number of bits in the exponent (e.g., 32 possible exponent values for 16-bit numbers since $2^5=32$). However, in practice, you will find that the IEEE standard only allows $2^{p-1}$ distinct numbers as the exponent. Use [Float Toy](https://evanw.github.io/float-toy/) to find out the range of possible exponent values for 16-bit, 32-bit and 64-bit floating point binary numbers. Your answers should be in the form: "16-bit: Exponent ranges from x to y for a total of z exponents".
 
