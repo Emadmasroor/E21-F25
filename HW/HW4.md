@@ -8,7 +8,7 @@
 
 **Due Date**: Tue, Sep 30 at midnight  
 **What to submit**:  
-- Problem (1): Combine with (3) for a PDF file. 
+- Problem (1): A PDF file. 
 - Problem (2): A file named `floating_point.py`
 - Problem (3): A file named `Conway_v2.py`. Make sure functions have the expected names.
 
