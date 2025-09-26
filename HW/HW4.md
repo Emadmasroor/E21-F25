@@ -6,17 +6,16 @@
 
 ## Summary
 
-**Due Date**: Wed, Sep 24 at midnight  
+**Due Date**: Tue, Sep 30 at midnight  
 **What to submit**:  
-- Problem (1): A file named `accelerometer.py`
-- Problem (2): A file named `neopixelfunction.py`
-- Problem (3): A file named `numbersystemconversion.py`
-- Problem (4): A file for each of parts (a) through (e), named `nbrs.py`, `checkBounds.py`, `all_nbrs.py`, `new_value_n.py` and `new_state.py` respectively. 
+- Problem (1): Combine with (3) for a PDF file. 
+- Problem (2): A file named `floating_point.py`
+- Problem (3): A file named `Conway_v2.py`. Make sure functions have the expected names.
 
 **Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=765384) for the code. There is no PDF submission for this HW.
 
 
-## A closer look at the IEEE standard for floating point numbers
+## (1) A closer look at the IEEE standard for floating point numbers
 
 1. Explain how to interpret the following 16-bit number: `0100110000001010`. Showing all of your calculations, write down its representation as (a) a decimal number, and (b) a fraction, both in base 10. 
 
@@ -44,7 +43,7 @@
 - Calculate how many 16-bit floating point numbers exist between $1/32$ and $1/16$, not including $1/16$, i.e., find the number of elements in the set $[2^{-5},2^{-4})$. How large is the gap between these numbers?
 - Calculate how many 16-bit floating point numbers exist between $1/256$ and $1/128$, not including $1/16$, i.e., find the number of elements in the set $[2^{-8},2^{-7})$. How large is the gap between these numbers?
 
-## A Python program to interpret IEEE-standard floating point binary numbers.
+## (2) A Python program to interpret IEEE-standard floating point binary numbers.
 
 Write a function that can interpret a string of 1's and 0's as a decimal number. The string of 1's and 0's is presumed to be arranged according to the IEEE standard for 16-bit, 32-bit, or 64-bit numbers.
 
@@ -90,7 +89,7 @@ def binary_to_dec_fraction(num):
   return total_value
 ~~~
 
-## Conway's Game of Life
+## (3) Conway's Game of Life
 
 **Coding an N x N version of Conway's Game of Life with functions**
 
