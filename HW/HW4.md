@@ -105,7 +105,7 @@ Consider [Conway's Game of Life](https://playgameoflife.com/) played over an N x
 
 The state of the system can be fully determined by an (N-squared)-element list of Boolean values, where `True` indicates an 'alive' cell and `False` indicates a 'dead' cell.
 
-**New in HW 4**: You now have access to the functions `visualizeConway(state)` and `random_boolean_list(length)` to help you visualize these long lists of booleans. Download a file contianing these functions [here](Resources/ConwayUtilities.py).
+**New in HW 4**: You now have access to the functions `visualizeConway(state)` and `random_boolean_list(length)` to help you visualize these long lists of booleans. Download a file contianing these functions [here](../Resources/ConwayUtilities.py).
 
 Try these as follows.
 
