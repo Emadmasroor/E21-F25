@@ -30,7 +30,7 @@ And [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766339) for th
 
 3. Complete the table above by filling in the missing fields. You are encouraged to use the [Float Toy](https://evanw.github.io/float-toy/) widget for the "Largest number" and "Smallest number" answers.  
 
-4. It would seem that floating-point binary numbers can have $2^p$ possible  numbers in the exponent, where $p$ is the number of bits in the exponent (e.g., 32 possible exponent values for 16-bit numbers since $2^5=32$). However, in practice, you will find that the IEEE standard only allows $2^{p-1}$ distinct numbers as the exponent. Use [Float Toy](https://evanw.github.io/float-toy/) to find out the range of possible exponent values for 16-bit, 32-bit and 64-bit floating point binary numbers. Your answers should be in the form: "16-bit: Exponent ranges from x to y for a total of z exponents".
+4. It would seem that floating-point binary numbers can have $2^p$ possible  numbers in the exponent, where $p$ is the number of bits in the exponent (e.g., 32 possible exponent values for 16-bit numbers since $2^5=32$). However, in practice, you will find that the IEEE standard only allows $(2^p)-1$ distinct numbers as the exponent. Use [Float Toy](https://evanw.github.io/float-toy/) to find out the range of possible exponent values for 16-bit, 32-bit and 64-bit floating point binary numbers. Your answers should be in the form: "16-bit: Exponent ranges from x to y for a total of z exponents".
 
 5. With the help of Float Toy, explain how the following two numbers differ from each other. `0000010000000100` and `0000000000000100`. Look carefully at the decimal representation of these numbers to help answer this question.
 
