@@ -550,6 +550,25 @@ python3 script1.py testname 5
 
 See the official NumPy documentation [here](https://numpy.org/doc/stable/reference/).
 
+#### Floating Point Error Accumulation
+
+~~~python
+import numpy as np
+
+# Use NumPy's float16 type
+a = np.float16(1e-3)  # A small number
+n = 10000  # Large number of iterations
+
+result = np.float16(0)  # Start with 0 in float16
+
+# Add the small number 'a' to 'result' n times
+for i in range(n):
+    result += a
+
+print("Expected result:", a * n)  
+print("Result with float16:", result)  # Result with float16
+~~~
+
 #### Breaking Floating point numbers
 
 ~~~python
