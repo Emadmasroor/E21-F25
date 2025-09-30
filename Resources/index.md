@@ -546,7 +546,11 @@ python3 script1.py testname 5
 
 ### Lec 5.1, Tue Sep 30
 
-### Breaking Floating point numbers
+#### NumPy reference
+
+See the official NumPy documentation [here](https://numpy.org/doc/stable/reference/).
+
+#### Breaking Floating point numbers
 
 ~~~python
 import numpy as np
