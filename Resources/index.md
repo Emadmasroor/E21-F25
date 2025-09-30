@@ -543,3 +543,54 @@ python3 script1.py testname 5
 #### Floating-point IEEE Standard
 
 - [https://evanw.github.io/float-toy/](https://evanw.github.io/float-toy/)
+
+### Lec 5.1, Tue Sep 30
+
+### Breaking Floating point numbers
+
+~~~python
+import numpy as np
+
+def showFloat(number):
+    # print(f"Binary representation of {number:.3f}, type {type(number)}:")
+    if str(type(number)) == "<class 'numpy.float16'>":
+        x = np.float16(number)
+        bits = x.view(np.uint16)
+        return f"{bits:016b}"
+    elif str(type(number)) == "<class 'numpy.float32'>":
+        x = np.float32(number)
+        bits = x.view(np.uint32)
+        return f"{bits:032b}"
+    elif str(type(number)) == "<class 'numpy.float64'>":
+        x = np.float64(number)
+        bits = x.view(np.uint64)
+        return f"{bits:064b}"
+    else:
+        print("Type is not compatible")
+
+# Declare some 16-bit floating-point numbers
+a = np.float16(128)
+c = np.float16(16)
+ep = np.float16(0.2)
+
+# Add them together and print them out:
+
+print('128 + 0.2 =',a+ep)
+print('128 + 0.2 + 0.2 =',a+ep+ep)
+print('128 + 0.2 + 0.2 + 0.2 =',a+ep+ep+ep)
+print('128 + (0.2 + 0.2 + 0.2) =',a+(ep+ep+ep))
+# View the internals
+print(showFloat(a+(ep+ep+ep)))
+print(showFloat(a+ep+ep+ep))
+print('')
+
+print('16 + 0.2 =',c+ep)
+print('16 + 0.2 + 0.2 =',c+ep+ep)
+print('16 + 0.2 + 0.2 + 0.2 =',c+ep+ep+ep)
+print('16 + (0.2 + 0.2 + 0.2) =',c+(ep+ep+ep))
+
+# View the internals
+print(showFloat(c+(ep+ep+ep)))
+print(showFloat(c+ep+ep+ep))
+
+~~~
