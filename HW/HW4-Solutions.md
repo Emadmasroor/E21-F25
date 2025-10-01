@@ -7,7 +7,10 @@
 
 **Written Answers**
 
-<embed src="floats.pdf" width="500" height="375" 
+<embed src="floats1.pdf" width="500" height="375" 
+ type="application/pdf">
+
+<embed src="floats2.pdf" width="500" height="375" 
  type="application/pdf">
 
 - Parts 1 and 2:
