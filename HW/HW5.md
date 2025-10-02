@@ -13,8 +13,7 @@
 - Problem (3): A single Python file containing the required function definitions with correct names.
 - Problem (4)  Two `*.png` files and two corresponding `*.py` files that, when run, reproduce the respective plots using `matplotlib.pyplot.show()`
 
-**Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766335) for the code  
-And [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766339) for the PDF.
+**Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=767303) 
 
 ## (1) Complete in-class activity: Numpy functions
 
