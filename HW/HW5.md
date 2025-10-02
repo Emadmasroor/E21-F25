@@ -1,4 +1,4 @@
-# HW 4
+# HW 5
 
 * Table of Contents
 {:toc}
@@ -6,7 +6,7 @@
 
 ## Summary
 
-**Due Date**: Tue, Sep 30 at midnight  
+**Due Date**: Tue, Oct 7 at midnight  
 **What to submit**:  
 - Problem (1): A PDF file. 
 - Problem (2): A file named `floating_point.py`
