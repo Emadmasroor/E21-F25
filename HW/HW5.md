@@ -8,9 +8,10 @@
 
 **Due Date**: Tue, Oct 7 at midnight  
 **What to submit**:  
-- Problem (1): A PDF file. 
-- Problem (2): A file named `floating_point.py`
-- Problem (3): A file named `Conway_v2.py`. Make sure functions have the expected names.
+- Problem (1): A single Python file containing all code for this problem
+- Problem (2): A single Python file containing the required function definitions with correct names.
+- Problem (3): A single Python file containing the required function definitions with correct names.
+- Problem (4)  Two `*.png` files and two corresponding `*.py` files that, when run, reproduce the respective plots using `matplotlib.pyplot.show()`
 
 **Submit at**: [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766335) for the code  
 And [This link](https://moodle.swarthmore.edu/mod/lti/view.php?id=766339) for the PDF.
@@ -42,7 +43,7 @@ numpy.loadtxt()
 
 ## (2) Working with Numpy arrays: Iteration
 
-For each task below, you should create a function that takes as input an arbitrarily-sized 2D array. The functions need not return anything. The functions should be named as `func1(...), func2(...), func3(...)`, where the number after `func` denotes the part number in the following list.
+For each task below, you should create a function that takes as input an arbitrarily-sized 2D array. The functions need not return anything. The functions should be named as `func2_1(...), func2_2(...), func2_3(...)`, where the number after `func2_` denotes the part number in the following list.
 
 
 You may wish to test out your code on arrays of arbitrary size. Initialize random arrays of specified size using the syntax
@@ -57,6 +58,8 @@ This will create a $7 \times 10$ array of integers between 1 and 10.
 4. Repeat 3, but this time, your function should print out the first *column* first, starting from the top; then it should move to the next column, and so on.
 
 ## (3) Working with Numpy arrays: Manipulating arrays
+
+For this problem, please name your functions `func3_1`, `func3_2`, and `func3_3`.
 
 1. Write a function that reverses the order of rows in a `numpy` array. The function should take an arbitarily-sized 2D array and return a 2D array of the same size.
 
