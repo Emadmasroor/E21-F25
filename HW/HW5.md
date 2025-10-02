@@ -57,7 +57,9 @@ This will create a $7 \times 10$ array of integers between 1 and 10.
 4. Repeat 3, but this time, your function should print out the first *column* first, starting from the top; then it should move to the next column, and so on.
 
 
-## (3) Plotting Mathematical functions in `matplotlib`
+## (3) Plotting 
+
+### Plotting Mathematical functions in `matplotlib`
 
 Your goal in this task is to reproduce the following figure as closely as possible.
 
@@ -81,7 +83,7 @@ over the range $x \in [0,2\pi]$.
 * There should be labels for the horizontal and vertical axes.
 * The PNG file should be produced programmatically; you cannot just screenshot the plot.* Your Python script should include `import` commands at the top for `matplotlib.pyplot` as well as `numpy`.
 
-# Plotting numerical data using `matplotlib`
+### Plotting numerical data using `matplotlib`
 
 Download [this data file](HW5_prob4_data.csv), which contains the data necessary to reproduce the following plot. Write a script in Python, making use of `matplotlib.pyplot`, that generates the following plot.
 
