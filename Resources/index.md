@@ -617,3 +617,41 @@ print(showFloat(c+(ep+ep+ep)))
 print(showFloat(c+ep+ep+ep))
 
 ~~~
+
+### Lec 5.2, Thu Oct 2
+
+#### Basic plotting syntax
+
+~~~python
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+xvals = np.linspace(0,2*np.pi,200)
+yvals = np.sin(xvals)
+
+plt.plot(xvals,yvals)
+plt.show()
+~~~
+
+#### Different plotting styles
+
+~~~python
+# Plot a sine curve
+x = np.linspace(0,2*np.pi,20)
+y = np.sin(x)
+
+plt.plot(x,y,'o')
+plt.show()
+
+
+
+
+# Plot a sine curve
+x = np.linspace(0,2*np.pi,15)
+y = np.sin(x)
+
+plt.plot(x,y,'o-')
+plt.show()
+~~~
+
