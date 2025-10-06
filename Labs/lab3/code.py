@@ -2,7 +2,7 @@ import board
 from jankyplotter import JankyPlotter, ik
 from time import monotonic_ns, sleep
 from math import sqrt, ceil, pi
-from adafruit_circuitplayground.express import cpx
+from adafruit_circuitplayground.express import cp
 
 MOVE_SPEED = 50.0 # mm/s
 
@@ -10,7 +10,7 @@ MOVE_SPEED = 50.0 # mm/s
 # waits for a button press on A or B
 
 def wait_for_button():
-    while not (cpx.button_a or cpx.button_b):
+    while not (cp.button_a or cp.button_b):
         sleep(0.05)
 
 ######################################################################

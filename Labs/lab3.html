@@ -2,7 +2,7 @@
          **E21 Lab 3: Pen plotter, IK, and linear motion**
                **[ENGR 21 - Fall 2025](../index.html#lab3)**
              **October 6-23, 2025**
-             **Due on Moodle (one submission per group) prior to your next lab**
+             **Due on Moodle prior to your next lab**
 
 For this lab, you'll be working with our Swarthmore-made pen plotter robots, shown below.
 
@@ -13,8 +13,6 @@ which is in turn based on the commercial [Line-Us robot](https://www.line-us.com
 
 (#) Objectives
 
-* Learn some important fundamental skills for computational geometry and robotic control.
-
 * Compute the intersection point of two circles of equal radius.
 
 * Implement inverse kinematics for a parallel four-bar linkage.
@@ -22,6 +20,10 @@ which is in turn based on the commercial [Line-Us robot](https://www.line-us.com
 * Draw straight line segments with a pen plotter robot with constant velocity.
 
 * Make a state machine to convert a sequence of line segments to a completed drawing.
+
+(##) Report Template
+
+Use the provided [lab report template](https://docs.google.com/document/d/1zJ_oSPDUWFf8rJqCmRprCKRK0iTCi09DjZfTaOn3u-U/copy) to answer the questions for this lab. For all E21 labs, please make sure to write up your answers to the questions in each exercise before you move on to the next task. The questions are designed to help you complete the labs efficiently.
 
 (##) Lab progress
 
@@ -49,7 +51,7 @@ coordinates. For example, here is an illustration of the vector $P =
 
 ![Figure [p]: The vector $P = (40, 30)$.](images/lab3-p.png width="288 px" class=pixel alt="A red arrow defines the vector P.")
 
-In the context of vectors, plain old real numbers are often also referred to as "scalars".
+In the context of vectors, plain old real numbers are often also referred to as "scalars."
 
 (###) Direction and magnitude
 
@@ -328,7 +330,7 @@ corresponds to an angle of 180&deg;.
 The module I wrote to control the pen plotter uses the [**`adafruit_motor.servo.Servo`** class](https://docs.circuitpython.org/projects/motor/en/latest/api.html#adafruit_motor.servo.Servo) which in turn wraps
 a [**`pwmio.PWMOut`** object](https://docs.circuitpython.org/en/latest/shared-bindings/pwmio/index.html#pwmio.PWMOut).
 
-For further reading, check out this [basic tutorial on using servos with the CPX](https://learn.adafruit.com/adafruit-circuit-playground-express/circuitpython-servo).
+For further reading, check out this [basic tutorial on using servos with the CPB](https://learn.adafruit.com/adafruit-circuit-playground-bluefruit/circuitpython-servo).
 
 # Lab Exercises
 
@@ -388,7 +390,7 @@ file. Please look over them before you complete this exercise.
 
 (###) Setting up the pen plotter
 
-To hook up your breadboard to your CPX and servos, follow these steps:
+To hook up your breadboard to your CPB and servos, follow these steps:
 
   * Plug the upper arm servo which sets the $\alpha$ angle into the
     breadboard at the topmost pair of red/black wires, closest
@@ -401,17 +403,17 @@ To hook up your breadboard to your CPX and servos, follow these steps:
     breadboard at the middle pair of red/black wires. Again, match
     brown to black and red to red.
     
-  * Plug the the cam servo for lifting the pen into the breadboard at
+  * Plug the cam servo for lifting the pen into the breadboard at
     the bottom-most pair of red/black wires, furthest from the barrel
     jack. Match colors.
     
-  * **With both the CPX and the barrel jack unplugged**, make the
+  * **With both the CPB and the barrel jack unplugged**, make the
     connections listed in the table below using clip-to-pin leads.
     
 Use a black lead to connect to `GND`, a red lead to connect to
 `VOUT`, and any other colors to connect to `A1` through `A3`.
 
-| CPX pin | Breadboard location |
+| Pin | Breadboard location |
 |:--------|:--------------------|
 | `A1` | $\alpha$ (top arm) motor gold wire |
 | `A2` | $\beta$ (bottom arm) motor gold wire |
@@ -421,7 +423,7 @@ Use a black lead to connect to `GND`, a red lead to connect to
 
 See the photo below for an illustration:
 
-![Figure [connection]: Connecting the CPX to the pen plotter. Remember not to plug in the USB cable till you have verified all of the other connections.](images/lab3_connecting.jpg alt="The pen plotter and the CPX are both plugged into a solderless breadboard.")
+![Figure [connection]: Connecting the CPB to the pen plotter. Remember not to plug in the USB cable till you have verified all of the other connections.](images/lab3_connecting.jpg alt="The pen plotter and the CPB are both plugged into a solderless breadboard.")
     
 !!! Warning
     It is very important to avoid connecting `GND` directly to
@@ -436,11 +438,11 @@ Once everything is hooked up, you are ready to plug in USB!
     try disconnecting the `VOUT` lead and plug a 5V power supply into the barrel
     connector instead.
     ***IMPORTANT: If you don't disconnect the `VOUT` pin prior to plugging in the
-    barrel connector, you risk damaging your CPX or your laptop!***
+    barrel connector, you risk damaging your CPB or your laptop!***
 
 (###) Running your pen plotter
 
-Your pen plotter has magnets on its base that can clamp a 6"x4" blank
+Your pen plotter has magnets on its base that can clamp a 6x4 inch blank
 index card to a steel plate (both available in lab), as shown in
 Figure [plotter]. With the body of the plotter in its elevated
 position, you can insert a felt-tip pen (also available in lab) into
@@ -456,16 +458,16 @@ the pen should be about 2-3 mm above the paper.
    
 (###) Coding
 
-Download this [zip file](lab3/lab3_cpx.zip) and extract the contents
+Download this [zip file](lab3/lab3_cpb.zip) and extract the contents
 to the root directory of your CIRCUITPY drive. When you are done, the
 new `code.py` should land in the root directory, and your `lib`
 directory should contain the new file `jankyplotter.mpy` as well as
 the subdirectory `adafruit_motor`.
 
 !!! Warning
-   **If you already have a `code.py` file on your CPX with valuable
+   **If you already have a `code.py` file on your CPB with valuable
    code in it, beware of overwriting it!** Consider renaming the one
-   on your CPX or backing it up to your computer before copying over
+   on your CPB or backing it up to your computer before copying over
    the starter code.
 
 Your job is to implement the **`move_linear(plotter, new_pos)`** function to smoothly
@@ -524,13 +526,12 @@ while u < 1:
     
 When you have successfully implemented this, the robot should move at
 a steady pace along a square in a loop forever (or at least a shape
-more square than the starter code achieves).
+more square than the starter code achieves). Record a video of your robot drawing a square and include
+    the link in your writeup.
 
 (###) Questions
 
-  * **Q3)** Record a video of your robot drawing a square and include
-    the URL in your writeup. Make sure the video is shared with my
-    Swarthmore email address.
+  * **Q3)**  Include a link to the video you recorded for exercise 3. Make sure it is shared with my Swarthmore email address ([wjohnso3@swarthmore.edu](mailto:wjohnso3@swarthmore.edu)). Please be nice to my inbox and **uncheck** "Notify people" when you share it.
 
 ## Exercise 4 (CircuitPython): State machine for drawing
 
@@ -566,6 +567,10 @@ the following specifications:
      * **`plotter.pen_down()`** drops the pen.
   
      * **`plotter.is_pen_down()`** returns a Boolean.
+
+Record a video of your robot successfully drawing the
+    picture contained in `hello.txt`, and provide a link in your
+    write-up.
   
 
 (###) Questions
@@ -575,9 +580,7 @@ the following specifications:
     writeup and explain them to the best of your ability. Skip over
     any lines that are not related to file input or text parsing.
   
-  * **Q5)** Record a video of your robot successfully drawing the
-    picture contained in `hello.txt`, and provide a URL in your
-    write-up. Make sure it is shared with my Swarthmore email address.
+  * **Q5)**  Include a link to the video you recorded for exercise 4. Make sure it is shared with my Swarthmore email address ([wjohnso3@swarthmore.edu](mailto:wjohnso3@swarthmore.edu)). Please be nice to my inbox and **uncheck** "Notify people" when you share it.
     
 ## Exercise 5 (Desktop): Compare drawings to ground truth
 
@@ -592,7 +595,7 @@ code and your answer to Q4 above.**
 For example, this [`debug.txt`](lab3/debug.txt) file should produce
 the plot below.
 
-![Figure [good_debug]: Plot of `debug.txt` file linked above.](images/lab3_debug.png alt="Four shapes are plotted on a coordinate plane (clockwise from top left): a blue square, a green circle, an orange triangle, and a purple and red X.")
+![Figure [good_debug]: Plot of `debug.txt` file linked above.](images/lab3_debug.png alt="Four shapes are plotted on a coordinate plane \(clockwise from top left\): a blue square, a green circle, an orange triangle, and a purple and red X.")
 
 !!! Tip
     You can use [**`plt.savefig('foo.png')`**](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html) to save the current
@@ -606,7 +609,7 @@ the plot below.
     
 If you don't set the correct aspect ratio, you'll see something like the image below.
 
-![Figure [bad_debug]: Plot with incorrect aspect ratio -- the shapes all look squashed.](images/lab3_bad_debug.png alt="Four shapes are plotted on a coordinate plane (clockwise from top left): a blue rectangle, a green ellipse, an orange triangle, and a purple and red X.  All four shapes are wider than they are tall.)
+![Figure [bad_debug]: Plot with incorrect aspect ratio -- the shapes all look squashed.](images/lab3_bad_debug.png alt="Four shapes are plotted on a coordinate plane \(clockwise from top left\): a blue rectangle, a green ellipse, an orange triangle, and a purple and red X.  All four shapes are wider than they are tall.")
 
 (###) Questions
 
@@ -627,13 +630,13 @@ If you don't set the correct aspect ratio, you'll see something like the image b
 
 # Lab Report
 
-Before your next scheduled lab meeting, submit a `.zip` file to [Moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=700193) (one submission per group) containing:
+Before your next scheduled lab meeting, submit the following on Moodle:
 
   * Your completed `code.py` file.
   
   * Your completed `lab3_desktop.py` file.
 
-  * A PDF writeup with your names, the assignment name, answers to 
+  * A PDF writeup using the provided template with your names and answers to 
     all questions **Q1**-**Q9** above as well as **Q10** below:
     
     * **Q10)** Did all group members contribute equally to all tasks?
@@ -650,7 +653,7 @@ a predefined Heading style).
       
 ## Grading
 
-Points will be assigned approximately according to the following breakdown:
+Points will be assigned according to the following breakdown:
 
  | Item | Grade value |
  | :---  | --: |

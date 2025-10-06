@@ -22,7 +22,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 [Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives)
 
-[Resources](Resources) | [Current HW](HW/HW5) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html)
+[Resources](Resources) | [Current HW](HW/HW5) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html)
 
 # Schedule
 
