@@ -655,3 +655,49 @@ plt.plot(x,y,'o-')
 plt.show()
 ~~~
 
+### Lec 6.1, Tue Oct 7
+
+#### Bisection Algorithm
+
+The following code *almost* implements the bisection algorithm. You must supply the code after the if-statements inside the while loop.
+
+~~~python
+import math
+from numpy import sign, cos, pi, exp, sin
+
+def bisection(f,x1,x2,tol):
+    # Carries out the bisection algorithm for the function f, using the
+    # bracket (x1,x2) with a 'tolerance' of tol.
+    f1 = f(x1)
+    f2 = f(x2)
+    if sign(f1) == sign(f2):
+        # if the sign of f(x1) and f(x2) is the same,
+        # there is probably no root between x1 and x2.
+        print('Root is not bracketed between x1 and x2')
+        return None
+    
+    er = 1 # some large value
+    iters = 0
+    while er > tol:
+        iters+=1
+        # uncomment the following line for debugging purposes
+        # print(f'Root is between x1 = {x1:.3f} and x2 = {x2:.3f}')
+        x3 = 0.5*(x1 + x2)
+        f3 = f(x3)
+        
+        if f3 == 0.0:
+            return x3
+        if sign(f3) == sign(f2):
+            # do something
+            # new interval is ...
+        else:
+            # do something else
+            # new interval is ...
+            
+        er = abs(x1-x2)
+    return 0.5*(x1 + x2), iters
+
+# Try it on the function 'cos'
+bisection(cos,0.1,3.0,0.001)
+
+~~~
