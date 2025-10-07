@@ -38,7 +38,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [4.2](Lecs/Lec8.pdf)      | 09/25 | Thu | Floating point numbers                             |               |
 | [5.1](Lecs/Lec9.pdf)      | 09/30 | Tue | Introduction to `numpy`                            | [HW 4](HW/HW4) [[solutions](HW/HW4-Solutions)]         |
 | [5.2](Lecs/Lec10.pdf)      | 10/02 | Thu | Data Visualization for Engineering in Python       | Test 2        |
-| 6.1      | 10/07 | Tue | Root-finding                                       | [HW 5](HW/HW5)          |
+| [6.1](Lecs/Lec11.pdf)      | 10/07 | Tue | Root-finding                                       | [HW 5](HW/HW5)          |
 | 6.2      | 10/09 | Thu | Root-finding                                       |               |
 |          |       |     | **Fall break**                                     |               |
 | 7.1      | 10/21 | Tue | Linear Systems                                     | HW 6          |
