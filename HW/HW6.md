@@ -1,3 +1,6 @@
+---
+---
+
 # HW 6
 
 * Table of Contents
@@ -128,3 +131,5 @@ def newton_n(f,derivative_of_f,x0,n):
 ~~~
 
 and it should return the most recent estimate of the root of `f`.
+
+{% include mathjax.html %}
