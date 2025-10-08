@@ -22,7 +22,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 [Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives) | [Mid-semester survey](https://docs.google.com/forms/d/e/1FAIpQLSc29YTetOf3Ap9yVRPfRxqSTloDmMZXlUpc00OC_qQbTgh8Qg/viewform?usp=dialog) |
 
-[Resources](Resources) | [Current HW](HW/HW5) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html)
+[Resources](Resources) | [Current HW](HW/HW6) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html)
 
 # Schedule
 
@@ -41,7 +41,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [6.1](Lecs/Lec11.pdf)      | 10/07 | Tue | Root-finding                                       | [HW 5](HW/HW5)          |
 | 6.2      | 10/09 | Thu | Root-finding                                       |               |
 |          |       |     | **Fall break**                                     |               |
-| 7.1      | 10/21 | Tue | Linear Systems                                     | HW 6          |
+| 7.1      | 10/21 | Tue | Linear Systems                                     | [HW 6](HW/HW6)          |
 | 7.2      | 10/23 | Thu | Linear Systems                                     | Test 3        |
 | 8.1      | 10/28 | Tue | Curve fitting & Interpolation                      | HW 7          |
 | 8.2      | 10/30 | Thu | Curve fitting & Interpolation                      |               |
