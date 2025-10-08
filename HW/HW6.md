@@ -8,8 +8,8 @@
 
 ## Summary
 
-**Due Date**: Wed, Sep 24 at midnight
-**What to submit**:
+**Due Date**: Tue, Oct 21 at midnight
+**What to submit**:  
 - A PDF file for problem 1.1, 1.2, 2.1, 2.3, 3.1, and 3.2
 - A Python file for problem 1.3, titled bisection.py
 - A Python file for problem 2.2, titled secant.py
