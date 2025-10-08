@@ -1,3 +1,6 @@
+---
+---
+
 # HW 5
 
 * Table of Contents
@@ -102,4 +105,4 @@ Download [this data file](HW5_prob4_data.csv), which contains the data necessary
 As above, you should reproduce as many features of the above plot as you can. In particular, the color and style of the markers should closely match the above figure.
 
 
-
+{% include mathjax.html %}
