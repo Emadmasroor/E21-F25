@@ -24,8 +24,7 @@ The bisection algorithm works by successively `bracketing' the root between a lo
 * what will be the next six brackets predicted by the algorithm? Arrange your answer neatly in a table similar to the one developed in class.
 * Explain how many steps it will take to bracket the root within an interval of size $1 \times 10^{-6}$.
 
-!!! Tip
-    You should not use a computer to solve this problem. It's okay to use a calculator, though!
+**Note:** You should not use a computer to solve this problem. It's okay to use a calculator, though!
 
 ### (1.2) Choice of initial bracket
 Using hand-calculations and a simple calculator, explain how the bisection algorithm will behave when initialized with each of the following brackets. For each case, indicate whether or not it will converge on a solution, and if so, which root it will converge on.
