@@ -701,3 +701,9 @@ def bisection(f,x1,x2,tol):
 bisection(cos,0.1,3.0,0.001)
 
 ~~~
+
+### Lec 6.2, Thu Oct 9
+
+<embed src="Worksheet.pdf" width="500" height="375" 
+  type="application/pdf">
+
