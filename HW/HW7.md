@@ -227,3 +227,5 @@ x = numpy.loadtxt('true_x.txt')
 
 ## (4) (Unspecified problem, will be updated)
 
+
+{% include mathjax.html %} 
