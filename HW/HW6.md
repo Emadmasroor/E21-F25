@@ -108,7 +108,7 @@ Using the following image, graphically illustrate two steps of Newton's method o
 
 ![The function $f(x) = x^2-2x-4$](newton-fig.png)
 
-A complete illustration will contain three illustrated points: $(x_0,f_0)$, $(x_1,f_1)$, and $(x_3,f_3)$, together with any other points that were necessary in order to find these three points. It should also contain straight lines as needed, as demonstrated in class.
+A complete illustration will contain three illustrated points: $(x_0,f_0)$, $(x_1,f_1)$, and $(x_2,f_2)$, together with any other points that were necessary in order to find these three points. It should also contain straight lines as needed, as demonstrated in class.
 
 
 **Hint:** You have to use the idea of a *tangent* to successfully execute this problem. There will be some variable human judgement in determining tangents; that's okay.
