@@ -92,6 +92,34 @@ For this problem, please name your functions `func3_1`, `func3_2`, and `func3_3`
 
 3. Write a function that takes as input argument a *square* 2D array, i.e. with shape `(n,n)` and returns as output a 1-dimensional `numpy` array of length `n` containing the diagonal elements of the 2D array.
 
+The solutions are given below.
+
+~~~python
+def func3_1(a):
+    b = np.zeros(np.shape(a),dtype=np.int64)
+    n_rows, n_columns = np.shape(a)
+    for k in range(n_rows):
+        b[len(a)-k-1] = a[k]
+    return b
+
+def func3_2(a):
+    b = np.zeros(np.shape(a),dtype=np.int64)
+    n_rows, n_columns = np.shape(a)
+    for k in range(n_columns):
+        b[:,n_columns-k-1] = a[:,k]
+    return b
+
+def func3_3(a):
+    nr,nc = np.shape(a)
+    if nr != nc:
+        raise Exception("Sorry, must provide a square array")
+    else:
+        # Pre-allocate
+        b = np.zeros(nr)
+        for j in range(nr):
+            b[j] = a[j,j]
+        return b
+~~~
 
 ## (4) Plotting 
 
