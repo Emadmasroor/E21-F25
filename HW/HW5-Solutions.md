@@ -54,10 +54,33 @@ numpy.random.randint(1,10,size=(7,10))
 ~~~
 This will create a $7 \times 10$ array of integers between 1 and 10.
 
-1. The `numpy.array` type is iterable, just like `list`s and `tuple`s are. Use this fact to write a `for` loop that iterates over the array that you created and prints all the *rows*.
-2. The function `numpy.nditer` creates a different type of iterable when applied to an object of type `numpy.array`. Use this fact to write a `for` loop that iterates over `numpy.nditer(your array)`, and prints all the *elements*.
-3. It is also possible to iterate over `numpy` arrays using the familiar `for x in range(n)` technique. Use a nested `for` loop (i.e., a total of two loops, one inside the other) to print every element in the array. It should first print out all the elements of the first row, starting from the first column (i.e., starting from the left), then all the elements of the second column, and so on.
-4. Repeat 3, but this time, your function should print out the first *column* first, starting from the top; then it should move to the next column, and so on.
+1. The `numpy.array` type is iterable, just like `list`s and `tuple`s are. Use this fact to write a `for` loop that iterates over the array that you created and prints all the *rows*.  
+~~~python
+a = np.random.randint(1,10,size=(7,10))
+for i in a:
+    print(i)
+~~~
+
+2. The function `numpy.nditer` creates a different type of iterable when applied to an object of type `numpy.array`. Use this fact to write a `for` loop that iterates over `numpy.nditer(your array)`, and prints all the *elements*.  
+~~~python
+c = np.nditer(a)
+for j in c:
+    print(j)
+~~~
+
+3. It is also possible to iterate over `numpy` arrays using the familiar `for x in range(n)` technique. Use a nested `for` loop (i.e., a total of two loops, one inside the other) to print every element in the array. It should first print out all the elements of the first row, starting from the first column (i.e., starting from the left), then all the elements of the second column, and so on.  
+~~~python
+for j in range(len(a[0,:])):
+    for i in range(len(a[:,0])):
+        print(a[i,j])
+~~~
+
+4. Repeat 3, but this time, your function should print out the first *column* first, starting from the top; then it should move to the next column, and so on.  
+~~~python
+for j in range(len(a[:,0])):
+    for i in range(len(a[0,:])):
+        print(a[j,i])
+~~~
 
 ## (3) Working with Numpy arrays: Manipulating arrays
 
