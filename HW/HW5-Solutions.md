@@ -82,6 +82,8 @@ for j in range(len(a[:,0])):
         print(a[j,i])
 ~~~
 
+Note that there are a few different ways to accomplish tasks 3 and 4 above. Other answers are acceptable, too.
+
 ## (3) Working with Numpy arrays: Manipulating arrays
 
 For this problem, please name your functions `func3_1`, `func3_2`, and `func3_3`.
