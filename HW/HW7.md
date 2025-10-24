@@ -17,8 +17,8 @@
 - `GaussianElimination.py` from problem 1
 - The code that you used to solve problem 4.
 **Where to submit**:  
-- Code at [this link]()
-- PDF at [this link]()
+- Code at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769541)
+- PDF at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769542)
 
 ## Some Tips
 
