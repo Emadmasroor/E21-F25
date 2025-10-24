@@ -42,7 +42,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [6.2](Lecs/Lec12.pdf)      | 10/09 | Thu | Root-finding                                       |               |
 |          |       |     | **Fall break**                                     |               |
 | [7.1](Lecs/Lec13.pdf)      | 10/21 | Tue | Linear Systems                                     | [HW 6](HW/HW6) [[solutions](HW/HW6-Solutions)]          |
-| 7.2      | 10/23 | Thu | Linear Systems                                     | Test 3        |
+| [7.2](Lecs/Lec14.pdf)      | 10/23 | Thu | Linear Systems                                     | Test 3        |
 | 8.1      | 10/28 | Tue | Curve fitting & Interpolation                      | [HW 7](HW/HW7)          |
 | 8.2      | 10/30 | Thu | Curve fitting & Interpolation                      |               |
 | 9.1      | 11/04 | Tue | Optimization                                       | HW 8          |
