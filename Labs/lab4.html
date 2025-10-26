@@ -2,7 +2,7 @@
          **E21 Lab 4: Cubic spline interpolation**
                **[ENGR 21 - Fall 2025](../index.html#lab4)**
              **October 27-November 6, 2025**
-             **Due on Moodle (one submission per group) prior to your next lab**
+             **Due on Moodle one week from your lab meeting**
 
 Your tasks for this lab will be to apply numpy's built in linear
 system solver and one other technique to solve a problem that involves
@@ -13,12 +13,22 @@ curves.
 
 (#) Objectives
 
-Here are key skills you will develop in this lab:
+By the end of this lab, you will be able to:
 
-  * understand numpy arrays, along with common operations on them
-  * understand how to solve linear systems with numpy
-  * learn how to apply a special banded matrix solver to a tridiagonal matrix
-  * understand interpolation of sampled data
+  * Use common operations on numpy arrays
+  * Solve linear systems with numpy
+  * Apply a special banded matrix solver to a tridiagonal matrix
+  * Collaborate using driver/navigator pair programming
+
+(##) Pair Programming
+
+For this lab, I want you to practice a technique callled [driver/navigator pair programming](https://martinfowler.com/articles/on-pair-programming.html#DriverAndNavigator). One team member---the driver---uses the keyboard and mouse to write code, run code, test code, etc. The other team member---the navigator---reviews the code the driver writes, checks for errors in syntax or logic, and thinks ahead about the strategic goals and next steps of the programming task. The driver and navigator are in constant communication, thinking aloud and narrating the code as it is written, even though they have two different roles to focus on. Every so often, the driver and navigator switch roles.
+
+[Pair programming is used in software development for its benefits](https://www.datadoghq.com/knowledge-center/pair-programming/) of producing higher quality and more organized code as well as facilitating knowledge transfer between programmers. For this lab, you will practice the technique. Think of the analogy of actually driving a car where the driver is reacting to immediate tasks and the navigator is reading the map to alert the driver of upcoming tasks. I will remind you **every 20 minutes** to switch drivers.
+
+(##) Report Template
+
+Use the provided [lab report template](https://docs.google.com/document/d/1P7Bz-znjDZCZcbCYl2dlb0fPn8Ll3B4_sdgFmHD8CAs/copy) to answer the questions for this lab. For all E21 labs, please make sure to write up your answers to the questions in each exercise before you move on to the next task. The questions are designed to help you complete the labs efficiently.
   
 (##) Lab progress
 
@@ -33,16 +43,10 @@ progress as you complete each exercise during lab.
 ## Cubic splines
 
 Splines are smooth curves that pass through or near a set of data
-values or "control points". They are frequently used in Computer Aided
+values or "control points." They are frequently used in Computer Aided
 Design (CAD) as well as computer graphics and animation to define
 shapes of objects, or paths for cameras or animated characters to
-travel along.
-
-Here are just two examples of spline applications:
-
-  - [Control point splines in Fusion 360](https://www.autodesk.com/products/fusion-360/blog/sketch-control-point-splines-faq/)
-  
-  - [Animating a camera along a spline in Cinema 4D](https://vanda3d.org/how-to-animate-a-camera-along-a-spline-in-cinema-4d-and-export-to-collada-dae-format/)
+travel along.  You can read about the example application of [control point splines in Autodesk Fusion](https://www.autodesk.com/products/fusion-360/blog/sketch-control-point-splines-faq/).
 
 The remainder of this assignment will refer to to the [starter code](lab4/cubic_splines.py) as well as this 
 [Mathworld article on cubic splines](https://mathworld.wolfram.com/CubicSpline.html).
@@ -180,7 +184,7 @@ pip install scipy
 Now look over the starter code, run it, then answer the following questions:
 
   * **Q1)** Why do we need to use the `.astype(int)` method on line
-    152? What goes wrong if we just write `i = numpy.floor(u)`, and
+    153? What goes wrong if we just write `i = numpy.floor(u)`, and
     why?
   
   * **Q2)** Line 154 reads `i[-1] = n - 1`. What goes wrong if we
@@ -294,7 +298,7 @@ image below.
   ![Figure [fig2]: a cubic spline in 2D](images/lab4_ex5.png width="75%" alt="Red points on a scatter plot are connected by a blue spline in the shape of a loop.")
 
 When completing this task, you will need two arrays of **`D_values`**,
-one for the $x$ axis and one for the $y$ axis. You will also need to
+one for the $x$ axis and one for the $y$ axis. You will also need two
 arrays of **`coeffs`**, one for $x$ and one for $y$. You should feel
 free to call any of the functions defined at the top of the file, and
 copy any additional code you need from **`lab4_fit1d()`**. 
@@ -311,15 +315,14 @@ systems using **`numpy.linalg.solve`** or
 
 # Lab report
 
-Before your next scheduled lab meeting, submit a `.zip` file to [Moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=702039) (one submission per group) containing:
+One week from your lab meeting, submit the following on Moodle:
 
   * Your completed `cubic_splines.py` file.
   
-  * A PDF writeup with your names, the assignment name, answers to 
-    all questions **Q1**-**Q7** above as well as the ones below:
+  * A PDF writeup using [the provided template](https://docs.google.com/document/d/1P7Bz-znjDZCZcbCYl2dlb0fPn8Ll3B4_sdgFmHD8CAs/copy) with your names and answers to all questions **Q1-Q7** above as well as the ones below:
 
     * **Q8)** What problems did you run into when completing the tasks,
-      and how did you work together to overcome them?
+      and how did you work together to overcome them? How did you find the experience of pair programming? What are the pros and cons of this approach?
 
     * **Q9)** Choose three **`numpy`** functions that are called in the
       starter code. For each one, provide a succinct description of
@@ -331,7 +334,7 @@ Before your next scheduled lab meeting, submit a `.zip` file to [Moodle](https:/
 
 ## Grading
 
-Points will be assigned approximately according to the following breakdown:
+Points will be assigned according to the following breakdown:
 
  | Item | Grade value |
  | :---  | --: |
