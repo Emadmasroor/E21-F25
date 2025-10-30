@@ -707,3 +707,57 @@ bisection(cos,0.1,3.0,0.001)
 <embed src="Worksheet.pdf" width="500" height="375" 
   type="application/pdf">
 
+### Lec 8.2, Thu Oct 30
+
+Download the following files in zip format [here](linearsystems.zip).
+
+| N        | 6                | 60                | 200                |
+|----------|------------------|-------------------|--------------------|
+| Matrix   | matrix_A_6.csv   | matrix_A_60.csv   | matrix_A_200.csv   |
+| r.h.s    | rhs_b_6.csv      | rhs_b_60.csv      | rhs_b_200.csv      |
+| solution | solution_x_6.csv | solution_x_60.csv | solution_x_200.csv |
+
+**Numpy's built-in solver**
+
+~~~python
+import numpy as np
+
+A = np.loadtxt('<filename>',delimiter=',')
+b = np.loadtxt('<filename>',delimiter=',')
+
+x = np.linalg.solve(A,b)
+~~~
+
+**Conjugate Gradient Algorithm**
+
+~~~python
+## module conjGrad
+''' x, numIter = conjGrad(Av,x,b,tol=1.0e-9)
+    Conjugate gradient method for solving [A]{x} = {b}.
+    The matrix [A] should be sparse. User must supply
+    the function Av(v) that returns the vector [A]{v}
+    and the starting vector x.
+'''
+import numpy as np
+import math
+
+def conjGrad(Av,x,b,tol=1.0e-9):
+    n = len(b)
+    r = b - Av(x)
+    s = r.copy()
+    for i in range(n):
+        u = Av(s)
+        alpha = np.dot(s,r)/np.dot(s,u)
+        x = x + alpha*s
+        r = b - Av(x)
+        if(math.sqrt(np.dot(r,r))) < tol:
+            break
+        else:
+            beta = -np.dot(r,u)/np.dot(s,u)
+            s = r + beta*s
+    return x,i
+~~~
+
+
+
+
