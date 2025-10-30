@@ -26,36 +26,36 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 # Schedule
 
-| Week.Lec | Date  | Day | Topic                                              | HW Due / Test |
-|----------|-------|-----|----------------------------------------------------|---------------|
-| [1.1](Lecs/Lec1.pdf)      | 09/02 | Tue | Introduction & Installation; variables & types     |               |
-| [1.2](Lecs/Lec2.pdf)      | 09/04 | Thu | Programming basics: variables, types, conditionals |               |
-| [2.1](Lecs/Lec3.pdf)      | 09/09 | Tue | Base systems; Analog vs. digital data              | [HW 1](HW/HW1) [[solutions](HW/HW1-Solutions)]          |
-| [2.2](Lecs/Lec4.pdf)      | 09/11 | Thu | For/while loops; Relative & absolute errors;                        |               |
-| [3.1](Lecs/Lec5.pdf)      | 09/16 | Tue | Accuracy and precision; Saving data;      | [HW 2](HW/HW2) [[solutions](HW/HW2-Solutions)]          |
-| [3.2](Lecs/Lec6.pdf)      | 09/18 | Thu | Writing data to the board; Functions; Python installation slides | Test 1        |
-| [4.1](Lecs/Lec7.pdf)      | 09/23 | Tue | Command line; floating point                         | [HW 3](HW/HW3) [[solutions](HW/HW3-Solutions)]          |
-| [4.2](Lecs/Lec8.pdf)      | 09/25 | Thu | Floating point numbers                             |               |
-| [5.1](Lecs/Lec9.pdf)      | 09/30 | Tue | Introduction to `numpy`                            | [HW 4](HW/HW4) [[solutions](HW/HW4-Solutions)]         |
-| [5.2](Lecs/Lec10.pdf)      | 10/02 | Thu | Data Visualization for Engineering in Python       | Test 2        |
-| [6.1](Lecs/Lec11.pdf)      | 10/07 | Tue | Root-finding                                       | [HW 5](HW/HW5) [[solutions](HW/HW5-Solutions)]         |
-| [6.2](Lecs/Lec12.pdf)      | 10/09 | Thu | Root-finding                                       |               |
-|          |       |     | **Fall break**                                     |               |
-| [7.1](Lecs/Lec13.pdf)      | 10/21 | Tue | Linear Systems                                     | [HW 6](HW/HW6) [[solutions](HW/HW6-Solutions)]          |
-| [7.2](Lecs/Lec14.pdf)      | 10/23 | Thu | Linear Systems                                     | Test 3        |
-| 8.1      | 10/28 | Tue | Curve fitting & Interpolation                      | [HW 7](HW/HW7)          |
-| 8.2      | 10/30 | Thu | Curve fitting & Interpolation                      |               |
-| 9.1      | 11/04 | Tue | Optimization                                       | HW 8          |
-| 9.2      | 11/06 | Thu | Optimization                                       | Test 4        |
-| 10.1     | 11/11 | Tue | Optimization                                       | HW 9          |
-| 10.2     | 11/13 | Thu | Numerical Differentiation                          |               |
-| 11.1     | 11/18 | Tue | Numerical Integration                              | HW 10         |
-| 11.2     | 11/20 | Thu | Initial Value Problems                             | Test 5        |
-| 12.1     | 11/25 | Tue |                                                    |               |
-|          | 11/28 | Thu | **Thanksgiving**                                   |               |
-| 13.1     | 12/02 | Tue | Final Project                                      | HW 11         |
-| 13.2     | 12/04 | Thu | Final Project                                      | Test 6        |
-| 14.1     | 12/09 | Tue | Final Project                                      |               |
+| Week.Lec              | Date  | Day | Topic                                                            | HW Due / Test                                  |
+|-----------------------|-------|-----|------------------------------------------------------------------|------------------------------------------------|
+| [1.1](Lecs/Lec1.pdf)  | 09/02 | Tue | Introduction & Installation; variables & types                   |                                                |
+| [1.2](Lecs/Lec2.pdf)  | 09/04 | Thu | Programming basics: variables, types, conditionals               |                                                |
+| [2.1](Lecs/Lec3.pdf)  | 09/09 | Tue | Base systems; Analog vs. digital data                            | [HW 1](HW/HW1) [[solutions](HW/HW1-Solutions)] |
+| [2.2](Lecs/Lec4.pdf)  | 09/11 | Thu | For/while loops; Relative & absolute errors;                     |                                                |
+| [3.1](Lecs/Lec5.pdf)  | 09/16 | Tue | Accuracy and precision; Saving data;                             | [HW 2](HW/HW2) [[solutions](HW/HW2-Solutions)] |
+| [3.2](Lecs/Lec6.pdf)  | 09/18 | Thu | Writing data to the board; Functions; Python installation slides | Test 1                                         |
+| [4.1](Lecs/Lec7.pdf)  | 09/23 | Tue | Command line; floating point                                     | [HW 3](HW/HW3) [[solutions](HW/HW3-Solutions)] |
+| [4.2](Lecs/Lec8.pdf)  | 09/25 | Thu | Floating point numbers                                           |                                                |
+| [5.1](Lecs/Lec9.pdf)  | 09/30 | Tue | Introduction to `numpy`                                          | [HW 4](HW/HW4) [[solutions](HW/HW4-Solutions)] |
+| [5.2](Lecs/Lec10.pdf) | 10/02 | Thu | Data Visualization for Engineering in Python                     | Test 2                                         |
+| [6.1](Lecs/Lec11.pdf) | 10/07 | Tue | Root-finding                                                     | [HW 5](HW/HW5) [[solutions](HW/HW5-Solutions)] |
+| [6.2](Lecs/Lec12.pdf) | 10/09 | Thu | Root-finding                                                     |                                                |
+|                       |       |     | **Fall break**                                                   |                                                |
+| [7.1](Lecs/Lec13.pdf) | 10/21 | Tue | Linear Systems                                                   | [HW 6](HW/HW6) [[solutions](HW/HW6-Solutions)] |
+| [7.2](Lecs/Lec14.pdf) | 10/23 | Thu | Linear Systems                                                   | Test 3                                         |
+| 8.1                   | 10/28 | Tue | Linear Systems: LU Decomposition                                 | [HW 7](HW/HW7)                                 |
+| [8.2](Lecs/Lec16.pdf) | 10/30 | Thu | Linear Systems: Iterative methods                                |                                                |
+| 9.1                   | 11/04 | Tue | Curve fitting & Interpolation                                    | HW 8                                           |
+| 9.2                   | 11/06 | Thu | Curve fitting & Interpolation                                    | Test 4                                         |
+| 10.1                  | 11/11 | Tue | Optimization                                                     | HW 9                                           |
+| 10.2                  | 11/13 | Thu | Optimization                                                     |                                                |
+| 11.1                  | 11/18 | Tue | Optimization                                                     | HW 10                                          |
+| 11.2                  | 11/20 | Thu |                                                                  | Test 5                                         |
+| 12.1                  | 11/25 | Tue | Work on Final Project                                            |                                                |
+|                       | 11/28 | Thu | **Thanksgiving**                                                 |                                                |
+| 13.1                  | 12/02 | Tue | TBD                                                              | HW 11                                          |
+| 13.2                  | 12/04 | Thu | TBD                                                              | Test 6                                         |
+| 14.1                  | 12/09 | Tue | Final Project                                                    |                                                |
 
 # Lab Schedule
 
