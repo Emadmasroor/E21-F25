@@ -45,7 +45,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [7.2](Lecs/Lec14.pdf) | 10/23 | Thu | Linear Systems                                                   | Test 3                                         |
 | 8.1                   | 10/28 | Tue | Linear Systems: LU Decomposition                                 | [HW 7](HW/HW7)                                 |
 | [8.2](Lecs/Lec16.pdf) | 10/30 | Thu | Linear Systems: Iterative methods                                |                                                |
-| 9.1                   | 11/04 | Tue | Curve fitting & Interpolation                                    | HW 8                                           |
+| 9.1                   | 11/04 | Tue | Curve fitting & Interpolation                                    | [HW 8](HW/HW8)                                           |
 | 9.2                   | 11/06 | Thu | Curve fitting & Interpolation                                    | Test 4                                         |
 | 10.1                  | 11/11 | Tue | Optimization                                                     | HW 9                                           |
 | 10.2                  | 11/13 | Thu | Optimization                                                     |                                                |
