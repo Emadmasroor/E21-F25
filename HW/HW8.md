@@ -1,5 +1,27 @@
+---
+---
 
-## (3) Gauss-Seidel Method: an iterative approach to solving $Ax=b$
+# HW 8
+
+* Table of Contents
+{:toc}
+
+## Summary
+
+**Due Date**: Tue, Oct 28 at midnight
+**What to submit**:
+- A PDF file that contains
+  - the completed template from problem 2
+  - the answers to problem 3.
+  - the system of equations for problem 4
+- `GaussianElimination.py` from problem 1
+- The code that you used to solve problem 4.
+**Where to submit**:
+- Code at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769541)
+- PDF at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769542)
+
+
+## (1) Gauss-Seidel Method: an iterative approach to solving $Ax=b$
 
 Write a Python function that takes as inputs:
 
@@ -24,9 +46,6 @@ Recall that the residual is a column vector given by $$\boldsymbol{r} \equiv A \
 
 
 (##) Test out your code on a sample problem
-
-You should test your function on the following problem. For full credit, make sure your function works on this problem before turning it in!
-
 Solve $Ax = b$, where
 
 $$A =
@@ -49,3 +68,75 @@ b =
   0 \\
 1 \\
   0 \\
+  0 \\
+1 \\
+2 \\
+2 \\
+3
+\end{bmatrix}
+$$
+
+The solution to this system of equations is approximately:
+
+~~~
+[[-0.44438476]
+ [-0.69183054]
+ [-1.09794069]
+ [-1.09218993]
+ [-1.24513538]
+ [-1.62781765]
+ [-1.57135064]
+ [-1.59193644]
+ [-1.55419129]]
+~~~
+
+You may load these arrays into your Python code by downloading the files in the following table with, e.g., this code:
+
+~~~
+import numpy
+A = numpy.loadtxt('test_A.txt')
+b = numpy.loadtxt('test_B.txt')
+x = numpy.loadtxt('true_x.txt')
+~~~
+
+| Description 			| File 			     |
+|-------------------------------|----------------------------|
+| System matrix $A$    		| [test_A.txt](test_A.txt)   |
+| Right-hand side $b$    	| [test_B.txt](test_B.txt)   |
+| True value $x_{\text{true}}$ 	| [true_x.txt](true_x.txt)   |
+
+
+## (2) Gradient-based methods
+
+In class, we briefly talked about the Conjugate Gradient method, which is one of the most widely-used methods for the solution of linear systems. You will not be writing your own code for this method, but you will make use of a pre-written program that implements this method. You can read more about it on page 88 of the textbook by [Kiusalaas](https://abukhan.weebly.com/uploads/2/5/1/7/25179218/numerical_methods_in_engineering_with_python.pdf)
+
+~~~python
+import numpy as np
+from numpy import transpose as tr
+from numpy import dot
+from numpy.linalg import norm
+
+def conjugate_gradient(A,b,x_guess,tol=1e-6):
+    # Uses the conjugate gradient method to solve Ax=b within tolerance specified by 'tol'.
+    x = x_guess.copy()
+    r = b - dot(A,x)
+    beta = 0
+    s = r.copy()
+
+    while 2+2 == 4: 
+        a = dot(tr(s),r)/(dot(dot(tr(s),A),s))  # step size alpha
+        x = x + a*s                             # update x
+        r = b - dot(A,x)                     # calculate residual
+        if norm(r) <  tol:
+            break
+        beta = - (dot(dot(tr(r),A),s)/
+                  (dot(dot(tr(s),A),s)))        # step size beta
+        s = r + beta*s                          # update search direction
+    return x
+~~~
+
+**Written questions**
+
+1. Modify the code above so that it tells you how many steps it took to arrive at the right answer. Using a very small tolerance such as `1e-6` in both cases, compare the number of steps that the Conjugate Gradient method takes vs the Gauss-Seidel method on the sample problem $Ax=b$ given above.
+
+2. Modify the code above so that it returns, in addition to the solution vector `x`, an array containing the scalar values of the norm of the residual at eachiteration. To successfully do this, you will have to identify where the residual is calculated, use the `norm` function on the residual, and store the resulting answer in an array that you create for this purpose. Note that you may want to **preallocate** this array.

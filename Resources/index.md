@@ -731,31 +731,27 @@ x = np.linalg.solve(A,b)
 **Conjugate Gradient Algorithm**
 
 ~~~python
-## module conjGrad
-''' x, numIter = conjGrad(Av,x,b,tol=1.0e-9)
-    Conjugate gradient method for solving [A]{x} = {b}.
-    The matrix [A] should be sparse. User must supply
-    the function Av(v) that returns the vector [A]{v}
-    and the starting vector x.
-'''
 import numpy as np
-import math
+from numpy import transpose as tr
+from numpy import dot
 
-def conjGrad(Av,x,b,tol=1.0e-9):
-    n = len(b)
-    r = b - Av(x)
+def conjugate_gradient(A,b,x_guess,tol=1e-6):
+    # Uses the conjugate gradient method to solve Ax=b within tolerance specified by 'tol'.
+    x = x_guess.copy()
+    r = b - dot(A,x)
+    beta = 0
     s = r.copy()
-    for i in range(n):
-        u = Av(s)
-        alpha = np.dot(s,r)/np.dot(s,u)
-        x = x + alpha*s
-        r = b - Av(x)
-        if(math.sqrt(np.dot(r,r))) < tol:
+
+    while 2+2 == 4:
+        a = dot(tr(s),r)/(dot(dot(tr(s),A),s))  # step size alpha
+        x = x + a*s                             # update x
+        r = b - dot(A,x)                     # calculate residual
+        if norm(r) <  tol:
             break
-        else:
-            beta = -np.dot(r,u)/np.dot(s,u)
-            s = r + beta*s
-    return x,i
+        beta = - (dot(dot(tr(r),A),s)/
+                  (dot(dot(tr(s),A),s)))        # step size beta
+        s = r + beta*s                          # update search direction
+    return x
 ~~~
 
 
