@@ -8,7 +8,7 @@
 
 ## Summary
 
-**Due Date**: Tue, Nov 04 at midnight
+**Due Date**: Tue, Nov 04 at midnight  
 **What to submit**:
 - A PDF file that contains
   - the completed exercise from problem 1
