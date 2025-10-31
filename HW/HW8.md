@@ -12,13 +12,13 @@
 **What to submit**:
 - A PDF file that contains
   - the completed exercise from problem 1
-  - written answers to questions from problem 3
+  - written answers to questions from problem 3, including plots/figures
 - Code:
   - A file containing your function from problem 2
   - A file containing any modified code that you wrote for problem 3
 **Where to submit**:
-- Code at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769541)
-- PDF at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769542)
+- Code at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=770470)
+- PDF at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=770471)
 
 
 ## (1) LU Decomposition
@@ -154,4 +154,4 @@ def conjugate_gradient(A,b,x_guess,tol=1e-6):
 
 4. Repeat (3) but this time using a log-log scale.
 
-
+{% include mathjax.html %}
