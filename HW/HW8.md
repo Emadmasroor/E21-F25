@@ -8,20 +8,29 @@
 
 ## Summary
 
-**Due Date**: Tue, Oct 28 at midnight
+**Due Date**: Tue, Nov 04 at midnight
 **What to submit**:
 - A PDF file that contains
-  - the completed template from problem 2
-  - the answers to problem 3.
-  - the system of equations for problem 4
-- `GaussianElimination.py` from problem 1
-- The code that you used to solve problem 4.
+  - the completed exercise from problem 1
+  - written answers to questions from problem 3
+- Code:
+  - A file containing your function from problem 2
+  - A file containing any modified code that you wrote for problem 3
 **Where to submit**:
 - Code at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769541)
 - PDF at [this link](https://moodle.swarthmore.edu/mod/lti/view.php?id=769542)
 
 
-## (1) Gauss-Seidel Method: an iterative approach to solving $Ax=b$
+## (1) LU Decomposition
+
+Complete the last two pages of the in-class exercise.
+
+<embed src="LUdecomp.pdf" width="500" height="375" 
+ type="application/pdf">
+
+
+
+## (2) Gauss-Seidel Method: an iterative approach to solving $Ax=b$
 
 Write a Python function that takes as inputs:
 
@@ -106,7 +115,7 @@ x = numpy.loadtxt('true_x.txt')
 | True value $x_{\text{true}}$ 	| [true_x.txt](true_x.txt)   |
 
 
-## (2) Gradient-based methods
+## (3) Gradient-based methods
 
 In class, we briefly talked about the Conjugate Gradient method, which is one of the most widely-used methods for the solution of linear systems. You will not be writing your own code for this method, but you will make use of a pre-written program that implements this method. You can read more about it on page 88 of the textbook by [Kiusalaas](https://abukhan.weebly.com/uploads/2/5/1/7/25179218/numerical_methods_in_engineering_with_python.pdf)
 
@@ -139,4 +148,10 @@ def conjugate_gradient(A,b,x_guess,tol=1e-6):
 
 1. Modify the code above so that it tells you how many steps it took to arrive at the right answer. Using a very small tolerance such as `1e-6` in both cases, compare the number of steps that the Conjugate Gradient method takes vs the Gauss-Seidel method on the sample problem $Ax=b$ given above.
 
-2. Modify the code above so that it returns, in addition to the solution vector `x`, an array containing the scalar values of the norm of the residual at eachiteration. To successfully do this, you will have to identify where the residual is calculated, use the `norm` function on the residual, and store the resulting answer in an array that you create for this purpose. Note that you may want to **preallocate** this array.
+2. Modify the code above so that it returns, in addition to the solution vector `x`, an array containing the scalar values of the norm of the residual at eachiteration. To successfully do this, you will have to identify where the residual is calculated, use the `norm` function on the residual, and store the resulting answer in an array that you create for this purpose. Note that you may want to **preallocate** this array by initializing it as a large set of zeros. You can use `numpy.trim_zeros` later to cut your large, preallocated array to size. 
+
+3. Plot the absolute value of the norm of the residual against the step number.
+
+4. Repeat (3) but this time using a log-log scale.
+
+
