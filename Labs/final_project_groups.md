@@ -1,6 +1,6 @@
 # Final Project Groups
 
-E21 has four lab sections: Section 1 (Mondays), Section 2 (Thursdays), Section 3 (Mondays), and Section 4 (Thursdays).
+The E21 Final Project Poster Session is Thursday, December 18th 9am-12pm.  Details regarding the final project are found on [these slides from class](FinalProject.pdf).
 
 ## Group 1
 
