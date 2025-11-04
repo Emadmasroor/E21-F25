@@ -754,7 +754,7 @@ def conjugate_gradient(A,b,x_guess,tol=1e-6):
     return x
 ~~~
 
-### Lec 9.1 Optimization
+### Lec 9.1 Thu, Nov 4
 
 Optimize the following function
 
