@@ -754,6 +754,14 @@ def conjugate_gradient(A,b,x_guess,tol=1e-6):
     return x
 ~~~
 
+### Lec 9.1 Optimization
+
+Optimize the following function
+
+~~~python
+def shearStress(y):
+    return (61224.2 - 1.9334e6*y-8.01705e8 * y**2 + 4.375e10 * y**3 - 6.81818e11 * y**4)/(0.000686111-0.053333*y+y**2)
+~~~
 
 
 
