@@ -11,6 +11,7 @@ The E21 Final Project Poster Session is Thursday, December 18th 9am-12pm.  Detai
 
 * Dylan Stringer
 * Charlie Lehr
+* Xavier Warren
 
 ## Group 3
 
