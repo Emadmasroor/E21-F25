@@ -30,14 +30,14 @@ def forward_elimination(a,b):
 ### (1.2) Backward Substitution
 
 ~~~python
-```
+'''
 Note: This solution is from the textbook,
 and the backward substitution phase is implemented in a strange way here.
 The vector "b" is used to store the value of the solution "x". This is done
 to improve memory management and to not use more storage than absolutely necessary,
 but it makes it harder to follow the logic. If you'd like to understand this better,
 please talk to the instructor.
-```
+'''
 def backward_substitution(Ab):
     # 'unpack' the augmented matrix:
     n,m = np.shape(Ab)
