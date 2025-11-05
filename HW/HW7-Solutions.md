@@ -16,57 +16,37 @@ In this problem, you will write a program that solves a linear system of equatio
 
 ~~~python
 import numpy as np
-def forward_elimination(A,b):
-    # A is a square matrix of size N x N,
-    # e.g., [[1,2,3],[1,4,5],[0,1,2]]
-    # b is a column vector of size N x 1
-    # e.g., [[-1],[5],[7]]
-    # Function returns augmented matrix [A | b]
-
-    # Determine the size of the system
-    N = len(b)
-
-    # Implement conditions on the size/shape of the input matrices
-    if len(A[0,:]) != len(A[:,0]) or len(b) != len(A[0,:]):
-        print('Size of A and/or b is not correct')
-        return None
-    
-    # Build augmented matrix
-    Ab = np.concatenate((A,b),axis=1)
-
-    for column in range(N-1): # loops thru all but last column
-        # The index of current column is "column".
-        for row in range(column+1,N): # for column j, start from row number j+1
-            # The "multiplier" has A_jj in the denominator
-            # when eliminating column j. In the numerator, it has A_kj 
-            # where k is the current row number.
-            multiplier = Ab[row,column]/Ab[column,column]
-            Ab[row,:] = Ab[row,:] - multiplier * Ab[column,:]
-    return Ab
+def forward_elimination(a,b):
+    n = len(b)
+    for k in range(0,n-1):
+        for i in range(k+1,n):
+           if a[i,k] != 0.0:
+               lam = a[i,k]/a[k,k]
+               a[i,k:n] = a[i,k:n] - lam*a[k,k:n]
+               b[i] = b[i] - lam*b[k]
+    return np.concatenate((a,b),axis=1)
 ~~~
 
 ### (1.2) Backward Substitution
 
 ~~~python
-import numpy as np
+```
+Note: This solution is from the textbook,
+and the backward substitution phase is implemented in a strange way here.
+The vector "b" is used to store the value of the solution "x". This is done
+to improve memory management and to not use more storage than absolutely necessary,
+but it makes it harder to follow the logic. If you'd like to understand this better,
+please talk to the instructor.
+```
 def backward_substitution(Ab):
-    # Input is a N x (N+1) matrix
-    # output is a column vector of size N x 1
-
-    # Get the size of the matrix
-    N,M = np.shape(Ab)
-
     # 'unpack' the augmented matrix:
-    A = Ab[:,0:N]
+    n,m = np.shape(Ab)
+    a = Ab[:,0:n]
     b = Ab[:,-1]
 
-    # Initialize your 'x' vector that will contain your solution
-    x = np.zeros((N,1))
-
-    # Backward substitution:
-    for row in range(N-1,-1,-1):
-        x[row] = b[row] - np.dot(A[row,row+1:],x[row+1:])/A[row,row]
-    return x
+    for k in range(n-1,-1,-1):
+        b[k] = (b[k] - np.dot(a[k,k+1:n],b[k+1:n]))/a[k,k]
+    return b
 ~~~
 
 ## (2) Gaussian Elimination by hand
@@ -88,11 +68,58 @@ Consider the matrix $$\begin{bmatrix} 4.1 & 2.8 \\ 9.7 & 6.6 \end{bmatrix},$$ an
 
 ## (4) Using linear systems to solve circuits
 
-The ammeter readings in the following circuit can be considered to be the solution to a linear system of equations. Write out this system of equations by hand using Kirchhoff's Laws, and then use your Gaussian elimination and backward substitution programs to verify the four ammeter redings shown in the following circuit diagram.
 
+<embed src="Circuit-calcs.pdf" width="500" height="375" 
+ type="application/pdf">
 
-![circuit](circuit1.png)
+After writing out the circuit equations as shown in the PDF above, we find that the system of equations is
 
-Turn in your code, including appropriate print statements so that the graders can verify your work.
+$$
+\begin{bmatrix}
+ -3 & 0 & 5 & 0 \\
+ -4 & -2 & -9 & 2 \\
+ 0 & 2 & 0 & -3 \\
+ 1 & -1 & 1 & 0 \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+I_1 \\ I_2 \\ I_3 \\ I_4 \\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+-6 \\ 0 \\ 3 \\ 0 \\
+\end{bmatrix}
+$$
+
+After using Gaussian elimination, we find:
+~~~python
+# HW 7 problem 4
+A = np.array([[-3.,0.,5.,0.],
+              [-4.,-2.,-9.,2],
+              [0.,2.,0.,-3.],
+              [1.,-1.,1.,0.]])
+
+b = np.array([[-6.],
+              [0.],
+              [3.],
+              [0.]])
+
+print("Row-reduced matrix and rhs:")
+print(forward_elimination(A,b))
+print("Solution:")
+print(backward_substitution(forward_elimination(A,b)))
+~~~
+
+~~~python
+Row-reduced matrix and rhs:
+[[ -3.           0.           5.           0.          -6.        ]
+ [  0.          -2.         -15.66666667   2.           8.        ]
+ [  0.           0.         -15.66666667  -1.          11.        ]
+ [  0.           0.           0.          -1.67021277   1.37234043]]
+Solution:
+[ 0.91719745  0.26751592 -0.64968153 -0.82165605]
+~~~
+
+These have the right magnitudes, and any differences in sign simply mean that the original arrows were incorrectly drawn.
 
 {% include mathjax.html %}
