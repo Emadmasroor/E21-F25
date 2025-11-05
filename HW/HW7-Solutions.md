@@ -60,7 +60,10 @@ The matrix-vector equation $$\begin{bmatrix} 4.1 & 2.8 \\ 9.7 & 6.6 \end{bmatrix
 
 If the above problem is repeated with a small difference to the right-hand side, i.e., $$\begin{bmatrix} 4.1 & 2.8 \\ 9.7 & 6.6 \end{bmatrix} \cdot \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} 4.11 \\ 9.7 \end{bmatrix},$$ we find that the solution to this new equation is now $$\begin{bmatrix} 0.34 \\ 0.97 \end{bmatrix}.$$
 
-This behavior can be explained by the **condition number** of this matrix. In class, we learned that the condition number of a matrix is equal to $$||A|| \cdot ||A^{-1}||,$$ i.e., it equals the norm of the matrix multiplied by the norm of its inverse. In this problem, $||A|| = 12.74$ and $||A^{-1}|| = 127.4$, so their product is $1,623$, a number that is much greater than $1$. Therefore, the matrix $A$ is ill-conditioned. Another way to see this is to notice that the determinant of the matrix, $|A|$, which is equal to $-0.1$, is much less than the norm $||A||$.
+This behavior can be explained by the **condition number** of this matrix. In class, we learned that the condition number of a matrix is equal to $$\leftVert A 
+\rightVert \cdot ||A^{-1}||,$$ i.e., it equals the norm of the matrix multiplied by the norm of its inverse. In this problem, $\leftVert A 
+\rightVert = 12.74$ and $||A^{-1}|| = 127.4$, so their product is $1,623$, a number that is much greater than $1$. Therefore, the matrix $A$ is ill-conditioned. Another way to see this is to notice that the determinant of the matrix, $|A|$, which is equal to $-0.1$, is much less than the norm $\leftVert A 
+\rightVert$.
 
 The matrix $A$ has a large condition number and is therefore **ill-conditioned**. This explains the fact that a tiny change of $0.01$ in the right-hand side of the equation $Ax=b$ makes a very large difference to the solution.
 
