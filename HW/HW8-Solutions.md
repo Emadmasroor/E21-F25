@@ -29,15 +29,12 @@ def GaussSeidelv1(A,b,x0,tol=1e-6):
     x = x0.copy()		    # best to work on a "copy"
     n = len(A)
     while True:
-        # print("Right now, x is ")
-        # print(x)
         for i in range(n):          # i is the row number
             x[i] = b[i]/A[i,i]      # not done yet! we'll keep updating
             for j in range(n):
                 if i != j:
                     x[i] -= (A[i,j]*x[j])/A[i,i]
         r = b - dot(A,x) # residual
-        # print("Done with one step. Res = ",norm(r))
         
         if norm(r) < tol:
             break
