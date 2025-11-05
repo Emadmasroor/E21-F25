@@ -66,8 +66,6 @@ This behavior can be explained by the **condition number** of this matrix. In cl
 
 The matrix $A$ has a large condition number and is therefore **ill-conditioned**. This explains the fact that a tiny change of $0.01$ in the right-hand side of the equation $Ax=b$ makes a very large difference to the solution.
 
-Consider the matrix $$\begin{bmatrix} 4.1 & 2.8 \\ 9.7 & 6.6 \end{bmatrix},$$ and the right-hand side vector $$\begin{bmatrix} 4.1 \\ 9.7 \end{bmatrix}.$$
-
 ## (4) Using linear systems to solve circuits
 
 
