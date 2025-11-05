@@ -41,7 +41,7 @@ def GaussSeidelv1(A,b,x0,tol=1e-6):
 
 ## (3) Gradient-based methods
 
-1. Compare number of steps
+### 1) Compare number of steps
 
 ~~~python
 from numpy import dot, loadtxt, zeros
@@ -107,7 +107,7 @@ Gauss-Siedel took 39 steps
 Conjugate Gradient took 15 steps
 ~~~
 
-2. Modify code so that the norm of the residual is reported
+### 2) Modify code so that the norm of the residual is reported
 
 ~~~python
 from numpy import dot, loadtxt, zeros, trim_zeros
@@ -160,11 +160,11 @@ def conjugate_gradientv3(A,b,x_guess,tol=1e-6):
     return x,norm_residuals
 ~~~
 
-3. Plot the norm of the residual vs. the step number (linear)
+### 3) Plot the norm of the residual vs. the step number (linear)
 
 ![Linear plot of residual norms](Residual-linear.png)
 
-4. Plot the norm of the residual vs. the step numnber (log)
+### 4) Plot the norm of the residual vs. the step numnber (log)
 
 ![Log plot of residual norms](Residual-log.png)
 
