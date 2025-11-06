@@ -113,11 +113,6 @@ The E21 Final Project Poster Session is Thursday, December 18th 9am-12pm.  Detai
 * Emiliano Morales
 * Visnuk Rith
 
-## Group 21
-
-* Julian Krauze
-* Liam Muro
-
 ## Group 22
 
 * Kacey Koh
@@ -138,6 +133,7 @@ The E21 Final Project Poster Session is Thursday, December 18th 9am-12pm.  Detai
 
 * Max Ash
 * Kaiden Rosenbaum
+* Julian Krauze
 
 ## Group 26
 
