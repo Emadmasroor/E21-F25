@@ -61,7 +61,7 @@ $$
 
 Note that you can find the correct answer by solving a math problem; take derivatives of $f$ with respect to $x$ and $y$, equate them to zero, and solve the resulting equations 'by hand'.
 
-Also, recall that the norm of a vector is $\left \lVert \boldsymbol{x} \right \rVert = \sqrt{x_1^2+x_2^2}$
+Also, recall that the norm of a vector is $\left \lVert \boldsymbol{x} \right \rVert = \sqrt{x_1^2+x_2^2 + ... + x_n^2}$
 
 Tabulate your results in the follwing format (there is no need to use square-root symbols though):
 
