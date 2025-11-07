@@ -1,23 +1,17 @@
 ---
 ---
 
-# HW 8
+# HW 9
 
 * Table of Contents
 {:toc}
 
 ## Summary
 
-**Due Date**: Tue, Nov 04 at midnight  
+**Due Date**: Tue, Nov 11 at midnight  
 **What to submit**:
-- A PDF file that contains
-  - the completed exercise from problem 1
-  - written answers to questions from problem 3, including plots/figures
-- Code:
-  - A file containing your function from problem 2
-  - A file containing any modified code that you wrote for problem 3
+- A single PDF file
 **Where to submit**:
-- Code at [this link]()
 - PDF at [this link]()
 
 ## (1) Golden Section Search
