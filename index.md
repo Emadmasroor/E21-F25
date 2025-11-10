@@ -22,7 +22,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 [Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives) | [Mid-semester survey](https://docs.google.com/forms/d/e/1FAIpQLSc29YTetOf3Ap9yVRPfRxqSTloDmMZXlUpc00OC_qQbTgh8Qg/viewform?usp=dialog) |
 
-[Resources](Resources) | [Current HW](HW/HW8) | [Final Project](Labs/FinalProject.pdf) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html) | [Lab 4](Labs/lab4.html)
+[Resources](Resources) | [Current HW](HW/HW9) | [Final Project](Labs/FinalProject.pdf) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html) | [Lab 4](Labs/lab4.html)
 
 # Schedule
 
@@ -43,14 +43,14 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 |                       |       |     | **Fall break**                                                   |                                                |
 | [7.1](Lecs/Lec13.pdf) | 10/21 | Tue | Linear Systems                                                   | [HW 6](HW/HW6) [[solutions](HW/HW6-Solutions)] |
 | [7.2](Lecs/Lec14.pdf) | 10/23 | Thu | Linear Systems                                                   | Test 3                                         |
-| [8.1](Lecs/Lec15.pdf) | 10/28 | Tue | Linear Systems: LU Decomposition                         | [HW 7](HW/HW7) [[solutions](HW/HW7-Solutions)] |
+| [8.1](Lecs/Lec15.pdf) | 10/28 | Tue | Linear Systems: LU Decomposition                         | [HW 7](HW/HW7) [[solutions](HW/HW7-Solutions)]         |
 | [8.2](Lecs/Lec16.pdf) | 10/30 | Thu | Linear Systems: Iterative methods                                |                                                |
-| [9.1](Lecs/Lec17.pdf) | 11/04 | Tue | Optimization                                    | [HW 8](HW/HW8) [[solutions]](HW/HW8-Solutions)                                           |
-| 9.2                   | 11/06 | Thu | Optimization                                    | Test 4                                         |
-| 10.1                  | 11/11 | Tue | Curve-fitting and Interpolation                                                     | HW 9                                           |
-| 10.2                  | 11/13 | Thu | Curve-fitting and Interpolation                                                     |                                                |
+| [9.1](Lecs/Lec17.pdf) | 11/04 | Tue | Optimization                                                     | [HW 8](HW/HW8) [[solutions](HW/HW8-Solutions)] |
+| [9.2](Lecs/Lec18.pdf) | 11/06 | Thu | Optimization                                                     | Test 4                                         |
+| 10.1                  | 11/11 | Tue | Optimization                                                     | [HW 9](HW/HW9)                                 |
+| 10.2                  | 11/13 | Thu | Optimization                                                     |                                                |
 | 11.1                  | 11/18 | Tue | Curve-fitting and Interpolation                                                     | HW 10                                          |
-| 11.2                  | 11/20 | Thu |                                                                  | Test 5                                         |
+| 11.2                  | 11/20 | Thu | Curve-fitting and interpolation                                                     | Test 5                                         |
 | 12.1                  | 11/25 | Tue | Work on Final Project                                            |                                                |
 |                       | 11/28 | Thu | **Thanksgiving**                                                 |                                                |
 | 13.1                  | 12/02 | Tue | TBD                                                              | HW 11                                          |

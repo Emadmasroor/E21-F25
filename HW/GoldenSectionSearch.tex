@@ -1,0 +1,90 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[left=0.6in,right=0.6in,top=1in,bottom=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{lastpage}
+\usepackage{sourcecodepro}
+\usepackage{listings} %code extracts
+\lstset{basicstyle=\ttfamily} % Sets a nicer font for listings
+\newcommand{\blank}{\rule{1cm}{0.15mm}}
+\newcommand{\blan}{\rule{0.7cm}{0.15mm}}
+
+\renewcommand{\thesection}{Problem \arabic{section}:} % Gives "Problem 1" instead of "1" as section heading.
+\usepackage{enumitem}
+\setenumerate[0]{label=(\alph*)} % Changes enumeration to (a) instead of 1.
+
+\newcommand{\listrule}{\vspace{1pt}
+      \hrule
+      \vspace{-1pt}}
+
+\newcommand{\twolinecell}[2][c]{%
+	\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+% Header footer
+\usepackage{fancyhdr}
+\usepackage{multirow}
+
+% Define Due date
+\newcommand{\duedate}{Worksheet for HW 7}
+
+\pagestyle{fancy}
+%\fancyhf{}
+\setlength{\headheight}{13.6pt}
+\rhead{Golden Section Search}
+\chead{Computer Engineering Fundamentals}
+\lhead{E21 $\cdot$ Fall 2024 }
+\rfoot{\thepage\ of \pageref{LastPage}}
+\cfoot{}
+\lfoot{\duedate}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt
+
+\begin{document}
+	\begin{center}
+		\Large{Worksheet for HW 8} \\ 
+	\end{center}
+	\normalsize
+
+\noindent Use the Golden Section Search Method to locate the maximum of the function $$f(x) = -x^6 - 2 x^4 - 3 x^1 + 1$$ between $x=-1$ and $x=0.5$. There is only one such maximum. Do this by filling out the following table up to the number of rows indicated, either by hand or electronically by downloading the \LaTeX \,template.
+\vspace{10mm}
+
+\begin{tabular}{l|p{1.8cm}|p{3.5cm}|p{3.5cm}|p{1.8cm}|p{2cm}|p{1.5cm}}
+Step & $a$ & $x_1 = b - Rh$ & $x_2 = a + Rh$ & b & $h$ & next\\ \hline 
+0 &  & $x =$  &$x =$  &  & \phantom{1.2345}  & \\  
+  &  &  &  &  &  & \\
+   &  & $f =$ &$f=$  &  &  & \\ 
+    &  &  &  &  &  & \\ \hline
+1     &  &$x =$   &$x =$  &  &  & \\  
+  &  &  &  &  &  & \\ 
+   &  & $f =$ &$f =$  &  &  & \\ 
+    &  &  &  &  &  & \\ \hline
+2     &  &$x =$   &$x =$   &  &  & \\  
+  &  &  &  &  &  & \\ 
+   &  & $f =$ &$f =$  &  &  & \\ 
+    &  &  &  &  &  & \\ \hline
+3     &  &$x =$   &$x =$  &  &  & \\  
+  &  &  &  &  &  & \\ 
+   &  &$f =$  &$f =$   &  &  & \\ 
+    &  &  &  &  &  & \\ \hline
+4     &  &$x =$   &$x =$  &  &  & \\  
+  &  &  &  &  &  & \\ 
+   &  &$f =$  &$f =$   &  &  & \\ 
+    &  &  &  &  &  & \\ \hline
+5     &  &$x =$   &$x =$  &  &  & \\  
+  &  &  &  &  &  & \\ 
+   &  &$f =$  & $f =$ &  &  & \\ 
+    &  &  &  &  &  & \\ \hline
+6     &  &$x =$   &$x =$   &  &  & \\  
+  &  &  &  &  &  & \\ 
+   &  &$f =$  &$f =$  &  &  & \\ 
+     &  &  &  &  &  & \\ 
+\end{tabular}
+
+
+\end{document}
