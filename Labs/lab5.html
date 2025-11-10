@@ -2,7 +2,7 @@
          **E21 Lab 5: Benchmarking optimizers for image approximation**
                **[ENGR 21 - Fall 2025](../index.html#lab5)**
              **November 10-20, 2025**
-             **Due on Moodle (one submission per group) prior to your next lab**
+             **Due on Moodle two weeks from your lab meeting**
 
 In this lab, you will investigate the effectiveness of several optimization techniques in the application of lossy image compression.
 
@@ -19,6 +19,25 @@ In this lab, you will investigate the effectiveness of several optimization tech
 
   * Gain experience with more advanced Python features including format
     strings and inner functions.
+
+(##) Boot Up the Lab Computers
+
+Optimization can be a computationally expensive process. For this lab, we have observed dramatically different runtimes on different machines. For that reason, I **strongly** recommend you use the console PCs in the lab since that is the only way I can guarantee you will have reasonable runtimes.  Sign in with your Swarthmore credentials right away because it takes Windows a few minutes to set up the first time you login.  Then, open a command terminal and install the dependencies using the following command below.
+
+~~~bash
+py -m pip install scipy matplotlib PyQt5
+~~~
+
+
+(##) Pair Programming
+
+We will continue using [driver/navigator pair programming](https://martinfowler.com/articles/on-pair-programming.html#DriverAndNavigator). As a reminder, one team member---the driver---uses the keyboard and mouse to write code, run code, test code, etc. The other team member---the navigator---reviews the code the driver writes, checks for errors in syntax or logic, and thinks ahead about the strategic goals and next steps of the programming task. The driver and navigator are in constant communication, thinking aloud and narrating the code as it is written, even though they have two different roles to focus on. Every so often, the driver and navigator switch roles.
+
+[Pair programming is used in software development for its benefits](https://www.datadoghq.com/knowledge-center/pair-programming/) of producing higher quality and more organized code as well as facilitating knowledge transfer between programmers. Think of the analogy of actually driving a car where the driver is reacting to immediate tasks and the navigator is reading the map to alert the driver of upcoming tasks. I will remind you **every 20 minutes** to switch drivers.  Resist the temptation to type if you are not the driver.  Communicating about what a program does---both explaining it and understanding someone's explanation---is an important skill that I want you to practice.
+
+(##) Report Template
+
+Use the provided [lab report template](https://docs.google.com/document/d/1XYFKRd_JajTiKzOKFwFM_a8Yq2i-IGYP0Pq6Bt7JRZk/copy) to answer the questions for this lab. For all E21 labs, please make sure to write up your answers to the questions in each exercise before you move on to the next task. The questions are designed to help you complete the labs efficiently.
   
 # Background
 
@@ -52,7 +71,7 @@ functions approximate the image well, and if $6k \ll wh$, we have
 effectively compressed the image by representing it with a much
 smaller list of numbers.
 
-  ![Figure [starter]: detail of Mona Lisa being approximated by a sum of Gaussian functions](images/lab5_monalisa_approx.png style="width: 75%" alt="Four images are shown in a two by two grid.  Clockwise from top left: (1) the original image of Mona Lisa's eye, (2) a blurry approximation of Mona Lisa's eye as the sum of 10 Gaussians, (3) 10 red and blue ellipses representing the Gaussians superimposed on the approximation image, (4) a plot of the pixel-by-pixel error between the approximation and the original.  The sum of squared error is 4.89.")
+  ![Figure [starter]: detail of Mona Lisa being approximated by a sum of Gaussian functions](images/lab5_monalisa_approx.png style="width: 75%" alt="Four images are shown in a two by two grid.  Clockwise from top left: \(1\) the original image of Mona Lisa's eye, \(2\) a blurry approximation of Mona Lisa's eye as the sum of 10 Gaussians, \(3\) 10 red and blue ellipses representing the Gaussians superimposed on the approximation image, \(4\) a plot of the pixel-by-pixel error between the approximation and the original.  The sum of squared error is 4.89.")
 
 Since the reconstructed image is not perfectly equivalent to the
 target (input) image, this compression scheme is said to be *lossy*.
@@ -136,7 +155,7 @@ and
 [`scipy.optimize.least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html) 
 to reconstruct a signal from a sum of nonlinear basis functions, as shown in the figure below:
 
-   ![Figure [example1d]: Plot from `fit_voltage.py` example](images/lab5_rlc_approx.png style="width: 75%" alt="Measurements of voltage versus time are shown as black dots on a scatter plot.  Three curves are shown as function approximations: (1) an initial guess as a dotted green line that is far off from the target data, a function using minimize (err=1.83, nfev=321) as a solid teal line that approximates the data well, and a function using least squares (err=1.83, nfev=13) as a dashed blue line that approximates the data well.")
+   ![Figure [example1d]: Plot from `fit_voltage.py` example](images/lab5_rlc_approx.png style="width: 75%" alt="Measurements of voltage versus time are shown as black dots on a scatter plot.  Three curves are shown as function approximations: \(1\) an initial guess as a dotted green line that is far off from the target data, a function using minimize \(err=1.83, nfev=321\) as a solid teal line that approximates the data well, and a function using least squares \(err=1.83, nfev=13\) as a dashed blue line that approximates the data well.")
 
 The plot shows some noisy sampled data (black dots) that could come from an oscilloscope measuring the impulse response of
 an overdamped [RLC circuit](https://en.wikipedia.org/wiki/RLC_circuit). Theory tells us that the voltage measured by the scope
@@ -194,13 +213,13 @@ Start by commenting out the line that loads parameters from
 `example_params.txt` and uncommenting the line below it to generate
 randomized parameters. Next, use an optimizer to improve the objective
 function value for the randomized parameters. I suggest using
-`scipy.optimize.minimize`.  using the additional arguments
+`scipy.optimize.minimize` with the additional arguments
 `method='Powell'` and `options=dict(maxfev=10000)`.
 
 Once you have Powell's method working, modify your program to compare
 that approach with the `'L-BFGS-B'` method of
 `scipy.optimize.minimize` and also with the `'trf'` method of
-`scipy.optimize.least_squares`. For each method, use the 
+`scipy.optimize.least_squares`. Between the methods, you should compare the value of the objective function, the time it takes to solve the optimization, and the subjective quality of the image approximation. For each method, use the 
 additional arguments specified in this table:
 
   Function         | Parameters 
@@ -213,22 +232,34 @@ additional arguments specified in this table:
     Don't forget to pass the appropriate function (`objective` or `err_vec`) to 
     each optimizer depending whether you are doing general minimization or non-linear least squares.
 
-Have your program do 10 trials total for each of the three optimizers
-using $k=8, 16,$ and $32$ basis functions. This will require solving a
-total of $10 \times 3 \times 3 = 90$ optimization problems.  You
+You can time your code's execution time with `time.perf_counter()` like the example below.
+
+~~~Python
+start_time = time.perf_counter()
+# long slow optimization routine
+elapsed_time = time.perf_counter() - start_time
+~~~
+
+Have your program do five trials total for each of the three optimizers
+using $k=8, 16,$ and $32$ basis functions.  This will require solving a
+total of $5 \times 3 \times 3 = 45$ optimization problems.  You
 should set this up in a triply nested `for` loop similar to the
-program structure outlined below:
+program structure outlined below.  During the loop, you should save the appropriate data to generate the plots and images required for **Q4** and **Q5** below.  Also, I recommend include periodic and informative print statements so you can monitor the status of your script while it is running.
 
 ~~~ Python
+# pre-allocate data structures for saving optimized parameters, objective function values, runtimes, mininum costs, etc.
+
 for k in [8, 16, 32]:
 
   for method in ['Powell', 'L-BFGS-B', 'trf']:
   
-    for trial in range(10):
+    for trial in range(5):
     
        # generate a randomized initial parameter vector of length 6k
        
        # optimize it using the current method
+
+       # store the runtime of the optimization to compute mean and variance later
        
        # store the objective function value to compute mean and variance later
        
@@ -236,21 +267,21 @@ for k in [8, 16, 32]:
        # then save the parameter vector and the image 
        
     # compute the mean and standard deviation of the
-    # objective function values for this (k, method)
-    # pair and save it for plotting
+    # objective function values and runtimes for this (k, method)
+    # pair and save them for plotting
     
-# plot all of the results on a bar chart
+# plot all of the results on two bar charts, one for objective function values and the other for runtimes
 ~~~
 
 !!! Warning
-    **I strongly suggest that you not aim to run all 90 trials
+    **I strongly suggest that you not aim to run all 45 trials
     until you are 100% certain your code works for all three
     kinds of optimizers!** Since this code takes a decent amount
     of time to run, it would be a shame to have to restart it 
     too many times. One way to develop more quickly would
-    be to temporarily use 2, rather than 10 trials per `(k, method)` pair.
-    Once you are able to run through 2 trials per pair, you can
-    crank the number of trials up to 10 and restart your code
+    be to temporarily use two, rather than five trials per `(k, method)` pair.
+    Once you are able to run through two trials per pair, you can
+    crank the number of trials up to five and restart your code
     with confidence.
     
     By the same token, feel free to temporarily change the `[8, 16, 32]`
@@ -273,29 +304,23 @@ based on the standard deviations you compute.
 
 (###) Questions
 
- * **Q4)** Save your bar chart using code similar to 
+ * **Q4)** Save your bar charts using code similar to 
 
    ~~~ Python
    plt.savefig('barchart.png', dpi=300)
    ~~~
    
-   and include it in your PDF writeup.
+   and include it in your PDF writeup.  Also, include in your submission the nine best parameters
+   vectors for each ($k$, method) combination saved as text files whose
+   filenames are determined by this code:
+
+   ~~~ Python
+   param_filename = f'params_{k}_{method.lower()}.txt'
+   ~~~
+   for example `params_8_powell.txt` or `params_32_trf.txt`.
    
- * **Q5)** Also include a 3x3 table in your writeup displaying the
+ * **Q5)** Include a 3x3 table in your writeup displaying the
    best optimized image for each ($k$, method) combination.
-   
-(###) Other deliverables
-
-When you submit your zip file, include the nine best parameters
-vectors for each ($k$, method) combination saved as text files whose
-filenames are determined by this code:
-~~~ Python
-param_filename = f'params_{k}_{method.lower()}.txt'
-~~~
-for example `params_8_powell.txt` or `params_32_trf.txt`.
-
-Also be sure to include your final `ex2.py` with your names at the top 
-in your submitted zip file.
 
 ## Exercise 3: Going further
 
@@ -362,21 +387,20 @@ them in your writeup.
 
 # Deliverables
 
-By two weeks from today's lab, submit a `.zip` file to [Moodle](https://moodle.swarthmore.edu/mod/assign/view.php?id=704533)
-(one submission per group containing):
+By two weeks from today's lab, submit the following on Moodle:
 
   * Your completed `ex2.py` file.
   
   * Parameters of best-fitting images from exercise 2 that were
     generated by your `ex2.py` file.
   
-  * Any Python file you wrote for exercise 3.
+  * Any Python code you wrote for exercise 3.
 
-  * A PDF writeup with your names, the assignment name, answers to 
-    all questions **Q1**-**Q5** above as well as **Q6**-**Q11** below:
+  * A PDF writeup using the provided template with your names, the assignment name, answers to 
+    all questions **Q1**-**Q5** above as well as **Q6**-**Q10** below:
 
    * **Q6)** What problems did you run into when completing the tasks,
-     and how did you work together to overcome them?
+     and how did you work together to overcome them? How was your experience with pair programming this time around?
 
    * **Q7)** In `fit_voltage.py`, imagine transforming a set of parameters by
      swapping the values of $A_1$ and $A_2$, and also swapping the
@@ -390,26 +414,24 @@ By two weeks from today's lab, submit a `.zip` file to [Moodle](https://moodle.s
    * **Q8)** In Exercise 2, how did the three methods compare in their
      effectiveness at solving the problem? Why do you think you saw
      the performance differences you did? Did the results agree or
-     disagree with the pattern established in `fit_voltage.py`?
-      
-   * **Q9)** Also in Exercise 2, can you see any possible advantages
+     disagree with the pattern established in `fit_voltage.py`? Can you see any possible advantages
      of using the method or methods that were not the most effective at 
      reducing error?
      
-   * **Q10)** Comment on your efforts for exercise 3 (see
+   * **Q9)** Comment on your efforts for exercise 3 (see
      [section 2.3](#toc2.3) for detailed prompts). Include
      representative optimization input and output images if applicable.
      
-   * **Q11)** Did all group members contribute equally to all tasks?
+   * **Q10)** Did all group members contribute equally to all tasks?
       If not, who did what for each exercise?
 
 ## Grading
 
-Points will be assigned approximately according to the following breakdown:
+Points will be assigned according to the following breakdown:
 
  | Item | Grade value |
  | :---  | --: |
- | Answers to **Q1**-**Q11** and general writeup quality | 60% |
+ | Answers to **Q1**-**Q10** and general writeup quality | 60% |
  | Code and output for exercise 2 | 20% |
  | Exercise 3 | 20% |
 
