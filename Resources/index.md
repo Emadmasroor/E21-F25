@@ -754,7 +754,7 @@ def conjugate_gradient(A,b,x_guess,tol=1e-6):
     return x
 ~~~
 
-### Lec 9.1 Thu, Nov 4
+### Lec 9.2 Thu, Nov 4
 
 Optimize the following function
 
@@ -763,5 +763,47 @@ def shearStress(y):
     return (61224.2 - 1.9334e6*y - 7.01705e8 * y**2 + 4.375e10 * y**3 - 6.81818e11 * y**4)/(0.000686111-0.053333*y+y**2)
 ~~~
 
+### Lec 10.1 Tue, Nov 11
 
+#### n-dimensional Optimization without constraints
 
+Here, we will minimize the function $f(x,y) = (x-1)^2 + (y+1)^2 + xy$
+
+~~~python
+from scipy.optimize import minimize_scalar,minimize
+from numpy.linalg import norm
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(xx):
+    x = xx[0]
+    y = xx[1]
+    return (x-1)**2 + (y+1)**2 + x*y
+
+solution = minimize(f,np.array([0.,0.]),method='Powell')
+
+# The rest of the code is just for plotting.
+x = np.linspace(-3, 3, 100)
+y = np.linspace(-3, 3, 100)
+X, Y = np.meshgrid(x, y)
+
+# Calculate the function values over the grid
+Z = f([X,Y])
+
+# Create a contour plot
+contours = plt.contour(X, Y, Z, levels=20, cmap='viridis')
+
+# Add labels and a color bar
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.colorbar(contours, label='f(x, y)')
+
+# plot the minimum
+plt.scatter(solution.x[0],solution.x[1],marker='o',color='black')
+
+# Show the plot
+plt.title('Contour Plot of f(x, y)')
+plt.show()
+~~~
+
+{% include mathjax.html %}
