@@ -765,6 +765,31 @@ def shearStress(y):
 
 ### Lec 10.1 Tue, Nov 11
 
+#### 1-dimensional optimization
+
+~~~python
+from scipy.optimize import minimize_scalar
+import numpy as np
+from matplotlib import pyplot as plt
+
+def test_f(x):
+    return x**2 - 4*x + 7
+
+solution = minimize_scalar(test_f,[-1,5])
+
+print(f"Function minimized at x = {solution.x:.4f}")
+
+x = np.linspace(-1,5)
+plt.plot(x,test_f(x))
+plt.grid()
+plt.xlabel('y')
+plt.ylabel('Shear stress')
+
+plt.scatter(solution.x,test_f(solution.x),marker='o',color='black')
+plt.show()
+~~~
+
+
 #### n-dimensional Optimization without constraints
 
 Here, we will minimize the function $f(x,y) = (x-1)^2 + (y+1)^2 + xy$
@@ -803,6 +828,62 @@ plt.scatter(solution.x[0],solution.x[1],marker='o',color='black')
 
 # Show the plot
 plt.title('Contour Plot of f(x, y)')
+plt.show()
+~~~
+
+#### n-dimensional optimization *with* constraints
+
+~~~python
+from scipy.optimize import minimize_scalar,minimize
+from numpy.linalg import norm
+import numpy as np
+import matplotlib.pyplot as plt
+
+# GLOBAL VARIABLE
+LAMBDA = 0.01
+
+def f(xx):
+    x = xx[0]
+    y = xx[1]
+    return (x-1)**2 + (y+1)**2 + x*y
+
+def constraint(x,y):
+    return (x+1)**2 + (y)**2 - 2
+
+def f_star(x_vector):
+    x = x_vector[0]
+    y = x_vector[1]
+    lam = LAMBDA      # parameter to change
+    return f(x_vector) + lam*(constraint(x,y))**2
+
+solution = minimize(f_star,np.array([0.,0.]),method='Powell')
+
+# The rest of the code is just for plotting.
+x = np.linspace(-3, 3, 100)
+y = np.linspace(-3, 3, 100)
+X, Y = np.meshgrid(x, y)
+
+# Calculate the function values over the grid
+Z = f([X,Y])
+
+# Create a contour plot
+contours = plt.contour(X, Y, Z, levels=20, cmap='viridis')
+
+# plot the constraint
+Z_con = constraint(X,Y)
+plt.contour(X,Y, Z_con, levels=[0], colors='red', linestyles='solid', linewidths=2)
+
+# Add labels and a color bar
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.grid()
+plt.colorbar(contours, label='f(x, y)')
+
+# plot the minimum
+plt.scatter(solution.x[0],solution.x[1],marker='o',color='black',label='found minimum')
+
+# Show the plot
+plt.title(f'Contour Plot of f(x, y) when lambda = {LAMBDA}')
 plt.show()
 ~~~
 
