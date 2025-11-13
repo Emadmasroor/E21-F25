@@ -792,7 +792,7 @@ plt.show()
 
 #### n-dimensional Optimization without constraints
 
-Here, we will minimize the function $f(x,y) = (x-1)^2 + (y+1)^2 + xy$
+Here, we will minimize the function $f(x,y) = (x-1)^2 + (y+1)^2 + xy$ using `scipy`'s built-in optimizer.
 
 ~~~python
 from scipy.optimize import minimize_scalar,minimize
