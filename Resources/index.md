@@ -1015,5 +1015,9 @@ plt.show()
 
 ~~~
 
+This should produce a function like this:
+
+![Noisy function](noisyf.png)
+
 
 {% include mathjax.html %}
