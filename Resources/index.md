@@ -939,4 +939,81 @@ def powell(F,x,h=0.1,tol=1.0e-6):
         
 ~~~
 
+### Lec 10.2 Thu, Nov 13
+
+#### A function you can test your optimizer on
+
+~~~python
+import numpy as np
+from scipy.ndimage import gaussian_filter
+from scipy.interpolate import RegularGridInterpolator
+import matplotlib.pyplot as plt
+
+def make_noisy_function(n=2, noise_amp=1.0, sigma=10, 
+                        xlim=(-10,10), ylim=(-10,10), 
+                        resolution=500):
+    # This function takes as argument some optional parameters
+    # and returns a Python function. So if you run `f = make_noisy_function()`
+    # then f will become a function of two variables, i.e., `f(x,y)`.
+    # This is an interesting function to minimize. 
+    
+    # Base grid
+    x = np.linspace(*xlim, resolution)
+    y = np.linspace(*ylim, resolution)
+    X, Y = np.meshgrid(x, y)
+
+    # Base function
+    Z = np.sin(n*X) + np.sin(n*Y)
+
+    # Smooth noise
+    noise = np.random.randn(*Z.shape)
+    smooth_noise = gaussian_filter(noise, sigma=sigma)
+    smooth_noise /= np.max(np.abs(smooth_noise))  # normalize to [-1,1]
+
+    # Add noise
+    Z_noisy = Z + noise_amp * smooth_noise
+
+    # Interpolator turns it into a callable function f(x, y)
+    f_interp = RegularGridInterpolator((x, y), Z_noisy, bounds_error=False, fill_value=None)
+
+    def f(x, y):
+        x = np.atleast_1d(x)
+        y = np.atleast_1d(y)
+        pts = np.column_stack([x, y])
+        vals = f_interp(pts)
+        if vals.size == 1:
+            return vals.item()
+        else:
+            return vals
+
+    return f
+
+# Use the above constructor to make a function:
+f = make_noisy_function(n=2, noise_amp=4.1, sigma=12)
+
+# You may now use the above function in your code.
+
+# Illustrate the function you have just made to visually identify minimia/maxima.
+
+# Create a grid of points
+x = np.linspace(-10, 10, 400)
+y = np.linspace(-10, 10, 400)
+X, Y = np.meshgrid(x, y)
+
+# Evaluate your noisy function over the above grid.
+Z = f(X.ravel(), Y.ravel()).reshape(X.shape)
+
+# Plot
+plt.figure(figsize=(6,5))
+contour = plt.contourf(X, Y, Z, levels=40)
+plt.colorbar(contour, label='f(x, y)')
+plt.title('Visualize Noisy function')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.tight_layout()
+plt.show()
+
+~~~
+
+
 {% include mathjax.html %}
