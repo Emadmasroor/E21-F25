@@ -22,7 +22,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 [Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives) | [Mid-semester survey](https://docs.google.com/forms/d/e/1FAIpQLSc29YTetOf3Ap9yVRPfRxqSTloDmMZXlUpc00OC_qQbTgh8Qg/viewform?usp=dialog) |
 
-[Resources](Resources) | [Current HW](HW/HW9) | [Final Project](Labs/FinalProject.pdf) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html) | [Lab 4](Labs/lab4.html) | [Lab 5](Labs/lab5.html)
+[Resources](Resources) | [Current HW](HW/HW10) | [Final Project](Labs/FinalProject.pdf) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html) | [Lab 4](Labs/lab4.html) | [Lab 5](Labs/lab5.html)
 
 # Schedule
 
