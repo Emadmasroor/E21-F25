@@ -49,7 +49,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [9.2](Lecs/Lec18.pdf) | 11/06 | Thu | Optimization                                                     | Test 4                                         |
 | 10.1                  | 11/11 | Tue | Optimization                                                     | [HW 9](HW/HW9)                                 |
 | 10.2                  | 11/13 | Thu | Optimization                                                     |                                                |
-| 11.1                  | 11/18 | Tue | Curve-fitting and Interpolation                                                     | HW 10                                          |
+| 11.1                  | 11/18 | Tue | Curve-fitting and Interpolation                                                     | [HW 10](HW/HW10)                                          |
 | 11.2                  | 11/20 | Thu | Curve-fitting and interpolation                                                     | Test 5                                         |
 | 12.1                  | 11/25 | Tue | Work on Final Project                                            |                                                |
 |                       | 11/28 | Thu | **Thanksgiving**                                                 |                                                |
