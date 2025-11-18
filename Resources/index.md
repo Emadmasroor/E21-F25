@@ -1019,5 +1019,13 @@ This should produce a function like this:
 
 ![Noisy function](noisyf.png)
 
+### Tue, Nov 18
+
+Interpolate these points:
+
+[download file](interpolate_these.txt)
+
+
+
 
 {% include mathjax.html %}
