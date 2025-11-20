@@ -22,7 +22,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 
 [Schedule](#schedule) | [Lab Schedule](#lab-schedule) | [Teaching Team](#teaching-team) | [Policies](#policies) | [Learning Objectives](#learning-objectives) | [Mid-semester survey](https://docs.google.com/forms/d/e/1FAIpQLSc29YTetOf3Ap9yVRPfRxqSTloDmMZXlUpc00OC_qQbTgh8Qg/viewform?usp=dialog) |
 
-[Resources](Resources) | [Current HW](HW/HW10) | [Final Project](Labs/FinalProject.pdf) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html) | [Lab 4](Labs/lab4.html) | [Lab 5](Labs/lab5.html)
+[Resources](Resources) | [Current HW](HW/HW11) | [Final Project](Labs/FinalProject.pdf) | [Lab 1](Labs/lab1.html) | [Lab 2](Labs/lab2.html) | [Lab 3](Labs/lab3.html) | [Lab 4](Labs/lab4.html) | [Lab 5](Labs/lab5.html)
 
 # Schedule
 
@@ -50,10 +50,10 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [10.1](Lecs/Lec19.pdf)| 11/11 | Tue | Optimization                                                     | [HW 9](HW/HW9) [[solutions](HW/HW9-Solutions)] |
 | [10.2](Lecs/Lec20.pdf)| 11/13 | Thu | Optimization                                                     |                                                |
 | [11.1](Lecs/Lec21.pdf)| 11/18 | Tue | Curve-fitting and Interpolation                                  | [HW 10](HW/HW10)                               |
-| 11.2                  | 11/20 | Thu | Curve-fitting and interpolation                                  | Test 5                                         |
+| [11.2](Lecs/Lec22.pdf)| 11/20 | Thu | Curve-fitting and interpolation                                  | Test 5                                         |
 | 12.1                  | 11/25 | Tue | Work on Final Project                                            |                                                |
 |                       | 11/28 | Thu | **Thanksgiving**                                                 |                                                |
-| 13.1                  | 12/02 | Tue | TBD                                                              | HW 11                                          |
+| 13.1                  | 12/02 | Tue | TBD                                                              | [HW 11](HW/HW11)                                          |
 | 13.2                  | 12/04 | Thu | TBD                                                              | Test 6                                         |
 | 14.1                  | 12/09 | Tue | Final Project                                                    |                                                |
 
