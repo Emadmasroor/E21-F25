@@ -47,10 +47,10 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [8.2](Lecs/Lec16.pdf) | 10/30 | Thu | Linear Systems: Iterative methods                                |                                                |
 | [9.1](Lecs/Lec17.pdf) | 11/04 | Tue | Optimization                                                     | [HW 8](HW/HW8) [[solutions](HW/HW8-Solutions)] |
 | [9.2](Lecs/Lec18.pdf) | 11/06 | Thu | Optimization                                                     | Test 4                                         |
-| [10.1](Lecs/Lec19.pdf)| 11/11 | Tue | Optimization                                                     | [HW 9](HW/HW9) [[solutions](HW/HW9-Solutions)] |                                |
+| [10.1](Lecs/Lec19.pdf)| 11/11 | Tue | Optimization                                                     | [HW 9](HW/HW9) [[solutions](HW/HW9-Solutions)] |
 | [10.2](Lecs/Lec20.pdf)| 11/13 | Thu | Optimization                                                     |                                                |
-| [11.1](Lecs/Lec21.pdf)| 11/18 | Tue | Curve-fitting and Interpolation                                                     | [HW 10](HW/HW10)                                          |
-| 11.2                  | 11/20 | Thu | Curve-fitting and interpolation                                                     | Test 5                                         |
+| [11.1](Lecs/Lec21.pdf)| 11/18 | Tue | Curve-fitting and Interpolation                                  | [HW 10](HW/HW10)                               |
+| 11.2                  | 11/20 | Thu | Curve-fitting and interpolation                                  | Test 5                                         |
 | 12.1                  | 11/25 | Tue | Work on Final Project                                            |                                                |
 |                       | 11/28 | Thu | **Thanksgiving**                                                 |                                                |
 | 13.1                  | 12/02 | Tue | TBD                                                              | HW 11                                          |

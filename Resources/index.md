@@ -1023,7 +1023,9 @@ This should produce a function like this:
 
 Interpolate these points: [download file](interpolate_these.txt)
 
+### Lec 11.2, Thu, Nov 20
 
+Curve-fit these points: [download file](datapoints.txt)
 
 
 {% include mathjax.html %}
