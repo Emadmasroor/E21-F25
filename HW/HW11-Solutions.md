@@ -115,11 +115,11 @@ coeffs = solve(mat,rhs)
 
 The task here is pretty much identical to the task in (1.3). We will do it by writing a wrapper around `polyval` like before.
 
-```
+~~~python
 def interpolating_polynomial(x,array_a):
     # Thin wrapper around polyval
     return np.polyval(np.flip(array_a),x)
-```
+~~~
 
 ### (2.4) Make a plot
 
@@ -127,54 +127,111 @@ You already know what this was supposed to look like.
 
 ![Sample figure](curvefit_sample.png)
 
+## (3) Interpolation with non-polynomial functions
+
+The equations to be used here are:
+
+$$ 0.2 = a + b e^{0.0} + c (0.0)^2 + d \sin 0.0$$
+
+$$ 2.0 = a + b e^{1.0} + c (1.0)^2 + d \sin 1.0$$
+
+$$ 1.2 = a + b e^{2.0} + c (2.0)^2 + d \sin 2.0$$
+
+$$ 3.0 = a + b e^{3.0} + c (3.0)^2 + d \sin 3.0$$
+
+As a linear system, this will look like:
+
+$$
+\begin{bmatrix}
+1 & 1 & 0 & 0 \\
+1 & e & 1^2 & \sin 1 \\
+1 & e^2 & 2^2 & \sin 2 \\
+1 & e^3 & 3^2 & \sin 3
+\end{bmatrix}
+\begin{bmatrix}
+a \\
+b \\
+c \\
+d
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.2 \\
+2.0 \\
+1.2 \\
+3.0
+\end{bmatrix}
+$$
+
+Solving this system, we get the solution:
+
+$$ a = -0.8534, b = 1.0534, c = -1.9592, d = -2.3162.$$
+
+To check that this is correct, we can plot the function $$f(x) = a + b e^{x} + cx^2 + d \sin x$$ using the above values for $a,b,c,d$.
+
+The end result is:
+
+![non-polynomial interpolation](nonpolynomialinterpolation.png)
+
+and the code to produce this is 
+
+~~~python
+import numpy as np
+from numpy import exp,sin
+import matplotlib.pyplot as plt
+from numpy.linalg import solve
+
+# Points
+xp = np.array([0.0,1.0,2.0,3.0])
+yp = np.array([0.2,2.0,1.2,3.0])
 
 
-## (1) Golden Section Search
+# Set up the matrix of coefficients
+A = np.array([[1,np.exp(0),0**2,np.sin(0.0)],
+              [1,np.exp(1),1**2,np.sin(1.0)],
+              [1,np.exp(2),2**2,np.sin(2.0)],
+              [1,np.exp(3),3**2,np.sin(3.0)]
+              ])
 
-### (1.1) Working out by hand
+# Set up the right hand side
+rhs = np.array([[0.2],
+                [2.0],
+                [1.2],
+                [3.0]
+                ])
 
-<embed src="GoldenSectionSearchCompleted.pdf" width="500" height="375" 
- type="application/pdf">
+# Solve for a,b,c and d.
+abcd = solve(A,rhs)
 
-### (1.2) Pseudo-code
+# Define the interpolating function:
 
-Consider the following procedure.
+def f1(x,coeffs):
+    a,b,c,d = coeffs
+    return a + b*exp(x) + c*(x**2) + d*sin(x)
 
-```
-Given: a,b,epsilon, and the function f to be maximized
-R = (sqrt(5)-1)/2
-h = b-a
-x1 = b - R*h
-x2 = a + R*h
-f1 = f(x1)
-f2 = f(x2)
-while h > epsilon:
-	if f1 > f2:
-		leave a unchanged
-		change b to be the current value of x2
-		update h = b-a
-		change x2,f2 to be the current value of x1,f1
-		update x1 = b - R*h
-		calculate a new f1 = f(x1)
-	else if f1 < f2:
-		change a to be the current value of x1
-		leave b unchanged
-		update h = b-a
-		change x1,f1 to be the current value of x2,f2
-		update x2 = a + R*h
-		calculate a new f2 = f(x2)
-once the loop has exited because h became smaller than epsilon,
-return (a+b)/2
-```
+# Create a 'continuous' array of x and y values
+# to plot. x should be evenly spaced and y should
+# arise from the above function `f1`
+xs = np.linspace(-0.1,3.1,100)
+ys = f1(xs,abcd)
 
-...
-
-## (2) Naive multi-dimensional optimization
-
-<embed src="NaiveNdimOpt.pdf" width="500" height="375" 
- type="application/pdf">
+plt.scatter(xp,yp)
+plt.plot(xs,ys)
+plt.savefig("nonpolynomialinterpolation.png")
+~~~
 
 
+## (4) Evaluating Curve fits
+
+### The first one
+
+![Figure 1](Figure_data1.png)
+
+In the above figure, it's clear that the data is generally increasing, so the linear fit does a good job of capturing the most basic feature, but it's not quite capable of showing the dip before the increase. The quadratic fit doesn't do much better, and the cubic fit nicely captures most of the data and pretty much looks like an interpolation.
+
+![Figure 2](Figure_data2.png)
+
+In the above figure, we find that the interpolation involves some weird features like the peaks between the first and second, and between the second-last and last, data points. A cursory look at the data alone would suggest that the black line isn't really capturing any 'trend' there. This is what's called 'over-fitting' and it's what happens when there are too many parameters in your 'curve-fit'. Note that an interpolation is a special case of a curve fit. Thus, it would probably make sense to choose a low-order polynomial to fit the data. Visually, I think `m=3` does an okay job because it avoids the extra peaks and troughs. `m=6` isn't too bad either, because its peaks and troughs are quite attenuated and it does a better job of approximating the data.
 
 
 {% include mathjax.html %}

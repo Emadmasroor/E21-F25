@@ -53,7 +53,7 @@ Welcome to the class website of ENGR 21 @ Swarthmore Engineering, Fall 2025. Thi
 | [11.2](Lecs/Lec22.pdf)| 11/20 | Thu | Curve-fitting and interpolation                                  | Test 5                                         |
 | 12.1                  | 11/25 | Tue | Work on Final Project                                            |                                                |
 |                       | 11/28 | Thu | **Thanksgiving**                                                 |                                                |
-| 13.1                  | 12/02 | Tue | TBD                                                              | [HW 11](HW/HW11)                                          |
+| 13.1                  | 12/02 | Tue | Optional: Initial Value Problems                                 | [HW 11](HW/HW11) [[solutions](HW/HW11-Solutions)]|
 | 13.2                  | 12/04 | Thu | TBD                                                              | Test 6                                         |
 | 14.1                  | 12/09 | Tue | Final Project                                                    |                                                |
 
