@@ -56,7 +56,13 @@ def search(f,a,b,tol=1.0e-9):
     else: return x2,f2
 ~~~
 
-## (2)
+## (2) Constraints
+
+...
+
+## (3) Multi-dimensional optimization
+
+The following code solves both parts of this problem.
 
 ~~~python
 import numpy as np
