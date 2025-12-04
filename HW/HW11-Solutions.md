@@ -229,6 +229,8 @@ plt.savefig("nonpolynomialinterpolation.png")
 
 In the above figure, it's clear that the data is generally increasing, so the linear fit does a good job of capturing the most basic feature, but it's not quite capable of showing the dip before the increase. The quadratic fit doesn't do much better, and the cubic fit nicely captures most of the data and pretty much looks like an interpolation.
 
+### The second one
+
 ![Figure 2](Figure_data2.png)
 
 In the above figure, we find that the interpolation involves some weird features like the peaks between the first and second, and between the second-last and last, data points. A cursory look at the data alone would suggest that the black line isn't really capturing any 'trend' there. This is what's called 'over-fitting' and it's what happens when there are too many parameters in your 'curve-fit'. Note that an interpolation is a special case of a curve fit. Thus, it would probably make sense to choose a low-order polynomial to fit the data. Visually, I think `m=3` does an okay job because it avoids the extra peaks and troughs. `m=6` isn't too bad either, because its peaks and troughs are quite attenuated and it does a better job of approximating the data.
