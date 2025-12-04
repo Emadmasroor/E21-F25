@@ -121,6 +121,14 @@ def interpolating_polynomial(x,array_a):
     return np.polyval(np.flip(array_a),x)
 ```
 
+### (2.4) Make a plot
+
+You already know what this was supposed to look like.
+
+![Sample figure](curvefit_sample.png)
+
+
+
 ## (1) Golden Section Search
 
 ### (1.1) Working out by hand
