@@ -56,7 +56,26 @@ def search(f,a,b,tol=1.0e-9):
     else: return x2,f2
 ~~~
 
+### (1.2) 
+
+### (1.3)
+
+
 ## (2) Constraints
+
+A sphere centered at $(1,1,0)$ has equation
+
+$$(x-1)^2 + (y-1)^2 + z^2 = 2^2$$
+
+so the minimization problem for $f(x,y,z)$ needs to be augmented with a constraint function. This function should be zero when $(x,y,z)$ lies on the sphere and should have a large value when $(x,y,z)$ is far away from the sphere. Such a constraint function would be:
+
+$$g(x,y,z) = 4 - (x-1)^2 - (y-1)^2 - z^2$$
+
+and so the problem of minimizing $f$ together with this constraint can be solved by minimizing the following function:
+
+$$f(x,y,z) + \lambda [g(x,y,z)]^2$$
+
+where $g$ is as defined above.
 
 ...
 
